@@ -1,4 +1,5 @@
 # 技术周报 📱
+
 **2026-03-27 ~ 2026-04-02**
 
 ---
@@ -17,46 +18,38 @@
 
 ## 🔥 GitHub 热门仓库
 
-### 1. microsoft/VibeVoice
-**Open-Source Frontier Voice AI**
-微软开源的前沿语音AI技术，提供高质量语音交互能力，支持多场景应用。
+### 1️⃣ microsoft/VibeVoice
+**核心亮点**：微软开源的前沿语音 AI 框架，支持多语言实时语音交互与生成  
 🔗 https://github.com/microsoft/VibeVoice
 
-### 2. oh-my-codex (OmX)
-**Codex扩展框架**
-为Codex添加钩子、代理团队、HUD等扩展功能，打造更强大的开发辅助体验。
-🔗 https://github.com/Yeachan-Heo/oh-my-codex
-
-### 3. Deep-Live-Cam
-**实时换脸与深度伪造**
-仅需单张图片即可实现实时人脸交换和一键视频深度伪造，支持多种场景。
+### 2️⃣ hacksider/Deep-Live-Cam
+**核心亮点**：仅需单张图片即可实现实时换脸与一键视频深度伪造，支持直播场景  
 🔗 https://github.com/hacksider/Deep-Live-Cam
 
-### 4. oh-my-claudecode
-**面向团队的多代理编排**
-专为Claude Code设计的团队协作框架，实现多代理高效协同工作。
+### 3️⃣ google-research/timesfm
+**核心亮点**：Google Research 发布的时间序列基础模型，支持零样本预测与多场景迁移  
+🔗 https://github.com/google-research/timesfm
+
+### 4️⃣ luongnv89/claude-howto
+**核心亮点**：Claude Code 视觉化指南，含大量可直接复用的模板与实战案例  
+🔗 https://github.com/luongnv89/claude-howto
+
+### 5️⃣ siddharthvaddem/openscreen
+**核心亮点**：开源屏幕录制与演示工具，完全免费、无水印、可商用，替代 Screen Studio  
+🔗 https://github.com/siddharthvaddem/openscreen
+
+### 6️⃣ Yechan-Heo/oh-my-claudecode
+**核心亮点**：面向团队的多代理编排框架，支持 Claude Code 复杂工作流自动化  
 🔗 https://github.com/Yeachan-Heo/oh-my-claudecode
 
-### 5. last30days-skill
-**跨平台AI研究代理**
-可研究Reddit、X、YouTube、HN、Polymarket等平台内容，合成结构化摘要。
-🔗 https://github.com/mvanhorn/last30days-skill
-
-### 6. AI-Scientist-v2
-**自动化科学发现**
-基于代理树搜索的Workshop级别自动化科研工具，推动AI辅助科学发现新范式。
-🔗 https://github.com/SakanaAI/AI-Scientist-v2
-
-### 7. hermes-agent
-**可成长智能代理**
-伴随用户需求持续进化的AI代理系统，具备自我学习和适应能力。
+### 7️⃣ NousResearch/hermes-agent
+**核心亮点**：可自成长的 AI 代理框架，支持持续学习与任务泛化  
 🔗 https://github.com/NousResearch/hermes-agent
 
-### 8. openscreen
-**免费开源屏幕录制**
-无需订阅、无水印、商业免费，Screen Studio的开源替代方案。
-🔗 https://github.com/siddharthvaddem/openscreen
+### 8️⃣ Yechan-Heo/oh-my-codex
+**核心亮点**：为 Codex 注入钩子、代理团队、HUD 等扩展能力，打造更强开发体验  
+🔗 https://github.com/Yeachan-Heo/oh-my-codex
 
 ---
 
-*本周AI/ML领域持续火热，多代理协作框架和语音/视频AI成为焦点。*
+*本周 AI 与语音交互领域热度较高，实时换脸与语音 AI 开源项目值得关注。*
