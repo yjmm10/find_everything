@@ -1,23 +1,20 @@
 import os
 import sys
-import json
 import copy
 import datetime
 from pathlib import Path
 import requests
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
-import feedparser
+import yaml
 import smtplib
 import markdown
-from bs4 import BeautifulSoup
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from openai import OpenAI
-from urllib.parse import quote
 from dotenv import load_dotenv
 
-def log(msg): print(f"[INFO] {msg}", flush=True)
+from digest_sources import DEFAULT_SOURCES, FetchContext
+from digest_sources.config_helpers import source_keywords
+from digest_sources.util import log
 
 _SCRIPT_DIR = Path(__file__).resolve().parent
 
@@ -32,18 +29,39 @@ DEFAULT_DIGEST_CONFIG = {
     ],
     "arxiv": {
         "enabled": True,
+        # backend: 首选 api 或 library；另一路自动作备用（网络/解析失败时切换）
+        "backend": "api",
+        "keywords": None,
         "max_results": 8,
         "sort_by": "submittedDate",
         "sort_order": "descending",
+        "library_delay_seconds": 3.0,
+        "library_page_size": 100,
+        "library_num_retries": 3,
+    },
+    "rss": {
+        "enabled": True,
+        "max_items": 8,
+        "keywords": None,
+        "feeds": [
+            {"url": "https://hnrss.org/frontpage"},
+            {"url": "https://feeds.feedburner.com/TechCrunch/"},
+            {"url": "https://www.reddit.com/r/MachineLearning/.rss"},
+            {"url": "https://www.reddit.com/r/LocalLLaMA/.rss"},
+        ],
     },
     "github_trending": {
         "enabled": True,
+        "keywords": None,
         "url": "https://github.com/trending?since=weekly",
         "max_repos": 8,
         "request_timeout": 60,
         "user_agent": "Mozilla/5.0 (compatible; GitHubDigestBot/1.0)",
+        "api_enrich": True,
+        "api_timeout": 20,
     },
 }
+
 
 def _deep_merge(base: dict, override: dict) -> dict:
     out = copy.deepcopy(base)
@@ -54,149 +72,66 @@ def _deep_merge(base: dict, override: dict) -> dict:
             out[k] = copy.deepcopy(v)
     return out
 
+
 def load_digest_config() -> dict:
-    """加载订阅配置：默认 DIGEST_CONFIG 指向脚本同目录下的 digest_config.json。"""
-    name = os.getenv("DIGEST_CONFIG", "digest_config.json")
+    """加载订阅配置：默认 DIGEST_CONFIG 指向脚本同目录下的 digest_config.yaml。"""
+    name = os.getenv("DIGEST_CONFIG", "digest_config.yaml")
     path = Path(name) if Path(name).is_absolute() else _SCRIPT_DIR / name
     cfg = copy.deepcopy(DEFAULT_DIGEST_CONFIG)
     if path.is_file():
         with open(path, encoding="utf-8") as f:
-            user = json.load(f)
+            user = yaml.safe_load(f)
+        if user is None:
+            user = {}
         if not isinstance(user, dict):
-            raise ValueError(f"配置文件必须是 JSON 对象: {path}")
+            raise ValueError(f"配置文件根节点必须是 YAML 映射（键值对象）: {path}")
         cfg = _deep_merge(cfg, user)
         log(f"📋 已加载配置: {path}")
     else:
         log(f"📋 未找到 {path}，使用内置默认配置（可创建该文件自定义订阅）")
     return cfg
 
-def _http_session():
-    r = Retry(
-        total=5,
-        connect=5,
-        read=5,
-        backoff_factor=1.5,
-        status_forcelist=(429, 500, 502, 503, 504),
-        allowed_methods=frozenset(["GET"]),
-    )
-    s = requests.Session()
-    s.mount("https://", HTTPAdapter(max_retries=r))
-    s.mount("http://", HTTPAdapter(max_retries=r))
-    return s
 
 def get_date_range():
     """计算上周五到本周四的日期范围"""
     today = datetime.date.today()
-    # 假设脚本在周五运行，则 yesterday 是周四
     thursday = today - datetime.timedelta(days=1)
     friday = thursday - datetime.timedelta(days=6)
     start = friday.strftime("%Y%m%d0000")
     end = thursday.strftime("%Y%m%d2359")
     return friday.strftime("%Y-%m-%d"), thursday.strftime("%Y-%m-%d"), f"{start}TO{end}"
 
-def fetch_arxiv(keywords, date_range, arxiv_cfg: dict):
-    if not arxiv_cfg.get("enabled", True):
-        log("⏭️ Arxiv 已在配置中关闭，跳过")
-        return []
-    log("🔍 Fetching Arxiv...")
-    query = f"all:({keywords}) AND submittedDate:[{date_range}]"
-    sort_by = arxiv_cfg.get("sort_by", "submittedDate")
-    sort_order = arxiv_cfg.get("sort_order", "descending")
-    max_results = int(arxiv_cfg.get("max_results", 8))
-    url = (
-        f"https://export.arxiv.org/api/query?search_query={quote(query)}"
-        f"&sortBy={quote(sort_by)}&sortOrder={quote(sort_order)}&max_results={max_results}"
-    )
-    connect_s = float(os.getenv("ARXIV_CONNECT_TIMEOUT", "20"))
-    read_s = float(os.getenv("ARXIV_READ_TIMEOUT", "120"))
-    resp = _http_session().get(url, timeout=(connect_s, read_s))
-    resp.raise_for_status()
-    feed = feedparser.parse(resp.content)
-    results = []
-    for entry in feed.entries:
-        results.append({
-            "title": entry.title,
-            "link": entry.link,
-            "authors": ", ".join(a.name for a in entry.authors[:3]),
-            "summary": entry.summary.replace("\n", " ")[:150] + "..."
-        })
-    return results
 
-def fetch_news_rss(keywords, date_range, feeds: list, max_items: int):
-    """基于 RSS 源过滤关键词资讯；feeds / max_items 来自配置文件。"""
-    log("🔍 Fetching Tech News/RSS...")
-    if not feeds:
-        log("⏭️ rss_feeds 为空，跳过资讯抓取")
-        return []
-    kw_list = [k.strip().lower() for k in keywords.split(",") if k.strip()]
-    results = []
-    for f_url in feeds:
-        try:
-            feed = feedparser.parse(f_url)
-            for entry in feed.entries:
-                title_low = entry.title.lower()
-                if any(kw in title_low for kw in kw_list):
-                    results.append({
-                        "title": entry.title,
-                        "link": entry.link,
-                        "source": feed.feed.get("title", "Unknown"),
-                        "published": entry.get("published", "")
-                    })
-        except Exception:
-            pass
-    return results[:max_items]
-
-def fetch_github_trending(gh_cfg: dict):
-    if not gh_cfg.get("enabled", True):
-        log("⏭️ GitHub Trending 已在配置中关闭，跳过")
-        return []
-    log("🔍 Fetching GitHub Trending (Weekly)...")
-    url = gh_cfg.get("url", "https://github.com/trending?since=weekly")
-    timeout = float(gh_cfg.get("request_timeout", 60))
-    headers = {"User-Agent": gh_cfg.get("user_agent", "Mozilla/5.0 (compatible; GitHubDigestBot/1.0)")}
-    max_repos = int(gh_cfg.get("max_repos", 8))
-    resp = _http_session().get(url, headers=headers, timeout=timeout)
-    resp.raise_for_status()
-    soup = BeautifulSoup(resp.text, "html.parser")
-    results = []
-    for row in soup.select("article.Box-row")[:max_repos]:
-        repo = row.select_one("h2 a")["href"].strip("/")
-        desc_tag = row.select_one("p.col-9")
-        results.append({
-            "repo": repo,
-            "desc": desc_tag.text.strip() if desc_tag else "No description",
-            "link": f"https://github.com/{repo}"
-        })
-    return results
-
-def summarize_with_ai(arxiv, news, github, keywords, date_str):
-    log("🤖 Summarizing with AI...")
+def summarize_with_ai(raw_sections: str, keyword_context: str, date_str: str):
+    model = os.getenv("AI_MODEL", "gpt-4o-mini")
+    log(f"🤖 [AI] 调用模型 {model} 生成周报（可能需数十秒）…")
     client = OpenAI(
         api_key=os.getenv("OPENAI_API_KEY"),
-        base_url=os.getenv("OPENAI_API_BASE", "https://api.openai.com/v1")
+        base_url=os.getenv("OPENAI_API_BASE", "https://api.openai.com/v1"),
     )
-    
+
     prompt = f"""你是一个资深技术研究员。请根据以下原始数据，整理一份【{date_str}】技术周报。
-关键词：{keywords}
+关键词与抓取说明：{keyword_context}
 要求：
 1. 输出纯 Markdown 格式，结构清晰，适合手机端竖屏阅读。
 2. 包含三个板块：📄 Arxiv 前沿论文、📰 优质资讯/论坛、🔥 GitHub 热门仓库。
 3. 每条包含：标题、核心亮点/一句话总结、链接。语言精炼，总字数 800~1200 字。
 4. 忽略重复、低质内容，优先保留 Star 增长快、讨论度高或具有突破性进展的条目。
-5. 仅输出 Markdown 内容，不要包含任何解释性前缀。
+5. 「GitHub 热门仓库」板块：每条必须写出原始数据中提供的 Star 数、Fork 数（若有）；若有主语言也可一并写出。
+6. 仅输出 Markdown 内容，不要包含任何解释性前缀。
 
 原始数据：
-【Arxiv】\n{arxiv}
-【资讯】\n{news}
-【GitHub】\n{github}"""
+{raw_sections}"""
 
     response = client.chat.completions.create(
-        model=os.getenv("AI_MODEL", "gpt-4o-mini"),
+        model=model,
         messages=[{"role": "user", "content": prompt}],
         temperature=0.2,
-        max_tokens=1500
+        max_tokens=1500,
     )
+    log("✅ [AI] 生成完成")
     return response.choices[0].message.content
+
 
 def save_and_commit(md_content):
     log("💾 Saving & committing to repo...")
@@ -204,9 +139,8 @@ def save_and_commit(md_content):
     md_path = "docs/weekly-digest.md"
     with open(md_path, "w", encoding="utf-8") as f:
         f.write(md_content)
-    
-    # 生成移动端友好的 HTML
-    html_content = markdown.markdown(md_content, extensions=['tables', 'fenced_code', 'toc'])
+
+    html_content = markdown.markdown(md_content, extensions=["tables", "fenced_code", "toc"])
     mobile_css = """
     <style>
       body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; background: #f8f9fa; color: #24292e; }
@@ -226,6 +160,7 @@ def save_and_commit(md_content):
     os.system("git commit -m '📦 Auto-update weekly digest' || echo 'No changes to commit'")
     os.system("git push")
 
+
 def send_notification(md_content):
     smtp = os.getenv("SMTP_SERVER")
     user = os.getenv("EMAIL_USER")
@@ -239,7 +174,7 @@ def send_notification(md_content):
         msg["Subject"] = f"📅 Weekly Tech Digest ({datetime.date.today().strftime('%Y-%m-%d')})"
         msg["From"] = user
         msg["To"] = to
-        html_body = markdown.markdown(md_content, extensions=['tables', 'fenced_code'])
+        html_body = markdown.markdown(md_content, extensions=["tables", "fenced_code"])
         msg.attach(MIMEText(html_body, "html", "utf-8"))
         try:
             with smtplib.SMTP(smtp, 587) as server:
@@ -247,15 +182,35 @@ def send_notification(md_content):
                 server.login(user, pwd)
                 server.send_message(msg)
             log("✅ Email sent.")
-        except Exception as e: log(f"❌ Email failed: {e}")
+        except Exception as e:
+            log(f"❌ Email failed: {e}")
 
     if webhook:
         log("🌐 Sending Webhook...")
-        payload = {"content": f"📅 **Weekly Tech Digest Updated**\n{md_content[:500]}...\n👉 查看完整报告: https://raw.githubusercontent.com/{os.getenv('GITHUB_REPOSITORY')}/main/docs/weekly-digest.md"}
+        payload = {
+            "content": (
+                f"📅 **Weekly Tech Digest Updated**\n{md_content[:500]}...\n"
+                f"👉 查看完整报告: https://raw.githubusercontent.com/{os.getenv('GITHUB_REPOSITORY')}/main/docs/weekly-digest.md"
+            )
+        }
         try:
             requests.post(webhook, json=payload, timeout=10)
             log("✅ Webhook sent.")
-        except Exception as e: log(f"❌ Webhook failed: {e}")
+        except Exception as e:
+            log(f"❌ Webhook failed: {e}")
+
+
+def run_sources(ctx: FetchContext) -> str:
+    """按注册顺序抓取各信息源，拼接为 AI 原始数据块。"""
+    n = len(DEFAULT_SOURCES)
+    blocks = []
+    for i, src in enumerate(DEFAULT_SOURCES, 1):
+        log(f"━━━━━━━━ {i}/{n} 抓取 {src.label} ━━━━━━━━")
+        items = src.fetch(ctx)
+        body = src.format_for_prompt(items)
+        blocks.append(f"【{src.prompt_header}】\n{body}")
+    return "\n".join(blocks)
+
 
 if __name__ == "__main__":
     load_dotenv()
@@ -265,16 +220,34 @@ if __name__ == "__main__":
         start, end, date_range = get_date_range()
         log(f"⏱️ Date range: {start} to {end}")
 
-        arxiv = fetch_arxiv(keywords, date_range, cfg["arxiv"])
-        news = fetch_news_rss(
-            keywords,
-            date_range,
-            cfg.get("rss_feeds", []),
-            int(cfg.get("rss_max_items", 8)),
+        ctx = FetchContext(
+            cfg=cfg,
+            default_cfg=DEFAULT_DIGEST_CONFIG,
+            global_keywords=keywords,
+            date_range=date_range,
+            start_date=start,
+            end_date=end,
         )
-        github = fetch_github_trending(cfg["github_trending"])
 
-        digest_md = summarize_with_ai(arxiv, news, github, keywords, f"{start} ~ {end}")
+        arxiv_kw = source_keywords(cfg["arxiv"], keywords)
+        gh_kw = source_keywords(cfg["github_trending"], keywords)
+
+        raw_sections = run_sources(ctx)
+
+        arxiv_sec = cfg.get("arxiv")
+        arxiv_backend = (
+            str(arxiv_sec.get("backend", "api")).strip() or "api"
+            if isinstance(arxiv_sec, dict)
+            else "api"
+        )
+        keyword_context = (
+            f"全局默认：{keywords}；"
+            f"Arxiv 检索使用：{arxiv_kw}（后端：{arxiv_backend}）；"
+            f"GitHub Trending 数据为榜单抓取（不按词筛选）；该板块在叙述时可侧重：{gh_kw}；"
+            f"GitHub 条目已附 Star/Fork（来自 GitHub API）；"
+            f"RSS 每条订阅可单独设 keywords，未设时依次使用 rss.keywords、全局 keywords（标题匹配）。"
+        )
+        digest_md = summarize_with_ai(raw_sections, keyword_context, f"{start} ~ {end}")
         save_and_commit(digest_md)
         send_notification(digest_md)
         log("🎉 Weekly digest generation completed!")

@@ -1,0 +1,47 @@
+name: 📅 Weekly Tech Digest
+
+on:
+  schedule:
+    # 每周五 12:00 UTC 执行（对应北京时间 20:00）
+    - cron: '0 12 * * 5'
+  workflow_dispatch: # 支持手动触发测试
+
+permissions:
+  contents: write
+
+jobs:
+  generate-digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Digest Generator
+        env:
+          # AI 模型配置（兼容所有 OpenAI 接口）
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
+          AI_MODEL: ${{ vars.AI_MODEL || 'gpt-4o-mini' }}
+          
+          # 搜索关键词（逗号分隔）
+          KEYWORDS: ${{ vars.KEYWORDS || 'LLM, AI Agent, Computer Vision' }}
+          
+          # 邮件推送配置（可选）
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          
+          # 社交平台 Webhook（可选，如 Discord/飞书/钉钉）
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        run: python digest_generator.py
