@@ -1,51 +1,77 @@
-# 技术周报 2026-03-28 ~ 2026-04-03
+# 技术周报 [2026-03-28 ~ 2026-04-03]
+
+> 聚焦 AI、LLM、Computer Vision 领域
+
+---
 
 ## 📄 Arxiv 前沿论文
 
-> 本期Arxiv前沿论文暂无更新数据。
+*本周暂无符合关键词（AI, LLM, Computer Vision, uav）筛选条件的 Arxiv 论文更新。*
 
 ---
 
 ## 📰 优质资讯/论坛
 
-> 本期资讯板块暂无符合时间范围的最新更新。
+*本周暂无符合关键词筛选条件的资讯/论坛内容更新。*
 
 ---
 
 ## 🔥 GitHub 热门仓库
 
-**1. Deep-Live-Cam** ⭐ 87880 | Fork 12735 | Python
-- 核心亮点：实时人脸交换与一键视频深度伪造工具，仅需单张图片即可生成高质量换脸视频，支持实时直播场景
-- 链接：https://github.com/hacksider/Deep-Live-Cam
-
-**2. VibeVoice** ⭐ 35711 | Fork 4068 | Python
-- 核心亮点：微软开源的前沿语音AI平台，支持多语言语音交互、语音合成与语音识别，适合构建下一代语音助手
-- 链接：https://github.com/microsoft/VibeVoice
-
-**3. hermes-agent** ⭐ 23923 | Fork 3077 | Python
-- 核心亮点：可成长的智能代理框架，支持多场景扩展与自定义，开发者可基于此构建个性化AI工作流
-- 链接：https://github.com/NousResearch/hermes-agent
-
-**4. oh-my-claudecode** ⭐ 23192 | Fork 2074 | TypeScript
-- 核心亮点：面向团队的多智能体编排工具，为Claude Code提供强大扩展能力，支持多代理协作与任务分配
-- 链接：https://github.com/Yeachan-Heo/oh-my-claudecode
-
-**5. openscreen** ⭐ 18278 | Fork 1242 | TypeScript
-- 核心亮点：免费开源的演示视频制作工具，无需订阅、无水印、可商业使用，是Screen Studio的优秀替代方案
-- 链接：https://github.com/siddharthvaddem/openscreen
-
-**6. claude-howto** ⭐ 17804 | Fork 2114 | Python
-- 核心亮点：Claude Code可视化实战指南，从基础概念到高级智能体应用，提供可直接复用的代码模板
-- 链接：https://github.com/luongnv89/claude-howto
-
-**7. oh-my-codex** ⭐ 14225 | Fork 1306 | TypeScript
-- 核心亮点：CodeX扩展框架，支持钩子、智能体团队和HUD增强，让代码编辑体验更加智能化
-- 链接：https://github.com/Yeachan-Heo/oh-my-codex
-
-**8. timesfm** ⭐ 14156 | Fork 1219 | Python
-- 核心亮点：Google Research推出的时序预测基础模型， pretrained模型可用于时间序列 forecasting、异常检测等场景
-- 链接：https://github.com/google-research/timesfm
+### 1️⃣ Deep-Live-Cam
+**⭐ 87,888 | 🍴 12,737 | 🐍 Python**
+> 仅需单张图片即可实现实时换脸与一键视频深度伪造
+🔗 https://github.com/hacksider/Deep-Live-Cam
 
 ---
 
-*本周GitHub热点集中在AI Agent编排、语音AI、深度伪造及时序预测等领域，LLM相关项目持续火热。*
+### 2️⃣ VibeVoice
+**⭐ 35,728 | 🍴 4,076 | 🐍 Python**
+> 微软开源前沿语音 AI 框架，支持高质量语音交互与生成
+🔗 https://github.com/microsoft/VibeVoice
+
+---
+
+### 3️⃣ hermes-agent
+**⭐ 23,993 | 🍴 3,095 | 🐍 Python**
+> 可成长的智能代理框架，支持多场景自适应扩展
+🔗 https://github.com/NousResearch/hermes-agent
+
+---
+
+### 4️⃣ oh-my-claudecode
+**⭐ 23,248 | 🍴 2,080 | 🟦 TypeScript**
+> 面向团队的多代理编排框架，专为 Claude Code 设计
+🔗 https://github.com/Yeachan-Heo/oh-my-claudecode
+
+---
+
+### 5️⃣ claude-howto
+**⭐ 17,877 | 🍴 2,127 | 🐍 Python**
+> Claude Code 视觉化实战指南，含即用型模板与进阶代理案例
+🔗 https://github.com/luongnv89/claude-howto
+
+---
+
+### 6️⃣ openscreen
+**⭐ 18,359 | 🍴 1,257 | 🟦 TypeScript**
+> 开源免费屏幕录制与演示工具，可替代 Screen Studio
+🔗 https://github.com/siddharthvaddem/openscreen
+
+---
+
+### 7️⃣ oh-my-codex
+**⭐ 14,340 | 🍴 1,318 | 🟦 TypeScript**
+> Codex 扩展框架，支持钩子、代理团队、HUD 等增强功能
+🔗 https://github.com/Yeachan-Heo/oh-my-codex
+
+---
+
+### 8️⃣ timesfm
+**⭐ 14,194 | 🍴 1,220 | 🐍 Python**
+> Google Research 推出的时间序列预测基础模型
+🔗 https://github.com/google-research/timesfm
+
+---
+
+**本周小结**：GitHub 热点仍以 AI/LLM 应用层为主，实时深度伪造、语音 AI、代理编排为热门方向。Arxiv 与资讯板块本周暂无更新。
