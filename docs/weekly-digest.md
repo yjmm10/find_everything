@@ -1,65 +1,64 @@
-# 📱 技术周报 2026-03-31 ~ 2026-04-06
+# 📊 技术周报 [2026-04-01 ~ 2026-04-07]
 
 ## 📄 Arxiv 前沿论文
 
-**Readable Minds: Emergent Theory-of-Mind-Like Behavior in LLM Poker Agents**
-探索大语言模型在扑克游戏中是否涌现出类似心智理论的行为，揭示LLM在社交推理方面的潜在能力。
-→ http://arxiv.org/abs/2604.04157v1
+**1. TriAttention: 高效长推理的正弦KV压缩**
+提出三角函数KV压缩方法，解决LLM长推理带来的KV缓存内存瓶颈问题。| [arXiv](http://arxiv.org/abs/2604.04921v1)
 
-**Many Preferences, Few Policies: Towards Scalable Language Model Personalization**
-提出可扩展的LLM个性化方案，探索如何用统一模型满足不同用户的偏好。
-→ http://arxiv.org/abs/2604.04144v1
+**2. Hallucination Basins: 幻觉的几何动力学框架**
+引入几何动力系统框架理解和控制LLM幻觉，从新角度分析事实性错误。| [arXiv](http://arxiv.org/abs/2604.04743v1)
 
-**Comparative reversal learning reveals rigid adaptation in LLMs**
-研究LLM在非平稳环境中的适应能力，揭示其在动态变化条件下的局限性。
-→ http://arxiv.org/abs/2604.04182v1
+**3. SLaB: 高效LLM的稀疏-低秩-二进制分解**
+通过稀疏低秩二进制分解实现大型语言模型的高效部署，显著降低计算和内存需求。| [arXiv](http://arxiv.org/abs/2604.04493v1)
 
-**CoALFake: Collaborative Active Learning for Cross-Domain Fake News Detection**
-提出人机协作的主动学习框架，提升跨领域假新闻检测效果。
-→ http://arxiv.org/abs/2604.04174v1
+**4. Cog-DRIFT: 从难推理问题学习**
+通过自适应重塑实例使模型能够从困难推理问题中学习，解决RLVR的数据效率问题。| [arXiv](http://arxiv.org/abs/2604.04767v1)
 
-**AffectSpeech: Emotional Speech Dataset with Fine-Grained Descriptions**
-发布大规模情感语音数据集，支持语音情感描述与合成任务。
-→ http://arxiv.org/abs/2604.04160v1
+**5. CoopGuard: 保障LLM的多轮攻击防御**
+提出有状态协作代理框架，保护LLM免受进化的多轮对抗攻击。| [arXiv](http://arxiv.org/abs/2604.04060v1)
+
+**6. SecPI: 推理模型的安全代码生成**
+通过安全推理内部化方法，使用推理语言模型生成安全代码。| [arXiv](http://arxiv.org/abs/2604.03587v1)
+
+**7. BridgeRAG: 多跳问答的无训练桥接检索**
+提出桥接条件检索方法，无需训练即可实现多跳问答的高精度检索。| [arXiv](http://arxiv.org/abs/2604.03384v1)
+
+**8. Single-Agent vs Multi-Agent 推理效率对比**
+在相同思考token预算下，单Agent LLM优于多Agent系统，揭示多Agent增益的计算时间混淆效应。| [arXiv](http://arxiv.org/abs/2604.02460v1)
+
+**9. TokenDance: 集体KV缓存共享**
+通过多Agent LLM服务的集体KV缓存共享实现高效扩展。| [arXiv](http://arxiv.org/abs/2604.03143v1)
+
+**10. HieraVid: 视频LLM的层级Token剪枝**
+为视频大型语言模型提供层级Token剪枝，显著加速推理同时保持精度。| [arXiv](http://arxiv.org/abs/2604.01881v1)
+
+**11. SelfGrader: 基于Token级Logits的越狱检测**
+使用Token级Logits实现LLM越狱检测的稳定检测方法。| [arXiv](http://arxiv.org/abs/2604.01473v1)
+
+**12. Mixture-of-Experts语言模型的专家级解读**
+从专家级别解读MoE语言模型的内部工作机制。| [arXiv](http://arxiv.org/abs/2604.02178v1)
 
 ---
 
 ## 🔥 GitHub 热门仓库
 
-**microsoft/VibeVoice** ⭐ 36921 🍴 4237
-> 开源前沿语音AI模型，支持高质量语音交互。
-→ https://github.com/microsoft/VibeVoice
-
-**NousResearch/hermes-agent** ⭐ 28257 🍴 3731
-> 可成长的智能Agent框架，支持多种LLM接入。
-→ https://github.com/NousResearch/hermes-agent
-
-**onyx-dot-app/onyx** ⭐ 25495 🍴 3399
-> 开源AI平台，支持任意LLM的智能对话与高级功能。
-→ https://github.com/onyx-dot-app/onyx
-
-**Yeachan-Heo/oh-my-claudecode** ⭐ 25108 🍴 2313
-> Claude Code多Agent编排框架，团队协作开发利器。
-→ https://github.com/Yeachan-Heo/oh-my-claudecode
-
-**siddharthvaddem/openscreen** ⭐ 24091 🍴 1610
-> 开源屏幕录制与演示工具，可商用无水印。
-→ https://github.com/siddharthvaddem/openscreen
-
-**luongnv89/claude-howto** ⭐ 21456 🍴 2541
-> Claude Code可视化指南，含大量可直接使用的模板。
-→ https://github.com/luongnv89/claude-howto
-
-**Yeachan-Heo/oh-my-codex** ⭐ 17560 🍴 1669
-> Codex扩展框架，支持Hook、Agent团队、HUD等功能。
-→ https://github.com/Yeachan-Heo/oh-my-codex
-
-**google-research/timesfm** ⭐ 15209 🍴 1330
-> Google开源的时间序列预测基础模型。
-→ https://github.com/google-research/timesfm
+| 项目 | ⭐ Stars | 🍴 Forks | 🛠️ 语言 | 简介 |
+|------|----------|----------|---------|------|
+| **microsoft/VibeVoice** | 37,310 | 4,289 | Python | 开源前沿语音AI |
+| **NousResearch/hermes-agent** | 31,679 | 4,110 | Python | 与你共同成长的AI代理 |
+| **Yeachan-Heo/oh-my-claudecode** | 25,721 | 2,360 | TypeScript | Claude Code多代理编排 |
+| **siddharthvaddem/openscreen** | 25,178 | 1,672 | TypeScript | 免费创建精美演示工具 |
+| **luongnv89/claude-howto** | 22,388 | 2,670 | Python | Claude Code视觉指南 |
+| **Yeachan-Heo/oh-my-codex** | 18,239 | 1,719 | TypeScript | Codex扩展框架 |
+| **google-ai-edge/gallery** | 18,768 | 1,750 | Kotlin | 设备端ML/GenAI用例展示 |
+| **google-research/timesfm** | 15,425 | 1,363 | Python | Google时间序列基础模型 |
 
 ---
 
 ## 📰 优质资讯/论坛
 
-本期无新增资讯收录。
+*本周无特定资讯数据源收录*
+
+---
+
+**📈 周报说明**：本期Arxiv论文聚焦LLM推理效率、幻觉控制、安全防护三大方向；GitHub热门项目以语音AI、多Agent协作框架和开发者工具为主。
