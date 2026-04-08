@@ -6,48 +6,57 @@
       ul { padding-left: 20px; } li { margin-bottom: 8px; }
       code { background: #f0f0f0; padding: 2px 5px; border-radius: 4px; font-size: 0.9em; }
     </style>
-    </head><body><h1 id="2026-04-01-2026-04-07">📊 技术周报 2026-04-01 ~ 2026-04-07</h1>
+    </head><body><h1 id="2026-04-01-2026-04-07">📊 技术周报 [2026-04-01 ~ 2026-04-07]</h1>
 <h2 id="arxiv">📄 Arxiv 前沿论文</h2>
-<p><strong>1. FrontierFinance: Long-Horizon Computer-Use Benchmark for Financial Tasks</strong>
-针对AI驱动的知识密集型劳动力替代问题，构建了首个评估LLM在真实金融任务中长周期计算机操作能力的基准，填补了现有评估体系的空白。
+<p><strong>1. In-Place Test-Time Training: Adapting LLM Weights Dynamically</strong>
+提出在部署阶段原地微调LLM权重，打破传统"训练-部署"静态范式，使模型能实时适应上下文变化。
+🔗 http://arxiv.org/abs/2604.06169v1</p>
+<p><strong>2. Exclusive Unlearning: Targeted Knowledge Removal in LLMs</strong>
+针对医疗、教育等高风险场景，提出选择性遗忘技术，有偿移除特定有害知识同时保留核心能力。
+🔗 http://arxiv.org/abs/2604.06154v1</p>
+<p><strong>3. LLM4CodeRE: Generative AI for Code Decompilation</strong>
+首个将LLM应用于恶意软件逆向工程中代码反编译分析的任务，突破传统静态分析局限。
+🔗 http://arxiv.org/abs/2604.06095v1</p>
+<p><strong>4. CritBench: LLM Cybersecurity Evaluation for IEC 61850</strong>
+构建电力系统数字变电站环境的LLM安全评估框架，填补关键基础设施AI安全基准空白。
+🔗 http://arxiv.org/abs/2604.06019v1</p>
+<p><strong>5. From Hallucination to Structure Snowballing: Constrained Decoding Alignment</strong>
+揭示约束解码中"幻觉雪球"现象，提出结构化滚动方法提升LLM反思能力。
+🔗 http://arxiv.org/abs/2604.06066v1</p>
+<p><strong>6. A Multi-Stage Validation Framework for Clinical Information Extraction</strong>
+构建可信临床信息提取的LLM验证管道，解决医疗记录非结构化数据到临床知识的转化难题。
+🔗 http://arxiv.org/abs/2604.06028v1</p>
+<p><strong>7. Context-Value-Action Architecture for Value-Driven LLM Agents</strong>
+提出价值驱动型LLM Agent架构，解决现有Agent行为僵化问题，增强目标导向决策能力。
+🔗 http://arxiv.org/abs/2604.05939v1</p>
+<p><strong>8. FrontierFinance: Long-Horizon Financial Tasks Benchmark</strong>
+首个评估LLM在真实金融任务中计算机使用能力的基准，填补AI劳动力替代研究空白。
 🔗 http://arxiv.org/abs/2604.05912v1</p>
-<p><strong>2. Mechanistic Circuit-Based Knowledge Editing in LLMs</strong>
-提出基于机制化电路的知识编辑方法，解决LLM在动态真实环境中预训练知识更新的挑战，无需全量重训练即可实现精准知识修正。
-🔗 http://arxiv.org/abs/2604.05876v1</p>
-<p><strong>3. AgentGL: Agentic Graph Learning via Reinforcement Learning</strong>
-将LLM智能体能力与图学习结合，通过强化学习实现迭代检索、工具调用和决策制定，突破传统图模型的结构化局限。
-🔗 http://arxiv.org/abs/2604.05846v1</p>
-<p><strong>4. TriAttention: Long Reasoning with Trigonometric KV Compression</strong>
-针对长上下文推理中的KV缓存内存瓶颈，提出三角函数KV压缩方法，显著降低长序列推理的内存开销。
+<p><strong>9. BOSCH: Black-Box Binary Optimization for Attention-Head Selection</strong>
+通过二进制优化方法自动选择短上下文注意力头，在保持性能前提下显著降低推理KV缓存开销。
+🔗 http://arxiv.org/abs/2604.05942v1</p>
+<p><strong>10. TriAttention: Trigonometric KV Compression for Long Reasoning</strong>
+针对长推理场景的KV缓存瓶颈，提出三角函数压缩方法，高效处理长上下文推理。
 🔗 http://arxiv.org/abs/2604.04921v1</p>
-<p><strong>5. Deep Researcher Agent: Autonomous Deep Learning Experimentation</strong>
-开源框架使LLM智能体能够7×24小时自主开展深度学习实验，配合零成本监控，大幅提升研究效率。
-🔗 http://arxiv.org/abs/2604.05854v1</p>
-<p><strong>6. Let Geometry GUIDE: Geometric Priors in Multimodal LLMs</strong>
-针对多模态LLM在2D视觉任务中物理空间感知不足的问题，提出几何引导的分层展开方法，提升空间推理能力。
-🔗 http://arxiv.org/abs/2604.05695v1</p>
 <hr />
 <h2 id="_1">📰 优质资讯/论坛</h2>
-<p><em>本周暂无RSS资讯数据</em></p>
+<p><em>本周无特定RSS资讯抓取数据</em></p>
 <hr />
 <h2 id="github">🔥 GitHub 热门仓库</h2>
-<p><strong>1. microsoft/VibeVoice</strong>
-⭐ 37,313 | Fork 4,289 | Python</p>
+<p><strong>1. microsoft/VibeVoice</strong> ⭐ 37,356 | Fork 4,298 | 🐍 Python</p>
 <blockquote>
-<p>开源前沿语音AI模型，支持多语言语音识别与生成，性能对标商业方案
+<p>开源前沿语音AI技术，支持多语言实时语音交互与情感识别。
 🔗 https://github.com/microsoft/VibeVoice</p>
 </blockquote>
-<p><strong>2. google-ai-edge/gallery</strong>
-⭐ 18,780 | Fork 1,753 | Kotlin</p>
+<p><strong>2. google-ai-edge/gallery</strong> ⭐ 18,871 | Fork 1,761 | 🐍 Kotlin</p>
 <blockquote>
-<p>展示端侧ML/GenAI用例的画廊，支持本地模型体验与部署
+<p>展示端侧ML/GenAI用例的画廊，支持本地模型运行与交互体验。
 🔗 https://github.com/google-ai-edge/gallery</p>
 </blockquote>
-<p><strong>3. google-research/timesfm</strong>
-⭐ 15,428 | Fork 1,363 | Python</p>
+<p><strong>3. google-research/timesfm</strong> ⭐ 15,445 | Fork 1,366 | 🐍 Python</p>
 <blockquote>
-<p>Google Research推出的时间序列基础模型，支持零样本预测
+<p>Google Research推出的预训练时间序列基础模型，支撑时序预测应用。
 🔗 https://github.com/google-research/timesfm</p>
 </blockquote>
 <hr />
-<p><em>本周共收录 6 篇前沿论文、3 个热门项目，总字数约 920 字</em></p></body></html>
+<p><em>本周技术焦点：LLM推理优化与长上下文处理成为研究热点，代码智能体与安全评估框架持续涌现，时间序列AI与语音AI开源生态快速扩张。</em></p></body></html>
