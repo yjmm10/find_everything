@@ -14,12 +14,17 @@ from dotenv import load_dotenv
 
 from digest_sources import DEFAULT_SOURCES, FetchContext
 from digest_sources.config_helpers import source_keywords
+from digest_sources.date_range import build_digest_date_window
 from digest_sources.util import log
 
 _SCRIPT_DIR = Path(__file__).resolve().parent
 
 DEFAULT_DIGEST_CONFIG = {
     "keywords": "AI, LLM",
+    # 数据窗口：preset 为执行日前一完整 day/week/month；也可用 start+end 指定绝对区间
+    "date_range": {
+        "preset": "week",
+    },
     "rss_max_items": 8,
     "rss_feeds": [
         "https://hnrss.org/frontpage",
@@ -31,7 +36,7 @@ DEFAULT_DIGEST_CONFIG = {
         "enabled": True,
         # backend: 首选 api 或 library；另一路自动作备用（网络/解析失败时切换）
         "backend": "api",
-        "keywords": None,
+        "keywords": "uav,llm",
         "max_results": 8,
         "sort_by": "submittedDate",
         "sort_order": "descending",
@@ -92,16 +97,6 @@ def load_digest_config() -> dict:
     return cfg
 
 
-def get_date_range():
-    """计算上周五到本周四的日期范围"""
-    today = datetime.date.today()
-    thursday = today - datetime.timedelta(days=1)
-    friday = thursday - datetime.timedelta(days=6)
-    start = friday.strftime("%Y%m%d0000")
-    end = thursday.strftime("%Y%m%d2359")
-    return friday.strftime("%Y-%m-%d"), thursday.strftime("%Y-%m-%d"), f"{start}TO{end}"
-
-
 def summarize_with_ai(raw_sections: str, keyword_context: str, date_str: str):
     model = os.getenv("AI_MODEL", "gpt-4o-mini")
     log(f"🤖 [AI] 调用模型 {model} 生成周报（可能需数十秒）…")
@@ -112,61 +107,165 @@ def summarize_with_ai(raw_sections: str, keyword_context: str, date_str: str):
 
     prompt = f"""你是一个资深技术研究员。请根据以下原始数据，整理一份【{date_str}】技术周报。
 关键词与抓取说明：{keyword_context}
-要求：
-1. 输出纯 Markdown 格式，结构清晰，适合手机端竖屏阅读。
-2. 包含三个板块：📄 Arxiv 前沿论文、📰 优质资讯/论坛、🔥 GitHub 热门仓库。
-3. 每条包含：标题、核心亮点/一句话总结、链接。语言精炼，总字数 800~1200 字。
-4. 忽略重复、低质内容，优先保留 Star 增长快、讨论度高或具有突破性进展的条目。
-5. 「GitHub 热门仓库」板块：每条必须写出原始数据中提供的 Star 数、Fork 数（若有）；若有主语言也可一并写出。
-6. 仅输出 Markdown 内容，不要包含任何解释性前缀。
+
+要求（务必遵守）：
+1. 输出纯 Markdown，适合手机阅读；不要任何前言/后语。
+2. 必须包含三个板块，顺序固定：## 📄 Arxiv 前沿论文 → ## 📰 优质资讯/论坛 → ## 🔥 GitHub 热门仓库。
+3. **每个板块**在表格前先写 1～2 句「板块说明」：本表数据来自哪类源、与配置关键词/时间窗的关系（勿编造配置里不存在的规则）。
+4. **每个板块**用一张 **Markdown 表格** 汇总条目，表头至少包含：
+   - 评分｜标题｜说明｜链接
+   - 「评分」为 0～10 的整数，综合**与当周关键词/主题的贴合度**、新颖度、可验证性；**同一板块内各行按评分从高到低排序**。
+   - 「说明」为一行中文要点（勿空泛）。
+   - 「链接」必须与下方原始数据中的 URL 一致，**禁止编造链接**。
+5. GitHub 板块表格在「链接」旁或额外列写出原始数据中的 **Star、Fork、主语言**（有则必填，无则写「-」）。
+6. 若某板块原始数据为空或仅含「(无)」，写一句说明并给出仅表头的空表或省略表体，勿虚构条目。
+7. 可忽略明显重复、低质或与原始数据不符的项；信息量允许时总篇幅约 1200～2500 字当量（表格为主）。
 
 原始数据：
 {raw_sections}"""
 
-    response = client.chat.completions.create(
-        model=model,
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.2,
-        max_tokens=1500,
-    )
+    try:
+        response = client.chat.completions.create(
+            model=model,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.2,
+            max_tokens=int(os.getenv("AI_MAX_TOKENS", "4000")),
+        )
+    except Exception as e:
+        log(f"❌ [AI] chat.completions 调用失败: {type(e).__name__}: {e}")
+        return ""
+
     log("✅ [AI] 生成完成")
-    return response.choices[0].message.content
+
+    if response is None:
+        log("⚠️ [AI] 响应对象为 None")
+        return ""
+
+    choices = getattr(response, "choices", None)
+    if choices is None:
+        log(
+            "⚠️ [AI] response.choices 为 None（网关/兼容层未返回标准 ChatCompletion），"
+            f"response 类型: {type(response).__name__}"
+        )
+        return ""
+    if not isinstance(choices, (list, tuple)) or len(choices) == 0:
+        log(
+            "⚠️ [AI] response.choices 非列表或为空，"
+            f"实际类型: {type(choices).__name__}"
+        )
+        return ""
+
+    ch0 = choices[0]
+    if ch0 is None:
+        log("⚠️ [AI] choices[0] 为 None")
+        return ""
+
+    msg = getattr(ch0, "message", None)
+    text = None
+    if msg is not None:
+        text = getattr(msg, "content", None)
+    if text is None and hasattr(ch0, "text"):
+        text = getattr(ch0, "text", None)
+
+    if text is None or not str(text).strip():
+        fr = getattr(ch0, "finish_reason", None)
+        log(
+            "⚠️ [AI] 模型返回空内容或无 message.content，将写入空文档"
+            f"（finish_reason={fr!r}；请核对模型名、API 兼容、额度）"
+        )
+        return ""
+    return str(text)
 
 
-def save_and_commit(md_content):
+def _inject_crawl_timestamp(md_body: str) -> str:
+    """在首个 Markdown 标题行后插入爬取时间（UTC），区分数据窗口与生成时刻。"""
+    text = md_body if isinstance(md_body, str) else ""
+    ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+    stamp_line = f"> **爬取时间**：{ts}"
+    t = text.rstrip("\n")
+    if not t.strip():
+        return stamp_line + "\n"
+    first_nl = t.find("\n")
+    if first_nl == -1:
+        first, rest = t, ""
+    else:
+        first, rest = t[:first_nl], t[first_nl + 1 :]
+    if first.lstrip().startswith("#"):
+        parts = [first, "", stamp_line]
+        if rest.strip():
+            parts.extend(["", rest.lstrip("\n")])
+        return "\n".join(parts) + "\n"
+    return "\n".join([stamp_line, "", t]) + "\n"
+
+
+def _digest_markdown_is_effectively_empty(md_body: str) -> bool:
+    """
+    AI 失败或网关返回空时，_inject_crawl_timestamp 可能只产出「爬取时间」一行。
+    此类内容不应写入仓库，以免覆盖已有周报。
+    """
+    t = (md_body or "").strip()
+    if not t:
+        return True
+    lines = [ln.strip() for ln in t.splitlines() if ln.strip()]
+    if len(lines) == 1 and "爬取时间" in lines[0]:
+        return True
+    return False
+
+
+def save_and_commit(md_content: str, digest_slug: str) -> str:
+    """
+    写入 docs/weekly-digest-{slug}.md/html，并同步 docs/weekly-digest.md/html 为最新副本。
+    digest_slug 建议为「数据窗起止」如 2026-04-01_2026-04-07（仅字母数字与下划线、连字符）。
+    返回带日期档名的相对路径（.md）。
+    """
     log("💾 Saving & committing to repo...")
     os.makedirs("docs", exist_ok=True)
-    md_path = "docs/weekly-digest.md"
-    with open(md_path, "w", encoding="utf-8") as f:
-        f.write(md_content)
+    body = md_content if isinstance(md_content, str) else ""
+    safe_slug = digest_slug.replace("/", "-").replace(" ", "")
+    dated_md = f"docs/weekly-digest-{safe_slug}.md"
+    dated_html = f"docs/weekly-digest-{safe_slug}.html"
+    latest_md = "docs/weekly-digest.md"
+    latest_html = "docs/weekly-digest.html"
 
-    html_content = markdown.markdown(md_content, extensions=["tables", "fenced_code", "toc"])
+    for path in (dated_md, latest_md):
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(body)
+
+    html_content = markdown.markdown(body, extensions=["tables", "fenced_code", "toc"])
     mobile_css = """
     <style>
-      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; background: #f8f9fa; color: #24292e; }
+      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background: #f8f9fa; color: #24292e; }
       a { color: #0366d6; text-decoration: none; } a:hover { text-decoration: underline; }
       h1, h2, h3 { border-bottom: 1px solid #e1e4e8; padding-bottom: 0.3em; margin-top: 24px; }
       ul { padding-left: 20px; } li { margin-bottom: 8px; }
       code { background: #f0f0f0; padding: 2px 5px; border-radius: 4px; font-size: 0.9em; }
+      table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 0.92em; background: #fff; }
+      th, td { border: 1px solid #d0d7de; padding: 8px 10px; text-align: left; vertical-align: top; }
+      th { background: #f6f8fa; font-weight: 600; }
+      tr:nth-child(even) { background: #fafbfc; }
     </style>
     """
     html_full = f"<!DOCTYPE html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'>{mobile_css}</head><body>{html_content}</body></html>"
-    with open("docs/weekly-digest.html", "w", encoding="utf-8") as f:
-        f.write(html_full)
+    for path in (dated_html, latest_html):
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(html_full)
 
+    log(f"📄 已写入 {dated_md}（并同步 {latest_md}）")
     os.system("git config user.name 'github-actions[bot]'")
     os.system("git config user.email 'github-actions[bot]@users.noreply.github.com'")
     os.system("git add docs/")
     os.system("git commit -m '📦 Auto-update weekly digest' || echo 'No changes to commit'")
     os.system("git push")
+    return dated_md
 
 
-def send_notification(md_content):
+def send_notification(md_content: str, *, digest_md_relpath: str = "docs/weekly-digest.md"):
     smtp = os.getenv("SMTP_SERVER")
     user = os.getenv("EMAIL_USER")
     pwd = os.getenv("EMAIL_PASS")
     to = os.getenv("RECIPIENT_EMAIL")
     webhook = os.getenv("WEBHOOK_URL")
+    safe_md = md_content if isinstance(md_content, str) else ""
 
     if all([smtp, user, pwd, to]):
         log("📧 Sending Email...")
@@ -174,7 +273,7 @@ def send_notification(md_content):
         msg["Subject"] = f"📅 Weekly Tech Digest ({datetime.date.today().strftime('%Y-%m-%d')})"
         msg["From"] = user
         msg["To"] = to
-        html_body = markdown.markdown(md_content, extensions=["tables", "fenced_code"])
+        html_body = markdown.markdown(safe_md, extensions=["tables", "fenced_code"])
         msg.attach(MIMEText(html_body, "html", "utf-8"))
         try:
             with smtplib.SMTP(smtp, 587) as server:
@@ -187,10 +286,18 @@ def send_notification(md_content):
 
     if webhook:
         log("🌐 Sending Webhook...")
+        preview = safe_md
+        repo = os.getenv("GITHUB_REPOSITORY", "")
+        fname = digest_md_relpath.split("/")[-1] if digest_md_relpath else "weekly-digest.md"
+        raw_url = (
+            f"https://raw.githubusercontent.com/{repo}/main/{digest_md_relpath}"
+            if repo
+            else ""
+        )
+        link_line = f"👉 完整报告: {raw_url}" if raw_url else f"👉 本地文件: {digest_md_relpath}"
         payload = {
             "content": (
-                f"📅 **Weekly Tech Digest Updated**\n{md_content[:500]}...\n"
-                f"👉 查看完整报告: https://raw.githubusercontent.com/{os.getenv('GITHUB_REPOSITORY')}/main/docs/weekly-digest.md"
+                f"📅 **Weekly Tech Digest Updated**（`{fname}`）\n{preview[:500]}...\n{link_line}"
             )
         }
         try:
@@ -217,20 +324,24 @@ if __name__ == "__main__":
     try:
         cfg = load_digest_config()
         keywords = os.getenv("KEYWORDS", "").strip() or cfg.get("keywords", "AI, LLM")
-        start, end, date_range = get_date_range()
-        log(f"⏱️ Date range: {start} to {end}")
+        win = build_digest_date_window(cfg, DEFAULT_DIGEST_CONFIG)
+        log(
+            f"⏱️ 数据窗口 [{win.mode}]: {win.start_date} ~ {win.end_date} "
+            f"（Arxiv submittedDate: {win.arxiv_submitted_inner}）"
+        )
 
         ctx = FetchContext(
             cfg=cfg,
             default_cfg=DEFAULT_DIGEST_CONFIG,
             global_keywords=keywords,
-            date_range=date_range,
-            start_date=start,
-            end_date=end,
+            date_range=win.arxiv_submitted_inner,
+            start_date=win.start_date,
+            end_date=win.end_date,
+            date_range_mode=win.mode,
         )
 
-        arxiv_kw = source_keywords(cfg["arxiv"], keywords)
-        gh_kw = source_keywords(cfg["github_trending"], keywords)
+        arxiv_kw = source_keywords(cfg.get("arxiv") or {}, keywords)
+        gh_kw = source_keywords(cfg.get("github_trending") or {}, keywords)
 
         raw_sections = run_sources(ctx)
 
@@ -241,15 +352,29 @@ if __name__ == "__main__":
             else "api"
         )
         keyword_context = (
+            f"数据时间窗口（根配置；Arxiv/RSS/GitHub 块内可另设 date_range 覆盖）："
+            f"{ctx.date_range_mode}，{ctx.start_date} ~ {ctx.end_date}；"
+            f"关键词式：`|` 或；逗号或 `&` 或 `&a,b` 均为与（AND）；"
             f"全局默认：{keywords}；"
             f"Arxiv 检索使用：{arxiv_kw}（后端：{arxiv_backend}）；"
-            f"GitHub Trending 数据为榜单抓取（不按词筛选）；该板块在叙述时可侧重：{gh_kw}；"
+            f"GitHub Trending 已按关键词式筛选仓库名+简介；叙述可侧重：{gh_kw}；"
             f"GitHub 条目已附 Star/Fork（来自 GitHub API）；"
-            f"RSS 每条订阅可单独设 keywords，未设时依次使用 rss.keywords、全局 keywords（标题匹配）。"
+            f"RSS：每条可设 keywords、date_range；未设 keywords 时依次用 rss.keywords、全局（标题匹配）。"
         )
-        digest_md = summarize_with_ai(raw_sections, keyword_context, f"{start} ~ {end}")
-        save_and_commit(digest_md)
-        send_notification(digest_md)
+        digest_md = summarize_with_ai(
+            raw_sections, keyword_context, f"{ctx.start_date} ~ {ctx.end_date}"
+        )
+        digest_md = _inject_crawl_timestamp(digest_md)
+        if _digest_markdown_is_effectively_empty(digest_md):
+            log(
+                "⚠️ AI 汇总结果为空或仅含爬取时间（请检查 OPENAI_API_KEY、OPENAI_API_BASE、"
+                "AI_MODEL 及网关是否返回标准 chat.completions）。已跳过写入 docs/，"
+                "避免用空文档覆盖已有周报。"
+            )
+            sys.exit(1)
+        digest_slug = f"{ctx.start_date}_{ctx.end_date}"
+        dated_md_path = save_and_commit(digest_md, digest_slug)
+        send_notification(digest_md, digest_md_relpath=dated_md_path)
         log("🎉 Weekly digest generation completed!")
     except Exception as e:
         log(f"💥 Fatal error: {e}")

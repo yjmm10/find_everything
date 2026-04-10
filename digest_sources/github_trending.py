@@ -1,9 +1,26 @@
 import os
+from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
 
 from bs4 import BeautifulSoup
 
 from digest_sources.base import DigestSource, FetchContext
+from digest_sources.config_helpers import source_keywords
+from digest_sources.date_range import (
+    DigestDateWindow,
+    github_trending_since_param,
+    nonempty_date_range_dict,
+    resolve_source_date_window,
+)
+from digest_sources.keyword_expr import parse_keyword_expression, title_matches_keyword_expr
 from digest_sources.util import http_session, log, progress, url_hint
+
+
+def _github_url_with_since(url: str, since: str) -> str:
+    p = urlparse(url.strip())
+    qs = parse_qs(p.query)
+    qs["since"] = [since]
+    q = urlencode(qs, doseq=True)
+    return urlunparse((p.scheme, p.netloc, p.path, p.params, q, p.fragment))
 
 
 def _github_api_headers(gh_cfg: dict) -> dict:
@@ -49,6 +66,20 @@ class GithubTrendingSource(DigestSource):
             return []
         log("🔍 [GitHub] 开始拉取 Trending")
         url = gh_cfg.get("url", "https://github.com/trending?since=weekly")
+        fb = DigestDateWindow(
+            start_date=ctx.start_date,
+            end_date=ctx.end_date,
+            arxiv_submitted_inner=ctx.date_range,
+            mode=ctx.date_range_mode,
+        )
+        win = resolve_source_date_window(gh_cfg, fb)
+        if nonempty_date_range_dict(gh_cfg.get("date_range")):
+            since = github_trending_since_param(win.mode)
+            url = _github_url_with_since(url, since)
+            note = ""
+            if win.mode == "custom":
+                note = "；绝对日期未对应 GitHub 周期，已用 weekly，可改 url 覆盖"
+            log(f"ℹ️ [GitHub] 本源 date_range（{win.mode}）→ since={since}{note}")
         timeout = float(gh_cfg.get("request_timeout", 60))
         headers = {"User-Agent": gh_cfg.get("user_agent", "Mozilla/5.0 (compatible; GitHubDigestBot/1.0)")}
         max_repos = int(gh_cfg.get("max_repos", 8))
@@ -67,6 +98,21 @@ class GithubTrendingSource(DigestSource):
                 "desc": desc_tag.text.strip() if desc_tag else "No description",
                 "link": f"https://github.com/{repo}",
             })
+        kw_s = source_keywords(gh_cfg, ctx.global_keywords)
+        ex = parse_keyword_expression(kw_s)
+        if ex:
+            before_n = len(results)
+            results = [
+                it
+                for it in results
+                if title_matches_keyword_expr(
+                    f"{it.get('repo', '')} {it.get('desc', '')}".lower(),
+                    ex,
+                )
+            ]
+            log(
+                f"ℹ️ [GitHub] 关键词式 {kw_s!r} 筛选仓库 {before_n} → {len(results)} 条"
+            )
         if gh_cfg.get("api_enrich", True) and results:
             log("📥 [GitHub] 通过 API 补充 Star / Fork / 语言…")
             session = http_session()

@@ -1,32 +1,55 @@
 # 周报订阅配置。环境变量 DIGEST_CONFIG 可指向其它 YAML 文件。
-# 全局 keywords：各信息源未单独配置时使用。
-keywords: "AI, LLM, Computer Vision"
+# 全局 keywords：各信息源未单独写 keywords 时使用。布尔式（Arxiv / RSS / GitHub 一致）：
+#   a,b 与 a&b、&a,b 均为与（AND）；  a|b 为或（OR）
+#   全角 ｜ ＆ 等同 | &
+keywords: "llm&uav"
 
-# Arxiv：可选 keywords，不填则用全局 keywords
+# 根 date_range：默认窗口；各信息源可再写自己的 date_range 覆盖（不读 DIGEST_* 环境变量）
+# preset：相对「执行当日」— day=前一自然日，week=前 7 天（截止昨日），month=前一自然月
+# start+end 与 preset 同时存在时以 start/end 为准
+# 环境变量：DIGEST_DATE_START + DIGEST_DATE_END；DIGEST_DATE_PRESET
+date_range:
+  preset: week
+  # start: "2026-03-01"
+  # end: "2026-03-31"
+
+# Arxiv：整块共用一个 date_range（可选）；不写则用根 date_range
+# 可选 keywords，不填则用全局 keywords（语法同文件头「布尔式」）
+# - 字符串：一次检索，如 "uav, llm"（同 uav&llm）、"uav|llm"、"&uav,llm"
+# - 列表：每组单独检索，结果按组保留（跨组不去重）；如 [ "uav, llm", "dla, ocr" ]
+# max_results：每组最多条数（-1 表示单次请求按 arXiv 上限尽量多取）
+# max_results_total（可选）：所有组加起来总条数上限，按组顺序截断（-1 表示不限制总数）
 # backend: 仅决定「先试哪一路」；另一路（api↔library）自动备用，网络/解析失败会切换并打日志
 arxiv:
   enabled: true
-  backend: api
-  keywords: "uav, llm"
-  max_results: 8
+  backend: library
+  # date_range:
+  #   preset: month
+  keywords: "uav&llm"
+  max_results: -1
+  # max_results_total: 12
   sort_by: submittedDate
   sort_order: descending
   # library_delay_seconds: 3.0
   # library_page_size: 100
   # library_num_retries: 3
 
-# RSS：rss.keywords 作为「未单独设 keywords 的订阅」的默认；每条 feed 可再覆盖
+# RSS：keywords 布尔式用于标题匹配（同文件头）；rss.date_range 与每条 feed 的 date_range 过滤发布日
 rss:
   max_items: 8
+  # date_range:
+  #   preset: week
   # keywords: "LLM, agent"
   feeds:
     - https://hnrss.org/frontpage
     - https://feeds.feedburner.com/TechCrunch/
     - url: https://www.reddit.com/r/MachineLearning/.rss
+      # date_range: { preset: day }
       # keywords: "仅该源使用，不填则先用 rss.keywords 再用全局"
     - https://www.reddit.com/r/LocalLLaMA/.rss
 
-# GitHub Trending：可选 keywords，供周报叙述时侧重（抓取仍为完整榜单）；不填则用全局
+# GitHub Trending：keywords 布尔式在仓库名+简介上筛选（同文件头）；不填则用全局
+# 可选 date_range.preset → 改写 url 的 ?since=（custom 时按 weekly）
 # api_enrich: 解析榜单后再调 api.github.com 补全 Star/Fork/主语言（可设 false 跳过）
 # 可选环境变量 GITHUB_TOKEN 或 GH_TOKEN 提高 API 速率
 github_trending:

@@ -12,9 +12,12 @@ class FetchContext:
     cfg: dict
     default_cfg: dict
     global_keywords: str
+    #: arXiv submittedDate 区间内部串，如 "202603310000 TO 202604062359"
     date_range: str
     start_date: str
     end_date: str
+    #: week / day / month / custom（供日志与 AI 提示）
+    date_range_mode: str = "week"
 
 
 class DigestSource(ABC):

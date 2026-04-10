@@ -1,11 +1,34 @@
+import datetime
+
 import feedparser
 
 from digest_sources.base import DigestSource, FetchContext
 from digest_sources.config_helpers import (
     get_rss_section,
+    resolve_rss_feed_date_window,
     resolve_rss_feed_keywords,
 )
+from digest_sources.date_range import DigestDateWindow
+from digest_sources.keyword_expr import parse_keyword_expression, title_matches_keyword_expr
 from digest_sources.util import log, progress, url_hint
+
+
+def _rss_item_published_date(item) -> datetime.date | None:
+    t = getattr(item, "published_parsed", None) or getattr(item, "updated_parsed", None)
+    if not t:
+        return None
+    try:
+        return datetime.date(t.tm_year, t.tm_mon, t.tm_mday)
+    except (AttributeError, TypeError, ValueError):
+        return None
+
+
+def _item_in_date_window(d: datetime.date | None, win: DigestDateWindow) -> bool:
+    if d is None:
+        return True
+    lo = datetime.date.fromisoformat(win.start_date)
+    hi = datetime.date.fromisoformat(win.end_date)
+    return lo <= d <= hi
 
 
 class RssSource(DigestSource):
@@ -33,18 +56,27 @@ class RssSource(DigestSource):
             log("⏭️ RSS 订阅列表为空，跳过资讯抓取")
             return []
         results = []
+        fb = DigestDateWindow(
+            start_date=ctx.start_date,
+            end_date=ctx.end_date,
+            arxiv_submitted_inner=ctx.date_range,
+            mode=ctx.date_range_mode,
+        )
         pbar = progress(feeds, desc="RSS 订阅源", unit="源")
         for entry in pbar:
             f_url = entry["url"]
+            win = resolve_rss_feed_date_window(entry, rss_section, fb)
             kw_str = resolve_rss_feed_keywords(entry, rss_section, ctx.global_keywords)
-            kw_list = [k.strip().lower() for k in kw_str.split(",") if k.strip()]
+            kw_expr = parse_keyword_expression(kw_str)
             before = len(results)
             pbar.set_postfix_str(url_hint(f_url, 40), refresh=False)
             try:
                 feed = feedparser.parse(f_url)
                 for item in progress(feed.entries, desc="  └ 条目", unit="条", leave=False):
-                    title_low = item.title.lower()
-                    if any(kw in title_low for kw in kw_list):
+                    if not _item_in_date_window(_rss_item_published_date(item), win):
+                        continue
+                    title_low = (item.title or "").lower()
+                    if title_matches_keyword_expr(title_low, kw_expr):
                         results.append({
                             "title": item.title,
                             "link": item.link,
@@ -52,8 +84,17 @@ class RssSource(DigestSource):
                             "published": item.get("published", ""),
                         })
                 added = len(results) - before
+                win_note = (
+                    f"，窗口 {win.start_date}~{win.end_date}"
+                    if (
+                        win.start_date != fb.start_date
+                        or win.end_date != fb.end_date
+                    )
+                    else ""
+                )
                 pbar.write(
-                    f"[INFO]    └ 匹配 {added} 条（累计 {len(results)}，关键词: {url_hint(kw_str, 48)}）"
+                    f"[INFO]    └ 匹配 {added} 条（累计 {len(results)}，"
+                    f"关键词式: {url_hint(kw_str, 48)}{win_note}）"
                 )
             except Exception as e:
                 pbar.write(f"[INFO]    └ ⚠️ 本源失败，已跳过: {e}")
