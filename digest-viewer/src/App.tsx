@@ -5,7 +5,9 @@ import "./App.css";
 const SOURCE_LABEL: Record<DigestSource, string> = {
   arxiv: "Arxiv 论文",
   rss: "RSS 资讯",
-  github: "GitHub Trending",
+  github: "GitHub（旧版标题）",
+  github_weekly: "GitHub 周榜",
+  github_search: "GitHub 指定日期检索",
 };
 
 function sourceBadgeClass(s: DigestSource): string {
@@ -32,6 +34,9 @@ function matchesKeyword(entry: DigestEntry, q: string): boolean {
     entry.title,
     entry.summary,
     entry.keywords,
+    entry.tags ?? "",
+    entry.publishedAt ?? "",
+    entry.subject ?? "",
     entry.digestSlug.replace(/_/g, " "),
     SOURCE_LABEL[entry.source],
   ]
@@ -50,6 +55,8 @@ export default function App() {
     arxiv: true,
     rss: true,
     github: true,
+    github_weekly: true,
+    github_search: true,
   });
 
   useEffect(() => {
@@ -185,6 +192,24 @@ export default function App() {
                 <dt>周报档</dt>
                 <dd>{e.digestSlug}</dd>
               </div>
+              {e.tags ? (
+                <div>
+                  <dt>标签</dt>
+                  <dd>{e.tags}</dd>
+                </div>
+              ) : null}
+              {e.publishedAt ? (
+                <div>
+                  <dt>发表时间</dt>
+                  <dd>{e.publishedAt}</dd>
+                </div>
+              ) : null}
+              {e.subject ? (
+                <div>
+                  <dt>学科类别</dt>
+                  <dd>{e.subject}</dd>
+                </div>
+              ) : null}
               {(e.star || e.fork || e.language) && (
                 <div>
                   <dt>仓库</dt>

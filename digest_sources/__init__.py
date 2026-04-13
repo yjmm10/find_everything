@@ -2,6 +2,7 @@
 
 from digest_sources.arxiv import ArxivSource
 from digest_sources.base import DigestSource, FetchContext
+from digest_sources.github_repository_search import GithubRepositorySearchSource
 from digest_sources.github_trending import GithubTrendingSource
 from digest_sources.rss import RssSource
 
@@ -10,6 +11,7 @@ DEFAULT_SOURCES: tuple[DigestSource, ...] = (
     ArxivSource(),
     RssSource(),
     GithubTrendingSource(),
+    GithubRepositorySearchSource(),
 )
 
 __all__ = [
@@ -17,6 +19,7 @@ __all__ = [
     "DEFAULT_SOURCES",
     "DigestSource",
     "FetchContext",
+    "GithubRepositorySearchSource",
     "GithubTrendingSource",
     "RssSource",
 ]

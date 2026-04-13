@@ -83,6 +83,65 @@ def _log_arxiv_network_error(backend_label: str, err: BaseException) -> None:
         log(msg)
 
 
+def _feed_published_date_ymd(entry) -> str:
+    st = getattr(entry, "published_parsed", None) or getattr(entry, "updated_parsed", None)
+    if not st:
+        return ""
+    try:
+        return f"{st.tm_year:04d}-{st.tm_mon:02d}-{st.tm_mday:02d}"
+    except (AttributeError, TypeError, ValueError):
+        return ""
+
+
+def _feed_primary_category(entry) -> str:
+    pc = getattr(entry, "arxiv_primary_category", None)
+    if isinstance(pc, dict) and pc.get("term"):
+        return str(pc["term"]).strip()
+    for t in getattr(entry, "tags", None) or []:
+        if not isinstance(t, dict):
+            continue
+        term = (t.get("term") or "").strip()
+        if not term:
+            continue
+        sch = str(t.get("scheme") or "")
+        if "arxiv.org" in sch:
+            return term
+    return ""
+
+
+def _feed_arxiv_category_terms(entry) -> str:
+    terms: list[str] = []
+    seen: set[str] = set()
+    for t in getattr(entry, "tags", None) or []:
+        if not isinstance(t, dict):
+            continue
+        term = (t.get("term") or "").strip()
+        if not term or "arxiv.org" not in str(t.get("scheme") or ""):
+            continue
+        if term not in seen:
+            seen.add(term)
+            terms.append(term)
+    return ",".join(terms)
+
+
+def _library_published_ymd(r) -> str:
+    p = getattr(r, "published", None)
+    if p is None:
+        return ""
+    try:
+        if hasattr(p, "date"):
+            return p.date().isoformat()
+    except (AttributeError, TypeError, ValueError):
+        pass
+    try:
+        s = str(p)[:10]
+        if len(s) == 10 and s[4] == "-" and s[7] == "-":
+            return s
+    except Exception:
+        pass
+    return ""
+
+
 def _entry_ok(item: dict) -> bool:
     t = (item.get("title") or "").strip()
     u = (item.get("link") or "").strip()
@@ -132,11 +191,16 @@ def _fetch_arxiv_api(
         authors = getattr(entry, "authors", None) or []
         auth_s = ", ".join(getattr(a, "name", str(a)) for a in authors[:3])
         summ = getattr(entry, "summary", "") or ""
+        primary = _feed_primary_category(entry)
+        cats = _feed_arxiv_category_terms(entry)
         results.append({
             "title": entry.title,
             "link": entry.link,
             "authors": auth_s,
             "summary": summ.replace("\n", " ")[:150] + ("..." if len(summ) > 150 else ""),
+            "published_date": _feed_published_date_ymd(entry),
+            "primary_category": primary,
+            "categories": cats or primary,
         })
     return results
 
@@ -194,11 +258,17 @@ def _fetch_arxiv_library(
         summary = (r.summary or "").replace("\n", " ")
         if len(summary) > 150:
             summary = summary[:150] + "..."
+        primary = (getattr(r, "primary_category", None) or "").strip()
+        cats_list = getattr(r, "categories", None) or []
+        cats = ",".join(cats_list) if cats_list else primary
         results.append({
             "title": (r.title or "").replace("\n", " ").strip(),
             "link": r.entry_id,
             "authors": authors,
             "summary": summary if summary else "...",
+            "published_date": _library_published_ymd(r),
+            "primary_category": primary,
+            "categories": cats or primary,
         })
     return results
 
@@ -214,6 +284,27 @@ def _run_backend(
     if name == "library":
         return _fetch_arxiv_library(ctx, arxiv_cfg, kw, submitted_inner=submitted_inner)
     return _fetch_arxiv_api(ctx, arxiv_cfg, kw, submitted_inner=submitted_inner)
+
+
+def _format_arxiv_papers_for_prompt(papers: list) -> str:
+    lines: list[str] = []
+    for i, p in enumerate(papers, 1):
+        if not isinstance(p, dict):
+            lines.append(f"  {i}. {p!r}")
+            continue
+        pd = p.get("published_date") or "-"
+        pc = p.get("primary_category") or "-"
+        ac = p.get("categories") or "-"
+        lines.append(
+            f"  {i}. 标题: {p.get('title', '')}\n"
+            f"     发表日期: {pd}\n"
+            f"     学科主分类(arXiv): {pc}\n"
+            f"     学科标签(全部): {ac}\n"
+            f"     作者: {p.get('authors', '')}\n"
+            f"     摘要: {p.get('summary', '')}\n"
+            f"     链接: {p.get('link', '')}"
+        )
+    return "\n".join(lines)
 
 
 def _is_grouped_arxiv_blocks(items: list) -> bool:
@@ -322,8 +413,11 @@ class ArxivSource(DigestSource):
             for blk in items:
                 label = blk.get(ARXIV_GROUP_KEY, "")
                 papers = blk.get(ARXIV_PAPERS_KEY) or []
-                parts.append(f"关键词组「{label}」（{len(papers)} 条）:\n{repr(papers)}")
+                body = _format_arxiv_papers_for_prompt(papers)
+                parts.append(f"关键词组「{label}」（{len(papers)} 条）:\n{body}")
             return "\n\n".join(parts)
+        if isinstance(items[0], dict) and "title" in items[0]:
+            return _format_arxiv_papers_for_prompt(items)
         return str(items)
 
     def fetch(self, ctx: FetchContext) -> list:

@@ -128,3 +128,34 @@ def keyword_expr_to_arxiv_all_fragment(expr: list[list[str]]) -> str:
     if len(or_parts) == 1:
         return or_parts[0]
     return "(" + " OR ".join(or_parts) + ")"
+
+
+def keyword_expr_to_github_repository_q(expr: list[list[str]]) -> str:
+    """
+    将 OR-of-AND 转为 GitHub「仓库搜索」q 中的关键词片段（不含 pushed、language 等限定）。
+    空格为 AND；多 OR 分支用括号分组。
+    """
+    if not expr:
+        return ""
+    or_parts: list[str] = []
+    multi_or = len(expr) > 1
+    for clause in expr:
+        tokens: list[str] = []
+        for w in clause:
+            w = (w or "").strip()
+            if not w:
+                continue
+            if re.search(r'[\s"]', w):
+                esc = w.replace("\\", "\\\\").replace('"', '\\"')
+                tokens.append(f'"{esc}"')
+            else:
+                tokens.append(w)
+        if not tokens:
+            continue
+        inner = " ".join(tokens)
+        or_parts.append(f"({inner})" if multi_or else inner)
+    if not or_parts:
+        return ""
+    if len(or_parts) == 1:
+        return or_parts[0]
+    return " OR ".join(or_parts)

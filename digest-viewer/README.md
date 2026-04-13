@@ -16,6 +16,8 @@ npm run dev
 
 ## Vercel 一键部署
 
+更完整的步骤、按钮链接模板与排错见 **[DEPLOY_VERCEL.md](./DEPLOY_VERCEL.md)**。
+
 1. 将本仓库推送到 GitHub。
 2. 在 [Vercel](https://vercel.com/new) 导入该仓库。
 3. **Root Directory** 设为 `digest-viewer`。

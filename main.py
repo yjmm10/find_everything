@@ -58,12 +58,24 @@ DEFAULT_DIGEST_CONFIG = {
     "github_trending": {
         "enabled": True,
         "keywords": None,
-        "url": "https://github.com/trending?since=weekly",
+        # Trending RSS：榜单原样取数，不按关键词筛；默认 GitHubTrendingRSS
+        "url": "https://mshibanami.github.io/GitHubTrendingRSS/weekly/all.xml",
         "max_repos": 8,
         "request_timeout": 60,
         "user_agent": "Mozilla/5.0 (compatible; GitHubDigestBot/1.0)",
         "api_enrich": True,
         "api_timeout": 20,
+    },
+    "github_repository_search": {
+        # 全站 search/repositories，非 Trending RSS
+        "enabled": False,
+        "keywords": None,
+        "max_repos": 8,
+        "user_agent": "Mozilla/5.0 (compatible; GitHubDigestBot/1.0)",
+        "api_timeout": 20,
+        "search_sort": "stars",
+        "search_order": "desc",
+        "search_restrict_pushed": True,
     },
 }
 
@@ -97,27 +109,36 @@ def load_digest_config() -> dict:
     return cfg
 
 
+def _openai_base_url() -> str:
+    """与官方 SDK 一致：base_url 应指向 …/v1（无末尾空格），否则会拼出错误路径导致 404。"""
+    raw = (os.getenv("OPENAI_API_BASE") or "https://api.openai.com/v1").strip()
+    return raw.rstrip("/")
+
+
 def summarize_with_ai(raw_sections: str, keyword_context: str, date_str: str):
-    model = os.getenv("AI_MODEL", "gpt-4o-mini")
+    model = (os.getenv("AI_MODEL", "gpt-4o-mini") or "gpt-4o-mini").strip()
+    api_key = (os.getenv("OPENAI_API_KEY") or "").strip()
+    base_url = _openai_base_url()
     log(f"🤖 [AI] 调用模型 {model} 生成周报（可能需数十秒）…")
-    client = OpenAI(
-        api_key=os.getenv("OPENAI_API_KEY"),
-        base_url=os.getenv("OPENAI_API_BASE", "https://api.openai.com/v1"),
-    )
+    log(f"🤖 [AI] 实际请求约: {base_url}/chat/completions")
+    client = OpenAI(api_key=api_key or None, base_url=base_url)
 
     prompt = f"""你是一个资深技术研究员。请根据以下原始数据，整理一份【{date_str}】技术周报。
 关键词与抓取说明：{keyword_context}
 
 要求（务必遵守）：
 1. 输出纯 Markdown，适合手机阅读；不要任何前言/后语。
-2. 必须包含三个板块，顺序固定：## 📄 Arxiv 前沿论文 → ## 📰 优质资讯/论坛 → ## 🔥 GitHub 热门仓库。
+2. 必须包含四个板块，顺序固定：## 📄 Arxiv 前沿论文 → ## 📰 优质资讯/论坛 → ## 🔥 GitHub 周榜 → ## 🔎 GitHub 指定日期检索。
+2b. **两个 GitHub 板块含义不同**，板块说明中必须写清楚：① **周榜**＝Trending 类 RSS 的榜单原始条目，**不做**关键词过滤或删减；② **指定日期检索**＝官方 `search/repositories` 在**全站公开仓库**范围内按关键词与时间条件（多为 `pushed:`）筛出的结果，**不是**周榜/日榜榜单本身。
 3. **每个板块**在表格前先写 1～2 句「板块说明」：本表数据来自哪类源、与配置关键词/时间窗的关系（勿编造配置里不存在的规则）。
-4. **每个板块**用一张 **Markdown 表格** 汇总条目，表头至少包含：
-   - 评分｜标题｜说明｜链接
-   - 「评分」为 0～10 的整数，综合**与当周关键词/主题的贴合度**、新颖度、可验证性；**同一板块内各行按评分从高到低排序**。
-   - 「说明」为一行中文要点（勿空泛）。
-   - 「链接」必须与下方原始数据中的 URL 一致，**禁止编造链接**。
-5. GitHub 板块表格在「链接」旁或额外列写出原始数据中的 **Star、Fork、主语言**（有则必填，无则写「-」）。
+4. **每个板块**用一张 **Markdown 表格** 汇总条目；表头列名请**原样使用**下列中文（便于下游解析）：
+   - 通用列（**所有板块**）：**评分**｜**标题**｜**说明**｜**链接**｜**标签**
+   - **评分**：0～10 整数；**GitHub 周榜**侧重热度与代表性；**GitHub 指定日期检索**侧重与检索关键词及时间条件；**Arxiv / RSS** 侧重与当周主题贴合度、新颖度、可验证性；**同行按评分降序**。
+   - **说明**：一行中文要点（勿空泛）。
+   - **链接**：必须与原始数据 URL 一致，**禁止编造**。
+   - **标签**：2～5 个技术向词，**中文或通用英文**，**英文逗号**分隔；请根据该行「标题 + 说明」**自行归纳**（勿照抄整句标题），用于用户后续检索。
+   - **Arxiv 前沿论文**板块在以上五列之外，还须增加两列：**发表时间**（YYYY-MM-DD，须与下方原始数据中该条「发表日期」一致）｜**学科类别**（须与原始「学科主分类(arXiv)」一致，如 cs.LG；原始缺省时填「-」）。
+5. 两个 **GitHub** 板块在通用列之外，还须包含 **Star**、**Fork**、**主语言** 三列（原始有则填数/语言名，无则「-」）。
 6. 若某板块原始数据为空或仅含「(无)」，写一句说明并给出仅表头的空表或省略表体，勿虚构条目。
 7. 可忽略明显重复、低质或与原始数据不符的项；信息量允许时总篇幅约 1200～2500 字当量（表格为主）。
 
@@ -133,6 +154,11 @@ def summarize_with_ai(raw_sections: str, keyword_context: str, date_str: str):
         )
     except Exception as e:
         log(f"❌ [AI] chat.completions 调用失败: {type(e).__name__}: {e}")
+        log(
+            "💡 [AI] 若为 404：① 核对网关文档里的 OpenAI 兼容 base 是否以 /v1 结尾、"
+            "且 .env 中无行尾空格；② 模型名 AI_MODEL 须为该网关上实际可用的 id（"
+            "错误 id 时部分网关会返回 404）；③ 官方 OpenAI 请使用 https://api.openai.com/v1 。"
+        )
         return ""
 
     log("✅ [AI] 生成完成")
@@ -341,7 +367,8 @@ if __name__ == "__main__":
         )
 
         arxiv_kw = source_keywords(cfg.get("arxiv") or {}, keywords)
-        gh_kw = source_keywords(cfg.get("github_trending") or {}, keywords)
+        gh_week_kw = source_keywords(cfg.get("github_trending") or {}, keywords)
+        gh_search_kw = source_keywords(cfg.get("github_repository_search") or {}, keywords)
 
         raw_sections = run_sources(ctx)
 
@@ -352,13 +379,18 @@ if __name__ == "__main__":
             else "api"
         )
         keyword_context = (
-            f"数据时间窗口（根配置；Arxiv/RSS/GitHub 块内可另设 date_range 覆盖）："
+            f"数据时间窗口（根配置；各信息源块内可另设 date_range 覆盖）："
             f"{ctx.date_range_mode}，{ctx.start_date} ~ {ctx.end_date}；"
             f"关键词式：`|` 或；逗号或 `&` 或 `&a,b` 均为与（AND）；"
             f"全局默认：{keywords}；"
             f"Arxiv 检索使用：{arxiv_kw}（后端：{arxiv_backend}）；"
-            f"GitHub Trending 已按关键词式筛选仓库名+简介；叙述可侧重：{gh_kw}；"
-            f"GitHub 条目已附 Star/Fork（来自 GitHub API）；"
+            f"原始 Arxiv 条目中已含「发表日期」「学科主分类/标签」，输出表须保留为「发表时间」「学科类别」列；"
+            f"GitHub 周榜（github_trending）：Trending RSS 榜单原样取数，**不做**关键词/本地筛选；"
+            f"github_trending.keywords 若有仅作文风叙述参考：{gh_week_kw or '（未单独配置）'}；"
+            f"GitHub 指定日期检索（github_repository_search）：官方 search/repositories，"
+            f"在**全站公开仓库**内按关键词检索，默认 q 附带 pushed:日期窗（见该块 date_range，未写则用根窗口）；"
+            f"**非**周榜/日榜 RSS，与 Trending 榜单无对应关系；关键词式（块内 / 全局）：{gh_search_kw}；"
+            f"若 github_repository_search.enabled 为 false，原始数据中该块为 (无) 属正常；"
             f"RSS：每条可设 keywords、date_range；未设 keywords 时依次用 rss.keywords、全局（标题匹配）。"
         )
         digest_md = summarize_with_ai(

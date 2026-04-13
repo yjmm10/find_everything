@@ -23,7 +23,7 @@ class FetchContext:
 class DigestSource(ABC):
     """单种信息源的抽象基类：从配置拉取数据并格式化为提示词片段。"""
 
-    #: 与 digest_config.yaml 中块名一致，如 arxiv、rss、github_trending
+    #: 与 digest_config.yaml 中块名一致，如 arxiv、rss、github_trending、github_repository_search
     section_key: str
     #: 日志与进度展示用
     label: str

@@ -13,6 +13,7 @@ date_range:
   # start: "2026-03-01"
   # end: "2026-03-31"
 
+# 周报正文表格：各板块需含「标签」列（由 AI 据标题+说明归纳）；Arxiv 另需「发表时间」「学科类别」（抓取已带日期与 cs.* 分类）
 # Arxiv：整块共用一个 date_range（可选）；不写则用根 date_range
 # 可选 keywords，不填则用全局 keywords（语法同文件头「布尔式」）
 # - 字符串：一次检索，如 "uav, llm"（同 uav&llm）、"uav|llm"、"&uav,llm"
@@ -25,7 +26,7 @@ arxiv:
   backend: library
   # date_range:
   #   preset: month
-  keywords: "uav&llm"
+  keywords: ["uav&llm","dla|ocr"]
   max_results: -1
   # max_results_total: 12
   sort_by: submittedDate
@@ -48,16 +49,32 @@ rss:
       # keywords: "仅该源使用，不填则先用 rss.keywords 再用全局"
     - https://www.reddit.com/r/LocalLLaMA/.rss
 
-# GitHub Trending：keywords 布尔式在仓库名+简介上筛选（同文件头）；不填则用全局
-# 可选 date_range.preset → 改写 url 的 ?since=（custom 时按 weekly）
-# api_enrich: 解析榜单后再调 api.github.com 补全 Star/Fork/主语言（可设 false 跳过）
-# 可选环境变量 GITHUB_TOKEN 或 GH_TOKEN 提高 API 速率
+# GitHub 周榜（github_trending）：第三方 Trending RSS，**只取榜单数据**、不对条目做关键词或本地过滤
+# url / rss_base / since / language；date_range.preset 仅用于切换 RSS 的 daily/weekly/monthly 目录
+# api_enrich：再调 api.github.com/repos 补 Star/Fork/语言
+# 旧版 fetch_mode: search 已废弃，请改用下方 github_repository_search
 github_trending:
   enabled: true
-  # keywords: "python, rust"
-  url: "https://github.com/trending?since=weekly"
+  url: "https://mshibanami.github.io/GitHubTrendingRSS/weekly/all.xml"
   max_repos: 8
   request_timeout: 60
   user_agent: "Mozilla/5.0 (compatible; GitHubDigestBot/1.0)"
   api_enrich: true
   api_timeout: 20
+
+# GitHub 指定日期检索（github_repository_search）：官方 GET /search/repositories
+# 在**全站公开仓库**内检索（不是周榜/日榜 Trending 榜单）；keywords 布尔式（无则用全局）
+# 默认 q 追加 pushed:本块 date_range 起止（未写 date_range 则用根窗口），用于限定近期有推送的仓库
+# search_sort：stars|forks|updated|help-wanted-issues；search_order：desc|asc
+# search_restrict_pushed：false 可去掉 pushed 限定；search_query_extra 附加到 q
+# language：非 all 时追加 language: 限定
+# 建议配置 GITHUB_TOKEN / GH_TOKEN
+github_repository_search:
+  enabled: true
+  # keywords: "machine learning, pytorch"
+  max_repos: 8
+  user_agent: "Mozilla/5.0 (compatible; GitHubDigestBot/1.0)"
+  api_timeout: 20
+  search_sort: stars
+  search_order: desc
+  search_restrict_pushed: true

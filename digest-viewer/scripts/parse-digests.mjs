@@ -15,6 +15,8 @@ const SOURCE_BY_HEADING = {
   "📄 Arxiv 前沿论文": "arxiv",
   "📰 优质资讯/论坛": "rss",
   "🔥 GitHub 热门仓库": "github",
+  "🔥 GitHub 周榜": "github_weekly",
+  "🔎 GitHub 指定日期检索": "github_search",
 };
 
 function listDigestFiles() {
@@ -88,6 +90,9 @@ function rowToEntry(headers, cells, source, meta, digestSlug, rowIndex) {
   const scoreRaw = h["评分"] ?? "";
   const score = parseInt(String(scoreRaw).trim(), 10);
   const id = `${digestSlug}-${source}-${rowIndex}`;
+  const tags = (h["标签"] ?? "").trim() || null;
+  const publishedAt = (h["发表时间"] ?? "").trim() || null;
+  const subject = (h["学科类别"] ?? "").trim() || null;
   return {
     id,
     digestSlug,
@@ -102,6 +107,9 @@ function rowToEntry(headers, cells, source, meta, digestSlug, rowIndex) {
     star: h["Star"]?.trim() || null,
     fork: h["Fork"]?.trim() || null,
     language: h["主语言"]?.trim() || null,
+    tags,
+    publishedAt,
+    subject,
   };
 }
 
