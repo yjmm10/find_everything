@@ -12,9 +12,9 @@
     </style>
     </head><body><h2 id="arxiv">📄 Arxiv 前沿论文</h2>
 <blockquote>
-<p><strong>爬取时间</strong>：2026-04-13 03:02:29 UTC</p>
+<p><strong>爬取时间</strong>：2026-04-13 03:13:15 UTC</p>
 </blockquote>
-<p>本表数据来自 Arxiv 论文检索，关键词组为 <code>uav&amp;llm</code>，时间窗口 2026-04-06 ~ 2026-04-12，筛选与无人机及大语言模型相关的最新学术成果。</p>
+<p>本表汇总 Arxiv 论文检索结果，关键词组「uav&amp;llm」与「dla|ocr」并行检索，时间窗 2026-04-06~2026-04-12，按与主题贴合度及新颖度综合评分。</p>
 <table>
 <thead>
 <tr>
@@ -26,23 +26,64 @@
 </thead>
 <tbody>
 <tr>
-<td>9</td>
+<td>10</td>
 <td>Vision-Language Navigation for Aerial Robots: Towards the Era of Large Language Models</td>
-<td>探讨大语言模型时代的无人机视觉语言导航(Aerial VLN)，让无人机能够理解自然语言指令并自主导航</td>
+<td>探讨大语言模型赋能无人机视觉-语言导航，直接对应 uav&amp;llm 交叉方向</td>
 <td>http://arxiv.org/abs/2604.07705v1</td>
 </tr>
 <tr>
-<td>8</td>
+<td>10</td>
 <td>LLM-as-Judge for Semantic Judging of Powerline Segmentation in UAV Inspection</td>
-<td>提出使用LLM作为评判器，对无人机电力线检测中的语义分割进行评估，解决轻量级模型可靠性问题</td>
+<td>引入 LLM 评判无人机巡检中的电力线分割语义，提升可靠性</td>
 <td>http://arxiv.org/abs/2604.05371v1</td>
+</tr>
+<tr>
+<td>8</td>
+<td>UIPress: Bringing Optical Token Compression to UI-to-Code Generation</td>
+<td>针对 UI-to-Code 场景的光学 token 压缩，OCR 与 VLM 结合</td>
+<td>http://arxiv.org/abs/2604.09442v1</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Revise: A Framework for Revising OCRed text in Practical Information Systems</td>
+<td>基于 LLM 修订 OCR 识别文本，引入数据污染策略提升鲁棒性</td>
+<td>http://arxiv.org/abs/2604.08115v1</td>
+</tr>
+<tr>
+<td>8</td>
+<td>AtlasOCR: Building the First Open-Source Darija OCR Model with Vision Language Models</td>
+<td>首个开源摩洛哥阿拉伯方言 OCR 模型，填补方言 OCR 空白</td>
+<td>http://arxiv.org/abs/2604.08070v1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Making MLLMs Blind: Adversarial Smuggling Attacks in MLLM Content Moderation</td>
+<td>揭示多模态 LLM 内容审核中的对抗性 smuggling 攻击</td>
+<td>http://arxiv.org/abs/2604.06950v2</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Q-Zoom: Query-Aware Adaptive Perception for Efficient Multimodal Large Language Models</td>
+<td>查询感知的自适应感知机制，提升 MLLM 高分辨率任务效率</td>
+<td>http://arxiv.org/abs/2604.06912v1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>LLM-based Schema-Guided Extraction and Validation of Missing-Person Intelligence</td>
+<td>LLM 辅助从异构数据源抽取失踪人员情报，含 schema 引导</td>
+<td>http://arxiv.org/abs/2604.06571v1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>The Character Error Vector: Decomposable errors for page-level OCR evaluation</td>
+<td>提出字符错误向量度量，分解页面级 OCR 评估误差</td>
+<td>http://arxiv.org/abs/2604.06160v1</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="_1">📰 优质资讯/论坛</h2>
-<p>本表数据来自资讯/论坛信息源，时间窗口 2026-04-06 ~ 2026-04-12，关键词 <code>llm&amp;uav</code>。</p>
-<p>本周该板块暂无符合条件的信息源。</p>
+<p>本周资讯检索结果为空，未捕获符合关键词条件的资讯源条目。</p>
 <table>
 <thead>
 <tr>
@@ -54,16 +95,16 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>-</td>
+<td>(无)</td>
+<td>本周无符合关键词的资讯更新</td>
+<td>-</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="github">🔥 GitHub 周榜</h2>
-<p>本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，<strong>不做</strong>关键词过滤或本地筛选，真实反映本周开源社区热度。</p>
+<p>本表为 Trending 类 RSS 榜单原始条目，未按关键词过滤；评分侧重榜单热度与代表性。</p>
 <table>
 <thead>
 <tr>
@@ -80,72 +121,72 @@
 <tr>
 <td>10</td>
 <td>microsoft/markitdown</td>
-<td>Python工具，可将文件和Office文档转换为Markdown，现支持MCP集成用于LLM应用</td>
+<td>文件转 Markdown 工具，集成 MCP 支持 LLM 应用</td>
 <td>https://github.com/microsoft/markitdown</td>
-<td>105112</td>
-<td>6578</td>
+<td>105153</td>
+<td>6582</td>
 <td>Python</td>
 </tr>
 <tr>
 <td>9</td>
 <td>NousResearch/hermes-agent</td>
-<td>具有内置学习循环的自我改进AI代理，可从经验中创建技能并持续优化</td>
+<td>自改进 AI Agent，内置学习循环与记忆机制</td>
 <td>https://github.com/NousResearch/hermes-agent</td>
-<td>68456</td>
-<td>9151</td>
+<td>68609</td>
+<td>9174</td>
 <td>Python</td>
 </tr>
 <tr>
 <td>8</td>
 <td>google-ai-edge/gallery</td>
-<td>展示端侧ML/GenAI用例的Gallery，可在移动设备上运行开源大语言模型</td>
+<td>移动端运行开源 LLM 的展示 Gallery</td>
 <td>https://github.com/google-ai-edge/gallery</td>
-<td>20700</td>
+<td>20703</td>
 <td>1955</td>
 <td>Kotlin</td>
 </tr>
 <tr>
-<td>7</td>
+<td>8</td>
 <td>forrestchang/andrej-karpathy-skills</td>
-<td>基于Karpathy关于LLM编码陷阱观察的Claude Code改进指南</td>
+<td>Karpathy 经验的 Claude Code 优化指南</td>
 <td>https://github.com/forrestchang/andrej-karpathy-skills</td>
-<td>17317</td>
-<td>1304</td>
+<td>17358</td>
+<td>1309</td>
 <td>-</td>
 </tr>
 <tr>
-<td>7</td>
+<td>8</td>
 <td>HKUDS/DeepTutor</td>
-<td>Agent原生的个性化学习助手，支持统一测验复习和Mermaid图表</td>
+<td>Agent 原生个性化辅导助手，支持多语言</td>
 <td>https://github.com/HKUDS/DeepTutor</td>
-<td>17307</td>
+<td>17311</td>
 <td>2271</td>
 <td>Python</td>
 </tr>
 <tr>
 <td>7</td>
 <td>coleam00/Archon</td>
-<td>首个开源AI编码 harness 构建器，通过YAML工作流实现确定性AI编程</td>
+<td>开源 AI 编码 harness 构建器，YAML 工作流引擎</td>
 <td>https://github.com/coleam00/Archon</td>
-<td>17135</td>
+<td>17141</td>
 <td>2716</td>
 <td>TypeScript</td>
 </tr>
 <tr>
 <td>6</td>
 <td>multica-ai/multica</td>
-<td>开源托管代理平台，将编码代理转化为真正的团队成员</td>
+<td>开源托管 Agent 平台，任务追踪与技能组合</td>
 <td>https://github.com/multica-ai/multica</td>
-<td>9602</td>
-<td>1223</td>
+<td>9624</td>
+<td>1225</td>
 <td>TypeScript</td>
 </tr>
 <tr>
-<td>6</td>
+<td>5</td>
 <td>google-ai-edge/LiteRT-LM</td>
-<td>Google生产级高性能开源推理框架，用于在边缘设备上部署大语言模型</td>
+<td>Google 边缘设备高性能 LLM 推理框架</td>
 <td>https://github.com/google-ai-edge/LiteRT-LM</td>
-<td>3559</td>
+<td>3563</td>
 <td>338</td>
 <td>C++</td>
 </tr>
@@ -153,8 +194,7 @@
 </table>
 <hr />
 <h2 id="github_1">🔎 GitHub 指定日期检索</h2>
-<p>本表数据来自 GitHub 官方 <code>search/repositories</code> 接口，在<strong>全站公开仓库</strong>范围内按关键词 <code>llm&amp;uav</code> 与时间条件（<code>pushed:2026-04-06~2026-04-12</code>）检索的结果，<strong>不是</strong> Trending 榜单。</p>
-<p>本周该时间窗口内无符合关键词检索条件的公开仓库。</p>
+<p>本表为 GitHub 官方 <code>search/repositories</code> 在全站公开仓库的检索结果，关键词 <code>llm&amp;uav</code>，时间窗 <code>pushed:2026-04-06~2026-04-12</code>；评分侧重与关键词及时间条件的贴合度。</p>
 <table>
 <thead>
 <tr>
@@ -169,13 +209,76 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>10</td>
+<td>Mehdiazarafza/UAV-RAG</td>
+<td>LLM + RAG 集成于无人机问答与推理</td>
+<td>https://github.com/Mehdiazarafza/UAV-RAG</td>
+<td>9</td>
+<td>2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>9</td>
+<td>justarist/radarone</td>
+<td>Telegram 机器人实时无人机威胁地图，LLM 处理预警</td>
+<td>https://github.com/justarist/radarone</td>
+<td>3</td>
+<td>1</td>
+<td>Python</td>
+</tr>
+<tr>
+<td>8</td>
+<td>pgrhc/uav-llm-rl</td>
+<td>无人机 LLM 强化学习相关实验</td>
+<td>https://github.com/pgrhc/uav-llm-rl</td>
+<td>1</td>
+<td>0</td>
+<td>Python</td>
+</tr>
+<tr>
+<td>8</td>
+<td>G1antBot/agent_UAV</td>
+<td>Mavlink + 开放词汇检测 + SmolAgents + LLM 实现无人机自然语言控制</td>
+<td>https://github.com/G1antBot/agent_UAV</td>
+<td>1</td>
+<td>0</td>
+<td>Python</td>
+</tr>
+<tr>
+<td>7</td>
+<td>yasarh18/uav_llm</td>
+<td>无人机 LLM 相关项目（暂无描述）</td>
+<td>https://github.com/yasarh18/uav_llm</td>
+<td>0</td>
+<td>0</td>
+<td>Python</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Yansanya/UAVbot</td>
+<td>顶层 LLM 驱动的无人机机器人</td>
+<td>https://github.com/Yansanya/UAVbot</td>
+<td>0</td>
+<td>0</td>
+<td>Python</td>
+</tr>
+<tr>
+<td>7</td>
+<td>eveyuyi/LLM-UAV-FairRouting</td>
+<td>LLM 辅助无人机公平路由研究</td>
+<td>https://github.com/eveyuyi/LLM-UAV-FairRouting</td>
+<td>0</td>
+<td>0</td>
+<td>Python</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Zyk66681/UAV-Accident-Attribution-LLM</td>
+<td>基于 LLM 评估无人机事故地面风险</td>
+<td>https://github.com/Zyk66681/UAV-Accident-Attribution-LLM</td>
+<td>0</td>
+<td>0</td>
+<td>Python</td>
 </tr>
 </tbody>
 </table></body></html>
