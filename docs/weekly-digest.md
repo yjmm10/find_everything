@@ -1,61 +1,57 @@
 ## 📄 Arxiv 前沿论文
 
-> **爬取时间**：2026-04-13 03:38:05 UTC
+> **爬取时间**：2026-04-17 13:47:14 UTC
 
-本表汇总 Arxiv 论文，来源为关键词组 `uav&llm` 与 `dla|ocr` 在 2026-04-06~2026-04-12 的检索结果，按评分降序排列。
+本表数据来自 Arxiv 检索，关键词组「uav&llm」与「dla|ocr」，时间窗 2026-04-10～2026-04-16，侧重与 LLM、AI Agent、Computer Vision 主题的贴合度与新颖度。
 
 | 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 学科类别 |
 |------|------|------|------|------|----------|----------|
-| 10 | Vision-Language Navigation for Aerial Robots: Towards the Era of Large Language Models | 探讨大语言模型赋能无人机视觉语言导航的前沿方向，提出 Aerial VLN 新任务框架 | http://arxiv.org/abs/2604.07705v1 | 无人机,视觉语言导航,大模型,机器人 | 2026-04-09 | cs.RO |
-| 9 | LLM-as-Judge for Semantic Judging of Powerline Segmentation in UAV Inspection | 引入 LLM 作为裁判评估无人机巡检中的电力线分割语义质量，提升可靠性 | http://arxiv.org/abs/2604.05371v1 | 无人机巡检,分割评估,大模型,电力线 | 2026-04-07 | cs.AI |
-| 9 | UIPress: Bringing Optical Token Compression to UI-to-Code Generation | 提出 UI 场景的光学 token 压缩方法，解决 VLM 生成大量 HTML/CSS 的效率瓶颈 | http://arxiv.org/abs/2604.09442v1 | UI生成,视觉语言模型,token压缩,前端 | 2026-04-10 | cs.CL |
-| 8 | Revise: A Framework for Revising OCRed text in Practical Information Systems | 提出基于 LLM 的 OCR 文本修订框架，引入数据污染策略提升实用系统表现 | http://arxiv.org/abs/2604.08115v1 | OCR,文本修订,大模型,文档AI | 2026-04-09 | cs.AI |
-| 8 | AtlasOCR: Building the First Open-Source Darija OCR Model | 首个开源摩洛哥阿拉伯方言 OCR 模型，基于视觉语言模型构建 | http://arxiv.org/abs/2604.08070v1 | OCR,阿拉伯方言,视觉语言模型,开源 | 2026-04-09 | cs.CV |
-| 8 | Q-Zoom: Query-Aware Adaptive Perception for Efficient MLLMs | 提出查询感知的自适应感知方法，提升多模态大模型在文档理解等细粒度任务的效率 | http://arxiv.org/abs/2604.06912v1 | 多模态大模型,自适应感知,高效推理 | 2026-04-08 | cs.CV |
-| 7 | Making MLLMs Blind: Adversarial Smuggling Attacks in MLLM Content Moderation | 揭示多模态大模型在内容审核中的对抗性 smuggling 攻击漏洞 | http://arxiv.org/abs/2604.06950v2 | 多模态大模型,对抗攻击,内容审核,安全 | 2026-04-08 | cs.CV |
-| 7 | LLM-based Schema-Guided Extraction and Validation of失踪人口情报 | 基于 LLM 从异构数据源提取和验证失踪人口情报，支持多分类任务 | http://arxiv.org/abs/2604.06571v1 | 大模型,信息抽取,失踪人口,异构数据 | 2026-04-08 | cs.CL |
-| 6 | The Character Error Vector: Decomposable errors for page-level OCR evaluation | 提出字符错误向量的可分解误差度量，改进行页面 OCR 评估 | http://arxiv.org/abs/2604.06160v1 | OCR,评估指标,字符错误,文档识别 | 2026-04-07 | cs.CV |
-
----
+| 9 | From UAV Imagery to Agronomic Reasoning: A Multimodal LLM Benchmark for Plant Phenotyping | 提出面向植物表型分析的多模态 LLM 基准，结合 UAV 影像与农学推理 | http://arxiv.org/abs/2604.09907v1 | UAV,多模态,植物表型,LLM基准 | 2026-04-10 | cs.CV |
+| 8 | Ro-SLM: Onboard Small Language Models for Robot Task Planning and Operation Code Generation | 探讨机器人端侧小语言模型的任务规划与代码生成能力 | http://arxiv.org/abs/2604.10929v2 | 机器人,SLM,任务规划,代码生成 | 2026-04-13 | cs.RO |
+| 8 | DharmaOCR: Specialized Small Language Models for Structured OCR | 发布专用于结构化 OCR 的小语言模型，性能优于开源与商业方案 | http://arxiv.org/abs/2604.14314v1 | OCR,小语言模型,结构化文档 | 2026-04-15 | cs.CV |
+| 8 | SOAR: Self-Correction for Optimal Alignment and Refinement in Diffusion Models | 提出扩散模型的后训练自纠正方法，优化对齐与微调 | http://arxiv.org/abs/2604.12617v1 | 扩散模型,自纠正,模型对齐 | 2026-04-14 | cs.LG |
+| 8 | Physics-Grounded Monocular Vehicle Distance Estimation | 基于车牌排版标准实现单目车辆距离估计，服务 ADAS/自动驾驶 | http://arxiv.org/abs/2604.12239v1 | 计算机视觉,车辆距离估计,ADAS | 2026-04-14 | cs.CV |
+| 8 | Agentic Application in Power Grid Static Analysis | 构建 LLM Agent 将自然语言转换为 MATPOWER 脚本，自动化电力系统分析 | http://arxiv.org/abs/2604.09995v1 | LLM Agent,电力系统,代码生成 | 2026-04-11 | eess.SY |
+| 7 | GlotOCR Bench: OCR Models Still Struggle Beyond a Handful of Unicode Scripts | 发布 OCR 基准，揭示现有模型在多脚本上的局限 | http://arxiv.org/abs/2604.12978v1 | OCR,多脚本,基准测试 | 2026-04-14 | cs.CL |
+| 7 | MultiDocFusion: Hierarchical and Multimodal Chunking Pipeline for Enhanced RAG | 提出面向长工业文档的层次化多模态分块方案 | http://arxiv.org/abs/2604.12352v1 | RAG,多模态,文档处理 | 2026-04-14 | cs.AI |
+| 7 | TraversalBench: Challenging Paths to Follow for Vision Language Models | 构建评估 VLM 复杂视觉路径跟随能力的基准 | http://arxiv.org/abs/2604.10999v1 | VLM,视觉推理,基准测试 | 2026-04-13 | cs.CV |
+| 7 | The Devil is in the Details -- From OCR for Old Church Slavonic to Purely Visual Stemma Reconstruction | 探索古教会斯拉夫语 OCR 与纯视觉谱系重建 | http://arxiv.org/abs/2604.11724v1 | OCR,历史文献,计算机视觉 | 2026-04-13 | cs.CV |
+| 7 | DocRevive: A Unified Pipeline for Document Text Restoration | 提出文档文本修复的统一流程，修复损坏/遮挡文本 | http://arxiv.org/abs/2604.10077v1 | 文档修复,计算机视觉,文本恢复 | 2026-04-11 | cs.CV |
+| 7 | Doc-V*:Coarse-to-Fine Interactive Visual Reasoning for Multi-Page Document VQA | 构建多页文档 VQA 的粗到细交互式视觉推理框架 | http://arxiv.org/abs/2604.13731v1 | 文档VQA,视觉推理,多页文档 | 2026-04-15 | cs.CL |
+| 7 | UIPress: Bringing Optical Token Compression to UI-to-Code Generation | 将视觉 token 压缩引入 UI 到代码生成任务 | http://arxiv.org/abs/2604.09442v1 | UI生成,视觉语言模型,token压缩 | 2026-04-10 | cs.CL |
+| 6 | Evaluating the Evaluator: Problems with SemEval-2020 Task 1 | 重新审视词汇语义变化检测基准 SemEval-2020 Task 1 | http://arxiv.org/abs/2604.13232v1 | 语义变化,评估,基准测试 | 2026-04-14 | cs.CL |
 
 ## 📰 优质资讯/论坛
 
-本表数据来源于 RSS 资讯源，本周窗口期（2026-04-06~2026-04-12）内无符合关键词的条目。
+本表数据来自资讯 RSS 源，时间窗 2026-04-10～2026-04-16。
+
+本周资讯数据为空，未获取到符合条件的条目。
 
 | 评分 | 标题 | 说明 | 链接 | 标签 |
 |------|------|------|------|------|
-| - | (无) | 本周资讯窗口期内无新增符合关键词的条目 | - | - |
-
----
+| - | (无) | 本周无符合关键词条件的资讯更新 | - | - |
 
 ## 🔥 GitHub 周榜
 
-本表为 Trending 类 RSS 榜单原始条目，未按关键词做任何过滤；数据来源于 GitHub Trending RSS 推送，按 Star 数降序排列。
+本表数据来自 Trending 类 RSS 榜单的原始条目，**不做**关键词过滤或删减，侧重热度与代表性。
 
 | 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |
 |------|------|------|------|------|------|------|--------|
-| 10 | microsoft/markitdown | Python 工具，可将文件和 Office 文档转换为 Markdown，支持 MCP 集成 | https://github.com/microsoft/markitdown | 文档转换,Markdown,Python,LLM集成 | 105225 | 6586 | Python |
-| 9 | NousResearch/hermes-agent | 自改进 AI Agent，内置学习循环，可从经验创建技能并持久化知识 | https://github.com/NousResearch/hermes-agent | AI Agent,自改进,学习循环,LLM | 68958 | 9211 | Python |
-| 8 | google-ai-edge/gallery | Google AI Edge 移动端 ML/GenAI 展示Gallery，可本地运行开源 LLM | https://github.com/google-ai-edge/gallery | 移动端AI,边缘推理,生成式AI,Google | 20708 | 1956 | Kotlin |
-| 8 | forrestchang/andrej-karpathy-skills | 基于 Karpathy 观察的 Claude Code 行为改进指南 CLAUDE.md | https://github.com/forrestchang/andrej-karpathy-skills | Claude,编码规范,LLM,最佳实践 | 17457 | 1312 | - |
-| 8 | HKUDS/DeepTutor | Agent 原生个性化辅导助手，支持多语言和 Mermaid 可视化 | https://github.com/HKUDS/DeepTutor | 辅导Agent,个性化学习,多语言,教育AI | 17329 | 2276 | Python |
-| 7 | coleam00/Archon | 首个开源 AI 编码 harness 构建器，通过 YAML 定义工作流实现确定性编码 | https://github.com/coleam00/Archon | AI编码,工作流引擎,开源,harness | 17156 | 2717 | TypeScript |
-| 7 | multica-ai/multica | 开源托管 Agent 平台，将编码 Agent 转化为团队成员，支持任务分配和技能积累 | https://github.com/multica-ai/multica | Agent平台,团队协作,开源,管理 | 9665 | 1229 | TypeScript |
-| 6 | google-ai-edge/LiteRT-LM | Google 高性能边缘设备 LLM 推理框架，支持 Gemma 4 等模型 | https://github.com/google-ai-edge/LiteRT-LM | 边缘推理,高性能,LLM,Google | 3566 | 338 | C++ |
-
----
+| 10 | NousResearch/hermes-agent | 具有内置学习循环的自我改进 AI Agent，可从经验创建技能并持久化知识 | https://github.com/NousResearch/hermes-agent | AI Agent,自我改进,学习循环 | 95945 | 13429 | Python |
+| 10 | microsoft/markitdown | Python 工具，将文件和 Office 文档转换为 Markdown，支持 MCP 集成 | https://github.com/microsoft/markitdown | 文档转换,Markdown,LLM集成 | 110971 | 7115 | Python |
+| 9 | forrestchang/andrej-karpathy-skills | 基于 Karpathy 观察的 Claude Code 行为改进指南 | https://github.com/forrestchang/andrej-karpathy-skills | Claude,LLM编码,最佳实践 | 53522 | 4487 | - |
+| 8 | multica-ai/multica | 开源托管 Agent 平台，将编码 Agent 转化为真实团队成员 | https://github.com/multica-ai/multica | Agent平台,团队协作,开源 | 15168 | 1867 | TypeScript |
+| 8 | addyosmani/agent-skills | 为 AI 编码 Agent 打造的工程级技能库，封装工作流与质量门禁 | https://github.com/addyosmani/agent-skills | AI编码,工程技能,工作流 | 16781 | 2137 | Shell |
+| 7 | shiyu-coder/Kronos | 首个面向金融市场 K 线语言的开源基础模型 | https://github.com/shiyu-coder/Kronos | 金融,基础模型,K线 | 18934 | 3465 | Python |
+| 7 | coleam00/Archon | 开源 AI 编码 harness 构建器，通过 YAML 定义开发流程 | https://github.com/coleam00/Archon | AI编码,工作流引擎,YAML | 18514 | 2890 | TypeScript |
+| 6 | OpenBMB/VoxCPM | 无 tokenizer 的多语言 TTS 系统，支持语音生成与克隆 | https://github.com/OpenBMB/VoxCPM | TTS,语音生成,多语言 | 14010 | 1673 | Python |
 
 ## 🔎 GitHub 指定日期检索
 
-本表为 GitHub 官方 `search/repositories` 在全站公开仓库范围内的检索结果（关键词 `llm&uav`，时间条件 `pushed:2026-04-06~2026-04-12`），**非** Trending 周榜/日榜榜单，按 Star 数降序排列。
+本表数据来自 GitHub 官方 `search/repositories` 在全站公开仓库范围内的检索结果（关键词 + `pushed:` 日期条件），**不是** Trending 周榜/日榜榜单，侧重与检索关键词（LLM, AI Agent, Computer Vision）及时间条件的匹配度。
 
 | 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |
 |------|------|------|------|------|------|------|--------|
-| 8 | Mehdiazarafza/UAV-RAG | 探索 LLM 与 RAG 集成用于无人机领域问答与推理 | https://github.com/Mehdiazarafza/UAV-RAG | 无人机,RAG,LLM,问答 | 9 | 2 | - |
-| 7 | justarist/radarone | Telegram 机器人与实时威胁地图，收集 UAV 攻击警报并通过 LLM 处理推送 | https://github.com/justarist/radarone | 无人机,威胁情报,Telegram,LLM | 3 | 1 | Python |
-| 5 | pgrhc/uav-llm-rl | 无人机与 LLM 强化学习相关实验项目 | https://github.com/pgrhc/uav-llm-rl | 无人机,LLM,强化学习 | 1 | 0 | Python |
-| 5 | G1antBot/agent_UAV | 通过 Mavlink、开放词汇检测、SmolAgents 与火山引擎 LLM 实现自然语言控制无人机 | https://github.com/G1antBot/agent_UAV | 无人机,自然语言控制,多模态,仿真 | 1 | 0 | Python |
-| 4 | yasarh18/uav_llm | 无人机与大语言模型结合项目（暂无描述） | https://github.com/yasarh18/uav_llm | 无人机,LLM | 0 | 0 | Python |
-| 4 | Yansanya/UAVbot | 顶层 LLM 驱动的无人机机器人项目 | https://github.com/Yansanya/UAVbot | 无人机,LLM,机器人 | 0 | 0 | Python |
-| 4 | eveyuyi/LLM-UAV-FairRouting | 基于 LLM 的无人机公平路由研究 | https://github.com/eveyuyi/LLM-UAV-FairRouting | 无人机,LLM,路由算法 | 0 | 0 | Python |
-| 4 | Zyk66681/UAV-Accident-Attribution-LLM | 基于 LLM 评估无人机事故地面风险的方法 | https://github.com/Zyk66681/UAV-Accident-Attribution-LLM | 无人机,事故分析,LLM,风险评估 | 0 | 0 | Python |
+| 7 | kannalee007/Yuki-AI-Agent | 面向 macOS 的多模态完全自主 AI Agent，本地运行结合 Edge AI、LLM、语音识别与计算机视觉 | https://github.com/kannalee007/Yuki-AI-Agent | AI Agent,macOS,多模态,本地运行 | 0 | 0 | - |
+| 6 | Alex000115/singularitynet-style-ai-marketplace | 专家级去中心化 AI 市场，采用服务导向架构，注册 LLM、Computer Vision、遗传算法等为链上服务 | https://github.com/Alex000115/singularitynet-style-ai-marketplace | 去中心化,AI市场,智能合约 | 0 | 0 | Solidity |
+| 6 | akash8987/singularitynet-style-ai-marketplace | 与上一条目类似的去中心化 AI 市场项目，实现链上服务注册与计费 | https://github.com/akash8987/singularitynet-style-ai-marketplace | 去中心化,AI市场,智能合约 | 0 | 0 | Solidity |
