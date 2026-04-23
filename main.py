@@ -381,7 +381,7 @@ if __name__ == "__main__":
         keyword_context = (
             f"数据时间窗口（根配置；各信息源块内可另设 date_range 覆盖）："
             f"{ctx.date_range_mode}，{ctx.start_date} ~ {ctx.end_date}；"
-            f"关键词式：`|` 或；逗号或 `&` 或 `&a,b` 均为与（AND）；"
+            f"关键词式：逗号与 `|` 为或（OR）；`&` 为与（AND）；行首 `&a,b` 为与分项；"
             f"全局默认：{keywords}；"
             f"Arxiv 检索使用：{arxiv_kw}（后端：{arxiv_backend}）；"
             f"原始 Arxiv 条目中已含「发表日期」「学科主分类/标签」，输出表须保留为「发表时间」「学科类别」列；"

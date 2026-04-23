@@ -1,6 +1,8 @@
 # 周报订阅配置。环境变量 DIGEST_CONFIG 可指向其它 YAML 文件。
 # 全局 keywords：各信息源未单独写 keywords 时使用。布尔式（Arxiv / RSS / GitHub 一致）：
-#   a,b 与 a&b、&a,b 均为与（AND）；  a|b 为或（OR）
+#   扁平：逗号与 | 均为或（OR）；& 为与（AND）；&a,b 行首仍为与分项；a&b,c 为 a AND (b OR c)
+#   富语法（出现括号或英文 and/or/andnot 单词）：与 arXiv 官方 AND/OR/ANDNOT 一致；逗号同 OR
+#   例 (uav|aerial) & (vlm|llm|mllm) & (rl) 与 (uav OR aerial) AND (vlm OR llm OR mllm) AND (rl) 等价
 #   全角 ｜ ＆ 等同 | &
 keywords: "llm&uav"
 
@@ -16,7 +18,8 @@ date_range:
 # 周报正文表格：各板块需含「标签」列（由 AI 据标题+说明归纳）；Arxiv 另需「发表时间」「学科类别」（抓取已带日期与 cs.* 分类）
 # Arxiv：整块共用一个 date_range（可选）；不写则用根 date_range
 # 可选 keywords，不填则用全局 keywords（语法同文件头「布尔式」）
-# - 字符串：一次检索，如 "uav, llm"（同 uav&llm）、"uav|llm"、"&uav,llm"
+# - 字符串：如 "uav, llm"（同 uav|llm，逗号为 OR）、"uav&llm"（与）、"&uav,llm"（行首与分项）
+# - 富布尔：如 "(uav|aerial) & (vlm|llm|mllm) & (rl)" → arXiv 段 (uav OR aerial) AND (vlm OR llm OR mllm) AND (rl)
 # - 列表：每组单独检索，结果按组保留（跨组不去重）；如 [ "uav, llm", "dla, ocr" ]
 # max_results：每组最多条数（-1 表示单次请求按 arXiv 上限尽量多取）
 # max_results_total（可选）：所有组加起来总条数上限，按组顺序截断（-1 表示不限制总数）
@@ -26,7 +29,7 @@ arxiv:
   backend: library
   # date_range:
   #   preset: month
-  keywords: ["uav&llm","dla|ocr"]
+  keywords: ["(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)","dla|ocr"]
   max_results: -1
   # max_results_total: 12
   sort_by: submittedDate
