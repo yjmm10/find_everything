@@ -2,6 +2,8 @@
 
 本文说明如何把本仓库中的 **`digest-viewer`** 子目录部署到 Vercel。站点在构建时会读取仓库根目录的 **`docs/weekly-digest-*.md`**，生成可检索的静态页面。
 
+若遇到 **Root Directory / 构建缓存 / 与 Python 周报同仓不同步** 等问题，可优先使用仓库自带的 **[GitHub Pages 工作流](../.github/workflows/digest-site.yml)**（推 `docs/` 后自动发布到 `gh-pages`），步骤见 [digest-viewer/README.md](./README.md)。
+
 ---
 
 ## 前置条件

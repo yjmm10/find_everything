@@ -19,7 +19,7 @@ ARXIV_GROUP_KEY = "arxiv_keyword_group"
 ARXIV_PAPERS_KEY = "arxiv_papers"
 
 # arXiv API 单次查询 max_results 上限；max_results: -1 时表示「尽量多取」
-_ARXIV_API_MAX_RESULTS = 30000
+_ARXIV_API_MAX_RESULTS = 200
 
 
 def _arxiv_max_results(raw) -> int:
@@ -27,6 +27,20 @@ def _arxiv_max_results(raw) -> int:
     if n < 0:
         return _ARXIV_API_MAX_RESULTS
     return min(max(1, n), _ARXIV_API_MAX_RESULTS)
+
+
+def _arxiv_export_api_url(
+    query: str,
+    *,
+    sort_by: str,
+    sort_order: str,
+    max_results: int,
+) -> str:
+    """与 export.arxiv.org 官方 Atom API 一致的请求 URL（含 URL 编码后的 search_query）。"""
+    return (
+        f"https://export.arxiv.org/api/query?search_query={quote(query)}"
+        f"&sortBy={quote(sort_by)}&sortOrder={quote(sort_order)}&max_results={max_results}"
+    )
 
 
 def _arxiv_submitted_date_inner(date_range: str) -> str:
@@ -173,10 +187,10 @@ def _fetch_arxiv_api(
     sort_by = arxiv_cfg.get("sort_by", "submittedDate")
     sort_order = arxiv_cfg.get("sort_order", "descending")
     max_results = _arxiv_max_results(arxiv_cfg.get("max_results", 8))
-    url = (
-        f"https://export.arxiv.org/api/query?search_query={quote(query)}"
-        f"&sortBy={quote(sort_by)}&sortOrder={quote(sort_order)}&max_results={max_results}"
+    url = _arxiv_export_api_url(
+        query, sort_by=sort_by, sort_order=sort_order, max_results=max_results
     )
+    log(f"🔗 [Arxiv/api] 请求 URL：{url}")
     connect_s = float(os.getenv("ARXIV_CONNECT_TIMEOUT", "20"))
     read_s = float(os.getenv("ARXIV_READ_TIMEOUT", "120"))
     resp = http_session().get(url, timeout=(connect_s, read_s))
@@ -237,11 +251,17 @@ def _fetch_arxiv_library(
     qkw = _arxiv_all_field_query(kw)
     query = f"{qkw} AND submittedDate:[{dr}]"
     max_results = _arxiv_max_results(arxiv_cfg.get("max_results", 8))
+    sort_by = arxiv_cfg.get("sort_by", "submittedDate")
+    sort_order = arxiv_cfg.get("sort_order", "descending")
+    log(
+        f"🔗 [Arxiv/library] 等效 API 请求 URL（search_query 与各页相同；分页由库完成）："
+        f"{_arxiv_export_api_url(query, sort_by=sort_by, sort_order=sort_order, max_results=max_results)}"
+    )
     search = arxiv_mod.Search(
         query=query,
         max_results=max_results,
-        sort_by=_map_sort_criterion(arxiv_mod, arxiv_cfg.get("sort_by", "submittedDate")),
-        sort_order=_map_sort_order(arxiv_mod, arxiv_cfg.get("sort_order", "descending")),
+        sort_by=_map_sort_criterion(arxiv_mod, sort_by),
+        sort_order=_map_sort_order(arxiv_mod, sort_order),
     )
     delay = float(arxiv_cfg.get("library_delay_seconds", 3.0))
     page_size = int(arxiv_cfg.get("library_page_size", 100))

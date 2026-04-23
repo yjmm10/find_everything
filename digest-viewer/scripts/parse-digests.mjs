@@ -162,10 +162,30 @@ function main() {
 
   digests.sort((a, b) => (a.slug < b.slug ? 1 : a.slug > b.slug ? -1 : 0));
 
+  /** 多期周报合并时按链接去重，保留最先出现的条目（需环境变量 DIGEST_DEDUPE_LINK=1） */
+  let entries = allEntries;
+  if (process.env.DIGEST_DEDUPE_LINK === "1") {
+    const seen = new Set();
+    entries = [];
+    for (const e of allEntries) {
+      const link = (e.link && String(e.link).trim()) || "";
+      if (link) {
+        if (seen.has(link)) continue;
+        seen.add(link);
+      }
+      entries.push(e);
+    }
+    if (entries.length !== allEntries.length) {
+      console.log(
+        `parse-digests: 按链接去重 ${allEntries.length} → ${entries.length} 条（DIGEST_DEDUPE_LINK=1）`,
+      );
+    }
+  }
+
   const payload = {
     generatedAt: new Date().toISOString(),
     digests,
-    entries: allEntries,
+    entries,
   };
 
   fs.mkdirSync(path.dirname(OUT), { recursive: true });
