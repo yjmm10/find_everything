@@ -1,67 +1,56 @@
 ## 📄 Arxiv 前沿论文
 
-> **爬取时间**：2026-05-01 13:43:40 UTC
+> **爬取时间**：2026-05-08 14:10:01 UTC
 
-本表数据来自 Arxiv 论文检索，关键词组「dla|ocr」在 2026-04-24 ~ 2026-04-30 期间共抓取 12 条结果，按评分降序排列。
+本表数据来自 Arxiv 论文检索，关键词组为「(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)」与「dla|ocr」，时间窗口 2026-05-01 ~ 2026-05-07。
 
 | 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 学科类别 |
 |------|------|------|------|------|----------|----------|
-| 9 | OCR-Memory: Optical Context Retrieval for Long-Horizon Agent Memory | 提出长程智能体记忆的光学上下文检索方法，解决经验复用难题 | http://arxiv.org/abs/2604.26622v1 | OCR,Agent Memory,LLM | 2026-04-29 | cs.CL |
-| 9 | A Multistage Extraction Pipeline for Long Scanned Financial Documents | 针对长扫描金融文档的多阶段提取管道，落地工业 KYC 流程 | http://arxiv.org/abs/2604.26462v1 | OCR,Document Extraction,Financial KYC | 2026-04-29 | cs.CV |
-| 8 | TexOCR: Advancing Document OCR Models for Compilable Page-to-LaTeX Reconstruction | 推进文档 OCR 实现可编译的页面到 LaTeX 重建 | http://arxiv.org/abs/2604.22880v1 | OCR,LaTeX,Document Understanding | 2026-04-24 | cs.CL |
-| 8 | When the Forger Is the Judge: GPT-Image-2 Cannot Recognize Its Own Faked Documents | 研究 GPT-Image-2 无法识别自身伪造文档的能力边界 | http://arxiv.org/abs/2604.25213v1 | Computer Vision,AI Generated,Document Forgery | 2026-04-28 | cs.CV |
-| 8 | GPT-Image-2 in the Wild: A Twitter Dataset of Self-Reported AI-Generated Images | 发布 GPT-Image-2 部署首周的 Twitter 自报 AI 生成图像数据集 | http://arxiv.org/abs/2604.25370v1 | AI Generated Images,Dataset,Computer Vision | 2026-04-28 | cs.CV |
-| 8 | The Structured Output Benchmark: A Multi-Source Benchmark for Evaluating Structured Output Quality in LLMs | 提出结构化输出质量评估的多源基准 | http://arxiv.org/abs/2604.25359v1 | LLM,Benchmark,Structured Output | 2026-04-28 | cs.CL |
-| 8 | Benchmarking OCR Pipelines with Adaptive Enhancement for Multi-Domain Retail Bill Digitization | 针对多域零售账单数字化的自适应增强 OCR 管道基准测试 | http://arxiv.org/abs/2604.25176v1 | OCR,Retail,Document Digitization | 2026-04-28 | cs.CV |
-| 8 | Linguistically Informed Multimodal Fusion for Vietnamese Scene-Text Image Captioning | 融合视觉特征、OCR 文本和语言学知识的越南场景文本图像描述 | http://arxiv.org/abs/2604.27712v1 | Multimodal,Scene Text,Vietnamese | 2026-04-30 | cs.CV |
-| 7 | Reading in the Dark: Low-light Scene Text Recognition | 研究低光环境下的场景文本识别技术 | http://arxiv.org/abs/2604.23685v1 | Low-light OCR,Scene Text,Computer Vision | 2026-04-26 | cs.CV |
-| 7 | HAC: Parameter-Efficient Hyperbolic Adaptation of CLIP for Zero-Shot VQA | 提出双曲适应 CLIP 实现零样本 VQA 的参数高效方法 | http://arxiv.org/abs/2604.23665v1 | CLIP,Hyperbolic,Zero-shot VQA | 2026-04-26 | cs.CV |
-| 7 | INSIGHT: Indoor Scene Intelligence from Geometric-Semantic Hierarchy Transfer | 室内场景几何-语义层次迁移的公共安全智能 | http://arxiv.org/abs/2604.23095v1 | Indoor Navigation,Public Safety,Scene Understanding | 2026-04-25 | cs.CV |
-| 7 | Beyond Single Trajectories: Optimal Control and Jordan-Lie Algebra in Hybrid Quantum Walks | 混合量子游走中最优控制与 Jordan-Lie 代数的组合优化 | http://arxiv.org/abs/2604.25760v1 | Quantum Computing,Optimization,Quantum Walks | 2026-04-28 | quant-ph |
-
----
+| 9 | Joint Optimization of Trajectory Control, Resource Allocation, and Task Offloading for Multi-UAV-Assisted IoV | 提出多无人机联合基站的车辆网络任务卸载系统，协同优化轨迹、资源分配与任务卸载 | http://arxiv.org/abs/2605.04436v1 | UAV,IoV,资源分配,任务卸载,强化学习 | 2026-05-06 | cs.NI |
+| 9 | OpenSearch-VL: An Open Recipe for Frontier Multimodal Search Agents | 开源多模态搜索智能体框架，支持主动搜索与证据推理解决复杂问题 | https://arxiv.org/abs/2605.05185v1 | 多模态,搜索智能体,VLMs,开源框架 | 2026-05-06 | cs.CV |
+| 8 | CC-OCR V2: Benchmarking Large Multimodal Models for Literacy in Real-world Document Processing | 大规模多模态模型 OCR 基准测试，评估真实文档处理中的文字识别能力 | https://arxiv.org/abs/2605.03903v1 | OCR,多模态模型,文档处理,基准测试 | 2026-05-05 | cs.CL |
+| 8 | MedStruct-S: A Benchmark for Key Discovery, Key-Conditioned QA and Semi-Structured Extraction from OCR Clinical Reports | OCR 临床报告的半结构化信息提取基准，包含关键发现与问答任务 | https://arxiv.org/abs/2605.03103v1 | OCR,临床报告,信息提取,医疗AI | 2026-05-04 | cs.CL |
+| 8 | Chart-FR1: Visual Focus-Driven Fine-Grained Reasoning on Dense Charts | 视觉聚焦驱动的密集图表细粒度推理基准，评估多模态大模型图表理解能力 | https://arxiv.org/abs/2605.01882v1 | 多模态大模型,图表推理,视觉聚焦,细粒度 | 2026-05-03 | cs.CV |
+| 7 | A Regime Theory of Controller Class Selection for LLM Action Decisions | 提出控制器类选择机制，决定 LLM 直接回答、检索或调用更强模型 | https://arxiv.org/abs/2605.06339v1 | LLM,控制器选择,决策机制,检索增强 | 2026-05-07 | cs.AI |
+| 7 | Let ViT Speak: Generative Language-Image Pre-training | 提出 GenLIP 统一生成式语言图像预训练框架，简化多模态模型训练 | https://arxiv.org/abs/2605.00809v1 | ViT,生成式预训练,多模态,图像语言 | 2026-05-01 | cs.CV |
+| 7 | RTPrune: Reading-Twice Inspired Token Pruning for Efficient DeepSeek-OCR Inference | 基于二次阅读灵感的 token 剪枝方法，提升 DeepSeek-OCR 推理效率 | https://arxiv.org/abs/2605.00392v1 | OCR,推理加速,token剪枝,DeepSeek | 2026-05-01 | cs.CV |
+| 6 | Democratizing the medieval English legal tradition | 利用 CV 与 LLM 技术数字化中世纪英国法律文献，提取手写文本信息 | https://arxiv.org/abs/2605.00977v1 | 历史文献,手写识别,法律AI,数字化 | 2026-05-01 | cs.CV |
 
 ## 📰 优质资讯/论坛
 
-本表数据来自 Reddit 机器学习/本地 LLM 社区的热门讨论，关键词与全局配置 LLM, AI Agent, Computer Vision 相关，按评分降序排列。
+本表数据来自 Reddit 社区帖子，时间窗口 2026-05-01 ~ 2026-05-07，关键词参考全局 LLM, AI Agent, Computer Vision。
 
 | 评分 | 标题 | 说明 | 链接 | 标签 |
 |------|------|------|------|------|
-| 9 | Codebase-scale retrieval using AST-derived graphs + BM25 — reducing LLM context from 100K to 5K tokens | AST 派生图 + BM25 实现代码库级检索，将 LLM 上下文从 100K 压缩至 5K tokens | https://www.reddit.com/r/MachineLearning/comments/1t05oe8/codebasescale_retrieval_using_astderived_graphs/ | LLM,Code Retrieval,AST |
-| 8 | Open Models - April 2026 - One of the best months of all time for Local LLMs? | 讨论 2026 年 4 月本地 LLM 重大更新，称之为有史以来最佳月份之一 | https://www.reddit.com/r/LocalLLaMA/comments/1t06y43/open_models_april_2026_one_of_the_best_months_of/ | Local LLM,Open Models,AI |
-| 7 | How strongly do you believe LLM judges on the for the ML papers? | 探讨 LLM 作为 ML 论文评审的可信度与可靠性 | https://www.reddit.com/r/MachineLearning/comments/1sz6uuj/how_strongly_do_you_believe_llm_judges_on_the_for/ | LLM,Peer Review,Machine Learning |
-| 6 | Why isn't LLM reasoning done in vector space instead of natural language? | 讨论 LLM 推理是否应在向量空间而非自然语言中执行 | https://www.reddit.com/r/MachineLearning/comments/1syjlc2/why_isnt_llm_reasoning_done_in_vector_space/ | LLM,Reasoning,Vector Space |
-
----
+| 8 | Stop letting LLMs edit your .bib [D] | 讨论 LLM 编辑参考文献 Bib 文件的常见错误与风险，提醒开发者谨慎使用 | https://www.reddit.com/r/MachineLearning/comments/1t5anla/stop_letting_llms_edit_your_bib_d/ | LLM,参考文献,最佳实践 |
+| 7 | I embedded an AI agent in my shell. It can now run interactive programs. | 展示在 Shell 中嵌入 AI 智能体，可运行交互式程序，提升终端智能化水平 | https://www.reddit.com/r/LocalLLaMA/comments/1t6nuhz/i_embedded_an_ai_agent_in_my_shell_it_can_run/ | AI Agent,Shell,交互式,终端 |
 
 ## 🔥 GitHub 周榜
 
-本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，**不做**关键词过滤或删减；原始数据共 8 条，按 Star 数降序排列。
+本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，**不做**关键词过滤或删减，反映当周全站热门项目。
 
 | 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |
 |------|------|------|------|------|------|------|--------|
-| 10 | forrestchang/andrej-karpathy-skills | Andrej Karpathy 总结的 Claude Code 行为改进 CLAUDE.md 文件 | https://github.com/forrestchang/andrej-karpathy-skills | Claude Code,LLM,Productivity | 104093 | 10258 | - |
-| 9 | mattpocock/skills | 面向真实工程师的 Agent 技能集，源自作者 .claude 目录 | https://github.com/mattpocock/skills | Agent Skills,Engineering,Productivity | 51318 | 4278 | Shell |
-| 9 | Alishahryar1/free-claude-code | 终端/VSCode/Discord 免费使用 Claude Code，支持多后端代理 | https://github.com/Alishahryar1/free-claude-code | Claude Code,Free,Proxy | 19505 | 2772 | Python |
-| 8 | trycua/cua | 计算机使用智能体的开源基础设施，支持 macOS/Linux/Windows 桌面控制 | https://github.com/trycua/cua | Computer Use,Agent,Desktop Automation | 15457 | 953 | HTML |
-| 8 | Z4nzu/hackingtool | 面向安全研究人员的全合一黑客工具集，包含 185+ 工具 | https://github.com/Z4nzu/hackingtool | Hacking,Security,Penetration Testing | 69569 | 7836 | Python |
-| 8 | AIDC-AI/Pixelle-Video | AI 全自动短视频引擎，输入主题自动完成文案、配图、语音、合成 | https://github.com/AIDC-AI/Pixelle-Video | AI Video,Short Video,Automation | 8583 | 1377 | Python |
-| 8 | huggingface/ml-intern | 开源 ML 工程师 intern，自主研究论文、训练模型并部署 | https://github.com/huggingface/ml-intern | ML Engineer,Paper Implementation,Hugging Face | 7810 | 753 | Python |
-| 7 | CJackHwang/ds2api | DeepSeek 转 API 轻量级中间件，支持多账户轮换和多种 API 格式 | https://github.com/CJackHwang/ds2api | DeepSeek,API,Middleware | 3018 | 796 | Go |
-
----
+| 10 | TauricResearch/TradingAgents | 多智能体 LLM 金融交易框架，支持 DeepSeek/Qwen/GLM/Azure，提供结构化输出与决策日志 | https://github.com/TauricResearch/TradingAgents | LLM,金融,多智能体,交易系统 | 71567 | 13873 | Python |
+| 9 | ruvnet/ruflo | Claude 多智能体编排平台，支持百级专业 AI 智能体协同与企业级架构 | https://github.com/ruvnet/ruflo | AI Agent,Claude,编排平台,多智能体 | 46595 | 5159 | TypeScript |
+| 9 | warpdotdev/warp | AI 原生终端开发环境，集成编程智能体，由 OpenAI 赞助支持 | https://github.com/warpdotdev/warp | AI Agent,终端,开发环境,Rust | 56653 | 4223 | Rust |
+| 8 | mattpocock/skills | 面向真实工程师的 Claude/AI 技能集，非 vibe coding，注重实际工程能力 | https://github.com/mattpocock/skills | AI Agent,工程实践,Claude,技能 | 66044 | 5677 | Shell |
+| 8 | soxoj/maigret | 通过用户名在 3000+ 网站收集个人信息档案，无需 API 密钥 | https://github.com/soxoj/maigret | OSINT,信息收集,Python,安全 | 26477 | 1853 | Python |
+| 7 | anthropics/financial-services | 金融服务的 Claude 参考智能体与技能集，覆盖投行、PE、财富管理场景 | https://github.com/anthropics/financial-services | Claude,金融,AI Agent,参考实现 | 13838 | 1726 | Python |
+| 7 | virattt/dexter | 自主金融研究智能体，具备任务规划、自我反思与实时市场数据分析能力 | https://github.com/virattt/dexter | AI Agent,金融研究,自主决策,TypeScript | 24824 | 3018 | TypeScript |
+| 6 | 1jehuang/jcode | 下一代编程智能体框架，支持多会话工作流与无限自定义，追求技术上限提升 | https://github.com/1jehuang/jcode | 编程智能体,框架,Rust,多会话 | 5017 | 499 | Rust |
 
 ## 🔎 GitHub 指定日期检索
 
-本表数据来自 GitHub 官方 `search/repositories` 在全站公开仓库范围内的检索结果（关键词 LLM, AI Agent, Computer Vision + pushed 日期窗），**不是** Trending 周榜，按评分降序排列。
+本表数据来自 GitHub 官方 `search/repositories` 在全站公开仓库范围内的检索结果（关键词 + `pushed:` 日期条件），**不是** Trending 周榜/日榜榜单。
 
 | 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |
 |------|------|------|------|------|------|------|--------|
-| 10 | affaan-m/everything-claude-code | Claude Code、Codex、Opencode、Cursor 的智能体性能优化系统 | https://github.com/affaan-m/everything-claude-code | Claude Code,Agent,Performance | 171299 | 26548 | JavaScript |
-| 10 | Shubhamsaboo/awesome-llm-apps | 100+ 可运行的 AI Agent 与 RAG 应用集合 | https://github.com/Shubhamsaboo/awesome-llm-apps | LLM,RAG,AI Agent | 108290 | 15957 | Python |
-| 10 | browser-use/browser-use | 使网站可被 AI 智能体访问，自动化在线任务 | https://github.com/browser-use/browser-use | Browser Automation,AI Agent,Web | 91501 | 10415 | Python |
-| 9 | opencv/opencv | 开源计算机视觉库 | https://github.com/opencv/opencv | Computer Vision,OpenCV,C++ | 87307 | 56551 | C++ |
-| 9 | infiniflow/ragflow | 融合 RAG 与 Agent 能力的开源 RAG 引擎 | https://github.com/infiniflow/ragflow | RAG,LLM,Agent | 79356 | 9001 | Python |
-| 9 | PaddlePaddle/PaddleOCR | 强大的轻量级 OCR 工具包，支持 100+ 语言 | https://github.com/PaddlePaddle/PaddleOCR | OCR,Document,Python | 76917 | 10352 | Python |
-| 9 | unclecode/crawl4ai | 开源 LLM 友好的网页爬虫与抓取工具 | https://github.com/unclecode/crawl4ai | Web Crawler,LLM,Scraper | 64853 | 6635 | Python |
-| 9 | opendatalab/MinerU | 将 PDF、Office 文档转换为 LLM 可用的 markdown/JSON | https://github.com/opendatalab/MinerU | Document Conversion,LLM,Markdown | 61678 | 5177 | Python |
+| 10 | affaan-m/everything-claude-code | Claude Code/Codex 性能优化系统，包含技能、本能、记忆、安全与研究优先开发机制 | https://github.com/affaan-m/everything-claude-code | Claude,性能优化,AI Agent,开发框架 | 175707 | 27176 | JavaScript |
+| 9 | browser-use/browser-use | 使网站可被 AI 智能体访问，自动化在线任务 | https://github.com/browser-use/browser-use | AI Agent,Web自动化,Python,浏览器 | 92915 | 10520 | Python |
+| 9 | rasbt/LLMs-from-scratch | 从零实现 ChatGPT 风格 LLM 的 PyTorch 教程，step by step | https://github.com/rasbt/LLMs-from-scratch | LLM,PyTorch,教程,深度学习 | 92162 | 14236 | Jupyter Notebook |
+| 9 | PaddlePaddle/PaddleOCR | 强大的轻量级 OCR 工具包，支持 100+ 语言，连接图像/PDF 与 LLM | https://github.com/PaddlePaddle/PaddleOCR | OCR,Python,多语言,文档处理 | 77407 | 10389 | Python |
+| 8 | TauricResearch/TradingAgents | 多智能体 LLM 金融交易框架 | https://github.com/TauricResearch/TradingAgents | LLM,金融,多智能体,交易系统 | 71567 | 13873 | Python |
+| 8 | unclecode/crawl4ai | 开源 LLM 友好型 Web 爬虫与抓取工具 | https://github.com/unclecode/crawl4ai | LLM,Web爬虫,Python,数据抓取 | 65214 | 6670 | Python |
+| 8 | microsoft/ai-agents-for-beginners | 12 课入门教程，构建 AI 智能体 | https://github.com/microsoft/ai-agents-for-beginners | AI Agent,教程,入门,微软 | 60900 | 20607 | Jupyter Notebook |
+| 7 | harry0703/MoneyPrinterTurbo | 利用 AI 大模型一键生成高清短视频 | https://github.com/harry0703/MoneyPrinterTurbo | LLM,视频生成,AI,Python | 56931 | 8200 | Python |
