@@ -1,56 +1,60 @@
 ## 📄 Arxiv 前沿论文
 
-> **爬取时间**：2026-05-08 14:10:01 UTC
+> **爬取时间**：2026-05-15 14:25:51 UTC
 
-本表数据来自 Arxiv 论文检索，关键词组为「(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)」与「dla|ocr」，时间窗口 2026-05-01 ~ 2026-05-07。
+本表数据来自 Arxiv 论文检索，关键词组①为 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)`，关键词组②为 `dla|ocr`，时间窗口 2026-05-08 ~ 2026-05-14。
 
 | 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 学科类别 |
 |------|------|------|------|------|----------|----------|
-| 9 | Joint Optimization of Trajectory Control, Resource Allocation, and Task Offloading for Multi-UAV-Assisted IoV | 提出多无人机联合基站的车辆网络任务卸载系统，协同优化轨迹、资源分配与任务卸载 | http://arxiv.org/abs/2605.04436v1 | UAV,IoV,资源分配,任务卸载,强化学习 | 2026-05-06 | cs.NI |
-| 9 | OpenSearch-VL: An Open Recipe for Frontier Multimodal Search Agents | 开源多模态搜索智能体框架，支持主动搜索与证据推理解决复杂问题 | https://arxiv.org/abs/2605.05185v1 | 多模态,搜索智能体,VLMs,开源框架 | 2026-05-06 | cs.CV |
-| 8 | CC-OCR V2: Benchmarking Large Multimodal Models for Literacy in Real-world Document Processing | 大规模多模态模型 OCR 基准测试，评估真实文档处理中的文字识别能力 | https://arxiv.org/abs/2605.03903v1 | OCR,多模态模型,文档处理,基准测试 | 2026-05-05 | cs.CL |
-| 8 | MedStruct-S: A Benchmark for Key Discovery, Key-Conditioned QA and Semi-Structured Extraction from OCR Clinical Reports | OCR 临床报告的半结构化信息提取基准，包含关键发现与问答任务 | https://arxiv.org/abs/2605.03103v1 | OCR,临床报告,信息提取,医疗AI | 2026-05-04 | cs.CL |
-| 8 | Chart-FR1: Visual Focus-Driven Fine-Grained Reasoning on Dense Charts | 视觉聚焦驱动的密集图表细粒度推理基准，评估多模态大模型图表理解能力 | https://arxiv.org/abs/2605.01882v1 | 多模态大模型,图表推理,视觉聚焦,细粒度 | 2026-05-03 | cs.CV |
-| 7 | A Regime Theory of Controller Class Selection for LLM Action Decisions | 提出控制器类选择机制，决定 LLM 直接回答、检索或调用更强模型 | https://arxiv.org/abs/2605.06339v1 | LLM,控制器选择,决策机制,检索增强 | 2026-05-07 | cs.AI |
-| 7 | Let ViT Speak: Generative Language-Image Pre-training | 提出 GenLIP 统一生成式语言图像预训练框架，简化多模态模型训练 | https://arxiv.org/abs/2605.00809v1 | ViT,生成式预训练,多模态,图像语言 | 2026-05-01 | cs.CV |
-| 7 | RTPrune: Reading-Twice Inspired Token Pruning for Efficient DeepSeek-OCR Inference | 基于二次阅读灵感的 token 剪枝方法，提升 DeepSeek-OCR 推理效率 | https://arxiv.org/abs/2605.00392v1 | OCR,推理加速,token剪枝,DeepSeek | 2026-05-01 | cs.CV |
-| 6 | Democratizing the medieval English legal tradition | 利用 CV 与 LLM 技术数字化中世纪英国法律文献，提取手写文本信息 | https://arxiv.org/abs/2605.00977v1 | 历史文献,手写识别,法律AI,数字化 | 2026-05-01 | cs.CV |
+| 9 | Chronicles-OCR: A Cross-Temporal Perception Benchmark for the Evolutionary Trajectory of Chinese Characters | 提出汉字演变视角的OCR感知基准，评估VLLM对历史文字的识别鲁棒性 | http://arxiv.org/abs/2605.11960v1 | OCR,历史文字,多模态,基准测试 | 2026-05-12 | cs.CV |
+| 9 | Training Long-Context Vision-Language Models Effectively with Generalization Beyond 128K Context | 探讨长上下文LVLMs的有效训练方法，突破128K上下文限制 | http://arxiv.org/abs/2605.13831v1 | VLM,长上下文,模型训练,多模态 | 2026-05-13 | cs.CV |
+| 8 | LatentRouter: Can We Choose the Right Multimodal Model Before Seeing Its Answer? | 提出多模态模型选择框架，在未知答案前评估模型能力 | http://arxiv.org/abs/2605.11301v1 | 多模态模型,模型选择,MLLM | 2026-05-11 | cs.AI |
+| 8 | TRACER: Verifiable Generative Provenance for Multimodal Tool-Using Agents | 为多模态工具使用Agent提供可验证的生成溯源机制 | http://arxiv.org/abs/2605.09934v1 | Agent,多模态,工具使用,可验证性 | 2026-05-11 | cs.CL |
+| 8 | LLaVA-UHD v4: What Makes Efficient Visual Encoding in MLLMs? | 分析高分辨率图像输入下MLLM的视觉编码效率瓶颈 | http://arxiv.org/abs/2605.08985v1 | MLLM,视觉编码,高效性,多模态 | 2026-05-09 | cs.CV |
+| 8 | DocAtlas: Multilingual Document Understanding Across 80+ Languages | 提出支持80+语言的多语言文档理解框架 | http://arxiv.org/abs/2605.12623v1 | 多语言,文档理解,OCR,VLM | 2026-05-12 | cs.CL |
+| 8 | Qwen-Image-VAE-2.0 Technical Report | 高压缩率图像VAE，在重建质量与压缩率上取得显著进展 | http://arxiv.org/abs/2605.13565v1 | VAE,图像压缩,重建质量,多模态 | 2026-05-13 | cs.CV |
+| 8 | 20/20 Vision Language Models: A Prescription for Better VLMs through Data Curation Alone | 仅通过数据策展提升VLM质量，探索数据质量-计算前沿 | http://arxiv.org/abs/2605.11405v2 | VLM,数据策展,预训练,多模态 | 2026-05-12 | cs.LG |
+| 8 | Hierarchical LLM-Driven Control for HAPS-Assisted UAV Networks: Joint Optimization of Flight and Connectivity | 提出HAPS辅助UAV网络的层级LLM驱动控制方案 | https://arxiv.org/abs/2605.11509v1 | UAV,LLM,强化学习,网络控制 | 2026-05-12 | cs.AI |
+| 7 | Key Coverage Matters: Semi-Structured Extraction of OCR Clinical Reports | 针对临床报告的半结构化OCR提取方法 | http://arxiv.org/abs/2605.09440v1 | OCR,临床报告,信息提取 | 2026-05-10 | cs.CL |
+| 7 | simpleposter: a simple baseline for product poster generation | 产品海报生成基线，平衡产品外观保真与布局精度 | http://arxiv.org/abs/2605.08784v1 | 海报生成,产品图像,视觉生成 | 2026-05-09 | cs.CV |
+| 7 | Flow-OPD: On-Policy Distillation for Flow Matching Models | 针对流匹配模型的多任务对齐策略蒸馏方法 | http://arxiv.org/abs/2605.08063v3 | 流匹配,模型蒸馏,图像生成 | 2026-05-08 | cs.CV |
+| 7 | A Multi-Agent Orchestration Framework for Venture Capital Due Diligence | 风险投资尽职调查的多智能体编排框架 | http://arxiv.org/abs/2605.13110v1 | 多智能体,尽职调查,金融 | 2026-05-13 | cs.MA |
+| 6 | Proximate damped Lyman-α systems as tracers of quasar feedback | 类星体反馈的Lyman-α系统示踪研究（与主题关联度低） | http://arxiv.org/abs/2605.12188v1 | 天体物理,类星体,星系 | 2026-05-12 | astro-ph.GA |
 
 ## 📰 优质资讯/论坛
 
-本表数据来自 Reddit 社区帖子，时间窗口 2026-05-01 ~ 2026-05-07，关键词参考全局 LLM, AI Agent, Computer Vision。
+本表数据来自 Reddit r/MachineLearning 频道，时间窗口 2026-05-08 ~ 2026-05-14，关键词参考全局 LLM, AI Agent, Computer Vision。
 
 | 评分 | 标题 | 说明 | 链接 | 标签 |
 |------|------|------|------|------|
-| 8 | Stop letting LLMs edit your .bib [D] | 讨论 LLM 编辑参考文献 Bib 文件的常见错误与风险，提醒开发者谨慎使用 | https://www.reddit.com/r/MachineLearning/comments/1t5anla/stop_letting_llms_edit_your_bib_d/ | LLM,参考文献,最佳实践 |
-| 7 | I embedded an AI agent in my shell. It can now run interactive programs. | 展示在 Shell 中嵌入 AI 智能体，可运行交互式程序，提升终端智能化水平 | https://www.reddit.com/r/LocalLLaMA/comments/1t6nuhz/i_embedded_an_ai_agent_in_my_shell_it_can_run/ | AI Agent,Shell,交互式,终端 |
+| 8 | Learning, Fast and Slow: Towards LLMs That Adapt Continually | 探讨LLM持续适应能力的研究方向与进展 | https://www.reddit.com/r/MachineLearning/comments/1tbvsxo/learning_fast_and_slow_towards_llms_that_adapt/ | LLM,持续学习,自适应 |
 
 ## 🔥 GitHub 周榜
 
-本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，**不做**关键词过滤或删减，反映当周全站热门项目。
+本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，**不做**关键词过滤或删减；时间窗口 2026-05-08 ~ 2026-05-14。
 
 | 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |
 |------|------|------|------|------|------|------|--------|
-| 10 | TauricResearch/TradingAgents | 多智能体 LLM 金融交易框架，支持 DeepSeek/Qwen/GLM/Azure，提供结构化输出与决策日志 | https://github.com/TauricResearch/TradingAgents | LLM,金融,多智能体,交易系统 | 71567 | 13873 | Python |
-| 9 | ruvnet/ruflo | Claude 多智能体编排平台，支持百级专业 AI 智能体协同与企业级架构 | https://github.com/ruvnet/ruflo | AI Agent,Claude,编排平台,多智能体 | 46595 | 5159 | TypeScript |
-| 9 | warpdotdev/warp | AI 原生终端开发环境，集成编程智能体，由 OpenAI 赞助支持 | https://github.com/warpdotdev/warp | AI Agent,终端,开发环境,Rust | 56653 | 4223 | Rust |
-| 8 | mattpocock/skills | 面向真实工程师的 Claude/AI 技能集，非 vibe coding，注重实际工程能力 | https://github.com/mattpocock/skills | AI Agent,工程实践,Claude,技能 | 66044 | 5677 | Shell |
-| 8 | soxoj/maigret | 通过用户名在 3000+ 网站收集个人信息档案，无需 API 密钥 | https://github.com/soxoj/maigret | OSINT,信息收集,Python,安全 | 26477 | 1853 | Python |
-| 7 | anthropics/financial-services | 金融服务的 Claude 参考智能体与技能集，覆盖投行、PE、财富管理场景 | https://github.com/anthropics/financial-services | Claude,金融,AI Agent,参考实现 | 13838 | 1726 | Python |
-| 7 | virattt/dexter | 自主金融研究智能体，具备任务规划、自我反思与实时市场数据分析能力 | https://github.com/virattt/dexter | AI Agent,金融研究,自主决策,TypeScript | 24824 | 3018 | TypeScript |
-| 6 | 1jehuang/jcode | 下一代编程智能体框架，支持多会话工作流与无限自定义，追求技术上限提升 | https://github.com/1jehuang/jcode | 编程智能体,框架,Rust,多会话 | 5017 | 499 | Rust |
+| 9 | bytedance/UI-TARS-desktop | 开源多模态AI Agent技术栈，连接前沿AI模型与Agent基础设施 | https://github.com/bytedance/UI-TARS-desktop | AI Agent,多模态,GUI Agent,桌面应用 | 34040 | 3383 | TypeScript |
+| 9 | Hmbown/DeepSeek-TUI | 终端运行的DeepSeek编程Agent，支持流式推理与本地工作区编辑 | https://github.com/Hmbown/DeepSeek-TUI | DeepSeek,编程Agent,终端,TUI | 29672 | 2476 | Rust |
+| 9 | anthropics/financial-services | 金融服务的Claude参考Agent、技能和数据连接器 | https://github.com/anthropics/financial-services | Claude,金融,Agent,工作流 | 23077 | 3178 | Python |
+| 8 | HKUDS/AI-Trader | 全自动化Agent原生交易平台，AI代理秒级接入交易所 | https://github.com/HKUDS/AI-Trader | AI交易,Agent,量化,自动化 | 17325 | 2669 | Python |
+| 8 | CloakHQ/CloakBrowser | 通过C++源码级指纹修改的隐形Chromium，绕过所有机器人检测 | https://github.com/CloakHQ/CloakBrowser | 反爬虫,Stealth,Chromium,指纹 | 11600 | 869 | Python |
+| 8 | rohitg00/agentmemory | AI编程Agent的持久化内存方案，基于真实世界基准构建 | https://github.com/rohitg00/agentmemory | Agent,记忆系统,知识图谱,混合搜索 | 9431 | 782 | TypeScript |
+| 7 | yikart/AiToEarn | 一站式AI内容营销智能体，支持多平台内容生成与变现 | https://github.com/yikart/AiToEarn | AI Agent,内容营销,一人公司,多平台 | 13983 | 2362 | TypeScript |
+| 7 | decolua/9router | 免费AI路由与Token节省工具，连接多种AI代码工具 | https://github.com/decolua/9router | AI路由,Token优化,免费,API | 10533 | 1619 | JavaScript |
 
 ## 🔎 GitHub 指定日期检索
 
-本表数据来自 GitHub 官方 `search/repositories` 在全站公开仓库范围内的检索结果（关键词 + `pushed:` 日期条件），**不是** Trending 周榜/日榜榜单。
+本表数据来自 GitHub 官方 `search/repositories` 在**全站公开仓库**范围内的检索结果（关键词 + `pushed:` 日期条件），**不是** Trending 周榜/日榜榜单；时间窗口 2026-05-08 ~ 2026-05-14，关键词参考全局 LLM, AI Agent, Computer Vision。
 
 | 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |
 |------|------|------|------|------|------|------|--------|
-| 10 | affaan-m/everything-claude-code | Claude Code/Codex 性能优化系统，包含技能、本能、记忆、安全与研究优先开发机制 | https://github.com/affaan-m/everything-claude-code | Claude,性能优化,AI Agent,开发框架 | 175707 | 27176 | JavaScript |
-| 9 | browser-use/browser-use | 使网站可被 AI 智能体访问，自动化在线任务 | https://github.com/browser-use/browser-use | AI Agent,Web自动化,Python,浏览器 | 92915 | 10520 | Python |
-| 9 | rasbt/LLMs-from-scratch | 从零实现 ChatGPT 风格 LLM 的 PyTorch 教程，step by step | https://github.com/rasbt/LLMs-from-scratch | LLM,PyTorch,教程,深度学习 | 92162 | 14236 | Jupyter Notebook |
-| 9 | PaddlePaddle/PaddleOCR | 强大的轻量级 OCR 工具包，支持 100+ 语言，连接图像/PDF 与 LLM | https://github.com/PaddlePaddle/PaddleOCR | OCR,Python,多语言,文档处理 | 77407 | 10389 | Python |
-| 8 | TauricResearch/TradingAgents | 多智能体 LLM 金融交易框架 | https://github.com/TauricResearch/TradingAgents | LLM,金融,多智能体,交易系统 | 71567 | 13873 | Python |
-| 8 | unclecode/crawl4ai | 开源 LLM 友好型 Web 爬虫与抓取工具 | https://github.com/unclecode/crawl4ai | LLM,Web爬虫,Python,数据抓取 | 65214 | 6670 | Python |
-| 8 | microsoft/ai-agents-for-beginners | 12 课入门教程，构建 AI 智能体 | https://github.com/microsoft/ai-agents-for-beginners | AI Agent,教程,入门,微软 | 60900 | 20607 | Jupyter Notebook |
-| 7 | harry0703/MoneyPrinterTurbo | 利用 AI 大模型一键生成高清短视频 | https://github.com/harry0703/MoneyPrinterTurbo | LLM,视频生成,AI,Python | 56931 | 8200 | Python |
+| 10 | langchain-ai/langchain | Agent工程平台，LLM应用开发的基础框架 | https://github.com/langchain-ai/langchain | LLM,Agent,框架,LangChain | 136807 | 22623 | Python |
+| 10 | Shubhamsaboo/awesome-llm-apps | 收录100+可运行的AI Agent与RAG应用实例 | https://github.com/Shubhamsaboo/awesome-llm-apps | LLM,AI Agent,RAG,应用集合 | 110389 | 16338 | Python |
+| 9 | rasbt/LLMs-from-scratch | 从零实现ChatGPT类LLM的PyTorch教程 | https://github.com/rasbt/LLMs-from-scratch | LLM,PyTorch,教程,从零实现 | 94830 | 14519 | Jupyter Notebook |
+| 9 | PaddlePaddle/PaddleOCR | 强大的轻量级OCR工具包，支持100+语言 | https://github.com/PaddlePaddle/PaddleOCR | OCR,文档识别,多语言,PaddlePaddle | 77895 | 10440 | Python |
+| 9 | TauricResearch/TradingAgents | 多Agent LLM金融交易框架 | https://github.com/TauricResearch/TradingAgents | 金融交易,多Agent,LLM | 75717 | 14739 | Python |
+| 9 | hiyouga/LlamaFactory | 统一高效微调100+LLM与VLM框架（ACL 2024） | https://github.com/hiyouga/LlamaFactory | LLM微调,VLM,高效,多模型 | 71288 | 8706 | Python |
+| 8 | OpenBB-finance/OpenBB | 面向分析师、量化与AI Agent的金融数据平台 | https://github.com/OpenBB-finance/OpenBB | 金融数据,量化,AI Agent,数据分析 | 67597 | 6795 | Python |
+| 8 | unclecode/crawl4ai | 开源LLM友好的网页爬虫与抓取工具 | https://github.com/unclecode/crawl4ai | 网页爬虫,LLM,数据抓取 | 65578 | 6712 | Python |
