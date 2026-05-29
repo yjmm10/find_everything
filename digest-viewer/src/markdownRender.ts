@@ -1,8 +1,35 @@
-/** 轻量 Markdown → HTML（仅支持周报常用结构，无第三方依赖） */
-export function simpleMarkdownToHtml(md: string): string {
-  const esc = (s: string) =>
-    s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+/** 轻量 Markdown → HTML（周报常用结构，无第三方依赖） */
 
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/** 行内：链接、粗体、行内代码、裸 URL */
+export function inlineMarkdown(text: string): string {
+  let s = escapeHtml(text);
+
+  s = s.replace(
+    /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,
+    '<a class="md-render__link" href="$2" target="_blank" rel="noreferrer">$1</a>',
+  );
+
+  s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  s = s.replace(/`([^`]+)`/g, '<code class="md-render__code">$1</code>');
+
+  s = s.replace(
+    /(?<!["'=])(https?:\/\/[^\s<]+[^\s<.,;:!?)])/g,
+    (url) =>
+      `<a class="md-render__link" href="${url}" target="_blank" rel="noreferrer">${url}</a>`,
+  );
+
+  return s;
+}
+
+export function simpleMarkdownToHtml(md: string): string {
   const lines = md.split("\n");
   const out: string[] = [];
   let inTable = false;
@@ -21,22 +48,22 @@ export function simpleMarkdownToHtml(md: string): string {
 
     if (t.startsWith("# ")) {
       closeTable();
-      out.push(`<h1>${esc(t.slice(2))}</h1>`);
+      out.push(`<h1>${inlineMarkdown(t.slice(2))}</h1>`);
       continue;
     }
     if (t.startsWith("## ")) {
       closeTable();
-      out.push(`<h2>${esc(t.slice(3))}</h2>`);
+      out.push(`<h2>${inlineMarkdown(t.slice(3))}</h2>`);
       continue;
     }
     if (t.startsWith("### ")) {
       closeTable();
-      out.push(`<h3>${esc(t.slice(4))}</h3>`);
+      out.push(`<h3>${inlineMarkdown(t.slice(4))}</h3>`);
       continue;
     }
     if (t.startsWith("> ")) {
       closeTable();
-      out.push(`<blockquote>${esc(t.slice(2))}</blockquote>`);
+      out.push(`<blockquote>${inlineMarkdown(t.slice(2))}</blockquote>`);
       continue;
     }
     if (t === "---" || t === "***") {
@@ -56,10 +83,14 @@ export function simpleMarkdownToHtml(md: string): string {
         out.push('<div class="md-render__table-wrap"><table class="md-render__table">');
       }
       if (!tableHasHead) {
-        out.push(`<thead><tr>${cells.map((c) => `<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>`);
+        out.push(
+          `<thead><tr>${cells.map((c) => `<th>${inlineMarkdown(c)}</th>`).join("")}</tr></thead><tbody>`,
+        );
         tableHasHead = true;
       } else {
-        out.push(`<tr>${cells.map((c) => `<td>${esc(c)}</td>`).join("")}</tr>`);
+        out.push(
+          `<tr>${cells.map((c) => `<td>${inlineMarkdown(c)}</td>`).join("")}</tr>`,
+        );
       }
       continue;
     }
@@ -69,7 +100,7 @@ export function simpleMarkdownToHtml(md: string): string {
       out.push("");
       continue;
     }
-    out.push(`<p>${esc(t)}</p>`);
+    out.push(`<p>${inlineMarkdown(t)}</p>`);
   }
   closeTable();
   return out.join("\n");

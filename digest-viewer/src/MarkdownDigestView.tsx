@@ -7,6 +7,7 @@ export interface MarkdownDigestViewProps {
   updates: DigestUpdate[];
   selectedSlug: string;
   onSelectSlug: (slug: string) => void;
+  onBackToEntries?: () => void;
 }
 
 export default function MarkdownDigestView({
@@ -14,6 +15,7 @@ export default function MarkdownDigestView({
   updates,
   selectedSlug,
   onSelectSlug,
+  onBackToEntries,
 }: MarkdownDigestViewProps) {
   const [content, setContent] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -46,6 +48,14 @@ export default function MarkdownDigestView({
 
   return (
     <div className="md-view">
+      {onBackToEntries && (
+        <nav className="md-view__toolbar">
+          <button type="button" className="md-view__back" onClick={onBackToEntries}>
+            ← 返回条目浏览
+          </button>
+        </nav>
+      )}
+      <div className="md-view__body">
       <aside className="md-view__sidebar">
         <h2 className="md-view__sidebar-title">抓取归档</h2>
         <p className="md-view__sidebar-sub">每次抓取一份完整 Markdown，不按来源拆分</p>
@@ -97,6 +107,7 @@ export default function MarkdownDigestView({
           />
         )}
       </article>
+      </div>
     </div>
   );
 }

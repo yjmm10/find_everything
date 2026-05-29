@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import DigestCalendar from "./DigestCalendar";
-import DigestDocViewer from "./DigestDocViewer";
 import MarkdownDigestView from "./MarkdownDigestView";
 import type { DigestEntry, DigestSection, DigestSource, DigestsPayload } from "./types";
 import { parseDay } from "./dateUtils";
+import { parseRouteHash, setRouteHash } from "./routeHash";
 import {
   type DateFilterMode,
   dateFilterModeLabel,
@@ -58,10 +58,10 @@ export default function App() {
   const [calendarDay, setCalendarDay] = useState<string | null>(null);
   const [viewYear, setViewYear] = useState(() => new Date().getFullYear());
   const [viewMonth, setViewMonth] = useState(() => new Date().getMonth() + 1);
-  const [docView, setDocView] = useState<{ slug: string; markdownUrl: string; markdownBody?: string } | null>(null);
   const [dateFilterMode, setDateFilterMode] = useState<DateFilterMode>("published");
-  const [pageView, setPageView] = useState<"entries" | "markdown">("entries");
-  const [markdownSlug, setMarkdownSlug] = useState("");
+  const initialRoute = parseRouteHash();
+  const [pageView, setPageView] = useState<"entries" | "markdown">(initialRoute.view);
+  const [markdownSlug, setMarkdownSlug] = useState(initialRoute.slug);
   const [sources, setSources] = useState<Record<DigestSource, boolean>>({
     arxiv: true,
     semantic_scholar: true,
@@ -125,16 +125,21 @@ export default function App() {
     }
   };
 
-  const openDigestDoc = (slug: string) => {
-    const d = digestMetaForSlug(data!, slug);
-    if (d) {
-      setDocView({
-        slug,
-        markdownUrl: d.markdownUrl || `docs/${d.file}`,
-        markdownBody: d.markdownBody,
-      });
-    }
+  const goToMarkdownPage = (slug: string) => {
+    setMarkdownSlug(slug);
+    setPageView("markdown");
+    setRouteHash("markdown", slug);
   };
+
+  useEffect(() => {
+    const onHashChange = () => {
+      const route = parseRouteHash();
+      setPageView(route.view);
+      if (route.slug) setMarkdownSlug(route.slug);
+    };
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
 
   const selectedDigestMeta = useMemo(() => {
     if (!selectedDigestSlug || !data) return null;
@@ -219,7 +224,10 @@ export default function App() {
           <button
             type="button"
             className={`view-tabs__btn ${pageView === "entries" ? "view-tabs__btn--active" : ""}`}
-            onClick={() => setPageView("entries")}
+            onClick={() => {
+              setPageView("entries");
+              setRouteHash("entries");
+            }}
           >
             条目浏览
           </button>
@@ -230,6 +238,7 @@ export default function App() {
               setPageView("markdown");
               if (selectedDigestSlug) setMarkdownSlug(selectedDigestSlug);
               else if (!markdownSlug && data.updates[0]) setMarkdownSlug(data.updates[0].slug);
+              setRouteHash("markdown", markdownSlug || selectedDigestSlug || data.updates[0]?.slug);
             }}
           >
             Markdown 原文
@@ -242,7 +251,14 @@ export default function App() {
           digests={data.digests}
           updates={allUpdates}
           selectedSlug={markdownSlug || allUpdates[0]?.slug || ""}
-          onSelectSlug={setMarkdownSlug}
+          onSelectSlug={(slug) => {
+            setMarkdownSlug(slug);
+            setRouteHash("markdown", slug);
+          }}
+          onBackToEntries={() => {
+            setPageView("entries");
+            setRouteHash("entries");
+          }}
         />
       ) : (
       <div className="layout">
@@ -297,7 +313,7 @@ export default function App() {
               <button
                 type="button"
                 className="update-item__doc-btn"
-                onClick={() => openDigestDoc(u.slug)}
+                onClick={() => goToMarkdownPage(u.slug)}
               >
                 查看完整周报 →
               </button>
@@ -310,7 +326,7 @@ export default function App() {
         <p className="digest-doc-bar">
           当前期次：<strong>{selectedDigestMeta.slug}</strong>
           {selectedDigestMeta.entryCount === 0 ? "（无有效表格条目）" : ` · ${selectedDigestMeta.entryCount} 条`}
-          <button type="button" className="digest-doc-bar__btn" onClick={() => openDigestDoc(selectedDigestMeta.slug)}>
+          <button type="button" className="digest-doc-bar__btn" onClick={() => goToMarkdownPage(selectedDigestMeta.slug)}>
             查看完整 Markdown 周报
           </button>
         </p>
@@ -420,7 +436,7 @@ export default function App() {
                       <button
                         type="button"
                         className="section-summary__link"
-                        onClick={() => openDigestDoc(s.digestSlug)}
+                        onClick={() => goToMarkdownPage(s.digestSlug)}
                       >
                         完整周报
                       </button>
@@ -511,10 +527,7 @@ export default function App() {
               <button
                 type="button"
                 className="empty__link"
-                onClick={() => {
-                  setMarkdownSlug(selectedDigestSlug);
-                  setPageView("markdown");
-                }}
+                onClick={() => goToMarkdownPage(selectedDigestSlug)}
               >
                 查看 Markdown 原文
               </button>
@@ -526,15 +539,6 @@ export default function App() {
       )}
         </div>
       </div>
-      )}
-
-      {docView && pageView === "entries" && (
-        <DigestDocViewer
-          markdownUrl={docView.markdownUrl}
-          markdownBody={docView.markdownBody}
-          slug={docView.slug}
-          onClose={() => setDocView(null)}
-        />
       )}
     </div>
   );
