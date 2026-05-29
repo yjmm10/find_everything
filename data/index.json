@@ -1,7 +1,28 @@
 {
   "schemaVersion": "1",
-  "generatedAt": "2026-05-29T05:00:15.000065Z",
+  "generatedAt": "2026-05-29T05:23:55.882375Z",
   "runs": [
+    {
+      "id": "2026-05-22_2026-05-28_20260529T052355Z",
+      "jsonUrl": "data/runs/2026-05-22_2026-05-28_20260529T052355Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T05:23:55.876568Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-05-22",
+        "dateEnd": "2026-05-28"
+      },
+      "entryCount": 31,
+      "sourceCounts": {
+        "arxiv": 10,
+        "semantic_scholar": 1,
+        "openalex": 3,
+        "rss": 1,
+        "github_weekly": 8,
+        "github_search": 8
+      },
+      "hasMarkdown": true
+    },
     {
       "id": "2026-05-22_2026-05-28_20260529T050014Z",
       "jsonUrl": "data/runs/2026-05-22_2026-05-28_20260529T050014Z.json",

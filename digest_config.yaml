@@ -65,7 +65,7 @@ openalex:
 
 # RSS：keywords 布尔式用于标题匹配（同文件头）；rss.date_range 与每条 feed 的 date_range 过滤发布日
 rss:
-  max_items: 8
+  max_items: 30
   # date_range:
   #   preset: week
   # keywords: "LLM, agent"
@@ -84,7 +84,7 @@ rss:
 github_trending:
   enabled: true
   url: "https://mshibanami.github.io/GitHubTrendingRSS/weekly/all.xml"
-  max_repos: 8
+  max_repos: 30
   request_timeout: 60
   user_agent: "Mozilla/5.0 (compatible; GitHubDigestBot/1.0)"
   api_enrich: true
@@ -100,7 +100,7 @@ github_trending:
 github_repository_search:
   enabled: true
   # keywords: "machine learning, pytorch"
-  max_repos: 8
+  max_repos: 30
   user_agent: "Mozilla/5.0 (compatible; GitHubDigestBot/1.0)"
   api_timeout: 20
   search_sort: stars
