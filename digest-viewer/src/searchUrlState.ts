@@ -9,7 +9,7 @@ export interface FilterUrlState {
   mode: DateFilterMode;
   fav: boolean;
   group: boolean;
-  compact: boolean;
+  layout: "list" | "grid";
 }
 
 const DEFAULT: FilterUrlState = {
@@ -20,7 +20,7 @@ const DEFAULT: FilterUrlState = {
   mode: "window",
   fav: false,
   group: false,
-  compact: false,
+  layout: "list",
 };
 
 export function parseFilterFromUrl(): Partial<FilterUrlState> {
@@ -38,7 +38,8 @@ export function parseFilterFromUrl(): Partial<FilterUrlState> {
   if (mode === "window" || mode === "published" || mode === "crawl") out.mode = mode;
   if (p.get("fav") === "1") out.fav = true;
   if (p.get("group") === "1") out.group = true;
-  if (p.get("compact") === "1") out.compact = true;
+  const layout = p.get("layout");
+  if (layout === "list" || layout === "grid") out.layout = layout;
   return out;
 }
 
@@ -51,7 +52,7 @@ export function buildFilterSearchParams(state: FilterUrlState): URLSearchParams 
   if (state.mode !== DEFAULT.mode) p.set("mode", state.mode);
   if (state.fav) p.set("fav", "1");
   if (state.group) p.set("group", "1");
-  if (state.compact) p.set("compact", "1");
+  if (state.layout !== DEFAULT.layout) p.set("layout", state.layout);
   return p;
 }
 

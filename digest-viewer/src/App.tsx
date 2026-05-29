@@ -18,6 +18,8 @@ import { loadRecentQueries, pushRecentQuery } from "./recentSearch";
 import { parseRouteHash, setRouteHash } from "./routeHash";
 import { copyShareUrl, parseFilterFromUrl, syncFilterToUrl } from "./searchUrlState";
 import { type SortKey, sortEntries } from "./sortEntries";
+import { entryListClass } from "./entryListLayout";
+import type { EntryLayout } from "./ResultsHeader";
 import {
   type DateFilterMode,
   entryMatchesDateRange,
@@ -101,7 +103,7 @@ export default function App() {
   const [sortKey, setSortKey] = useState<SortKey>(urlInit.sort ?? "score");
   const [favOnly, setFavOnly] = useState(urlInit.fav ?? false);
   const [groupView, setGroupView] = useState(urlInit.group ?? false);
-  const [compactView, setCompactView] = useState(urlInit.compact ?? false);
+  const [entryLayout, setEntryLayout] = useState<EntryLayout>(urlInit.layout ?? "list");
   const [favoriteIds, setFavoriteIds] = useState<Set<string>>(() => loadFavoriteIds());
   const [recentQueries, setRecentQueries] = useState<string[]>(() => loadRecentQueries());
   const [toast, setToast] = useState<string | null>(null);
@@ -281,7 +283,7 @@ export default function App() {
       mode: dateFilterMode,
       fav: favOnly,
       group: groupView,
-      compact: compactView,
+      layout: entryLayout,
     });
     try {
       await navigator.clipboard.writeText(url);
@@ -310,7 +312,7 @@ export default function App() {
       mode: dateFilterMode,
       fav: favOnly,
       group: groupView,
-      compact: compactView,
+      layout: entryLayout,
     });
   }, [
     keyword,
@@ -320,7 +322,7 @@ export default function App() {
     dateFilterMode,
     favOnly,
     groupView,
-    compactView,
+    entryLayout,
   ]);
 
   useEffect(() => {
@@ -567,29 +569,29 @@ export default function App() {
               selectedDigestLabel={selectedDigestLabel}
               sortKey={sortKey}
               favOnly={favOnly}
+              entryLayout={entryLayout}
+              onEntryLayoutChange={setEntryLayout}
               groupView={groupView}
               onGroupViewChange={setGroupView}
-              compactView={compactView}
-              onCompactViewChange={setCompactView}
             />
 
             {groupView ? (
               <GroupedEntryList
                 entries={filtered}
                 showDigest={!selectedDigestSlug}
-                compact={compactView}
+                layout={entryLayout}
                 favoriteIds={favoriteIds}
                 onToggleFavorite={handleToggleFavorite}
                 onTagClick={handleTagClick}
               />
             ) : (
-              <ul className={`card-list${compactView ? " card-list--compact" : ""}`}>
+              <ul className={entryListClass(entryLayout)}>
                 {filtered.map((e) => (
                   <EntryCard
                     key={e.id}
                     entry={e}
                     showDigest={!selectedDigestSlug}
-                    compact={compactView}
+                    layout={entryLayout}
                     isFavorite={favoriteIds.has(e.id)}
                     onToggleFavorite={handleToggleFavorite}
                     onTagClick={handleTagClick}

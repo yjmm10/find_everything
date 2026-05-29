@@ -1,6 +1,8 @@
 import { useMemo, useState } from "react";
 import type { DigestEntry, DigestSource } from "./types";
+import type { EntryLayout } from "./ResultsHeader";
 import EntryCard from "./EntryCard";
+import { entryListClass } from "./entryListLayout";
 
 const GROUP_ORDER: DigestSource[] = [
   "arxiv",
@@ -25,7 +27,7 @@ const GROUP_LABEL: Record<DigestSource, string> = {
 export interface GroupedEntryListProps {
   entries: DigestEntry[];
   showDigest: boolean;
-  compact?: boolean;
+  layout?: EntryLayout;
   favoriteIds?: Set<string>;
   onToggleFavorite?: (id: string) => void;
   onTagClick?: (tag: string) => void;
@@ -34,7 +36,7 @@ export interface GroupedEntryListProps {
 export default function GroupedEntryList({
   entries,
   showDigest,
-  compact = false,
+  layout = "list",
   favoriteIds,
   onToggleFavorite,
   onTagClick,
@@ -101,13 +103,13 @@ export default function GroupedEntryList({
               </span>
             </button>
             {isOpen && (
-              <ul className={`card-list${compact ? " card-list--compact" : ""}`}>
+              <ul className={entryListClass(layout)}>
                 {items.map((e) => (
                   <EntryCard
                     key={e.id}
                     entry={e}
                     showDigest={showDigest}
-                    compact={compact}
+                    layout={layout}
                     isFavorite={favoriteIds?.has(e.id)}
                     onToggleFavorite={onToggleFavorite}
                     onTagClick={onTagClick}
