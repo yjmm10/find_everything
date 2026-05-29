@@ -1,11 +1,13 @@
-# 从 docs/weekly-digest-*.md 构建 digest-viewer，并推送到 gh-pages 分支供 GitHub Pages 展示。
-# 在定时周报 workflow 向 docs/ 提交后，由本次 push 自动触发；也可手动 workflow_dispatch。
-# 合并：parse 阶段可按链接去重（见 DIGEST_DEDUPE_LINK）。
+# 从 master 上的 docs/ 构建 digest-viewer，推送到 gh-pages（仅展示，不含源码）。
+# 触发：master 上 docs/ 或 digest-viewer/ 变更；或手动 workflow_dispatch。
+# 注意：weekly-digest 用 GITHUB_TOKEN push docs 不会触发本 workflow，定时任务已在 weekly-digest 内发布 gh-pages。
 
 name: Digest viewer → GitHub Pages
 
 on:
   push:
+    branches:
+      - master
     paths:
       - "docs/weekly-digest*.md"
       - "digest-viewer/**"
@@ -23,8 +25,11 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout master
         uses: actions/checkout@v6
+        with:
+          ref: master
+          fetch-depth: 0
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -33,17 +38,16 @@ jobs:
           cache: npm
           cache-dependency-path: digest-viewer/package-lock.json
 
-      - name: Install & build
+      - name: Install & build (master + docs/)
         working-directory: digest-viewer
         env:
-          # 设为 0 可关闭；默认合并多期周报时按链接去重
-          DIGEST_DEDUPE_LINK: ${{ vars.DIGEST_DEDUPE_LINK || '1' }}
+          DIGEST_DEDUPE_LINK: ${{ vars.DIGEST_DEDUPE_LINK || '0' }}
         run: npm ci && npm run build
 
-      - name: Publish to gh-pages branch
-        if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+      - name: Publish to gh-pages (display only)
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
           publish_dir: ./digest-viewer/dist
           force_orphan: true

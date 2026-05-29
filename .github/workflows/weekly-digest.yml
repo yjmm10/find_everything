@@ -1,58 +1,76 @@
 name: 📅 Weekly Tech Digest
 
-# 说明：GITHUB_TOKEN 的 push 不会触发其它 workflow，故在同一 job 内完成 digest-viewer 构建与 Pages 发布。
+# 分支职责（代码与展示分离）：
+# - master：源码 + docs/ 周报 Markdown（数据层，默认分支）
+# - gh-pages：仅 digest-viewer 构建产物（展示层，GitHub Pages 站点）
+#
+# GITHUB_TOKEN 的 push 不会触发其它 workflow，故本 job 内顺序为：
+# 同步 master → 生成周报写入 docs/ → 提交 master → 构建 → 发布 gh-pages
 
 on:
   schedule:
-    # 每周五 12:00 UTC 执行（对应北京时间 20:00）
-    - cron: '0 12 * * 5'
-  workflow_dispatch: # 支持手动触发测试
+    # 每周五 12:00 UTC（北京时间 20:00）
+    - cron: "0 12 * * 5"
+  workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: weekly-digest-${{ github.repository }}
+  cancel-in-progress: false
+
 jobs:
-  generate-digest:
+  digest-and-publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout default branch (master)
         uses: actions/checkout@v6
         with:
-          persist-credentials: true
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+
+      - name: Sync default branch before generate
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git pull --rebase origin "${{ github.event.repository.default_branch }}"
 
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Digest Generator
+      - name: Run Digest Generator (write docs only)
         env:
-          # AI 模型配置（兼容所有 OpenAI 接口）
+          DIGEST_NO_GIT: "1"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
           AI_MODEL: ${{ vars.AI_MODEL || 'gpt-4o-mini' }}
-          
-          # 搜索关键词（逗号分隔）
           KEYWORDS: ${{ vars.KEYWORDS || 'LLM, AI Agent, Computer Vision' }}
-
-          # 学术检索 API（建议在仓库 Secrets 中配置）
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
           OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
-          
-          # 邮件推送配置（可选）
           SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
           EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
           RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
-          
-          # 社交平台 Webhook（可选，如 Discord/飞书/钉钉）
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
         run: python main.py
 
-      - name: Set up Node (digest viewer → GitHub Pages)
+      - name: Commit digest to master (docs/ only)
+        run: |
+          git add docs/
+          if git diff --staged --quiet; then
+            echo "No docs changes to commit"
+          else
+            git commit -m '📦 Auto-update weekly digest'
+            git push origin "HEAD:${{ github.event.repository.default_branch }}"
+          fi
+
+      - name: Set up Node (build viewer from master)
         if: success()
         uses: actions/setup-node@v4
         with:
@@ -64,13 +82,14 @@ jobs:
         if: success()
         working-directory: digest-viewer
         env:
-          DIGEST_DEDUPE_LINK: ${{ vars.DIGEST_DEDUPE_LINK || '1' }}
+          DIGEST_DEDUPE_LINK: ${{ vars.DIGEST_DEDUPE_LINK || '0' }}
         run: npm ci && npm run build
 
-      - name: Publish site to gh-pages
-        if: success() && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+      - name: Publish site to gh-pages (display only)
+        if: success()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
           publish_dir: ./digest-viewer/dist
           force_orphan: true

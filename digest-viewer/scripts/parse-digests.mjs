@@ -174,7 +174,7 @@ function main() {
 
   digests.sort((a, b) => (a.slug < b.slug ? 1 : a.slug > b.slug ? -1 : 0));
 
-  /** 多期周报合并时按链接去重，保留最先出现的条目（需环境变量 DIGEST_DEDUPE_LINK=1） */
+  /** 可选：多期合并时按链接去重（默认关闭，保留每次抓取的全部条目；设 DIGEST_DEDUPE_LINK=1 开启） */
   let entries = allEntries;
   if (process.env.DIGEST_DEDUPE_LINK === "1") {
     const seen = new Set();

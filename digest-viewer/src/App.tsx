@@ -2,8 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import type { DigestEntry, DigestSource, DigestsPayload } from "./types";
 import "./App.css";
 
-const RECENT_UPDATES_LIMIT = 10;
-
 const SOURCE_LABEL: Record<DigestSource, string> = {
   arxiv: "Arxiv 论文",
   semantic_scholar: "Semantic Scholar",
@@ -87,9 +85,9 @@ export default function App() {
     });
   }, [data, keyword, selectedDigestSlug, dateFrom, dateTo, sources]);
 
-  const recentUpdates = useMemo(() => {
+  const allUpdates = useMemo(() => {
     if (!data?.updates) return [];
-    return data.updates.slice(0, RECENT_UPDATES_LIMIT);
+    return data.updates;
   }, [data]);
 
   const toggleSource = (s: DigestSource) => {
@@ -127,11 +125,11 @@ export default function App() {
 
       <section className="updates" aria-label="更新记录">
         <div className="updates__head">
-          <h2 className="updates__title">更新记录（最近 {RECENT_UPDATES_LIMIT} 次）</h2>
-          <p className="updates__sub">每条代表一次 digest 结果更新</p>
+          <h2 className="updates__title">更新记录（共 {allUpdates.length} 次抓取）</h2>
+          <p className="updates__sub">每条对应一次成功抓取归档，点击可筛该期条目</p>
         </div>
         <ul className="updates__list">
-          {recentUpdates.map((u) => (
+          {allUpdates.map((u) => (
             <li key={u.id}>
               <button
                 type="button"

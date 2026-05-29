@@ -270,15 +270,13 @@ def _dated_digest_paths(safe_slug: str) -> tuple[str, str]:
     raise RuntimeError("无法生成唯一周报文件名（重试次数超限）")
 
 
-def save_and_commit(md_content: str, digest_slug: str) -> str:
+def save_digest_files(md_content: str, digest_slug: str) -> str:
     """
     写入 docs/weekly-digest-{slug}.md/html（冲突时自动追加时间戳后缀），
     并同步 docs/weekly-digest.md/html 为最新副本。
-    digest_slug 建议为「数据窗起止」如 2026-04-01_2026-04-07（仅字母数字与下划线、连字符）；
-    若同一窗口重复执行，不会覆盖旧档。
-    返回带日期档名的相对路径（.md）。
+    返回带日期档名的相对路径（.md）。不在此函数内执行 git 操作。
     """
-    log("💾 Saving & committing to repo...")
+    log("💾 Saving digest files...")
     os.makedirs("docs", exist_ok=True)
     body = md_content if isinstance(md_content, str) else ""
     safe_slug = digest_slug.replace("/", "-").replace(" ", "")
@@ -310,6 +308,19 @@ def save_and_commit(md_content: str, digest_slug: str) -> str:
             f.write(html_full)
 
     log(f"📄 已写入 {dated_md}（并同步 {latest_md}）")
+    return dated_md
+
+
+def save_and_commit(md_content: str, digest_slug: str) -> str:
+    """
+    写入周报文件；本地默认再 commit/push。
+    CI 请设 DIGEST_NO_GIT=1，由 workflow 仅将 docs/ 提交到 master。
+    """
+    dated_md = save_digest_files(md_content, digest_slug)
+    if os.getenv("DIGEST_NO_GIT", "").strip().lower() in ("1", "true", "yes"):
+        log("ℹ️ DIGEST_NO_GIT=1，跳过 git commit/push（由 CI 提交 docs/ 到 master）")
+        return dated_md
+    log("💾 Committing docs/ to git...")
     os.system("git config user.name 'github-actions[bot]'")
     os.system("git config user.email 'github-actions[bot]@users.noreply.github.com'")
     os.system("git add docs/")
@@ -442,7 +453,8 @@ if __name__ == "__main__":
                 "避免用空文档覆盖已有周报。"
             )
             sys.exit(1)
-        digest_slug = f"{ctx.start_date}_{ctx.end_date}"
+        run_ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+        digest_slug = f"{ctx.start_date}_{ctx.end_date}_{run_ts}"
         dated_md_path = save_and_commit(digest_md, digest_slug)
         send_notification(digest_md, digest_md_relpath=dated_md_path)
         log("🎉 Weekly digest generation completed!")

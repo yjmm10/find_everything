@@ -29,13 +29,20 @@ npm run dev
 
 部署后，每次在 `docs/` 下新增或更新 `weekly-digest-*.md` 并推送，重新部署即可刷新索引。
 
-## GitHub Pages（推荐：与仓库同源、无 monorepo 根目录困扰）
+## GitHub Pages（推荐：代码与周报展示分离）
 
-站点由 **`gh-pages` 分支**承载（静态 `dist`）。两种方式会更新站点：
+| 分支 | 内容 | 用途 |
+|------|------|------|
+| **`master`** | 源码、`docs/weekly-digest-*.md` 周报数据 | 开发与 CI 写入数据 |
+| **`gh-pages`** | 仅 `digest-viewer/dist` 静态文件 | **线上展示**（Pages 站点读此分支） |
 
-1. **定时 / 手动周报**（[`.github/workflows/weekly-digest.yml`](../.github/workflows/weekly-digest.yml)）：在同一 job 里执行完 `python main.py` 后立刻 `npm run build` 并发布。  
-   *原因：GitHub 规定用 `GITHUB_TOKEN` 的 push **不会**再触发其它 workflow，因此不能单靠「push docs → 触发第二个 workflow」衔接定时任务。*
-2. **仅改文档或前端时**（[`.github/workflows/digest-site.yml`](../.github/workflows/digest-site.yml)）：在**默认分支**上推送 `docs/weekly-digest*.md`、`digest-viewer/` 等路径时构建并发布；也可 **Actions → 手动 Run workflow**。
+**Settings → Pages**：Source 选 **Deploy from a branch**，Branch **`gh-pages`** / **`/(root)`**。访问地址一般为 `https://<owner>.github.io/<repo>/`。
+
+更新站点的方式：
+
+1. **定时 / 手动周报**（[`.github/workflows/weekly-digest.yml`](../.github/workflows/weekly-digest.yml)）：以 `master` 为基准 → 生成并 **仅提交 `docs/` 到 master** → 构建 → 推 **gh-pages**。  
+   *`GITHUB_TOKEN` 的 push 不会触发其它 workflow，故定时任务必须在同一 job 内完成发布。*
+2. **改文档或前端后**（[`.github/workflows/digest-site.yml`](../.github/workflows/digest-site.yml)）：在 **`master`** 推送 `docs/` 或 `digest-viewer/` 时构建并发布 **gh-pages**；也可 Actions 手动运行。
 
 **首次启用**
 
@@ -43,11 +50,11 @@ npm run dev
 2. 跑一次 **weekly-digest**（需成功生成周报）或 **digest-site** workflow，生成 `gh-pages` 分支。
 3. 站点一般为：`https://<owner>.github.io/<repo>/`（`vite` 已设 `base: './'`）。
 
-**数据合并**：构建前解析脚本支持环境变量 **`DIGEST_DEDUPE_LINK=1`**（workflow 里默认开启）：多份 `weekly-digest-*.md` 合并进 `digests.json` 时，对**相同链接**的条目只保留一条。在 GitHub **Settings → Variables** 中设 `DIGEST_DEDUPE_LINK` 为 `0` 可关闭。
+**归档与展示**：每次成功抓取会写入独立的 `docs/weekly-digest-{数据窗}_{UTC时间}.md` 并保留在 `master`；前端默认展示**全部**抓取记录与**全部**条目（不按链接去重）。若需合并重复链接，在 workflow 或本地构建时设 `DIGEST_DEDUPE_LINK=1`。
 
 ## 数据说明
 
-- **更新记录**：`digests.json` 中的 `updates` 数组，每期 digest 一条（slug、时间窗、条目数、各信息源数量、索引生成时间）。由 `parse-digests.mjs` 在构建时生成，无运行时 API。
+- **更新记录**：`digests.json` 中的 `updates` 数组，**每次成功抓取**一条（含数据窗、抓取 UTC 时间 slug、条目数、来源分布）。页面展示全部记录，不限条数。
 - **关键字**：匹配标题、说明、该板块解析出的关键词组、周报 slug、信息源名称。
 - **时间**：选择与条目「数据窗」有重叠的日期范围即显示该条目。
 - **信息源**：Arxiv / RSS / GitHub 可多选切换。
