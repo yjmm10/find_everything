@@ -73,6 +73,7 @@ jobs:
         if: success()
         working-directory: digest-viewer
         env:
+          VITE_BASE: /find_everything/
           DIGEST_DEDUPE_LINK: ${{ vars.DIGEST_DEDUPE_LINK || '0' }}
         run: npm ci && npm run build
 

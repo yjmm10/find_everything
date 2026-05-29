@@ -19,7 +19,11 @@
 
 **仅改前端时**（[digest-site.yml](../.github/workflows/digest-site.yml)）：master 代码 + gh-pages 已有 `docs/` → 构建 → 更新 gh-pages。
 
-**GitHub Pages**：Settings → Pages → Branch **`gh-pages`** / **`/(root)`**。
+**GitHub Pages**（项目站地址）：
+
+- 线上：**https://yjmm10.github.io/find_everything/**
+- 配置：仓库 **Settings → Pages** → Source **Deploy from a branch** → Branch **`gh-pages`** → **`/(root)`**
+- CI 构建时设 `VITE_BASE=/find_everything/`，保证静态资源与 `digests.json` 路径正确
 
 ## 本地开发
 
