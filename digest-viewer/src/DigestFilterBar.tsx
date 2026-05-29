@@ -27,6 +27,8 @@ export interface DigestFilterBarProps {
   totalCount: number;
   hasActiveFilters: boolean;
   onClearFilters: () => void;
+  /** 日历选日时锁定为发表日模式 */
+  calendarDay?: string | null;
 }
 
 export default function DigestFilterBar({
@@ -46,7 +48,9 @@ export default function DigestFilterBar({
   totalCount,
   hasActiveFilters,
   onClearFilters,
+  calendarDay = null,
 }: DigestFilterBarProps) {
+  const calendarLocked = Boolean(calendarDay);
   return (
     <section className="filter-bar" aria-label="筛选">
       <div className="filter-bar__row">
@@ -80,9 +84,10 @@ export default function DigestFilterBar({
           <span className="filter-bar__label">时间</span>
           <select
             className="filter-bar__select filter-bar__select--mode"
-            value={dateFilterMode}
+            value={calendarLocked ? "published" : dateFilterMode}
             onChange={(e) => onDateFilterModeChange(e.target.value as DateFilterMode)}
-            title={dateFilterModeLabel(dateFilterMode)}
+            title={calendarLocked ? "日历选日固定为发表/周榜日" : dateFilterModeLabel(dateFilterMode)}
+            disabled={calendarLocked}
           >
             <option value="window">数据窗</option>
             <option value="published">发表日</option>

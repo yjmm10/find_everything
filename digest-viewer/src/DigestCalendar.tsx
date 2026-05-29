@@ -156,8 +156,11 @@ export default function DigestCalendar({
       </button>
 
       <div className="calendar__weekdays">
-        {["日", "一", "二", "三", "四", "五", "六"].map((w) => (
-          <span key={w} className="calendar__weekday">
+        {["日", "一", "二", "三", "四", "五", "六"].map((w, i) => (
+          <span
+            key={w}
+            className={`calendar__weekday ${i === 0 ? "calendar__weekday--sun" : ""}`}
+          >
             {w}
           </span>
         ))}
@@ -177,6 +180,8 @@ export default function DigestCalendar({
             const isSelected = selectedDay === day;
             const isToday = day === today;
 
+            const isSunday = parseDay(day).getDay() === 0;
+
             return (
               <button
                 key={day}
@@ -188,6 +193,7 @@ export default function DigestCalendar({
                   hasCrawl ? "calendar__day--crawl" : "",
                   isSelected ? "calendar__day--selected" : "",
                   isToday ? "calendar__day--today" : "",
+                  isSunday ? "calendar__day--sun" : "",
                 ]
                   .filter(Boolean)
                   .join(" ")}

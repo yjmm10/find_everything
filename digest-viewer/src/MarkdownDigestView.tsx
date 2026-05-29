@@ -67,9 +67,11 @@ export default function MarkdownDigestView({
                 className={`md-view__item ${selectedSlug === u.slug ? "md-view__item--active" : ""}`}
                 onClick={() => onSelectSlug(u.slug)}
               >
-                <span className="md-view__item-slug">{u.slug}</span>
+                <span className="md-view__item-slug">
+                  {u.dateStart && u.dateEnd ? `${u.dateStart} ~ ${u.dateEnd}` : u.slug}
+                </span>
                 <span className="md-view__item-meta">
-                  {u.dateStart && u.dateEnd ? `${u.dateStart} ~ ${u.dateEnd}` : "—"}
+                  {u.entryCount} 条
                   {u.crawlDate ? ` · 抓取 ${u.crawlDate}` : ""}
                 </span>
               </button>
@@ -80,7 +82,11 @@ export default function MarkdownDigestView({
 
       <article className="md-view__article" aria-label="Markdown 周报原文">
         <header className="md-view__article-head">
-          <h2 className="md-view__article-title">{meta?.slug ?? "—"}</h2>
+          <h2 className="md-view__article-title">
+            {meta?.dateStart && meta?.dateEnd
+              ? `${meta.dateStart} ~ ${meta.dateEnd}`
+              : meta?.slug ?? "—"}
+          </h2>
           {meta && (
             <p className="md-view__article-meta">
               {embeddedBody ? (

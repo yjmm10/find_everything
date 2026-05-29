@@ -22,6 +22,10 @@ export default function RunStrip({
 
   return (
     <section className="run-strip" aria-label="抓取期次">
+      <div className="run-strip__head">
+        <span className="run-strip__label">期次（整周 Markdown）</span>
+        <span className="run-strip__hint">点胶囊筛条目 · 原文看周报</span>
+      </div>
       <div className="run-strip__scroll">
         {updates.map((u) => {
           const active = selectedSlug === u.slug;

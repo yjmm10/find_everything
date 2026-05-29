@@ -1,25 +1,23 @@
 import { useEffect, useMemo, useState } from "react";
 import DigestCalendar from "./DigestCalendar";
 import DigestFilterBar from "./DigestFilterBar";
+import EntryCard from "./EntryCard";
+import FilterContextBanner from "./FilterContextBanner";
 import MarkdownDigestView from "./MarkdownDigestView";
+import ResultsHeader from "./ResultsHeader";
 import RunStrip from "./RunStrip";
-import type { DigestEntry, DigestSection, DigestSource, DigestsPayload } from "./types";
+import type { DigestSection, DigestSource, DigestsPayload } from "./types";
+import { countBySource, digestWindowLabel } from "./entryDisplay";
 import { parseDay } from "./dateUtils";
 import { parseRouteHash, setRouteHash } from "./routeHash";
 import {
   type DateFilterMode,
-  effectivePublishedDay,
   entryMatchesDateRange,
   entryMatchesDay,
 } from "./filterUtils";
 import "./App.css";
 
-function digestOptionLabel(slug: string, dateStart?: string, dateEnd?: string): string {
-  if (dateStart && dateEnd) return `${dateStart} ~ ${dateEnd}`;
-  return slug.replace(/_\d{8}T\d{6}Z$/, "");
-}
-
-function isPlaceholderEntry(e: DigestEntry): boolean {
+function isPlaceholderEntry(e: { title: string; link: string | null }): boolean {
   const t = e.title.trim();
   if ((t === "(无)" || t === "（无）") && !e.link) return true;
   return false;
@@ -39,7 +37,7 @@ function sourceBadgeClass(s: DigestSource): string {
   return `source-badge source-badge--${s}`;
 }
 
-function matchesKeyword(entry: DigestEntry, q: string): boolean {
+function matchesKeyword(entry: { title: string; summary: string; keywords: string; tags: string | null; publishedAt: string | null; subject: string | null; digestSlug: string; source: DigestSource }, q: string): boolean {
   const t = q.trim().toLowerCase();
   if (!t) return true;
   const hay = [
@@ -126,11 +124,19 @@ export default function App() {
     dateFilterMode,
   ]);
 
+  const selectedDigestLabel = useMemo(() => {
+    if (!selectedDigestSlug || !data) return "";
+    const d = data.digests.find((x) => x.slug === selectedDigestSlug);
+    return d ? digestWindowLabel(d.dateStart, d.dateEnd, d.slug) : "";
+  }, [data, selectedDigestSlug]);
+
+  const filteredSourceCounts = useMemo(() => countBySource(filtered), [filtered]);
+
   const digestOptions = useMemo(() => {
     if (!data) return [];
     return data.digests.map((d) => ({
       slug: d.slug,
-      label: digestOptionLabel(d.slug, d.dateStart, d.dateEnd),
+      label: digestWindowLabel(d.dateStart, d.dateEnd, d.slug),
     }));
   }, [data]);
 
@@ -358,6 +364,19 @@ export default function App() {
             totalCount={data.entries.length}
             hasActiveFilters={hasActiveFilters}
             onClearFilters={clearFilters}
+            calendarDay={calendarDay}
+          />
+
+          <FilterContextBanner
+            calendarDay={calendarDay}
+            keyword={keyword}
+            selectedDigestLabel={selectedDigestLabel}
+            dateFilterMode={entryDateMode}
+            sourceCounts={filteredSourceCounts}
+            filteredCount={filtered.length}
+            onClearCalendar={() => handleCalendarDay(null)}
+            onClearKeyword={() => setKeyword("")}
+            onClearDigest={() => selectDigestSlug("")}
           />
 
           <RunStrip
@@ -386,63 +405,15 @@ export default function App() {
         </details>
       )}
 
+      <ResultsHeader
+        count={filtered.length}
+        calendarDay={calendarDay}
+        selectedDigestLabel={selectedDigestLabel}
+      />
+
       <ul className="card-list">
         {filtered.map((e) => (
-          <li key={e.id} className="card">
-            <div className="card__top">
-              <span className={sourceBadgeClass(e.source)}>{SOURCE_LABEL[e.source]}</span>
-              {e.score != null && <span className="score">评分 {e.score}</span>}
-            </div>
-            <h2 className="card__title">{e.title === "(无标题)" ? "（无标题）" : e.title}</h2>
-            {e.summary ? <p className="card__summary">{e.summary}</p> : null}
-            <dl className="card__meta card__meta--grid">
-              {!selectedDigestSlug && (
-                <div>
-                  <dt>期次</dt>
-                  <dd>{digestOptionLabel(e.digestSlug, e.dateStart, e.dateEnd)}</dd>
-                </div>
-              )}
-              {(() => {
-                const pub =
-                  e.source === "github_weekly" || e.source === "github"
-                    ? effectivePublishedDay(e)
-                    : e.publishedAt?.slice(0, 10) || null;
-                return pub ? (
-                  <div>
-                    <dt>{e.source === "github_weekly" ? "周榜（周日）" : "发表"}</dt>
-                    <dd>{pub}</dd>
-                  </div>
-                ) : null;
-              })()}
-              {e.tags ? (
-                <div>
-                  <dt>标签</dt>
-                  <dd>{e.tags}</dd>
-                </div>
-              ) : null}
-              {e.subject ? (
-                <div>
-                  <dt>学科</dt>
-                  <dd>{e.subject}</dd>
-                </div>
-              ) : null}
-              {(e.star || e.fork || e.language) && (
-                <div>
-                  <dt>仓库</dt>
-                  <dd>
-                    {[e.star && `★ ${e.star}`, e.fork && `⑂ ${e.fork}`, e.language]
-                      .filter(Boolean)
-                      .join(" · ")}
-                  </dd>
-                </div>
-              )}
-            </dl>
-            {e.link ? (
-              <a className="card__link" href={e.link} target="_blank" rel="noreferrer">
-                打开链接 →
-              </a>
-            ) : null}
-          </li>
+          <EntryCard key={e.id} entry={e} showDigest={!selectedDigestSlug} />
         ))}
       </ul>
 
