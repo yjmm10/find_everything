@@ -8,8 +8,9 @@ import { parseDay } from "./dateUtils";
 import { parseRouteHash, setRouteHash } from "./routeHash";
 import {
   type DateFilterMode,
+  effectivePublishedDay,
   entryMatchesDateRange,
-  overlapsRange,
+  entryMatchesDay,
 } from "./filterUtils";
 import "./App.css";
 
@@ -90,19 +91,40 @@ export default function App() {
       .catch((e) => setLoadError(String(e)));
   }, []);
 
+  /** 日历选日：按发表/发布日筛条目；期次条与 Markdown 仍为整周 */
+  const entryDateMode: DateFilterMode = calendarDay ? "published" : dateFilterMode;
+
   const filtered = useMemo(() => {
     if (!data) return [];
-    return data.entries.filter((e) => {
+    const list = data.entries.filter((e) => {
       if (isPlaceholderEntry(e)) return false;
       if (selectedDigestSlug && e.digestSlug !== selectedDigestSlug) return false;
       if (!sources[e.source]) return false;
       if (!matchesKeyword(e, keyword)) return false;
-      if (dateFrom || dateTo) {
+      if (calendarDay) {
+        if (!entryMatchesDay(e, calendarDay, "published")) return false;
+      } else if (dateFrom || dateTo) {
         if (!entryMatchesDateRange(e, dateFrom, dateTo, dateFilterMode)) return false;
       }
       return true;
     });
-  }, [data, keyword, selectedDigestSlug, dateFrom, dateTo, sources, dateFilterMode]);
+    list.sort((a, b) => {
+      const sa = a.score == null ? -Infinity : Number(a.score);
+      const sb = b.score == null ? -Infinity : Number(b.score);
+      if (sb !== sa) return sb - sa;
+      return a.title.localeCompare(b.title, "zh-CN");
+    });
+    return list;
+  }, [
+    data,
+    keyword,
+    selectedDigestSlug,
+    dateFrom,
+    dateTo,
+    calendarDay,
+    sources,
+    dateFilterMode,
+  ]);
 
   const digestOptions = useMemo(() => {
     if (!data) return [];
@@ -153,6 +175,7 @@ export default function App() {
   const handleCalendarDay = (day: string | null) => {
     setCalendarDay(day);
     if (day) {
+      setDateFilterMode("published");
       setDateFrom(day);
       setDateTo(day);
       setSelectedDigestSlug("");
@@ -198,28 +221,19 @@ export default function App() {
     for (const d of data.digests) {
       if (selectedDigestSlug && d.slug !== selectedDigestSlug) continue;
       if (calendarDay && !selectedDigestSlug) {
-        if (dateFilterMode === "crawl" && d.crawlDate !== calendarDay) continue;
-        if (
-          dateFilterMode === "window" &&
-          !overlapsRange(d.dateStart, d.dateEnd, calendarDay, calendarDay)
-        ) {
-          continue;
-        }
-        if (dateFilterMode === "published") {
-          const hasPub = data.entries.some(
-            (e) =>
-              e.digestSlug === d.slug &&
-              e.publishedAt?.slice(0, 10) === calendarDay,
-          );
-          if (!hasPub) continue;
-        }
+        const hasPub = data.entries.some(
+          (e) =>
+            e.digestSlug === d.slug &&
+            entryMatchesDay(e, calendarDay, "published"),
+        );
+        if (!hasPub) continue;
       }
       for (const s of d.sections ?? []) {
         rows.push({ ...s, digestSlug: d.slug });
       }
     }
     return rows;
-  }, [data, selectedDigestSlug, calendarDay, dateFilterMode]);
+  }, [data, selectedDigestSlug, calendarDay]);
 
   useEffect(() => {
     if (!data?.updates?.length) return;
@@ -318,7 +332,6 @@ export default function App() {
             selectedDay={calendarDay}
             viewYear={viewYear}
             viewMonth={viewMonth}
-            dateFilterMode={dateFilterMode}
             onSelectDay={handleCalendarDay}
             onViewMonthChange={(y, m) => {
               setViewYear(y);
@@ -334,7 +347,7 @@ export default function App() {
             selectedDigestSlug={selectedDigestSlug}
             digestOptions={digestOptions}
             onDigestChange={selectDigestSlug}
-            dateFilterMode={dateFilterMode}
+            dateFilterMode={entryDateMode}
             onDateFilterModeChange={setDateFilterMode}
             dateFrom={dateFrom}
             dateTo={dateTo}
@@ -389,12 +402,18 @@ export default function App() {
                   <dd>{digestOptionLabel(e.digestSlug, e.dateStart, e.dateEnd)}</dd>
                 </div>
               )}
-              {e.publishedAt ? (
-                <div>
-                  <dt>发表</dt>
-                  <dd>{e.publishedAt.slice(0, 10)}</dd>
-                </div>
-              ) : null}
+              {(() => {
+                const pub =
+                  e.source === "github_weekly" || e.source === "github"
+                    ? effectivePublishedDay(e)
+                    : e.publishedAt?.slice(0, 10) || null;
+                return pub ? (
+                  <div>
+                    <dt>{e.source === "github_weekly" ? "周榜（周日）" : "发表"}</dt>
+                    <dd>{pub}</dd>
+                  </div>
+                ) : null;
+              })()}
               {e.tags ? (
                 <div>
                   <dt>标签</dt>

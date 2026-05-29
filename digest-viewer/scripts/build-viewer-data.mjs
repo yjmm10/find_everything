@@ -5,7 +5,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { dedupeEntriesByLink } from "./dedupe-entries.mjs";
+import {
+  compareScoreDesc,
+  dedupeEntriesByLink,
+  dedupeEntriesGlobalKeepEarliest,
+} from "./dedupe-entries.mjs";
+import { sundayForGithubWeekly } from "./date-utils.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, "../..");
@@ -21,6 +26,33 @@ const ALL_SOURCES = [
   "github_weekly",
   "github_search",
 ];
+
+function runExecutedAt(run) {
+  return run.crawl?.executedAt ?? run.id ?? "";
+}
+
+/** 同一数据窗只保留最早一次抓取 */
+function dedupeRunsByWindow(runs) {
+  const byWindow = new Map();
+  let removed = 0;
+  for (const run of runs) {
+    const start = run.window?.dateStart ?? "";
+    const end = run.window?.dateEnd ?? "";
+    const key = `${start}\0${end}`;
+    const prev = byWindow.get(key);
+    if (!prev) {
+      byWindow.set(key, run);
+      continue;
+    }
+    removed += 1;
+    if (runExecutedAt(run) < runExecutedAt(prev)) {
+      byWindow.set(key, run);
+    }
+  }
+  const out = [...byWindow.values()];
+  out.sort((a, b) => runExecutedAt(b).localeCompare(runExecutedAt(a)));
+  return { runs: out, removed };
+}
 
 function loadRuns() {
   const indexPath = path.join(DATA, "index.json");
@@ -40,9 +72,9 @@ function loadRuns() {
     for (const f of files) {
       runs.push(JSON.parse(fs.readFileSync(path.join(runsDir, f), "utf-8")));
     }
-    runs.sort((a, b) => (a.crawl?.executedAt < b.crawl?.executedAt ? 1 : -1));
   }
-  return runs;
+  const { runs: deduped } = dedupeRunsByWindow(runs);
+  return deduped;
 }
 
 function sectionToFrontend(sec) {
@@ -63,12 +95,21 @@ function flattenEntries(run) {
   const winEnd = run.window?.dateEnd ?? "";
   const entries = [];
   for (const sec of run.sections ?? []) {
+    const secStart = sec.dateStart || winStart;
+    const secEnd = sec.dateEnd || winEnd;
     for (const e of sec.entries ?? []) {
+      let publishedAt = e.publishedAt ?? null;
+      if (
+        (sec.source === "github_weekly" || sec.source === "github") &&
+        !publishedAt
+      ) {
+        publishedAt = sundayForGithubWeekly(secStart, secEnd);
+      }
       entries.push({
         id: e.id,
         digestSlug: run.id,
-        dateStart: sec.dateStart || winStart,
-        dateEnd: sec.dateEnd || winEnd,
+        dateStart: secStart,
+        dateEnd: secEnd,
         keywords: e.keywords || sec.keywords || "",
         source: sec.source,
         score: e.score ?? null,
@@ -79,7 +120,7 @@ function flattenEntries(run) {
         fork: e.extra?.fork ?? null,
         language: e.extra?.language ?? null,
         tags: e.tags ?? null,
-        publishedAt: e.publishedAt ?? null,
+        publishedAt,
         subject: e.extra?.subject ?? null,
         crawlDate,
       });
@@ -110,7 +151,25 @@ function sectionsWithEntryCounts(run, entries) {
 }
 
 function main() {
+  const indexPath = path.join(DATA, "index.json");
+  const runsDir = path.join(DATA, "runs");
+  let rawRunCount = 0;
+  if (fs.existsSync(runsDir)) {
+    if (fs.existsSync(indexPath)) {
+      const index = JSON.parse(fs.readFileSync(indexPath, "utf-8"));
+      rawRunCount = (index.runs ?? []).filter((s) =>
+        fs.existsSync(path.join(runsDir, `${s.id}.json`)),
+      ).length;
+    } else {
+      rawRunCount = fs.readdirSync(runsDir).filter((f) => f.endsWith(".json")).length;
+    }
+  }
   const runs = loadRuns();
+  if (rawRunCount > runs.length) {
+    console.log(
+      `build-viewer-data: 同期次去重 ${rawRunCount - runs.length} 个重复 run`,
+    );
+  }
   const generatedAt = new Date().toISOString();
   const allEntries = [];
   let perRunRemoved = 0;
@@ -136,11 +195,14 @@ function main() {
 
   let entries = allEntries;
   let globalRemoved = 0;
-  if (process.env.DIGEST_DEDUPE_LINK === "1") {
-    const deduped = dedupeEntriesByLink(allEntries, { global: true });
+  const skipGlobal = process.env.DIGEST_DEDUPE_LINK === "0";
+  if (!skipGlobal) {
+    const deduped = dedupeEntriesGlobalKeepEarliest(allEntries);
     entries = deduped.entries;
     globalRemoved = deduped.removed;
   }
+  entries.sort(compareScoreDesc);
+
   if (perRunRemoved > 0) {
     console.log(
       `build-viewer-data: 单期内按链接去重 ${perRunRemoved} 条重复`,
@@ -148,7 +210,7 @@ function main() {
   }
   if (globalRemoved > 0) {
     console.log(
-      `build-viewer-data: 跨期按链接去重 ${globalRemoved} 条（DIGEST_DEDUPE_LINK=1）`,
+      `build-viewer-data: 跨期按链接去重 ${globalRemoved} 条（保留时间最早）`,
     );
   }
 

@@ -1,4 +1,26 @@
+import { sundayForGithubWeekly } from "./dateUtils";
+
 export type DateFilterMode = "window" | "published" | "crawl";
+
+const GITHUB_WEEKLY_SOURCES = new Set(["github_weekly", "github"]);
+
+export interface EntryForPublishedDay {
+  dateStart: string;
+  dateEnd: string;
+  publishedAt: string | null;
+  source?: string;
+  crawlDate?: string;
+}
+
+/** 日历「发表日」：GitHub 周榜固定为数据窗内周日，其余用 publishedAt */
+export function effectivePublishedDay(entry: EntryForPublishedDay): string | null {
+  if (entry.source && GITHUB_WEEKLY_SOURCES.has(entry.source)) {
+    const sun = sundayForGithubWeekly(entry.dateStart, entry.dateEnd);
+    if (sun) return sun;
+  }
+  const pub = entry.publishedAt?.slice(0, 10) ?? "";
+  return /^\d{4}-\d{2}-\d{2}$/.test(pub) ? pub : null;
+}
 
 export function overlapsRange(
   start: string,
@@ -13,16 +35,11 @@ export function overlapsRange(
   return start <= fe && end >= fs;
 }
 
-export interface EntryForDayFilter {
-  dateStart: string;
-  dateEnd: string;
-  publishedAt: string | null;
-  crawlDate?: string;
-}
+export interface EntryForDayFilter extends EntryForPublishedDay {}
 
 const DATE_FILTER_LABEL: Record<DateFilterMode, string> = {
   window: "数据窗（整周）",
-  published: "发表/发布日（按日）",
+  published: "发表/发布日（周榜=周日）",
   crawl: "抓取执行日",
 };
 
@@ -41,9 +58,8 @@ export function entryMatchesDay(
     return overlapsRange(entry.dateStart, entry.dateEnd, day, day);
   }
   if (mode === "published") {
-    const pub = entry.publishedAt?.slice(0, 10) ?? "";
-    if (/^\d{4}-\d{2}-\d{2}$/.test(pub)) return pub === day;
-    return false;
+    const pub = effectivePublishedDay(entry);
+    return pub === day;
   }
   if (mode === "crawl") {
     return (entry.crawlDate ?? "") === day;
@@ -67,8 +83,8 @@ export function entryMatchesDateRange(
     return overlapsRange(entry.dateStart, entry.dateEnd, from, to);
   }
   if (mode === "published") {
-    const pub = entry.publishedAt?.slice(0, 10) ?? "";
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(pub)) return false;
+    const pub = effectivePublishedDay(entry);
+    if (!pub) return false;
     return pub >= (from || "0000-01-01") && pub <= (to || "9999-12-31");
   }
   if (mode === "crawl") {

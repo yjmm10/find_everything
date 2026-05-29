@@ -27,6 +27,26 @@ export function dayOverlapsWindow(day: string, start: string, end: string): bool
   return start <= day && day <= end;
 }
 
+/** 数据窗内的周日（GitHub 周榜按「周天」定位） */
+export function sundayInWindow(dateStart: string, dateEnd: string): string | null {
+  if (!dateStart || !dateEnd || dateStart > dateEnd) return null;
+  const cur = parseDay(dateStart);
+  const end = parseDay(dateEnd);
+  while (cur <= end) {
+    if (cur.getDay() === 0) return formatDay(cur);
+    cur.setDate(cur.getDate() + 1);
+  }
+  const d = new Date(end);
+  while (d.getDay() !== 0) d.setDate(d.getDate() - 1);
+  const day = formatDay(d);
+  return day >= dateStart ? day : null;
+}
+
+/** GitHub 周榜条目用于日历/按日筛选的生效日期 */
+export function sundayForGithubWeekly(dateStart: string, dateEnd: string): string | null {
+  return sundayInWindow(dateStart, dateEnd);
+}
+
 const WEEKDAY_ZH = ["日", "一", "二", "三", "四", "五", "六"];
 
 export function weekdayLabel(day: string): string {

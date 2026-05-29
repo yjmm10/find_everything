@@ -51,7 +51,7 @@ data/
   runs/{runId}.json    # 单次抓取完整记录（含 content.markdownBody）
 ```
 
-构建产物：`digest-viewer/public/viewer-data.json`（合并全部 runs，**单期内按链接去重**；设 `DIGEST_DEDUPE_LINK=1` 可跨期去重）。
+构建产物：`digest-viewer/public/viewer-data.json`（同期次去重、**跨期按链接保留最早一条**、按评分降序；`DIGEST_DEDUPE_LINK=0` 可关闭跨期去重）。
 
 ## Vercel 部署
 

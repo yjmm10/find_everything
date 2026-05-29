@@ -20,10 +20,12 @@ export interface DigestCalendarProps {
   selectedDay: string | null;
   viewYear: number;
   viewMonth: number;
-  dateFilterMode: DateFilterMode;
   onSelectDay: (day: string | null) => void;
   onViewMonthChange: (year: number, month: number) => void;
 }
+
+/** 日历按发表/发布日统计与筛选，不按整周数据窗铺展 */
+const CALENDAR_DATE_MODE: DateFilterMode = "published";
 
 function shiftMonth(year: number, month: number, delta: number): [number, number] {
   const d = new Date(year, month - 1 + delta, 1);
@@ -92,13 +94,12 @@ export default function DigestCalendar({
   selectedDay,
   viewYear,
   viewMonth,
-  dateFilterMode,
   onSelectDay,
   onViewMonthChange,
 }: DigestCalendarProps) {
   const activity = useMemo(
-    () => buildDayActivityMap(updates, entries, dateFilterMode),
-    [updates, entries, dateFilterMode],
+    () => buildDayActivityMap(updates, entries, CALENDAR_DATE_MODE),
+    [updates, entries],
   );
 
   const weeks = useMemo(
@@ -108,7 +109,7 @@ export default function DigestCalendar({
 
   const today = formatDay(new Date());
   const selectedCount = selectedDay
-    ? countEntriesOnDay(entries, selectedDay, dateFilterMode)
+    ? countEntriesOnDay(entries, selectedDay, CALENDAR_DATE_MODE)
     : 0;
 
   return (
@@ -168,12 +169,10 @@ export default function DigestCalendar({
             if (!day) {
               return <span key={`${wi}-${di}`} className="calendar__cell calendar__cell--empty" />;
             }
-            const dayCount = countEntriesOnDay(entries, day, dateFilterMode);
+            const dayCount = countEntriesOnDay(entries, day, CALENDAR_DATE_MODE);
             const act = activity.get(day);
-            const hasData = dayCount > 0 || (dateFilterMode !== "published" && (act?.entryCount ?? 0) > 0);
-            const displayCount = dateFilterMode === "published" || dateFilterMode === "crawl"
-              ? dayCount
-              : (act?.entryCount ?? 0);
+            const hasData = dayCount > 0;
+            const displayCount = dayCount;
             const hasCrawl = (act?.crawlCount ?? 0) > 0;
             const isSelected = selectedDay === day;
             const isToday = day === today;
@@ -213,7 +212,7 @@ export default function DigestCalendar({
 
       <ul className="calendar__legend">
         <li>
-          <span className="calendar__dot calendar__dot--data" /> {dateFilterModeLabel(dateFilterMode)}
+          <span className="calendar__dot calendar__dot--data" /> {dateFilterModeLabel(CALENDAR_DATE_MODE)}
         </li>
         <li>
           <span className="calendar__dot calendar__dot--crawl" /> 抓取执行日
