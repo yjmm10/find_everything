@@ -1,7 +1,374 @@
 {
   "schemaVersion": "1",
-  "generatedAt": "2026-05-29T05:23:55.882375Z",
+  "generatedAt": "2026-05-29T09:01:39.102975Z",
   "runs": [
+    {
+      "id": "2026-05-15_2026-05-21_20260529T085939Z",
+      "jsonUrl": "data/runs/2026-05-15_2026-05-21_20260529T085939Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T08:59:39.704266Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-05-15",
+        "dateEnd": "2026-05-21"
+      },
+      "entryCount": 59,
+      "sourceCounts": {
+        "arxiv": 1,
+        "semantic_scholar": 1,
+        "openalex": 14,
+        "rss": 1,
+        "github_weekly": 21,
+        "github_search": 21
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-05-08_2026-05-14_20260529T085607Z",
+      "jsonUrl": "data/runs/2026-05-08_2026-05-14_20260529T085607Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T08:56:07.391830Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-05-08",
+        "dateEnd": "2026-05-14"
+      },
+      "entryCount": 57,
+      "sourceCounts": {
+        "arxiv": 1,
+        "semantic_scholar": 1,
+        "openalex": 12,
+        "rss": 1,
+        "github_weekly": 21,
+        "github_search": 21
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-05-01_2026-05-07_20260529T085016Z",
+      "jsonUrl": "data/runs/2026-05-01_2026-05-07_20260529T085016Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T08:50:16.068682Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-05-01",
+        "dateEnd": "2026-05-07"
+      },
+      "entryCount": 44,
+      "sourceCounts": {
+        "arxiv": 1,
+        "semantic_scholar": 1,
+        "openalex": 10,
+        "rss": 1,
+        "github_weekly": 21,
+        "github_search": 10
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-04-30_2026-04-30_20260529T081716Z",
+      "jsonUrl": "data/runs/2026-04-30_2026-04-30_20260529T081716Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T08:17:16.458897Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-04-30",
+        "dateEnd": "2026-04-30"
+      },
+      "entryCount": 56,
+      "sourceCounts": {
+        "arxiv": 1,
+        "semantic_scholar": 1,
+        "openalex": 2,
+        "rss": 1,
+        "github_weekly": 21,
+        "github_search": 30
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-04-23_2026-04-29_20260529T081424Z",
+      "jsonUrl": "data/runs/2026-04-23_2026-04-29_20260529T081424Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T08:14:24.825091Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-04-23",
+        "dateEnd": "2026-04-29"
+      },
+      "entryCount": 59,
+      "sourceCounts": {
+        "arxiv": 1,
+        "semantic_scholar": 1,
+        "openalex": 13,
+        "rss": 1,
+        "github_weekly": 21,
+        "github_search": 22
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-03-26_2026-04-01_20260529T080731Z",
+      "jsonUrl": "data/runs/2026-03-26_2026-04-01_20260529T080731Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T08:07:31.415499Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-03-26",
+        "dateEnd": "2026-04-01"
+      },
+      "entryCount": 35,
+      "sourceCounts": {
+        "arxiv": 1,
+        "semantic_scholar": 1,
+        "openalex": 6,
+        "rss": 1,
+        "github_weekly": 7,
+        "github_search": 19
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-03-19_2026-03-25_20260529T080440Z",
+      "jsonUrl": "data/runs/2026-03-19_2026-03-25_20260529T080440Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T08:04:40.915432Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-03-19",
+        "dateEnd": "2026-03-25"
+      },
+      "entryCount": 55,
+      "sourceCounts": {
+        "arxiv": 1,
+        "semantic_scholar": 1,
+        "openalex": 10,
+        "rss": 1,
+        "github_weekly": 21,
+        "github_search": 21
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-03-12_2026-03-18_20260529T075901Z",
+      "jsonUrl": "data/runs/2026-03-12_2026-03-18_20260529T075901Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T07:59:01.233048Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-03-12",
+        "dateEnd": "2026-03-18"
+      },
+      "entryCount": 53,
+      "sourceCounts": {
+        "arxiv": 2,
+        "semantic_scholar": 1,
+        "openalex": 17,
+        "rss": 1,
+        "github_weekly": 21,
+        "github_search": 11
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-03-05_2026-03-11_20260529T075624Z",
+      "jsonUrl": "data/runs/2026-03-05_2026-03-11_20260529T075624Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T07:56:24.741317Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-03-05",
+        "dateEnd": "2026-03-11"
+      },
+      "entryCount": 50,
+      "sourceCounts": {
+        "arxiv": 1,
+        "semantic_scholar": 1,
+        "openalex": 9,
+        "rss": 1,
+        "github_weekly": 15,
+        "github_search": 23
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-02-26_2026-03-04_20260529T075058Z",
+      "jsonUrl": "data/runs/2026-02-26_2026-03-04_20260529T075058Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T07:50:58.177378Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-02-26",
+        "dateEnd": "2026-03-04"
+      },
+      "entryCount": 55,
+      "sourceCounts": {
+        "arxiv": 1,
+        "semantic_scholar": 1,
+        "openalex": 1,
+        "rss": 1,
+        "github_weekly": 21,
+        "github_search": 30
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-02-19_2026-02-25_20260529T074538Z",
+      "jsonUrl": "data/runs/2026-02-19_2026-02-25_20260529T074538Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T07:45:38.138053Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-02-19",
+        "dateEnd": "2026-02-25"
+      },
+      "entryCount": 52,
+      "sourceCounts": {
+        "arxiv": 1,
+        "semantic_scholar": 1,
+        "openalex": 11,
+        "rss": 1,
+        "github_weekly": 21,
+        "github_search": 17
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-02-12_2026-02-18_20260529T073947Z",
+      "jsonUrl": "data/runs/2026-02-12_2026-02-18_20260529T073947Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T07:39:47.498673Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-02-12",
+        "dateEnd": "2026-02-18"
+      },
+      "entryCount": 54,
+      "sourceCounts": {
+        "openalex": 9,
+        "github_weekly": 21,
+        "github_search": 24
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-02-05_2026-02-11_20260529T073448Z",
+      "jsonUrl": "data/runs/2026-02-05_2026-02-11_20260529T073448Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T07:34:48.707140Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-02-05",
+        "dateEnd": "2026-02-11"
+      },
+      "entryCount": 54,
+      "sourceCounts": {
+        "arxiv": 1,
+        "semantic_scholar": 1,
+        "openalex": 8,
+        "rss": 1,
+        "github_weekly": 21,
+        "github_search": 22
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-01-29_2026-02-04_20260529T072727Z",
+      "jsonUrl": "data/runs/2026-01-29_2026-02-04_20260529T072727Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T07:27:27.633766Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-01-29",
+        "dateEnd": "2026-02-04"
+      },
+      "entryCount": 39,
+      "sourceCounts": {
+        "arxiv": 2,
+        "openalex": 15,
+        "github_weekly": 10,
+        "github_search": 12
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-01-22_2026-01-28_20260529T072501Z",
+      "jsonUrl": "data/runs/2026-01-22_2026-01-28_20260529T072501Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T07:25:01.120489Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-01-22",
+        "dateEnd": "2026-01-28"
+      },
+      "entryCount": 56,
+      "sourceCounts": {
+        "arxiv": 1,
+        "semantic_scholar": 1,
+        "openalex": 15,
+        "rss": 1,
+        "github_weekly": 21,
+        "github_search": 17
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-01-15_2026-01-21_20260529T071518Z",
+      "jsonUrl": "data/runs/2026-01-15_2026-01-21_20260529T071518Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T07:15:18.526585Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-01-15",
+        "dateEnd": "2026-01-21"
+      },
+      "entryCount": 26,
+      "sourceCounts": {
+        "arxiv": 1,
+        "openalex": 4,
+        "github_weekly": 5,
+        "github_search": 16
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-01-08_2026-01-14_20260529T071246Z",
+      "jsonUrl": "data/runs/2026-01-08_2026-01-14_20260529T071246Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T07:12:46.584140Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-01-08",
+        "dateEnd": "2026-01-14"
+      },
+      "entryCount": 57,
+      "sourceCounts": {
+        "arxiv": 1,
+        "openalex": 8,
+        "github_weekly": 21,
+        "github_search": 27
+      },
+      "hasMarkdown": true
+    },
+    {
+      "id": "2026-01-01_2026-01-07_20260529T070847Z",
+      "jsonUrl": "data/runs/2026-01-01_2026-01-07_20260529T070847Z.json",
+      "crawlDate": "2026-05-29",
+      "executedAt": "2026-05-29T07:08:47.275028Z",
+      "status": "success",
+      "window": {
+        "dateStart": "2026-01-01",
+        "dateEnd": "2026-01-07"
+      },
+      "entryCount": 52,
+      "sourceCounts": {
+        "arxiv": 1,
+        "openalex": 14,
+        "github_weekly": 21,
+        "github_search": 16
+      },
+      "hasMarkdown": true
+    },
     {
       "id": "2026-05-22_2026-05-28_20260529T052355Z",
       "jsonUrl": "data/runs/2026-05-22_2026-05-28_20260529T052355Z.json",

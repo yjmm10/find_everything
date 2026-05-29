@@ -9,7 +9,7 @@
 | **`master`** | 抓取与构建**源码**（Python、`digest-viewer`、workflow） |
 | **`gh-pages`** | **数据 + 展示**：`data/` JSON 归档 + 构建后的静态站点（GitHub Pages） |
 
-**定时抓取**（[weekly-digest.yml](../.github/workflows/weekly-digest.yml)）：
+**定时抓取**（[weekly-digest.yml](../.github/workflows/weekly-digest.yml)）：**每周五 UTC 12:00**（北京时间周五 20:00）自动运行。
 
 1. 检出并同步 **master**（最新抓取代码）
 2. 从 **gh-pages** 恢复历史 `data/`（若无则恢复 `docs/` 供迁移）
@@ -51,7 +51,7 @@ data/
   runs/{runId}.json    # 单次抓取完整记录（含 content.markdownBody）
 ```
 
-构建产物：`digest-viewer/public/viewer-data.json`（合并全部 runs，供前端筛选）。
+构建产物：`digest-viewer/public/viewer-data.json`（合并全部 runs，**单期内按链接去重**；设 `DIGEST_DEDUPE_LINK=1` 可跨期去重）。
 
 ## Vercel 部署
 

@@ -5,6 +5,9 @@ name: 📅 Weekly Tech Digest
 # 2. 从 gh-pages 恢复历史 data/，追加本次抓取结果
 # 3. 构建前端，将 dist + data/ 一并发布到 gh-pages（Pages 展示 + JSON 归档）
 # master 仅保留源码，不提交周报数据。
+#
+# 定时：每周五 UTC 12:00（北京时间周五 20:00），preset=week（前 7 天至昨日）。
+# 历史周次回填：scripts/backfill_weekly_runs.py（仅写 data/，构建由 digest-site 负责）。
 
 on:
   schedule:

@@ -64,11 +64,15 @@ def _rebuild_index(data_dir: str | Path) -> None:
     runs_dir = root / "runs"
     if not runs_dir.is_dir():
         return
-    summaries = []
+    by_id: dict[str, dict] = {}
     for path in sorted(runs_dir.glob("*.json"), reverse=True):
         run = json.loads(path.read_text(encoding="utf-8"))
-        summaries.append(run_to_index_summary(run))
-    summaries.sort(key=lambda r: r.get("executedAt", ""), reverse=True)
+        rid = run.get("id") or path.stem
+        summary = run_to_index_summary(run)
+        prev = by_id.get(rid)
+        if prev is None or summary.get("executedAt", "") >= prev.get("executedAt", ""):
+            by_id[rid] = summary
+    summaries = sorted(by_id.values(), key=lambda r: r.get("executedAt", ""), reverse=True)
     index = {
         "schemaVersion": SCHEMA_VERSION,
         "generatedAt": datetime.datetime.now(datetime.timezone.utc)
@@ -82,4 +86,5 @@ def _rebuild_index(data_dir: str | Path) -> None:
 
 if __name__ == "__main__":
     n = migrate_docs_to_json()
-    print(f"migrate: {n} docs → data/runs/")
+    _rebuild_index(Path("data"))
+    print(f"migrate: {n} docs → data/runs/（已重建 index.json）")

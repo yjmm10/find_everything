@@ -5,6 +5,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { dedupeEntriesByLink } from "./dedupe-entries.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, "../..");
@@ -239,7 +240,8 @@ function main() {
     const fileMeta = parseFileMeta(fileText);
     const crawlDate = crawlDateFromSlug(slug);
     const sections = parseSections(fileText);
-    const entries = parseMarkdownFile(full, slug, crawlDate);
+    const rawEntries = parseMarkdownFile(full, slug, crawlDate);
+    const { entries } = dedupeEntriesByLink(rawEntries, { digestSlug: slug });
     const meta =
       entries.length > 0
         ? {
@@ -271,22 +273,16 @@ function main() {
 
   digests.sort((a, b) => (a.slug < b.slug ? 1 : a.slug > b.slug ? -1 : 0));
 
-  /** 可选：多期合并时按链接去重（默认关闭，保留每次抓取的全部条目；设 DIGEST_DEDUPE_LINK=1 开启） */
+  /** 跨期合并：设 DIGEST_DEDUPE_LINK=1 时在全部期次间按链接去重（默认保留各次抓取） */
   let entries = allEntries;
   if (process.env.DIGEST_DEDUPE_LINK === "1") {
-    const seen = new Set();
-    entries = [];
-    for (const e of allEntries) {
-      const link = (e.link && String(e.link).trim()) || "";
-      if (link) {
-        if (seen.has(link)) continue;
-        seen.add(link);
-      }
-      entries.push(e);
-    }
-    if (entries.length !== allEntries.length) {
+    const { entries: deduped, removed } = dedupeEntriesByLink(allEntries, {
+      global: true,
+    });
+    entries = deduped;
+    if (removed > 0) {
       console.log(
-        `parse-digests: 按链接去重 ${allEntries.length} → ${entries.length} 条（DIGEST_DEDUPE_LINK=1）`,
+        `parse-digests: 跨期按链接去重 ${allEntries.length} → ${entries.length} 条（DIGEST_DEDUPE_LINK=1）`,
       );
     }
   }

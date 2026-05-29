@@ -1,0 +1,815 @@
+{
+  "schemaVersion": "1",
+  "id": "2026-02-05_2026-02-11_20260529T073448Z",
+  "crawl": {
+    "executedAt": "2026-05-29T07:34:48.707140Z",
+    "crawlDate": "2026-05-29",
+    "status": "success",
+    "trigger": "ci"
+  },
+  "window": {
+    "dateStart": "2026-02-05",
+    "dateEnd": "2026-02-11",
+    "preset": "week",
+    "mode": "custom"
+  },
+  "config": {
+    "keywords": "(uav|aerial) & (vlm|llm|mllm) & (rl)",
+    "date_range": {
+      "preset": "week"
+    },
+    "ai": {
+      "model": "MiniMax/MiniMax-M2.5",
+      "max_tokens": 4000
+    }
+  },
+  "content": {
+    "markdownBody": "## 📄 Arxiv 前沿论文\n\n> **爬取时间**：2026-05-29 07:34:48 UTC\n\n本表数据来自 Arxiv 论文检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)`，时间窗口 2026-02-05 ~ 2026-02-11。本周期内无符合关键词条件的论文。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 学科类别 |\n|------|------|------|------|------|----------|----------|\n| - | (无) | 本周期 Arxiv 无符合关键词的论文 | - | - | - | - |\n\n---\n\n## 🎓 Semantic Scholar\n\n本表数据来自 Semantic Scholar 论文检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-02-05 ~ 2026-02-11。本周期内无符合关键词条件的论文。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n|------|------|------|------|------|----------|------------|--------|\n| - | (无) | 本周期 Semantic Scholar 无符合关键词的论文 | - | - | - | - | - |\n\n---\n\n## 📚 OpenAlex\n\n本表数据来自 OpenAlex 论文检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-02-05 ~ 2026-02-11。筛选与主题（UAV/航空 + VLM/LLM/MLLM + 强化学习）相关的论文。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n|------|------|------|------|------|----------|------------|--------|\n| 9 | SpotAgent: Grounding Visual Geo-localization in Large Vision-Language Models through Agentic Reasoning | 提出基于智能体推理的视觉地理定位方法，利用 LVLMs 实现真实场景定位 | https://openalex.org/W7128744999 | LVLM,视觉地理定位,智能体推理,无人机 | 2026-02-10 | arXiv (Cornell University) | 0 |\n| 8 | AugVLA-3D: Depth-Driven Feature Augmentation for Vision-Language-Action Models | 提出针对 VLA 模型的深度驱动特征增强方法，提升 3D 机器人感知与控制 | https://openalex.org/W7128745195 | VLA,深度学习,机器人控制,特征增强 | 2026-02-11 | ArXiv.org | 0 |\n| 7 | Robustness Is a Function, Not a Number: A Factorized Comprehensive Study of OOD Robustness in Vision-Based Driving | 分解视觉驾驶中 OOD 鲁棒性因素，揭示策略失效根因 | https://openalex.org/W7128555455 | 鲁棒性,自动驾驶,视觉导航,OOD | 2026-02-09 | arXiv (Cornell University) | 0 |\n| 6 | SoK: The Pitfalls of Deep Reinforcement Learning for Cybersecurity | 系统梳理 DRL 在网络安全领域的应用挑战与陷阱 | https://openalex.org/W7128555868 | 深度强化学习,网络安全,DRL,系统研究 | 2026-02-09 | ArXiv.org | 0 |\n| 5 | Spectral-Temporal MoE: An RL-Driven Dual-Domain Transformer for Efficient Multi-Horizon Electrical Load Forecasting | 提出基于 RL 的双域 Transformer 用于长期负荷预测 | https://doi.org/10.20944/preprints202602.0786.v1 | 强化学习,负荷预测,Transformer,MoE | 2026-02-10 | Preprints.org | 0 |\n| 5 | Modified prioritized DDPG algorithm for joint beamforming and RIS phase optimization | 提出改进的优先 DDPG 算法优化 MISO 系统中的波束赋形与 RIS 相位 | https://doi.org/10.1038/s41598-026-36179-w | DDPG,强化学习,RIS,波束赋形 | 2026-02-11 | Scientific Reports | 0 |\n| 4 | Features as Rewards: Scalable Supervision for Open-Ended Tasks via Interpretability | 利用可解释性特征作为奖励信号，为开放任务提供可扩展监督 | https://openalex.org/W7128648866 | 可解释性,奖励设计,语言模型,监督学习 | 2026-02-10 | ArXiv.org | 0 |\n| 4 | The Critical Horizon: Inspection Design Principles for Multi-Stage Operations and Deep Reasoning | 探讨多阶段操作与深度推理中的检验设计原则 | https://openalex.org/W7128648516 | 深度推理,多阶段操作,AI推理,检验设计 | 2026-02-10 | ArXiv.org | 0 |\n\n---\n\n## 📰 优质资讯/论坛\n\n本表数据来自资讯/RSS 源检索，时间窗口 2026-02-05 ~ 2026-02-11。本周期内无符合条件的高质量资讯。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 |\n|------|------|------|------|------|\n| - | (无) | 本周期无符合关键词的优质资讯 | - | - |\n\n---\n\n## 🔥 GitHub 周榜\n\n本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，**不做**关键词过滤或删减，反映本周全站热门开源项目。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n|------|------|------|------|------|------|------|--------|\n| 10 | Lum1104/Understand-Anything | 将任意代码转换为可交互的知识图谱，支持 Claude Code、Cursor 等主流 AI 编程工具 | https://github.com/Lum1104/Understand-Anything | 知识图谱,代码理解,AI编程,开发工具 | - | - | - |\n| 10 | colbymchenry/codegraph | 为 Claude Code 等 AI 编程工具提供预索引代码知识图谱，降低 token 消耗 | https://github.com/colbymchenry/codegraph | 代码图谱,AI编程,语义索引,开发效率 | - | - | - |\n| 9 | harry0703/MoneyPrinterTurbo | 利用 AI 大模型一键生成高清短视频，支持文案、素材、字幕、配音全自动化 | https://github.com/harry0703/MoneyPrinterTurbo | AI视频生成,短视频,大模型,内容创作 | - | - | - |\n| 9 | anthropics/knowledge-work-plugins | 为知识工作者提供的 Claude 插件集合，扩展 AI 助手专业能力 | https://github.com/anthropics/knowledge-work-plugins | Claude,插件,知识工作,AI助手 | - | - | - |\n| 8 | rohitg00/ai-engineering-from-scratch | AI 工程全栈学习课程，84% 学生使用 AI 工具但仅 18% 具备专业能力 | https://github.com/rohitg00/ai-engineering-from-scratch | AI工程,学习路线,全栈开发,教育 | - | - | - |\n| 8 | presenton/presenton | 开源 AI 演示文稿生成器与 API，Gamma、Beautiful AI 的自托管替代方案 | https://github.com/presenton/presenton | AI演示,PPT生成,开源,自托管 | - | - | - |\n| 8 | ruvnet/RuView | 将普通 WiFi 信号转换为实时空间感知、人体监测、存在检测系统 | https://github.com/ruvnet/RuView | WiFi感知,空间智能,人体监测,无摄像头 | - | - | - |\n| 7 | hardikpandya/stop-slop | 去除 AI 生成文本特征的技能文件，消除 AI 写作的套路化表达 | https://github.com/hardikpandya/stop-slop | AI写作,文本优化,技能文件,提示工程 | - | - | - |\n| 7 | mukul975/Anthropic-Cybersecurity-Skills | 最大的 AI 智能体网络安全技能库，涵盖 754 个结构化技能 | https://github.com/mukul975/Anthropic-Cybersecurity-Skills | 网络安全,AI智能体,技能库,MITRE | - | - | - |\n| 7 | HKUDS/ViMax | 智能体视频生成平台，集成导演、编剧、制片与视频生成功能 | https://github.com/HKUDS/ViMax | 视频生成,AI智能体,多智能体,视频制作 | - | - | - |\n| 6 | anthropics/claude-plugins-official | Anthropic 官方维护的高质量 Claude Code 插件目录 | https://github.com/anthropics/claude-plugins-official | Claude,官方插件,AI助手,开发工具 | - | - | - |\n| 6 | can1357/oh-my-pi | 终端 AI 编程智能体，集成 IDE 功能，支持 40+ 提供商 | https://github.com/can1357/oh-my-pi | AI编程,终端,智能体,IDE | - | - | - |\n| 6 | dograh-hq/dograh | 开源语音 AI 平台，Vapi 和 Retell 的自托管替代方案 | https://github.com/dograh-hq/dograh | 语音AI,自托管,工作流,电话 | - | - | - |\n| 5 | microsoft/agent-governance-toolkit | AI 智能体治理工具包，涵盖策略执行、零信任身份、执行沙箱 | https://github.com/microsoft/agent-governance-toolkit | AI治理,智能体,安全,合规 | - | - | - |\n| 5 | Leonxlnx/taste-skill | 为 AI 赋予设计品味，提升 AI 生成界面的布局、字体、动效 | https://github.com/Leonxlnx/taste-skill | AI设计,UI/UX,技能,界面优化 | - | - | - |\n| 5 | Imbad0202/academic-research-skills | 面向 Claude Code 的学术研究技能套件，覆盖研究到发表全流程 | https://github.com/Imbad0202/academic-research-skills | 学术研究,AI助手,技能,论文写作 | - | - | - |\n| 4 | rmyndharis/OpenWA | 开源自托管 WhatsApp API 网关，提供可插拔架构 | https://github.com/rmyndharis/OpenWA | WhatsApp,API网关,开源,自托管 | - | - | - |\n| 4 | p-e-w/heretic | 自动移除语言模型审查对齐的工具，无需昂贵的后训练 | https://github.com/p-e-w/heretic | 模型对齐,审查移除,abliteration,开源 | - | - | - |\n| 4 | Chachamaru127/claude-code-harness | Claude Code 专用开发 harness，实现 Plan→Work→Review 交付循环 | https://github.com/Chachamaru127/claude-code-harness | Claude,开发流程,AI编程,工程实践 | - | - | - |\n| 3 | BenedictKing/ccx | 高性能 AI API 代理与协议转换网关，支持 Claude、OpenAI、Gemini | https://github.com/BenedictKing/ccx | API代理,协议转换,AI网关,多模型 | - | - | - |\n| 3 | cursor/plugins | Cursor 插件规范与官方插件集合 | https://github.com/cursor/plugins | Cursor,插件,IDE,开发工具 | - | - | - |\n\n---\n\n## 🔎 GitHub 指定日期检索\n\n本表数据来自 GitHub 官方 `search/repositories` 在全站公开仓库范围内的检索结果，关键词为 `uav & (rl|llm)`，时间条件为 `pushed:2026-02-05~2026-02-11`。**不是** Trending 周榜/日榜榜单。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n|------|------|------|------|------|------|------|--------|\n| 10 | YFS90/Real-time-orthophoto | GPS 自由实时无人机正射影像映射，基于地形约束单目 SLAM | https://github.com/YFS90/Real-time-orthophoto | UAV,SLAM,正射影像,实时映射 | 24 | 1 | Python |\n| 9 | idsia-robotics/pulp-frontnet | 超低功耗自主飞行纳米无人机的 AI 人体姿态估计 | https://github.com/idsia-robotics/pulp-frontnet | UAV,姿态估计,嵌入式AI,纳米无人机 | 19 | 5 | Python |\n| 8 | LittleForest-Ming/IWMS | 无人机低空遥感杂草信息端到端处理系统 | https://github.com/LittleForest-Ming/IWMS | UAV,遥感,农业,图像处理 | 13 | 1 | Python |\n| 8 | Jiang-Yufei/DiffusionPolicy4Drone | 无人机 3D 轨迹规划的扩散策略 | https://github.com/Jiang-Yufei/DiffusionPolicy4Drone | 扩散模型,轨迹规划,无人机,DRL | 8 | 0 | Python |\n| 7 | rrajnidhi/px4-simulation-stack | 基于 PX4、ROS2 和 Gazebo 的无人机仿真平台 | https://github.com/rrajnidhi/px4-simulation-stack | UAV,仿真,PX4,ROS2 | 9 | 0 | Python |\n| 7 | landry-some/UAV_Navigation_DRL_AirSim | 基于 AirSim 的深度强化学习无人机自主导航实现 | https://github.com/landry-some/UAV_Navigation_DRL_AirSim | DRL,无人机导航,AirSim,深度学习 | 3 | 0 | Python |\n| 6 | Strroke21/OpenVins-with-ROS2-Ardupilot | OpenVINS 用于户外无人机导航 | https://github.com/Strroke21/OpenVins-with-ROS2-Ardupilot | VINS,无人机导航,ROS2,户外 | 5 | 1 | Makefile |\n| 6 | Trkkhrmn/multi_uav_recon_sim | 多无人机侦察与任务分配系统，集成 ROS2、PX4、Gazebo | https://github.com/Trkkhrmn/multi_uav_recon_sim | 多无人机,任务分配,侦察,仿真 | 4 | 0 | Python |\n| 6 | enacuavlab/UavSwarmFish | 无人机群生物启发的鱼群算法 | https://github.com/enacuavlab/UavSwarmFish | 蜂群算法,无人机群,生物启发 | 2 | 1 | Python |\n| 5 | DragonBGW/UAV_formation_Control_with_DeepRl | 深度强化学习的无人机编队控制 | https://github.com/DragonBGW/UAV_formation_Control_with_DeepRl | 深度强化学习,编队控制,无人机 | 2 | 1 | Python |\n| 5 | AmbitYuki/graph_uavs_coordination | 基于协方差的关系学习与谱时分解的多智能体自适应协同 | https://github.com/AmbitYuki/graph_uavs_coordination | 图神经网络,多智能体,协同,自适应 | 3 | 0 | Python |\n| 5 | mr-spaw/Trajectra | 实时 4D 无人机空域仿真引擎，支持大规模轨迹可视化 | https://github.com/mr-spaw/Trajectra | 仿真,空域管理,4D轨迹,可视化 | 2 | 0 | Python |\n| 4 | AlfonsoLRz/VineyardUAVClassification | 基于卷积神经网络的无人机高光谱葡萄园分类 | https://github.com/AlfonsoLRz/VineyardUAVClassification | CNN,高光谱,农业,图像分类 | 2 | 0 | Python |\n| 4 | young777C/UAV_COMM | 无人机通信相关项目 | https://github.com/young777C/UAV_COMM | 无人机,通信 | 2 | 1 | Python |\n| 4 | SafeLock-D2E/Quiksand-UAV-security | 基于模糊测试的多旋翼无人机安全研究 | https://github.com/SafeLock-D2E/Quiksand-UAV-security | 无人机安全,模糊测试,MAVLink | 2 | 0 | - |\n| 4 | iannil/open-uav-telemetry-bridge | 轻量级高性能无人机遥测网关，支持 MAVLink、DJI 等协议转换 | https://github.com/iannil/open-uav-telemetry-bridge | 遥测,网关,IoD,协议转换 | 2 | 2 | Go |\n| 4 | terencelu1/Holtek-Cup-GCS-2025 | 2025 Holtek 杯地面控制站，Web 版无人机/无人车控制系统 | https://github.com/terencelu1/Holtek-Cup-GCS-2025 | 地面控制站,Web,MAVLink,无人机 | 2 | 0 | JavaScript |\n| 3 | Jintao-Zhu/uav-ugv | 国家级创新创业项目，无人机与无人车 | https://github.com/Jintao-Zhu/uav-ugv | UAV,UGV,创新项目 | 2 | 0 | C++ |\n| 3 | mwk96/3-D-UAV-Navigation-with-Swarm-Intelligence | 基于群智能的 3D 无人机导航 | https://github.com/mwk96/3-D-UAV-Navigation-with-Swarm-Intelligence | 群智能,3D导航,无人机 | 2 | 0 | MATLAB |\n| 3 | yozorahanabi/UVA_Obstacle_Avoidance | 基于 CoppeliaSim 的无人机仿真与障碍物规避 | https://github.com/yozorahanabi/UVA_Obstacle_Avoidance | 仿真,障碍规避,CoppeliaSim | 2 | 0 | Jupyter Notebook |\n| 3 | MarcosViniicius/drone-people-detection | 基于 YOLO 的无人机视频流人员检测 | https://github.com/MarcosViniicius/drone-people-detection | YOLO,目标检测,人员检测,无人机 | 2 | 0 | Python |\n| 3 | ZehraKucuker/drone-malfunction-finder | 基于 ML 音频分析的无人机故障检测系统 | https://github.com/ZehraKucuker/drone-malfunction-finder | 故障检测,音频分析,机器学习 | 2 | 0 | Python |\n",
+    "markdownGeneratedAt": "2026-05-29T07:34:48.707140Z"
+  },
+  "sections": [
+    {
+      "source": "arxiv",
+      "heading": "📄 Arxiv 前沿论文",
+      "summary": "本表数据来自 Arxiv 论文检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)`，时间窗口 2026-02-05 ~ 2026-02-11。本周期内无符合关键词条件的论文。 ---",
+      "keywords": "",
+      "dateStart": "2026-02-05",
+      "dateEnd": "2026-02-11",
+      "entryCount": 1,
+      "entries": [
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-arxiv-0",
+          "score": null,
+          "title": "(无)",
+          "summary": "本周期 Arxiv 无符合关键词的论文",
+          "link": null,
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "semantic_scholar",
+      "heading": "🎓 Semantic Scholar",
+      "summary": "本表数据来自 Semantic Scholar 论文检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-02-05 ~ 2026-02-11。本周期内无符合关键词条件的论文。 ---",
+      "keywords": "",
+      "dateStart": "2026-02-05",
+      "dateEnd": "2026-02-11",
+      "entryCount": 1,
+      "entries": [
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-semantic_scholar-0",
+          "score": null,
+          "title": "(无)",
+          "summary": "本周期 Semantic Scholar 无符合关键词的论文",
+          "link": null,
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "openalex",
+      "heading": "📚 OpenAlex",
+      "summary": "本表数据来自 OpenAlex 论文检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-02-05 ~ 2026-02-11。筛选与主题（UAV/航空 + VLM/LLM/MLLM + 强化学习）相关的论文。 ---",
+      "keywords": "",
+      "dateStart": "2026-02-05",
+      "dateEnd": "2026-02-11",
+      "entryCount": 8,
+      "entries": [
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-openalex-0",
+          "score": 9,
+          "title": "SpotAgent: Grounding Visual Geo-localization in Large Vision-Language Models through Agentic Reasoning",
+          "summary": "提出基于智能体推理的视觉地理定位方法，利用 LVLMs 实现真实场景定位",
+          "link": "https://openalex.org/W7128744999",
+          "tags": "LVLM,视觉地理定位,智能体推理,无人机",
+          "publishedAt": "2026-02-10",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-openalex-1",
+          "score": 8,
+          "title": "AugVLA-3D: Depth-Driven Feature Augmentation for Vision-Language-Action Models",
+          "summary": "提出针对 VLA 模型的深度驱动特征增强方法，提升 3D 机器人感知与控制",
+          "link": "https://openalex.org/W7128745195",
+          "tags": "VLA,深度学习,机器人控制,特征增强",
+          "publishedAt": "2026-02-11",
+          "keywords": "",
+          "extra": {
+            "venue": "ArXiv.org",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-openalex-2",
+          "score": 7,
+          "title": "Robustness Is a Function, Not a Number: A Factorized Comprehensive Study of OOD Robustness in Vision-Based Driving",
+          "summary": "分解视觉驾驶中 OOD 鲁棒性因素，揭示策略失效根因",
+          "link": "https://openalex.org/W7128555455",
+          "tags": "鲁棒性,自动驾驶,视觉导航,OOD",
+          "publishedAt": "2026-02-09",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-openalex-3",
+          "score": 6,
+          "title": "SoK: The Pitfalls of Deep Reinforcement Learning for Cybersecurity",
+          "summary": "系统梳理 DRL 在网络安全领域的应用挑战与陷阱",
+          "link": "https://openalex.org/W7128555868",
+          "tags": "深度强化学习,网络安全,DRL,系统研究",
+          "publishedAt": "2026-02-09",
+          "keywords": "",
+          "extra": {
+            "venue": "ArXiv.org",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-openalex-4",
+          "score": 5,
+          "title": "Spectral-Temporal MoE: An RL-Driven Dual-Domain Transformer for Efficient Multi-Horizon Electrical Load Forecasting",
+          "summary": "提出基于 RL 的双域 Transformer 用于长期负荷预测",
+          "link": "https://doi.org/10.20944/preprints202602.0786.v1",
+          "tags": "强化学习,负荷预测,Transformer,MoE",
+          "publishedAt": "2026-02-10",
+          "keywords": "",
+          "extra": {
+            "venue": "Preprints.org",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-openalex-5",
+          "score": 5,
+          "title": "Modified prioritized DDPG algorithm for joint beamforming and RIS phase optimization",
+          "summary": "提出改进的优先 DDPG 算法优化 MISO 系统中的波束赋形与 RIS 相位",
+          "link": "https://doi.org/10.1038/s41598-026-36179-w",
+          "tags": "DDPG,强化学习,RIS,波束赋形",
+          "publishedAt": "2026-02-11",
+          "keywords": "",
+          "extra": {
+            "venue": "Scientific Reports",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-openalex-6",
+          "score": 4,
+          "title": "Features as Rewards: Scalable Supervision for Open-Ended Tasks via Interpretability",
+          "summary": "利用可解释性特征作为奖励信号，为开放任务提供可扩展监督",
+          "link": "https://openalex.org/W7128648866",
+          "tags": "可解释性,奖励设计,语言模型,监督学习",
+          "publishedAt": "2026-02-10",
+          "keywords": "",
+          "extra": {
+            "venue": "ArXiv.org",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-openalex-7",
+          "score": 4,
+          "title": "The Critical Horizon: Inspection Design Principles for Multi-Stage Operations and Deep Reasoning",
+          "summary": "探讨多阶段操作与深度推理中的检验设计原则",
+          "link": "https://openalex.org/W7128648516",
+          "tags": "深度推理,多阶段操作,AI推理,检验设计",
+          "publishedAt": "2026-02-10",
+          "keywords": "",
+          "extra": {
+            "venue": "ArXiv.org",
+            "citationCount": "0"
+          }
+        }
+      ]
+    },
+    {
+      "source": "rss",
+      "heading": "📰 优质资讯/论坛",
+      "summary": "本表数据来自资讯/RSS 源检索，时间窗口 2026-02-05 ~ 2026-02-11。本周期内无符合条件的高质量资讯。 ---",
+      "keywords": "",
+      "dateStart": "2026-02-05",
+      "dateEnd": "2026-02-11",
+      "entryCount": 1,
+      "entries": [
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-rss-0",
+          "score": null,
+          "title": "(无)",
+          "summary": "本周期无符合关键词的优质资讯",
+          "link": null,
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "github_weekly",
+      "heading": "🔥 GitHub 周榜",
+      "summary": "本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，**不做**关键词过滤或删减，反映本周全站热门开源项目。 ---",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 21,
+      "entries": [
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-0",
+          "score": 10,
+          "title": "Lum1104/Understand-Anything",
+          "summary": "将任意代码转换为可交互的知识图谱，支持 Claude Code、Cursor 等主流 AI 编程工具",
+          "link": "https://github.com/Lum1104/Understand-Anything",
+          "tags": "知识图谱,代码理解,AI编程,开发工具",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-1",
+          "score": 10,
+          "title": "colbymchenry/codegraph",
+          "summary": "为 Claude Code 等 AI 编程工具提供预索引代码知识图谱，降低 token 消耗",
+          "link": "https://github.com/colbymchenry/codegraph",
+          "tags": "代码图谱,AI编程,语义索引,开发效率",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-2",
+          "score": 9,
+          "title": "harry0703/MoneyPrinterTurbo",
+          "summary": "利用 AI 大模型一键生成高清短视频，支持文案、素材、字幕、配音全自动化",
+          "link": "https://github.com/harry0703/MoneyPrinterTurbo",
+          "tags": "AI视频生成,短视频,大模型,内容创作",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-3",
+          "score": 9,
+          "title": "anthropics/knowledge-work-plugins",
+          "summary": "为知识工作者提供的 Claude 插件集合，扩展 AI 助手专业能力",
+          "link": "https://github.com/anthropics/knowledge-work-plugins",
+          "tags": "Claude,插件,知识工作,AI助手",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-4",
+          "score": 8,
+          "title": "rohitg00/ai-engineering-from-scratch",
+          "summary": "AI 工程全栈学习课程，84% 学生使用 AI 工具但仅 18% 具备专业能力",
+          "link": "https://github.com/rohitg00/ai-engineering-from-scratch",
+          "tags": "AI工程,学习路线,全栈开发,教育",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-5",
+          "score": 8,
+          "title": "presenton/presenton",
+          "summary": "开源 AI 演示文稿生成器与 API，Gamma、Beautiful AI 的自托管替代方案",
+          "link": "https://github.com/presenton/presenton",
+          "tags": "AI演示,PPT生成,开源,自托管",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-6",
+          "score": 8,
+          "title": "ruvnet/RuView",
+          "summary": "将普通 WiFi 信号转换为实时空间感知、人体监测、存在检测系统",
+          "link": "https://github.com/ruvnet/RuView",
+          "tags": "WiFi感知,空间智能,人体监测,无摄像头",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-7",
+          "score": 7,
+          "title": "hardikpandya/stop-slop",
+          "summary": "去除 AI 生成文本特征的技能文件，消除 AI 写作的套路化表达",
+          "link": "https://github.com/hardikpandya/stop-slop",
+          "tags": "AI写作,文本优化,技能文件,提示工程",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-8",
+          "score": 7,
+          "title": "mukul975/Anthropic-Cybersecurity-Skills",
+          "summary": "最大的 AI 智能体网络安全技能库，涵盖 754 个结构化技能",
+          "link": "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
+          "tags": "网络安全,AI智能体,技能库,MITRE",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-9",
+          "score": 7,
+          "title": "HKUDS/ViMax",
+          "summary": "智能体视频生成平台，集成导演、编剧、制片与视频生成功能",
+          "link": "https://github.com/HKUDS/ViMax",
+          "tags": "视频生成,AI智能体,多智能体,视频制作",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-10",
+          "score": 6,
+          "title": "anthropics/claude-plugins-official",
+          "summary": "Anthropic 官方维护的高质量 Claude Code 插件目录",
+          "link": "https://github.com/anthropics/claude-plugins-official",
+          "tags": "Claude,官方插件,AI助手,开发工具",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-11",
+          "score": 6,
+          "title": "can1357/oh-my-pi",
+          "summary": "终端 AI 编程智能体，集成 IDE 功能，支持 40+ 提供商",
+          "link": "https://github.com/can1357/oh-my-pi",
+          "tags": "AI编程,终端,智能体,IDE",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-12",
+          "score": 6,
+          "title": "dograh-hq/dograh",
+          "summary": "开源语音 AI 平台，Vapi 和 Retell 的自托管替代方案",
+          "link": "https://github.com/dograh-hq/dograh",
+          "tags": "语音AI,自托管,工作流,电话",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-13",
+          "score": 5,
+          "title": "microsoft/agent-governance-toolkit",
+          "summary": "AI 智能体治理工具包，涵盖策略执行、零信任身份、执行沙箱",
+          "link": "https://github.com/microsoft/agent-governance-toolkit",
+          "tags": "AI治理,智能体,安全,合规",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-14",
+          "score": 5,
+          "title": "Leonxlnx/taste-skill",
+          "summary": "为 AI 赋予设计品味，提升 AI 生成界面的布局、字体、动效",
+          "link": "https://github.com/Leonxlnx/taste-skill",
+          "tags": "AI设计,UI/UX,技能,界面优化",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-15",
+          "score": 5,
+          "title": "Imbad0202/academic-research-skills",
+          "summary": "面向 Claude Code 的学术研究技能套件，覆盖研究到发表全流程",
+          "link": "https://github.com/Imbad0202/academic-research-skills",
+          "tags": "学术研究,AI助手,技能,论文写作",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-16",
+          "score": 4,
+          "title": "rmyndharis/OpenWA",
+          "summary": "开源自托管 WhatsApp API 网关，提供可插拔架构",
+          "link": "https://github.com/rmyndharis/OpenWA",
+          "tags": "WhatsApp,API网关,开源,自托管",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-17",
+          "score": 4,
+          "title": "p-e-w/heretic",
+          "summary": "自动移除语言模型审查对齐的工具，无需昂贵的后训练",
+          "link": "https://github.com/p-e-w/heretic",
+          "tags": "模型对齐,审查移除,abliteration,开源",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-18",
+          "score": 4,
+          "title": "Chachamaru127/claude-code-harness",
+          "summary": "Claude Code 专用开发 harness，实现 Plan→Work→Review 交付循环",
+          "link": "https://github.com/Chachamaru127/claude-code-harness",
+          "tags": "Claude,开发流程,AI编程,工程实践",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-19",
+          "score": 3,
+          "title": "BenedictKing/ccx",
+          "summary": "高性能 AI API 代理与协议转换网关，支持 Claude、OpenAI、Gemini",
+          "link": "https://github.com/BenedictKing/ccx",
+          "tags": "API代理,协议转换,AI网关,多模型",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_weekly-20",
+          "score": 3,
+          "title": "cursor/plugins",
+          "summary": "Cursor 插件规范与官方插件集合",
+          "link": "https://github.com/cursor/plugins",
+          "tags": "Cursor,插件,IDE,开发工具",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "github_search",
+      "heading": "🔎 GitHub 指定日期检索",
+      "summary": "本表数据来自 GitHub 官方 `search/repositories` 在全站公开仓库范围内的检索结果，关键词为 `uav & (rl|llm)`，时间条件为 `pushed:2026-02-05~2026-02-11`。**不是** Trending 周榜/日榜榜单。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 22,
+      "entries": [
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-0",
+          "score": 10,
+          "title": "YFS90/Real-time-orthophoto",
+          "summary": "GPS 自由实时无人机正射影像映射，基于地形约束单目 SLAM",
+          "link": "https://github.com/YFS90/Real-time-orthophoto",
+          "tags": "UAV,SLAM,正射影像,实时映射",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "24",
+            "fork": "1",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-1",
+          "score": 9,
+          "title": "idsia-robotics/pulp-frontnet",
+          "summary": "超低功耗自主飞行纳米无人机的 AI 人体姿态估计",
+          "link": "https://github.com/idsia-robotics/pulp-frontnet",
+          "tags": "UAV,姿态估计,嵌入式AI,纳米无人机",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "19",
+            "fork": "5",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-2",
+          "score": 8,
+          "title": "LittleForest-Ming/IWMS",
+          "summary": "无人机低空遥感杂草信息端到端处理系统",
+          "link": "https://github.com/LittleForest-Ming/IWMS",
+          "tags": "UAV,遥感,农业,图像处理",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "13",
+            "fork": "1",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-3",
+          "score": 8,
+          "title": "Jiang-Yufei/DiffusionPolicy4Drone",
+          "summary": "无人机 3D 轨迹规划的扩散策略",
+          "link": "https://github.com/Jiang-Yufei/DiffusionPolicy4Drone",
+          "tags": "扩散模型,轨迹规划,无人机,DRL",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "8",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-4",
+          "score": 7,
+          "title": "rrajnidhi/px4-simulation-stack",
+          "summary": "基于 PX4、ROS2 和 Gazebo 的无人机仿真平台",
+          "link": "https://github.com/rrajnidhi/px4-simulation-stack",
+          "tags": "UAV,仿真,PX4,ROS2",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "9",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-5",
+          "score": 7,
+          "title": "landry-some/UAV_Navigation_DRL_AirSim",
+          "summary": "基于 AirSim 的深度强化学习无人机自主导航实现",
+          "link": "https://github.com/landry-some/UAV_Navigation_DRL_AirSim",
+          "tags": "DRL,无人机导航,AirSim,深度学习",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "3",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-6",
+          "score": 6,
+          "title": "Strroke21/OpenVins-with-ROS2-Ardupilot",
+          "summary": "OpenVINS 用于户外无人机导航",
+          "link": "https://github.com/Strroke21/OpenVins-with-ROS2-Ardupilot",
+          "tags": "VINS,无人机导航,ROS2,户外",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "5",
+            "fork": "1",
+            "language": "Makefile"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-7",
+          "score": 6,
+          "title": "Trkkhrmn/multi_uav_recon_sim",
+          "summary": "多无人机侦察与任务分配系统，集成 ROS2、PX4、Gazebo",
+          "link": "https://github.com/Trkkhrmn/multi_uav_recon_sim",
+          "tags": "多无人机,任务分配,侦察,仿真",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "4",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-8",
+          "score": 6,
+          "title": "enacuavlab/UavSwarmFish",
+          "summary": "无人机群生物启发的鱼群算法",
+          "link": "https://github.com/enacuavlab/UavSwarmFish",
+          "tags": "蜂群算法,无人机群,生物启发",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "1",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-9",
+          "score": 5,
+          "title": "DragonBGW/UAV_formation_Control_with_DeepRl",
+          "summary": "深度强化学习的无人机编队控制",
+          "link": "https://github.com/DragonBGW/UAV_formation_Control_with_DeepRl",
+          "tags": "深度强化学习,编队控制,无人机",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "1",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-10",
+          "score": 5,
+          "title": "AmbitYuki/graph_uavs_coordination",
+          "summary": "基于协方差的关系学习与谱时分解的多智能体自适应协同",
+          "link": "https://github.com/AmbitYuki/graph_uavs_coordination",
+          "tags": "图神经网络,多智能体,协同,自适应",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "3",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-11",
+          "score": 5,
+          "title": "mr-spaw/Trajectra",
+          "summary": "实时 4D 无人机空域仿真引擎，支持大规模轨迹可视化",
+          "link": "https://github.com/mr-spaw/Trajectra",
+          "tags": "仿真,空域管理,4D轨迹,可视化",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-12",
+          "score": 4,
+          "title": "AlfonsoLRz/VineyardUAVClassification",
+          "summary": "基于卷积神经网络的无人机高光谱葡萄园分类",
+          "link": "https://github.com/AlfonsoLRz/VineyardUAVClassification",
+          "tags": "CNN,高光谱,农业,图像分类",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-13",
+          "score": 4,
+          "title": "young777C/UAV_COMM",
+          "summary": "无人机通信相关项目",
+          "link": "https://github.com/young777C/UAV_COMM",
+          "tags": "无人机,通信",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "1",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-14",
+          "score": 4,
+          "title": "SafeLock-D2E/Quiksand-UAV-security",
+          "summary": "基于模糊测试的多旋翼无人机安全研究",
+          "link": "https://github.com/SafeLock-D2E/Quiksand-UAV-security",
+          "tags": "无人机安全,模糊测试,MAVLink",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-15",
+          "score": 4,
+          "title": "iannil/open-uav-telemetry-bridge",
+          "summary": "轻量级高性能无人机遥测网关，支持 MAVLink、DJI 等协议转换",
+          "link": "https://github.com/iannil/open-uav-telemetry-bridge",
+          "tags": "遥测,网关,IoD,协议转换",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "2",
+            "language": "Go"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-16",
+          "score": 4,
+          "title": "terencelu1/Holtek-Cup-GCS-2025",
+          "summary": "2025 Holtek 杯地面控制站，Web 版无人机/无人车控制系统",
+          "link": "https://github.com/terencelu1/Holtek-Cup-GCS-2025",
+          "tags": "地面控制站,Web,MAVLink,无人机",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "JavaScript"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-17",
+          "score": 3,
+          "title": "Jintao-Zhu/uav-ugv",
+          "summary": "国家级创新创业项目，无人机与无人车",
+          "link": "https://github.com/Jintao-Zhu/uav-ugv",
+          "tags": "UAV,UGV,创新项目",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-18",
+          "score": 3,
+          "title": "mwk96/3-D-UAV-Navigation-with-Swarm-Intelligence",
+          "summary": "基于群智能的 3D 无人机导航",
+          "link": "https://github.com/mwk96/3-D-UAV-Navigation-with-Swarm-Intelligence",
+          "tags": "群智能,3D导航,无人机",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "MATLAB"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-19",
+          "score": 3,
+          "title": "yozorahanabi/UVA_Obstacle_Avoidance",
+          "summary": "基于 CoppeliaSim 的无人机仿真与障碍物规避",
+          "link": "https://github.com/yozorahanabi/UVA_Obstacle_Avoidance",
+          "tags": "仿真,障碍规避,CoppeliaSim",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Jupyter Notebook"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-20",
+          "score": 3,
+          "title": "MarcosViniicius/drone-people-detection",
+          "summary": "基于 YOLO 的无人机视频流人员检测",
+          "link": "https://github.com/MarcosViniicius/drone-people-detection",
+          "tags": "YOLO,目标检测,人员检测,无人机",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-05_2026-02-11_20260529T073448Z-github_search-21",
+          "score": 3,
+          "title": "ZehraKucuker/drone-malfunction-finder",
+          "summary": "基于 ML 音频分析的无人机故障检测系统",
+          "link": "https://github.com/ZehraKucuker/drone-malfunction-finder",
+          "tags": "故障检测,音频分析,机器学习",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "entryCount": 54,
+    "sourceCounts": {
+      "arxiv": 1,
+      "semantic_scholar": 1,
+      "openalex": 8,
+      "rss": 1,
+      "github_weekly": 21,
+      "github_search": 22
+    },
+    "emptySections": []
+  }
+}

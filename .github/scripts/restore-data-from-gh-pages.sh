@@ -11,20 +11,34 @@ merge_data_dirs() {
   if [ ! -d "$src/runs" ]; then
     return 0
   fi
-  local n=0
-  for f in "$src/runs"/*.json; do
-    [ -f "$f" ] || continue
-    local base
-    base="$(basename "$f")"
-    if [ ! -f "data/runs/$base" ]; then
-      cp "$f" "data/runs/$base"
-      n=$((n + 1))
-    fi
-  done
+  if command -v python >/dev/null 2>&1; then
+    PYTHONPATH="${PYTHONPATH:+$PYTHONPATH:}${PWD}" python - <<'PY' "$src/runs" "data/runs" "$label"
+import sys
+from pathlib import Path
+from digest_export.storage import merge_runs_directory
+
+src_runs, dest_runs, label = Path(sys.argv[1]), Path(sys.argv[2]), sys.argv[3]
+counts = merge_runs_directory(src_runs, dest_runs)
+print(
+    f"Merged runs from {label}: "
+    f"+{counts['added']} new, {counts['updated']} updated, {counts['kept']} kept"
+)
+PY
+  else
+    local n=0
+    for f in "$src/runs"/*.json; do
+      [ -f "$f" ] || continue
+      base="$(basename "$f")"
+      if [ ! -f "data/runs/$base" ]; then
+        cp "$f" "data/runs/$base"
+        n=$((n + 1))
+      fi
+    done
+    echo "Merged ${n} run(s) from ${label} (python unavailable; no executedAt merge)"
+  fi
   if [ -f "$src/index.json" ] && [ ! -f "data/index.json" ]; then
     cp "$src/index.json" "data/index.json"
   fi
-  echo "Merged ${n} run(s) from ${label}"
 }
 
 if ! git fetch origin gh-pages 2>/dev/null; then

@@ -5,6 +5,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { dedupeEntriesByLink } from "./dedupe-entries.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, "../..");
@@ -87,24 +88,37 @@ function flattenEntries(run) {
   return entries;
 }
 
-function topKeywords(run) {
+function topKeywords(run, entries) {
   for (const sec of run.sections ?? []) {
     if (sec.keywords?.trim()) return sec.keywords.trim();
   }
-  for (const e of flattenEntries(run)) {
+  for (const e of entries) {
     if (e.keywords?.trim()) return e.keywords.trim();
   }
   return "";
+}
+
+function sectionsWithEntryCounts(run, entries) {
+  const bySource = {};
+  for (const e of entries) {
+    bySource[e.source] = (bySource[e.source] ?? 0) + 1;
+  }
+  return (run.sections ?? []).map((sec) => ({
+    ...sectionToFrontend(sec),
+    entryCount: bySource[sec.source] ?? 0,
+  }));
 }
 
 function main() {
   const runs = loadRuns();
   const generatedAt = new Date().toISOString();
   const allEntries = [];
+  let perRunRemoved = 0;
 
   const digests = runs.map((run) => {
-    const sections = (run.sections ?? []).map(sectionToFrontend);
-    const entries = flattenEntries(run);
+    const raw = flattenEntries(run);
+    const { entries, removed } = dedupeEntriesByLink(raw, { digestSlug: run.id });
+    perRunRemoved += removed;
     allEntries.push(...entries);
     return {
       slug: run.id,
@@ -115,23 +129,27 @@ function main() {
       crawlDate: run.crawl?.crawlDate ?? "",
       dateStart: run.window?.dateStart ?? "",
       dateEnd: run.window?.dateEnd ?? "",
-      entryCount: run.stats?.entryCount ?? entries.length,
-      sections,
+      entryCount: entries.length,
+      sections: sectionsWithEntryCounts(run, entries),
     };
   });
 
   let entries = allEntries;
+  let globalRemoved = 0;
   if (process.env.DIGEST_DEDUPE_LINK === "1") {
-    const seen = new Set();
-    entries = [];
-    for (const e of allEntries) {
-      const link = (e.link && String(e.link).trim()) || "";
-      if (link) {
-        if (seen.has(link)) continue;
-        seen.add(link);
-      }
-      entries.push(e);
-    }
+    const deduped = dedupeEntriesByLink(allEntries, { global: true });
+    entries = deduped.entries;
+    globalRemoved = deduped.removed;
+  }
+  if (perRunRemoved > 0) {
+    console.log(
+      `build-viewer-data: 单期内按链接去重 ${perRunRemoved} 条重复`,
+    );
+  }
+  if (globalRemoved > 0) {
+    console.log(
+      `build-viewer-data: 跨期按链接去重 ${globalRemoved} 条（DIGEST_DEDUPE_LINK=1）`,
+    );
   }
 
   const entriesByDigest = new Map();
@@ -161,7 +179,7 @@ function main() {
       dateEnd: d.dateEnd,
       entryCount: digestEntries.length,
       sourceCounts,
-      topKeywords: topKeywords(run ?? { sections: d.sections }),
+      topKeywords: topKeywords(run ?? { sections: d.sections }, digestEntries),
       sections: d.sections,
       updatedAt: run?.crawl?.executedAt ?? generatedAt,
     };

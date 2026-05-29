@@ -2,6 +2,8 @@
 import re
 from typing import Any
 
+from digest_export.dedupe import dedupe_entries_by_link
+
 SOURCE_BY_HEADING = {
     "📄 Arxiv 前沿论文": "arxiv",
     "🎓 Semantic Scholar": "semantic_scholar",
@@ -196,6 +198,7 @@ def parse_markdown_to_sections(markdown_body: str, run_id: str) -> list[dict[str
                 e = row_to_entry(headers, cells, source, meta, run_id, idx)
                 if e:
                     entries.append(e)
+        entries = dedupe_entries_by_link(entries)
         sections.append(
             {
                 "source": source,
