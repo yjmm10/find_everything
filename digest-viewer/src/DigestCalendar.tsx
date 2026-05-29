@@ -190,21 +190,22 @@ export default function DigestCalendar({
         )}
       </div>
 
-      <div className="calendar__weekdays">
-        {["日", "一", "二", "三", "四", "五", "六"].map((w, i) => (
-          <span
-            key={w}
-            className={`calendar__weekday ${i === 0 ? "calendar__weekday--sun" : ""}`}
-          >
-            {w}
-          </span>
-        ))}
-      </div>
+      <div className="calendar__grid">
+        <div className="calendar__weekdays" aria-hidden>
+          {["日", "一", "二", "三", "四", "五", "六"].map((w, i) => (
+            <span
+              key={w}
+              className={`calendar__weekday ${i === 0 ? "calendar__weekday--sun" : ""}`}
+            >
+              {w}
+            </span>
+          ))}
+        </div>
 
-      <div className="calendar__weeks">
-        {weeks.map((week, wi) => (
-          <div key={wi} className="calendar__week">
-            {week.map((day, di) => {
+        <div className="calendar__weeks">
+          {weeks.map((week, wi) => (
+            <div key={wi} className="calendar__week">
+              {week.map((day, di) => {
               if (!day) {
                 return (
                   <span
@@ -256,8 +257,9 @@ export default function DigestCalendar({
                 </button>
               );
             })}
-          </div>
-        ))}
+            </div>
+          ))}
+        </div>
       </div>
 
       <ul className="calendar__legend calendar__legend--compact">
