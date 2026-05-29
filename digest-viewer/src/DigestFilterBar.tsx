@@ -34,10 +34,6 @@ export interface DigestFilterBarProps {
   favOnly: boolean;
   onFavOnlyChange: (v: boolean) => void;
   favoriteCount: number;
-  groupView: boolean;
-  onGroupViewChange: (v: boolean) => void;
-  compactView: boolean;
-  onCompactViewChange: (v: boolean) => void;
   onShareLink: () => void;
   onExportList: () => void;
   shareHint?: string;
@@ -69,10 +65,6 @@ export default function DigestFilterBar({
   favOnly,
   onFavOnlyChange,
   favoriteCount,
-  groupView,
-  onGroupViewChange,
-  compactView,
-  onCompactViewChange,
   onShareLink,
   onExportList,
   shareHint,
@@ -219,24 +211,6 @@ export default function DigestFilterBar({
             title="仅看收藏"
           >
             ★ {favoriteCount}
-          </button>
-          <button
-            type="button"
-            className={`filter-bar__tool ${groupView ? "filter-bar__tool--on" : ""}`}
-            onClick={() => onGroupViewChange(!groupView)}
-            aria-pressed={groupView}
-            title="按来源分组"
-          >
-            分组
-          </button>
-          <button
-            type="button"
-            className={`filter-bar__tool ${compactView ? "filter-bar__tool--on" : ""}`}
-            onClick={() => onCompactViewChange(!compactView)}
-            aria-pressed={compactView}
-            title="紧凑卡片"
-          >
-            紧凑
           </button>
           <button type="button" className="filter-bar__tool" onClick={onShareLink} title={shareHint ?? "复制分享链接"}>
             分享

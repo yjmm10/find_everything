@@ -1,16 +1,5 @@
-import type { DigestSource } from "./types";
 import type { SortKey } from "./sortEntries";
 import { SORT_LABEL } from "./sortEntries";
-
-const SOURCE_SHORT: Partial<Record<DigestSource, string>> = {
-  arxiv: "Arxiv",
-  semantic_scholar: "S2",
-  openalex: "OpenAlex",
-  rss: "RSS",
-  github_weekly: "GH周榜",
-  github_search: "GH检索",
-  github: "GitHub",
-};
 
 export interface ResultsHeaderProps {
   count: number;
@@ -18,7 +7,10 @@ export interface ResultsHeaderProps {
   selectedDigestLabel: string;
   sortKey: SortKey;
   favOnly?: boolean;
-  groupView?: boolean;
+  groupView: boolean;
+  onGroupViewChange: (v: boolean) => void;
+  compactView: boolean;
+  onCompactViewChange: (v: boolean) => void;
 }
 
 export default function ResultsHeader({
@@ -28,31 +20,47 @@ export default function ResultsHeader({
   sortKey,
   favOnly,
   groupView,
+  onGroupViewChange,
+  compactView,
+  onCompactViewChange,
 }: ResultsHeaderProps) {
-  let hint = `全部条目 · 按${SORT_LABEL[sortKey]}排序`;
-  if (favOnly) hint = `仅收藏 · 按${SORT_LABEL[sortKey]}排序`;
+  let hint = `按${SORT_LABEL[sortKey]}排序`;
+  if (favOnly) hint = `仅收藏 · ${hint}`;
   if (calendarDay) {
-    hint = `${calendarDay} 当日 · 按${SORT_LABEL[sortKey]}排序`;
+    hint = `${calendarDay} 当日 · ${hint}`;
   } else if (selectedDigestLabel) {
-    hint = `期次 ${selectedDigestLabel} · 整周 · 按${SORT_LABEL[sortKey]}排序`;
+    hint = `期次 ${selectedDigestLabel} · ${hint}`;
   }
-  if (groupView) hint += " · 按来源分组";
 
   return (
     <div className="results-header">
-      <h2 className="results-header__title">
-        检索结果
-        <span className="results-header__count">{count}</span>
-      </h2>
-      <p className="results-header__hint">{hint}</p>
+      <div className="results-header__main">
+        <h2 className="results-header__title">
+          检索结果
+          <span className="results-header__count">{count}</span>
+        </h2>
+        <p className="results-header__hint">{hint}</p>
+      </div>
+      <div className="results-header__views" role="group" aria-label="列表视图">
+        <button
+          type="button"
+          className={`results-header__view-btn ${groupView ? "results-header__view-btn--on" : ""}`}
+          onClick={() => onGroupViewChange(!groupView)}
+          aria-pressed={groupView}
+          title="按来源分组展示"
+        >
+          分组
+        </button>
+        <button
+          type="button"
+          className={`results-header__view-btn ${compactView ? "results-header__view-btn--on" : ""}`}
+          onClick={() => onCompactViewChange(!compactView)}
+          aria-pressed={compactView}
+          title="紧凑卡片（隐藏摘要）"
+        >
+          紧凑
+        </button>
+      </div>
     </div>
   );
-}
-
-export function sourceCountLine(sourceCounts: Partial<Record<DigestSource, number>>): string {
-  return (Object.entries(sourceCounts) as [DigestSource, number][])
-    .filter(([, n]) => n > 0)
-    .sort((a, b) => b[1] - a[1])
-    .map(([s, n]) => `${SOURCE_SHORT[s] ?? s} ${n}`)
-    .join(" · ");
 }

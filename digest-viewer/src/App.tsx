@@ -513,10 +513,6 @@ export default function App() {
               favOnly={favOnly}
               onFavOnlyChange={setFavOnly}
               favoriteCount={favoriteIds.size}
-              groupView={groupView}
-              onGroupViewChange={setGroupView}
-              compactView={compactView}
-              onCompactViewChange={setCompactView}
               onShareLink={handleShareLink}
               onExportList={handleExportList}
               filteredCount={filtered.length}
@@ -572,6 +568,9 @@ export default function App() {
               sortKey={sortKey}
               favOnly={favOnly}
               groupView={groupView}
+              onGroupViewChange={setGroupView}
+              compactView={compactView}
+              onCompactViewChange={setCompactView}
             />
 
             {groupView ? (
