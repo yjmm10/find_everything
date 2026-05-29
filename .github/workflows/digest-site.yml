@@ -1,6 +1,4 @@
-# 从 master 上的 docs/ 构建 digest-viewer，推送到 gh-pages（仅展示，不含源码）。
-# 触发：master 上 docs/ 或 digest-viewer/ 变更；或手动 workflow_dispatch。
-# 注意：weekly-digest 用 GITHUB_TOKEN push docs 不会触发本 workflow，定时任务已在 weekly-digest 内发布 gh-pages。
+# master 上前端/工作流变更时：用 master 代码 + gh-pages 上已有 docs/ 重新构建并发布站点。
 
 name: Digest viewer → GitHub Pages
 
@@ -9,9 +7,9 @@ on:
     branches:
       - master
     paths:
-      - "docs/weekly-digest*.md"
       - "digest-viewer/**"
       - ".github/workflows/digest-site.yml"
+      - ".github/scripts/**"
   workflow_dispatch:
 
 concurrency:
@@ -25,11 +23,14 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout master
+      - name: Checkout master (latest build code)
         uses: actions/checkout@v6
         with:
           ref: master
           fetch-depth: 0
+
+      - name: Restore digest archive from gh-pages
+        run: bash .github/scripts/restore-docs-from-gh-pages.sh
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -38,16 +39,19 @@ jobs:
           cache: npm
           cache-dependency-path: digest-viewer/package-lock.json
 
-      - name: Install & build (master + docs/)
+      - name: Install & build
         working-directory: digest-viewer
         env:
           DIGEST_DEDUPE_LINK: ${{ vars.DIGEST_DEDUPE_LINK || '0' }}
         run: npm ci && npm run build
 
-      - name: Publish to gh-pages (display only)
+      - name: Prepare gh-pages bundle
+        run: bash .github/scripts/prepare-gh-pages-deploy.sh
+
+      - name: Publish to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: ./digest-viewer/dist
+          publish_dir: ./deploy
           force_orphan: true

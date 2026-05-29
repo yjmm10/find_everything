@@ -318,7 +318,7 @@ def save_and_commit(md_content: str, digest_slug: str) -> str:
     """
     dated_md = save_digest_files(md_content, digest_slug)
     if os.getenv("DIGEST_NO_GIT", "").strip().lower() in ("1", "true", "yes"):
-        log("ℹ️ DIGEST_NO_GIT=1，跳过 git commit/push（由 CI 提交 docs/ 到 master）")
+        log("ℹ️ DIGEST_NO_GIT=1，跳过 git commit/push（由 CI 将 docs/ 与站点一并发布到 gh-pages）")
         return dated_md
     log("💾 Committing docs/ to git...")
     os.system("git config user.name 'github-actions[bot]'")

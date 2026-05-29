@@ -1,15 +1,13 @@
 name: 📅 Weekly Tech Digest
 
-# 分支职责（代码与展示分离）：
-# - master：源码 + docs/ 周报 Markdown（数据层，默认分支）
-# - gh-pages：仅 digest-viewer 构建产物（展示层，GitHub Pages 站点）
-#
-# GITHUB_TOKEN 的 push 不会触发其它 workflow，故本 job 内顺序为：
-# 同步 master → 生成周报写入 docs/ → 提交 master → 构建 → 发布 gh-pages
+# 流程：
+# 1. 使用最新 master 源码运行抓取（Python + digest-viewer 构建脚本）
+# 2. 从 gh-pages 恢复历史 docs/，追加本次抓取结果
+# 3. 构建前端，将 dist + docs/ 一并发布到 gh-pages（Pages 展示 + 数据归档）
+# master 仅保留源码，不提交周报数据。
 
 on:
   schedule:
-    # 每周五 12:00 UTC（北京时间 20:00）
     - cron: "0 12 * * 5"
   workflow_dispatch:
 
@@ -24,17 +22,20 @@ jobs:
   digest-and-publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout default branch (master)
+      - name: Checkout master (latest crawl code)
         uses: actions/checkout@v6
         with:
           ref: ${{ github.event.repository.default_branch }}
           fetch-depth: 0
 
-      - name: Sync default branch before generate
+      - name: Sync master
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git pull --rebase origin "${{ github.event.repository.default_branch }}"
+
+      - name: Restore digest archive from gh-pages
+        run: bash .github/scripts/restore-docs-from-gh-pages.sh
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -44,7 +45,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Digest Generator (write docs only)
+      - name: Run Digest Generator
         env:
           DIGEST_NO_GIT: "1"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -60,17 +61,7 @@ jobs:
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
         run: python main.py
 
-      - name: Commit digest to master (docs/ only)
-        run: |
-          git add docs/
-          if git diff --staged --quiet; then
-            echo "No docs changes to commit"
-          else
-            git commit -m '📦 Auto-update weekly digest'
-            git push origin "HEAD:${{ github.event.repository.default_branch }}"
-          fi
-
-      - name: Set up Node (build viewer from master)
+      - name: Set up Node
         if: success()
         uses: actions/setup-node@v4
         with:
@@ -85,11 +76,15 @@ jobs:
           DIGEST_DEDUPE_LINK: ${{ vars.DIGEST_DEDUPE_LINK || '0' }}
         run: npm ci && npm run build
 
-      - name: Publish site to gh-pages (display only)
+      - name: Prepare gh-pages bundle (site + docs archive)
+        if: success()
+        run: bash .github/scripts/prepare-gh-pages-deploy.sh
+
+      - name: Publish to gh-pages
         if: success()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: ./digest-viewer/dist
+          publish_dir: ./deploy
           force_orphan: true
