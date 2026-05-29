@@ -21,7 +21,6 @@ export interface DigestCalendarProps {
   viewYear: number;
   viewMonth: number;
   dateFilterMode: DateFilterMode;
-  onDateFilterModeChange: (mode: DateFilterMode) => void;
   onSelectDay: (day: string | null) => void;
   onViewMonthChange: (year: number, month: number) => void;
 }
@@ -94,7 +93,6 @@ export default function DigestCalendar({
   viewYear,
   viewMonth,
   dateFilterMode,
-  onDateFilterModeChange,
   onSelectDay,
   onViewMonthChange,
 }: DigestCalendarProps) {
@@ -143,19 +141,6 @@ export default function DigestCalendar({
           </button>
         </div>
       </div>
-
-      <label className="calendar__mode">
-        <span className="calendar__mode-label">按日定位</span>
-        <select
-          className="field__input calendar__mode-select"
-          value={dateFilterMode}
-          onChange={(e) => onDateFilterModeChange(e.target.value as DateFilterMode)}
-        >
-          <option value="published">发表/发布日（精确到日）</option>
-          <option value="crawl">抓取执行日</option>
-          <option value="window">数据窗（整周）</option>
-        </select>
-      </label>
 
       <button
         type="button"

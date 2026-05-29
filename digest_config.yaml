@@ -99,7 +99,8 @@ github_trending:
 # 建议配置 GITHUB_TOKEN / GH_TOKEN
 github_repository_search:
   enabled: true
-  # keywords: "machine learning, pytorch"
+  # 独立于全局 keywords：uav + (rl 或 llm)
+  keywords: "uav & (rl|llm)"
   max_repos: 30
   user_agent: "Mozilla/5.0 (compatible; GitHubDigestBot/1.0)"
   api_timeout: 20

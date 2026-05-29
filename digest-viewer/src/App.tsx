@@ -1,19 +1,27 @@
 import { useEffect, useMemo, useState } from "react";
 import DigestCalendar from "./DigestCalendar";
+import DigestFilterBar from "./DigestFilterBar";
 import MarkdownDigestView from "./MarkdownDigestView";
+import RunStrip from "./RunStrip";
 import type { DigestEntry, DigestSection, DigestSource, DigestsPayload } from "./types";
 import { parseDay } from "./dateUtils";
 import { parseRouteHash, setRouteHash } from "./routeHash";
 import {
   type DateFilterMode,
-  dateFilterModeLabel,
   entryMatchesDateRange,
   overlapsRange,
 } from "./filterUtils";
 import "./App.css";
 
-function digestMetaForSlug(data: DigestsPayload, slug: string) {
-  return data.digests.find((d) => d.slug === slug) ?? null;
+function digestOptionLabel(slug: string, dateStart?: string, dateEnd?: string): string {
+  if (dateStart && dateEnd) return `${dateStart} ~ ${dateEnd}`;
+  return slug.replace(/_\d{8}T\d{6}Z$/, "");
+}
+
+function isPlaceholderEntry(e: DigestEntry): boolean {
+  const t = e.title.trim();
+  if ((t === "(无)" || t === "（无）") && !e.link) return true;
+  return false;
 }
 
 const SOURCE_LABEL: Record<DigestSource, string> = {
@@ -58,7 +66,7 @@ export default function App() {
   const [calendarDay, setCalendarDay] = useState<string | null>(null);
   const [viewYear, setViewYear] = useState(() => new Date().getFullYear());
   const [viewMonth, setViewMonth] = useState(() => new Date().getMonth() + 1);
-  const [dateFilterMode, setDateFilterMode] = useState<DateFilterMode>("published");
+  const [dateFilterMode, setDateFilterMode] = useState<DateFilterMode>("window");
   const initialRoute = parseRouteHash();
   const [pageView, setPageView] = useState<"entries" | "markdown">(initialRoute.view);
   const [markdownSlug, setMarkdownSlug] = useState(initialRoute.slug);
@@ -85,6 +93,7 @@ export default function App() {
   const filtered = useMemo(() => {
     if (!data) return [];
     return data.entries.filter((e) => {
+      if (isPlaceholderEntry(e)) return false;
       if (selectedDigestSlug && e.digestSlug !== selectedDigestSlug) return false;
       if (!sources[e.source]) return false;
       if (!matchesKeyword(e, keyword)) return false;
@@ -94,6 +103,47 @@ export default function App() {
       return true;
     });
   }, [data, keyword, selectedDigestSlug, dateFrom, dateTo, sources, dateFilterMode]);
+
+  const digestOptions = useMemo(() => {
+    if (!data) return [];
+    return data.digests.map((d) => ({
+      slug: d.slug,
+      label: digestOptionLabel(d.slug, d.dateStart, d.dateEnd),
+    }));
+  }, [data]);
+
+  const hasActiveFilters = Boolean(
+    keyword.trim() ||
+      selectedDigestSlug ||
+      dateFrom ||
+      dateTo ||
+      calendarDay ||
+      (Object.keys(sources) as DigestSource[]).some((s) => !sources[s]),
+  );
+
+  const clearFilters = () => {
+    setKeyword("");
+    setSelectedDigestSlug("");
+    setDateFrom("");
+    setDateTo("");
+    setCalendarDay(null);
+    setSources({
+      arxiv: true,
+      semantic_scholar: true,
+      openalex: true,
+      rss: true,
+      github: true,
+      github_weekly: true,
+      github_search: true,
+    });
+  };
+
+  const selectDigestSlug = (slug: string) => {
+    setSelectedDigestSlug(slug);
+    setCalendarDay(null);
+    setDateFrom("");
+    setDateTo("");
+  };
 
   const allUpdates = useMemo(() => {
     if (!data?.updates) return [];
@@ -140,11 +190,6 @@ export default function App() {
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
-
-  const selectedDigestMeta = useMemo(() => {
-    if (!selectedDigestSlug || !data) return null;
-    return digestMetaForSlug(data, selectedDigestSlug);
-  }, [data, selectedDigestSlug]);
 
   const visibleSections = useMemo(() => {
     if (!data) return [];
@@ -214,13 +259,16 @@ export default function App() {
 
   return (
     <div className="page">
-      <header className="hero">
-        <h1 className="hero__title">技术周报归档</h1>
-        <p className="hero__sub">
-          共 {data.digests.length} 次抓取、{data.entries.length} 条条目
-          {data.generatedAt ? ` · 索引 ${data.generatedAt.slice(0, 10)}` : ""}
-        </p>
-        <nav className="view-tabs" aria-label="视图切换">
+      <header className="hero hero--compact">
+        <div className="hero__row">
+          <div>
+            <h1 className="hero__title">技术周报归档</h1>
+            <p className="hero__sub">
+              {data.digests.length} 次抓取 · {data.entries.length} 条
+              {data.generatedAt ? ` · 更新 ${data.generatedAt.slice(0, 10)}` : ""}
+            </p>
+          </div>
+          <nav className="view-tabs" aria-label="视图切换">
           <button
             type="button"
             className={`view-tabs__btn ${pageView === "entries" ? "view-tabs__btn--active" : ""}`}
@@ -243,7 +291,8 @@ export default function App() {
           >
             Markdown 原文
           </button>
-        </nav>
+          </nav>
+        </div>
       </header>
 
       {pageView === "markdown" ? (
@@ -270,7 +319,6 @@ export default function App() {
             viewYear={viewYear}
             viewMonth={viewMonth}
             dateFilterMode={dateFilterMode}
-            onDateFilterModeChange={setDateFilterMode}
             onSelectDay={handleCalendarDay}
             onViewMonthChange={(y, m) => {
               setViewYear(y);
@@ -280,173 +328,49 @@ export default function App() {
         </aside>
 
         <div className="main">
-      <section className="updates" aria-label="更新记录">
-        <div className="updates__head">
-          <h2 className="updates__title">更新记录（共 {allUpdates.length} 次抓取）</h2>
-          <p className="updates__sub">每条对应一次成功抓取归档，点击可筛该期条目</p>
-        </div>
-        <ul className="updates__list">
-          {allUpdates.map((u) => (
-            <li key={u.id} className="update-item-wrap">
-              <button
-                type="button"
-                className={`update-item ${selectedDigestSlug === u.slug ? "update-item--active" : ""}`}
-                onClick={() => {
-                  setSelectedDigestSlug(u.slug);
-                  setCalendarDay(null);
-                  setDateFrom("");
-                  setDateTo("");
-                }}
-              >
-                <span className="update-item__title">{u.slug}</span>
-                <span className="update-item__meta">
-                  {u.dateStart && u.dateEnd ? `${u.dateStart} ~ ${u.dateEnd}` : "无时间窗"} · {u.entryCount} 条
-                </span>
-                <span className="update-item__meta">
-                  {Object.entries(u.sourceCounts)
-                    .map(([k, v]) => `${SOURCE_LABEL[k as DigestSource]} ${v}`)
-                    .join(" · ") || "无来源分布"}
-                  {u.topKeywords ? ` · 关键词 ${u.topKeywords}` : ""}
-                </span>
-                <span className="update-item__meta">更新时间 {u.updatedAt.slice(0, 19)}Z</span>
-              </button>
-              <button
-                type="button"
-                className="update-item__doc-btn"
-                onClick={() => goToMarkdownPage(u.slug)}
-              >
-                查看完整周报 →
-              </button>
-            </li>
-          ))}
-        </ul>
-      </section>
+          <DigestFilterBar
+            keyword={keyword}
+            onKeywordChange={setKeyword}
+            selectedDigestSlug={selectedDigestSlug}
+            digestOptions={digestOptions}
+            onDigestChange={selectDigestSlug}
+            dateFilterMode={dateFilterMode}
+            onDateFilterModeChange={setDateFilterMode}
+            dateFrom={dateFrom}
+            dateTo={dateTo}
+            onDateRangeChange={handleDateRangeChange}
+            sources={sources}
+            onToggleSource={toggleSource}
+            filteredCount={filtered.length}
+            totalCount={data.entries.length}
+            hasActiveFilters={hasActiveFilters}
+            onClearFilters={clearFilters}
+          />
 
-      {selectedDigestMeta && (
-        <p className="digest-doc-bar">
-          当前期次：<strong>{selectedDigestMeta.slug}</strong>
-          {selectedDigestMeta.entryCount === 0 ? "（无有效表格条目）" : ` · ${selectedDigestMeta.entryCount} 条`}
-          <button type="button" className="digest-doc-bar__btn" onClick={() => goToMarkdownPage(selectedDigestMeta.slug)}>
-            查看完整 Markdown 周报
-          </button>
-        </p>
-      )}
-
-      <section className="filters" aria-label="筛选">
-        <div className="filters__row">
-          <div className="filters__row filters__row--split">
-            <label className="field">
-              <span className="field__label">指定期次</span>
-              <select
-                className="field__input"
-                value={selectedDigestSlug}
-                onChange={(e) => {
-                  setSelectedDigestSlug(e.target.value);
-                  setCalendarDay(null);
-                  setDateFrom("");
-                  setDateTo("");
-                }}
-              >
-                <option value="">全部期次</option>
-                {data.digests.map((d) => (
-                  <option key={d.slug} value={d.slug}>
-                    {d.slug}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className="field">
-              <span className="field__label">关键字</span>
-              <input
-                type="search"
-                className="field__input"
-                placeholder="标题、说明、关键词组…"
-                value={keyword}
-                onChange={(e) => setKeyword(e.target.value)}
-                autoComplete="off"
-              />
-            </label>
-          </div>
-        </div>
-        <div className="filters__row filters__row--split">
-          <label className="field">
-            <span className="field__label">
-              时间 · {dateFilterModeLabel(dateFilterMode)}
-            </span>
-            <div className="field__inline">
-              <input
-                type="date"
-                className="field__input field__input--narrow"
-                value={dateFrom}
-                onChange={(e) => handleDateRangeChange(e.target.value, dateTo)}
-              />
-              <span className="field__sep">至</span>
-              <input
-                type="date"
-                className="field__input field__input--narrow"
-                value={dateTo}
-                onChange={(e) => handleDateRangeChange(dateFrom, e.target.value)}
-              />
-            </div>
-          </label>
-          <fieldset className="field field--sources">
-            <legend className="field__label">信息源</legend>
-            <div className="chips">
-              {(Object.keys(SOURCE_LABEL) as DigestSource[]).map((s) => (
-                <button
-                  key={s}
-                  type="button"
-                  className={`chip ${sources[s] ? "chip--on" : ""} chip--${s}`}
-                  onClick={() => toggleSource(s)}
-                  aria-pressed={sources[s]}
-                >
-                  {SOURCE_LABEL[s]}
-                </button>
-              ))}
-            </div>
-          </fieldset>
-        </div>
-      </section>
-
-      <p className="result-count">
-        当前显示 <strong>{filtered.length}</strong> 条
-        {(dateFrom || calendarDay) && (
-          <span className="result-count__mode"> · 按{dateFilterModeLabel(dateFilterMode)}</span>
-        )}
-      </p>
+          <RunStrip
+            updates={allUpdates}
+            selectedSlug={selectedDigestSlug}
+            onSelectSlug={selectDigestSlug}
+            onOpenMarkdown={goToMarkdownPage}
+          />
 
       {visibleSections.length > 0 && (
-        <section className="section-summaries" aria-label="板块说明">
-          <h2 className="section-summaries__title">板块说明（来自 Markdown 摘要）</h2>
+        <details className="section-summaries section-summaries--collapsible">
+          <summary className="section-summaries__toggle">
+            板块说明（{visibleSections.length} 个来源板块）
+          </summary>
           <ul className="section-summaries__list">
             {visibleSections.map((s) => (
-              <li key={`${s.digestSlug}-${s.source}`} className="section-summary">
+              <li key={`${s.digestSlug}-${s.source}`} className="section-summary section-summary--compact">
                 <div className="section-summary__top">
                   <span className={sourceBadgeClass(s.source)}>{SOURCE_LABEL[s.source]}</span>
                   <span className="section-summary__count">{s.entryCount} 条</span>
                 </div>
                 {s.summary ? <p className="section-summary__text">{s.summary}</p> : null}
-                <p className="section-summary__meta">
-                  {s.dateStart && s.dateEnd ? `${s.dateStart} ~ ${s.dateEnd}` : "—"}
-                  {s.keywords ? ` · ${s.keywords}` : ""}
-                  {!selectedDigestSlug && (
-                    <>
-                      {" "}
-                      ·{" "}
-                      <button
-                        type="button"
-                        className="section-summary__link"
-                        onClick={() => goToMarkdownPage(s.digestSlug)}
-                      >
-                        完整周报
-                      </button>
-                    </>
-                  )}
-                </p>
               </li>
             ))}
           </ul>
-        </section>
+        </details>
       )}
 
       <ul className="card-list">
@@ -458,42 +382,28 @@ export default function App() {
             </div>
             <h2 className="card__title">{e.title === "(无标题)" ? "（无标题）" : e.title}</h2>
             {e.summary ? <p className="card__summary">{e.summary}</p> : null}
-            <dl className="card__meta">
-              <div>
-                <dt>数据窗</dt>
-                <dd>
-                  {e.dateStart && e.dateEnd ? `${e.dateStart} ~ ${e.dateEnd}` : "—"}
-                </dd>
-              </div>
-              <div>
-                <dt>关键词组</dt>
-                <dd>{e.keywords || "—"}</dd>
-              </div>
-              <div>
-                <dt>周报档</dt>
-                <dd>{e.digestSlug}</dd>
-              </div>
+            <dl className="card__meta card__meta--grid">
+              {!selectedDigestSlug && (
+                <div>
+                  <dt>期次</dt>
+                  <dd>{digestOptionLabel(e.digestSlug, e.dateStart, e.dateEnd)}</dd>
+                </div>
+              )}
+              {e.publishedAt ? (
+                <div>
+                  <dt>发表</dt>
+                  <dd>{e.publishedAt.slice(0, 10)}</dd>
+                </div>
+              ) : null}
               {e.tags ? (
                 <div>
                   <dt>标签</dt>
                   <dd>{e.tags}</dd>
                 </div>
               ) : null}
-              {e.publishedAt ? (
-                <div>
-                  <dt>发表时间</dt>
-                  <dd>{e.publishedAt}</dd>
-                </div>
-              ) : null}
-              {e.crawlDate ? (
-                <div>
-                  <dt>抓取日</dt>
-                  <dd>{e.crawlDate}</dd>
-                </div>
-              ) : null}
               {e.subject ? (
                 <div>
-                  <dt>学科类别</dt>
+                  <dt>学科</dt>
                   <dd>{e.subject}</dd>
                 </div>
               ) : null}
@@ -501,7 +411,7 @@ export default function App() {
                 <div>
                   <dt>仓库</dt>
                   <dd>
-                    {[e.star && `Star ${e.star}`, e.fork && `Fork ${e.fork}`, e.language]
+                    {[e.star && `★ ${e.star}`, e.fork && `⑂ ${e.fork}`, e.language]
                       .filter(Boolean)
                       .join(" · ")}
                   </dd>
