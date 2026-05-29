@@ -1,4 +1,4 @@
-# master 上前端/工作流变更时：用 master 代码 + gh-pages 上已有 docs/ 重新构建并发布站点。
+# master 上前端/工作流变更时：用 master 代码 + gh-pages 上已有 data/ 重新构建并发布站点。
 
 name: Digest viewer → GitHub Pages
 
@@ -30,7 +30,15 @@ jobs:
           fetch-depth: 0
 
       - name: Restore digest archive from gh-pages
-        run: bash .github/scripts/restore-docs-from-gh-pages.sh
+        run: bash .github/scripts/restore-data-from-gh-pages.sh
+
+      - name: Set up Python (migrate legacy docs → data if needed)
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Migrate docs to JSON
+        run: pip install -q -r requirements.txt && python -m digest_export.migrate
 
       - name: Set up Node
         uses: actions/setup-node@v4

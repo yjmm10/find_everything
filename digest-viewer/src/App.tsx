@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import DigestCalendar from "./DigestCalendar";
 import DigestDocViewer from "./DigestDocViewer";
+import MarkdownDigestView from "./MarkdownDigestView";
 import type { DigestEntry, DigestSection, DigestSource, DigestsPayload } from "./types";
 import { parseDay } from "./dateUtils";
 import {
@@ -57,8 +58,10 @@ export default function App() {
   const [calendarDay, setCalendarDay] = useState<string | null>(null);
   const [viewYear, setViewYear] = useState(() => new Date().getFullYear());
   const [viewMonth, setViewMonth] = useState(() => new Date().getMonth() + 1);
-  const [docView, setDocView] = useState<{ slug: string; markdownUrl: string } | null>(null);
+  const [docView, setDocView] = useState<{ slug: string; markdownUrl: string; markdownBody?: string } | null>(null);
   const [dateFilterMode, setDateFilterMode] = useState<DateFilterMode>("published");
+  const [pageView, setPageView] = useState<"entries" | "markdown">("entries");
+  const [markdownSlug, setMarkdownSlug] = useState("");
   const [sources, setSources] = useState<Record<DigestSource, boolean>>({
     arxiv: true,
     semantic_scholar: true,
@@ -70,7 +73,7 @@ export default function App() {
   });
 
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}digests.json`)
+    fetch(`${import.meta.env.BASE_URL}viewer-data.json`)
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json();
@@ -128,6 +131,7 @@ export default function App() {
       setDocView({
         slug,
         markdownUrl: d.markdownUrl || `docs/${d.file}`,
+        markdownBody: d.markdownBody,
       });
     }
   };
@@ -175,7 +179,10 @@ export default function App() {
       setViewYear(d.getFullYear());
       setViewMonth(d.getMonth() + 1);
     }
-  }, [data]);
+    if (!markdownSlug) {
+      setMarkdownSlug(data.updates[0].slug);
+    }
+  }, [data, markdownSlug]);
 
   const toggleSource = (s: DigestSource) => {
     setSources((prev) => ({ ...prev, [s]: !prev[s] }));
@@ -208,8 +215,36 @@ export default function App() {
           共 {data.digests.length} 次抓取、{data.entries.length} 条条目
           {data.generatedAt ? ` · 索引 ${data.generatedAt.slice(0, 10)}` : ""}
         </p>
+        <nav className="view-tabs" aria-label="视图切换">
+          <button
+            type="button"
+            className={`view-tabs__btn ${pageView === "entries" ? "view-tabs__btn--active" : ""}`}
+            onClick={() => setPageView("entries")}
+          >
+            条目浏览
+          </button>
+          <button
+            type="button"
+            className={`view-tabs__btn ${pageView === "markdown" ? "view-tabs__btn--active" : ""}`}
+            onClick={() => {
+              setPageView("markdown");
+              if (selectedDigestSlug) setMarkdownSlug(selectedDigestSlug);
+              else if (!markdownSlug && data.updates[0]) setMarkdownSlug(data.updates[0].slug);
+            }}
+          >
+            Markdown 原文
+          </button>
+        </nav>
       </header>
 
+      {pageView === "markdown" ? (
+        <MarkdownDigestView
+          digests={data.digests}
+          updates={allUpdates}
+          selectedSlug={markdownSlug || allUpdates[0]?.slug || ""}
+          onSelectSlug={setMarkdownSlug}
+        />
+      ) : (
       <div className="layout">
         <aside className="sidebar">
           <DigestCalendar
@@ -473,8 +508,15 @@ export default function App() {
             <>
               {" "}
               该期可能仅有「无数据」占位行，请
-              <button type="button" className="empty__link" onClick={() => openDigestDoc(selectedDigestSlug)}>
-                查看完整周报
+              <button
+                type="button"
+                className="empty__link"
+                onClick={() => {
+                  setMarkdownSlug(selectedDigestSlug);
+                  setPageView("markdown");
+                }}
+              >
+                查看 Markdown 原文
               </button>
               了解说明文字。
             </>
@@ -482,15 +524,18 @@ export default function App() {
           {!selectedDigestSlug && " 请放宽关键字、日历日期或时间范围。"}
         </p>
       )}
-      {docView && (
+        </div>
+      </div>
+      )}
+
+      {docView && pageView === "entries" && (
         <DigestDocViewer
           markdownUrl={docView.markdownUrl}
+          markdownBody={docView.markdownBody}
           slug={docView.slug}
           onClose={() => setDocView(null)}
         />
       )}
-        </div>
-      </div>
     </div>
   );
 }

@@ -1,29 +1,29 @@
 # 技术周报前端（digest-viewer）
 
-从 **`docs/weekly-digest-*.md`** 解析结构化条目，构建静态站点，支持关键字、时间、信息源与期次筛选。页面展示**全部**抓取记录与条目。
+从 **`data/runs/*.json`**（Schema v1）在构建时合并为 **`public/viewer-data.json`**，前端一次加载、客户端全量筛选（关键字、时间、信息源、期次、日历）。Markdown 原文内嵌于 JSON，不再依赖单独 `.md` 文件。
 
 ## 分支与 CI 流程
 
 | 分支 | 职责 |
 |------|------|
 | **`master`** | 抓取与构建**源码**（Python、`digest-viewer`、workflow） |
-| **`gh-pages`** | **数据 + 展示**：`docs/` 周报归档 + 构建后的静态站点（GitHub Pages） |
+| **`gh-pages`** | **数据 + 展示**：`data/` JSON 归档 + 构建后的静态站点（GitHub Pages） |
 
 **定时抓取**（[weekly-digest.yml](../.github/workflows/weekly-digest.yml)）：
 
 1. 检出并同步 **master**（最新抓取代码）
-2. 从 **gh-pages** 恢复历史 `docs/`
-3. 运行 `python main.py` 追加本期周报（`DIGEST_NO_GIT=1`，不写 master）
-4. `npm run build` 生成前端
-5. 将 `dist/` + `docs/` 发布到 **gh-pages**
+2. 从 **gh-pages** 恢复历史 `data/`（若无则恢复 `docs/` 供迁移）
+3. 运行 `python main.py` 追加本期 `data/runs/{runId}.json`（`DIGEST_NO_GIT=1`）
+4. `npm run build`：迁移遗留 `docs/` → `data/`（若需要）→ 合并 `viewer-data.json` → Vite 构建
+5. 将 `dist/` + `data/` 发布到 **gh-pages**
 
-**仅改前端时**（[digest-site.yml](../.github/workflows/digest-site.yml)）：master 代码 + gh-pages 已有 `docs/` → 构建 → 更新 gh-pages。
+**仅改前端时**（[digest-site.yml](../.github/workflows/digest-site.yml)）：master 代码 + gh-pages 已有 `data/` → 迁移/构建 → 更新 gh-pages。
 
 **GitHub Pages**（项目站地址）：
 
 - 线上：**https://yjmm10.github.io/find_everything/**
-- 配置：仓库 **Settings → Pages** → Source **Deploy from a branch** → Branch **`gh-pages`** → **`/(root)`**
-- CI 构建时设 `VITE_BASE=/find_everything/`，保证静态资源与 `digests.json` 路径正确
+- 配置：仓库 **Settings → Pages** → Branch **`gh-pages`** → **`/(root)`**
+- CI 构建时设 `VITE_BASE=/find_everything/`，保证静态资源与 `viewer-data.json` 路径正确
 
 ## 本地开发
 
@@ -33,15 +33,26 @@ npm install
 npm run dev
 ```
 
-本地需在仓库根目录有 `docs/weekly-digest-*.md`（可从 `gh-pages` 分支拷贝 `docs/`，或使用 master 上遗留文件）。`dev` / `build` 前会自动运行 `parse-digests.mjs`。
+仓库根目录需有 `data/runs/*.json`，或先有 `docs/weekly-digest-*.md`（`prebuild` 会调用 `python -m digest_export.migrate` 生成 `data/`）。
+
+```bash
+# 仅重建 viewer-data.json
+npm run build-data
+
+# 从 docs 迁移到 data（需 Python）
+cd .. && python -m digest_export.migrate
+```
+
+## 数据布局（gh-pages / 仓库根）
+
+```
+data/
+  index.json           # 轻量索引
+  runs/{runId}.json    # 单次抓取完整记录（含 content.markdownBody）
+```
+
+构建产物：`digest-viewer/public/viewer-data.json`（合并全部 runs，供前端筛选）。
 
 ## Vercel 部署
 
-见 [DEPLOY_VERCEL.md](./DEPLOY_VERCEL.md)。Vercel 从**当前分支**读取 `docs/`；若数据只在 gh-pages，需先检出 gh-pages 的 `docs/` 或改用 GitHub Pages。
-
-## 数据说明
-
-- **每次成功抓取**：`docs/weekly-digest-{数据窗}_{UTC时间}.md`，累积在 **gh-pages** 的 `docs/` 下。
-- **混合数据**：列表/卡片/日历读 `digests.json`；完整周报读 `docs/*.md`（`markdownUrl` 字段）。
-- **按日定位**：日历默认 **发表/发布日**（精确到某一天）；可切换 **抓取执行日** 或 **数据窗（整周）**。
-- **板块说明**：JSON 内 `sections` 含 Markdown 各 `##` 段的摘要（如「本周无新增」）。
+见 [DEPLOY_VERCEL.md](./DEPLOY_VERCEL.md)。Vercel 需能访问 `data/` 或预构建的 `viewer-data.json`；推荐直接使用 GitHub Pages。

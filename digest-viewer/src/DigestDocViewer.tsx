@@ -3,15 +3,28 @@ import { useEffect, useState } from "react";
 export interface DigestDocViewerProps {
   markdownUrl: string;
   slug: string;
+  markdownBody?: string;
   onClose: () => void;
 }
 
-export default function DigestDocViewer({ markdownUrl, slug, onClose }: DigestDocViewerProps) {
+export default function DigestDocViewer({
+  markdownUrl,
+  slug,
+  markdownBody,
+  onClose,
+}: DigestDocViewerProps) {
   const [content, setContent] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const embedded = markdownBody?.trim() ?? "";
+    if (embedded) {
+      setContent(embedded);
+      setError(null);
+      setLoading(false);
+      return;
+    }
     const url = `${import.meta.env.BASE_URL}${markdownUrl.replace(/^\//, "")}`;
     setLoading(true);
     setError(null);
@@ -23,7 +36,7 @@ export default function DigestDocViewer({ markdownUrl, slug, onClose }: DigestDo
       .then((text) => setContent(text))
       .catch((e) => setError(String(e)))
       .finally(() => setLoading(false));
-  }, [markdownUrl]);
+  }, [markdownUrl, markdownBody]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -51,7 +64,7 @@ export default function DigestDocViewer({ markdownUrl, slug, onClose }: DigestDo
             <p className="doc-panel__error">
               {error}
               <br />
-              <span className="muted">请确认 CI 已将 docs/ 发布到 gh-pages。</span>
+              <span className="muted">请确认 CI 已将 data/ 发布到 gh-pages。</span>
             </p>
           )}
           {content && <pre className="doc-md__raw">{content}</pre>}

@@ -12,6 +12,7 @@ from email.mime.multipart import MIMEMultipart
 from openai import OpenAI
 from dotenv import load_dotenv
 
+from digest_export import build_run_from_markdown, export_markdown_files, save_run, update_index
 from digest_sources import DEFAULT_SOURCES, FetchContext
 from digest_sources.config_helpers import source_keywords
 from digest_sources.date_range import build_digest_date_window
@@ -270,6 +271,65 @@ def _dated_digest_paths(safe_slug: str) -> tuple[str, str]:
     raise RuntimeError("无法生成唯一周报文件名（重试次数超限）")
 
 
+def save_digest_json(
+    md_content: str,
+    run_id: str,
+    *,
+    window: dict,
+    config: dict,
+    trigger: str = "manual",
+) -> str:
+    """写入 data/runs/{run_id}.json 并更新 data/index.json。"""
+    log("💾 Saving digest JSON...")
+    executed_at = datetime.datetime.now(datetime.timezone.utc)
+    run = build_run_from_markdown(
+        run_id=run_id,
+        markdown_body=md_content,
+        executed_at=executed_at,
+        window=window,
+        config=config,
+        trigger=trigger,
+    )
+    save_run(run)
+    update_index(run)
+    json_path = f"data/runs/{run_id}.json"
+    log(f"📦 已写入 {json_path}")
+
+    export_md = os.getenv("DIGEST_EXPORT_MD", "").strip().lower() in ("1", "true", "yes")
+    if export_md:
+        return export_markdown_files(md_content, run_id)
+    return json_path
+
+
+def save_and_commit_json(
+    md_content: str,
+    run_id: str,
+    *,
+    window: dict,
+    config: dict,
+    trigger: str = "manual",
+) -> str:
+    """
+    写入 JSON run；本地默认再 commit/push。
+    CI 请设 DIGEST_NO_GIT=1，由 workflow 将 data/ 发布到 gh-pages。
+    """
+    artifact_path = save_digest_json(
+        md_content, run_id, window=window, config=config, trigger=trigger
+    )
+    if os.getenv("DIGEST_NO_GIT", "").strip().lower() in ("1", "true", "yes"):
+        log("ℹ️ DIGEST_NO_GIT=1，跳过 git commit/push（由 CI 将 data/ 与站点一并发布到 gh-pages）")
+        return artifact_path
+    log("💾 Committing data/ to git...")
+    os.system("git config user.name 'github-actions[bot]'")
+    os.system("git config user.email 'github-actions[bot]@users.noreply.github.com'")
+    os.system("git add data/")
+    if os.getenv("DIGEST_EXPORT_MD", "").strip().lower() in ("1", "true", "yes"):
+        os.system("git add docs/")
+    os.system("git commit -m '📦 Auto-update weekly digest JSON' || echo 'No changes to commit'")
+    os.system("git push")
+    return artifact_path
+
+
 def save_digest_files(md_content: str, digest_slug: str) -> str:
     """
     写入 docs/weekly-digest-{slug}.md/html（冲突时自动追加时间戳后缀），
@@ -455,8 +515,25 @@ if __name__ == "__main__":
             sys.exit(1)
         run_ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
         digest_slug = f"{ctx.start_date}_{ctx.end_date}_{run_ts}"
-        dated_md_path = save_and_commit(digest_md, digest_slug)
-        send_notification(digest_md, digest_md_relpath=dated_md_path)
+        trigger = "ci" if os.getenv("DIGEST_NO_GIT", "").strip() else "manual"
+        window = {
+            "dateStart": ctx.start_date,
+            "dateEnd": ctx.end_date,
+            "preset": str((cfg.get("date_range") or {}).get("preset", "")),
+            "mode": ctx.date_range_mode,
+        }
+        config_snapshot = {
+            "keywords": keywords,
+            "date_range": cfg.get("date_range"),
+        }
+        artifact_path = save_and_commit_json(
+            digest_md,
+            digest_slug,
+            window=window,
+            config=config_snapshot,
+            trigger=trigger,
+        )
+        send_notification(digest_md, digest_md_relpath=artifact_path)
         log("🎉 Weekly digest generation completed!")
     except Exception as e:
         log(f"💥 Fatal error: {e}")

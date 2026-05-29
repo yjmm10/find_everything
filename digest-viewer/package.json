@@ -4,10 +4,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "parse": "node scripts/parse-digests.mjs",
-    "prebuild": "node scripts/parse-digests.mjs",
+    "migrate": "node scripts/migrate-docs-to-json.mjs",
+    "build-data": "node scripts/build-viewer-data.mjs",
+    "prebuild": "node scripts/migrate-docs-to-json.mjs && node scripts/build-viewer-data.mjs",
     "build": "vite build",
-    "dev": "node scripts/parse-digests.mjs && vite",
+    "dev": "node scripts/migrate-docs-to-json.mjs && node scripts/build-viewer-data.mjs && vite",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -40,8 +40,11 @@ export interface DigestEntry {
 
 export interface DigestMeta {
   slug: string;
+  runId?: string;
   file: string;
   markdownUrl: string;
+  /** 内嵌 Markdown 原文（JSON-first 权威来源） */
+  markdownBody?: string;
   crawlDate: string;
   dateStart: string;
   dateEnd: string;
@@ -52,8 +55,10 @@ export interface DigestMeta {
 export interface DigestUpdate {
   id: string;
   slug: string;
+  runId?: string;
   file: string;
   markdownUrl: string;
+  markdownBody?: string;
   crawlDate: string;
   dateStart: string;
   dateEnd: string;
@@ -65,8 +70,12 @@ export interface DigestUpdate {
 }
 
 export interface DigestsPayload {
+  schemaVersion?: string;
   generatedAt: string;
   digests: DigestMeta[];
   updates: DigestUpdate[];
   entries: DigestEntry[];
 }
+
+/** @deprecated 别名，与 DigestsPayload 相同 */
+export type ViewerDataPayload = DigestsPayload;
