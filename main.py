@@ -44,6 +44,16 @@ DEFAULT_DIGEST_CONFIG = {
         "library_page_size": 100,
         "library_num_retries": 3,
     },
+    "semantic_scholar": {
+        "enabled": True,
+        "keywords": None,
+        "max_results": 8,
+    },
+    "openalex": {
+        "enabled": True,
+        "keywords": None,
+        "max_results": 8,
+    },
     "rss": {
         "enabled": True,
         "max_items": 8,
@@ -128,16 +138,17 @@ def summarize_with_ai(raw_sections: str, keyword_context: str, date_str: str):
 
 要求（务必遵守）：
 1. 输出纯 Markdown，适合手机阅读；不要任何前言/后语。
-2. 必须包含四个板块，顺序固定：## 📄 Arxiv 前沿论文 → ## 📰 优质资讯/论坛 → ## 🔥 GitHub 周榜 → ## 🔎 GitHub 指定日期检索。
+2. 必须包含六个板块，顺序固定：## 📄 Arxiv 前沿论文 → ## 🎓 Semantic Scholar → ## 📚 OpenAlex → ## 📰 优质资讯/论坛 → ## 🔥 GitHub 周榜 → ## 🔎 GitHub 指定日期检索。
 2b. **两个 GitHub 板块含义不同**，板块说明中必须写清楚：① **周榜**＝Trending 类 RSS 的榜单原始条目，**不做**关键词过滤或删减；② **指定日期检索**＝官方 `search/repositories` 在**全站公开仓库**范围内按关键词与时间条件（多为 `pushed:`）筛出的结果，**不是**周榜/日榜榜单本身。
 3. **每个板块**在表格前先写 1～2 句「板块说明」：本表数据来自哪类源、与配置关键词/时间窗的关系（勿编造配置里不存在的规则）。
 4. **每个板块**用一张 **Markdown 表格** 汇总条目；表头列名请**原样使用**下列中文（便于下游解析）：
    - 通用列（**所有板块**）：**评分**｜**标题**｜**说明**｜**链接**｜**标签**
-   - **评分**：0～10 整数；**GitHub 周榜**侧重热度与代表性；**GitHub 指定日期检索**侧重与检索关键词及时间条件；**Arxiv / RSS** 侧重与当周主题贴合度、新颖度、可验证性；**同行按评分降序**。
+   - **评分**：0～10 整数；**GitHub 周榜**侧重热度与代表性；**GitHub 指定日期检索**侧重与检索关键词及时间条件；**Arxiv / Semantic Scholar / OpenAlex / RSS** 侧重与当周主题贴合度、新颖度、可验证性；**同行按评分降序**。
    - **说明**：一行中文要点（勿空泛）。
    - **链接**：必须与原始数据 URL 一致，**禁止编造**。
    - **标签**：2～5 个技术向词，**中文或通用英文**，**英文逗号**分隔；请根据该行「标题 + 说明」**自行归纳**（勿照抄整句标题），用于用户后续检索。
    - **Arxiv 前沿论文**板块在以上五列之外，还须增加两列：**发表时间**（YYYY-MM-DD，须与下方原始数据中该条「发表日期」一致）｜**学科类别**（须与原始「学科主分类(arXiv)」一致，如 cs.LG；原始缺省时填「-」）。
+   - **Semantic Scholar**、**OpenAlex** 板块在以上五列之外，还须增加：**发表时间**（与原始「发表日期」一致）｜**来源/venue**（与原始一致，缺省「-」）｜**引用数**（与原始一致，缺省「-」）。
 5. 两个 **GitHub** 板块在通用列之外，还须包含 **Star**、**Fork**、**主语言** 三列（原始有则填数/语言名，无则「-」）。
 6. 若某板块原始数据为空或仅含「(无)」，写一句说明并给出仅表头的空表或省略表体，勿虚构条目。
 7. 可忽略明显重复、低质或与原始数据不符的项；信息量允许时总篇幅约 1200～2500 字当量（表格为主）。
@@ -238,18 +249,40 @@ def _digest_markdown_is_effectively_empty(md_body: str) -> bool:
     return False
 
 
+def _dated_digest_paths(safe_slug: str) -> tuple[str, str]:
+    """
+    生成本次归档文件路径。
+    若同名已存在，则自动追加 UTC 时间戳，避免覆盖历史结果。
+    """
+    base_stem = f"weekly-digest-{safe_slug}"
+    md_path = Path("docs") / f"{base_stem}.md"
+    html_path = Path("docs") / f"{base_stem}.html"
+    if not md_path.exists() and not html_path.exists():
+        return str(md_path), str(html_path)
+
+    ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    for i in range(1000):
+        suffix = f"-{ts}" if i == 0 else f"-{ts}-{i}"
+        md_try = Path("docs") / f"{base_stem}{suffix}.md"
+        html_try = Path("docs") / f"{base_stem}{suffix}.html"
+        if not md_try.exists() and not html_try.exists():
+            return str(md_try), str(html_try)
+    raise RuntimeError("无法生成唯一周报文件名（重试次数超限）")
+
+
 def save_and_commit(md_content: str, digest_slug: str) -> str:
     """
-    写入 docs/weekly-digest-{slug}.md/html，并同步 docs/weekly-digest.md/html 为最新副本。
-    digest_slug 建议为「数据窗起止」如 2026-04-01_2026-04-07（仅字母数字与下划线、连字符）。
+    写入 docs/weekly-digest-{slug}.md/html（冲突时自动追加时间戳后缀），
+    并同步 docs/weekly-digest.md/html 为最新副本。
+    digest_slug 建议为「数据窗起止」如 2026-04-01_2026-04-07（仅字母数字与下划线、连字符）；
+    若同一窗口重复执行，不会覆盖旧档。
     返回带日期档名的相对路径（.md）。
     """
     log("💾 Saving & committing to repo...")
     os.makedirs("docs", exist_ok=True)
     body = md_content if isinstance(md_content, str) else ""
     safe_slug = digest_slug.replace("/", "-").replace(" ", "")
-    dated_md = f"docs/weekly-digest-{safe_slug}.md"
-    dated_html = f"docs/weekly-digest-{safe_slug}.html"
+    dated_md, dated_html = _dated_digest_paths(safe_slug)
     latest_md = "docs/weekly-digest.md"
     latest_html = "docs/weekly-digest.html"
 
@@ -367,6 +400,8 @@ if __name__ == "__main__":
         )
 
         arxiv_kw = source_keywords(cfg.get("arxiv") or {}, keywords)
+        s2_kw = source_keywords(cfg.get("semantic_scholar") or {}, keywords)
+        oa_kw = source_keywords(cfg.get("openalex") or {}, keywords)
         gh_week_kw = source_keywords(cfg.get("github_trending") or {}, keywords)
         gh_search_kw = source_keywords(cfg.get("github_repository_search") or {}, keywords)
 
@@ -385,6 +420,9 @@ if __name__ == "__main__":
             f"全局默认：{keywords}；"
             f"Arxiv 检索使用：{arxiv_kw}（后端：{arxiv_backend}）；"
             f"原始 Arxiv 条目中已含「发表日期」「学科主分类/标签」，输出表须保留为「发表时间」「学科类别」列；"
+            f"Semantic Scholar 检索关键词：{s2_kw}；"
+            f"OpenAlex 检索关键词：{oa_kw}；"
+            f"Semantic Scholar / OpenAlex 原始条目含发表日期、venue、引用数，输出表须对应保留；"
             f"GitHub 周榜（github_trending）：Trending RSS 榜单原样取数，**不做**关键词/本地筛选；"
             f"github_trending.keywords 若有仅作文风叙述参考：{gh_week_kw or '（未单独配置）'}；"
             f"GitHub 指定日期检索（github_repository_search）：官方 search/repositories，"

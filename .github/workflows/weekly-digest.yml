@@ -37,6 +37,10 @@ jobs:
           
           # 搜索关键词（逗号分隔）
           KEYWORDS: ${{ vars.KEYWORDS || 'LLM, AI Agent, Computer Vision' }}
+
+          # 学术检索 API（建议在仓库 Secrets 中配置）
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
           
           # 邮件推送配置（可选）
           SMTP_SERVER: ${{ secrets.SMTP_SERVER }}

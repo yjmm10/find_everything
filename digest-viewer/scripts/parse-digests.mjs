@@ -13,11 +13,23 @@ const OUT = path.resolve(__dirname, "../public/digests.json");
 
 const SOURCE_BY_HEADING = {
   "📄 Arxiv 前沿论文": "arxiv",
+  "🎓 Semantic Scholar": "semantic_scholar",
+  "📚 OpenAlex": "openalex",
   "📰 优质资讯/论坛": "rss",
   "🔥 GitHub 热门仓库": "github",
   "🔥 GitHub 周榜": "github_weekly",
   "🔎 GitHub 指定日期检索": "github_search",
 };
+
+const ALL_SOURCES = [
+  "arxiv",
+  "semantic_scholar",
+  "openalex",
+  "rss",
+  "github",
+  "github_weekly",
+  "github_search",
+];
 
 function listDigestFiles() {
   if (!fs.existsSync(DOCS)) return [];
@@ -146,9 +158,9 @@ function main() {
     const meta =
       entries.length > 0
         ? {
-            dateStart: entries[0].dateStart,
-            dateEnd: entries[0].dateEnd,
-          }
+          dateStart: entries[0].dateStart,
+          dateEnd: entries[0].dateEnd,
+        }
         : { dateStart: "", dateEnd: "" };
     digests.push({
       slug,
@@ -182,9 +194,41 @@ function main() {
     }
   }
 
+  const generatedAt = new Date().toISOString();
+  const entriesByDigest = new Map();
+  for (const entry of entries) {
+    const list = entriesByDigest.get(entry.digestSlug) ?? [];
+    list.push(entry);
+    entriesByDigest.set(entry.digestSlug, list);
+  }
+
+  const updates = digests.map((d) => {
+    const digestEntries = entriesByDigest.get(d.slug) ?? [];
+    const sourceCounts = {};
+    for (const source of ALL_SOURCES) {
+      const count = digestEntries.filter((e) => e.source === source).length;
+      if (count > 0) sourceCounts[source] = count;
+    }
+    const firstKeywords = digestEntries.find(
+      (e) => typeof e.keywords === "string" && e.keywords.trim(),
+    )?.keywords;
+    return {
+      id: d.slug,
+      slug: d.slug,
+      file: d.file,
+      dateStart: d.dateStart,
+      dateEnd: d.dateEnd,
+      entryCount: digestEntries.length,
+      sourceCounts,
+      topKeywords: firstKeywords ?? "",
+      updatedAt: generatedAt,
+    };
+  });
+
   const payload = {
-    generatedAt: new Date().toISOString(),
+    generatedAt,
     digests,
+    updates,
     entries,
   };
 

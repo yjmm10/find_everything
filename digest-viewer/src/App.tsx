@@ -2,8 +2,12 @@ import { useEffect, useMemo, useState } from "react";
 import type { DigestEntry, DigestSource, DigestsPayload } from "./types";
 import "./App.css";
 
+const RECENT_UPDATES_LIMIT = 10;
+
 const SOURCE_LABEL: Record<DigestSource, string> = {
   arxiv: "Arxiv 论文",
+  semantic_scholar: "Semantic Scholar",
+  openalex: "OpenAlex",
   rss: "RSS 资讯",
   github: "GitHub（旧版标题）",
   github_weekly: "GitHub 周榜",
@@ -49,10 +53,13 @@ export default function App() {
   const [data, setData] = useState<DigestsPayload | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [keyword, setKeyword] = useState("");
+  const [selectedDigestSlug, setSelectedDigestSlug] = useState("");
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
   const [sources, setSources] = useState<Record<DigestSource, boolean>>({
     arxiv: true,
+    semantic_scholar: true,
+    openalex: true,
     rss: true,
     github: true,
     github_weekly: true,
@@ -72,12 +79,18 @@ export default function App() {
   const filtered = useMemo(() => {
     if (!data) return [];
     return data.entries.filter((e) => {
+      if (selectedDigestSlug && e.digestSlug !== selectedDigestSlug) return false;
       if (!sources[e.source]) return false;
       if (!matchesKeyword(e, keyword)) return false;
       if (!overlapsRange(e.dateStart, e.dateEnd, dateFrom, dateTo)) return false;
       return true;
     });
-  }, [data, keyword, dateFrom, dateTo, sources]);
+  }, [data, keyword, selectedDigestSlug, dateFrom, dateTo, sources]);
+
+  const recentUpdates = useMemo(() => {
+    if (!data?.updates) return [];
+    return data.updates.slice(0, RECENT_UPDATES_LIMIT);
+  }, [data]);
 
   const toggleSource = (s: DigestSource) => {
     setSources((prev) => ({ ...prev, [s]: !prev[s] }));
@@ -112,19 +125,66 @@ export default function App() {
         </p>
       </header>
 
+      <section className="updates" aria-label="更新记录">
+        <div className="updates__head">
+          <h2 className="updates__title">更新记录（最近 {RECENT_UPDATES_LIMIT} 次）</h2>
+          <p className="updates__sub">每条代表一次 digest 结果更新</p>
+        </div>
+        <ul className="updates__list">
+          {recentUpdates.map((u) => (
+            <li key={u.id}>
+              <button
+                type="button"
+                className={`update-item ${selectedDigestSlug === u.slug ? "update-item--active" : ""}`}
+                onClick={() => setSelectedDigestSlug(u.slug)}
+              >
+                <span className="update-item__title">{u.slug}</span>
+                <span className="update-item__meta">
+                  {u.dateStart && u.dateEnd ? `${u.dateStart} ~ ${u.dateEnd}` : "无时间窗"} · {u.entryCount} 条
+                </span>
+                <span className="update-item__meta">
+                  {Object.entries(u.sourceCounts)
+                    .map(([k, v]) => `${SOURCE_LABEL[k as DigestSource]} ${v}`)
+                    .join(" · ") || "无来源分布"}
+                  {u.topKeywords ? ` · 关键词 ${u.topKeywords}` : ""}
+                </span>
+                <span className="update-item__meta">更新时间 {u.updatedAt.slice(0, 19)}Z</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <section className="filters" aria-label="筛选">
         <div className="filters__row">
-          <label className="field">
-            <span className="field__label">关键字</span>
-            <input
-              type="search"
-              className="field__input"
-              placeholder="标题、说明、关键词组…"
-              value={keyword}
-              onChange={(e) => setKeyword(e.target.value)}
-              autoComplete="off"
-            />
-          </label>
+          <div className="filters__row filters__row--split">
+            <label className="field">
+              <span className="field__label">指定期次</span>
+              <select
+                className="field__input"
+                value={selectedDigestSlug}
+                onChange={(e) => setSelectedDigestSlug(e.target.value)}
+              >
+                <option value="">全部期次</option>
+                {data.digests.map((d) => (
+                  <option key={d.slug} value={d.slug}>
+                    {d.slug}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="field">
+              <span className="field__label">关键字</span>
+              <input
+                type="search"
+                className="field__input"
+                placeholder="标题、说明、关键词组…"
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
+                autoComplete="off"
+              />
+            </label>
+          </div>
         </div>
         <div className="filters__row filters__row--split">
           <label className="field">

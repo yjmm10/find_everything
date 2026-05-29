@@ -53,8 +53,11 @@ https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FYOUR_USER
 
 ## 部署后如何更新线上内容
 
-- 在默认生产分支上 **修改或新增** `docs/weekly-digest-*.md` 并 **push**，Vercel 会对该仓库触发 **新的 Deployment**，构建完成后站点即展示最新索引。
+- **每次更新**：指 [weekly-digest workflow](../.github/workflows/weekly-digest.yml) 或其它流程在 `docs/` 下新增/更新 `weekly-digest-<slug>.md` 后，Vercel 重新构建时 `parse-digests` 会写入 `updates` 数组；前端「更新记录」区块展示最近 10 次。
+- 在默认生产分支上 **修改或新增** `docs/weekly-digest-*.md` 并 **push**，Vercel 会对该仓库触发 **新的 Deployment**，构建完成后站点即展示最新索引与更新记录。
 - 若希望不提交代码也能触发构建，可在 Vercel 项目 **Settings → Git → Deploy Hooks** 创建 Hook，用 HTTP 请求触发重新部署。
+
+构建日志中应看到类似：`parse-digests: N 个周报文件 → … 条条目`。若 N 为 0，页面上更新记录为空，请确认 markdown 已推送到 Vercel 所连分支。
 
 ---
 

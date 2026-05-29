@@ -4,11 +4,15 @@ from digest_sources.arxiv import ArxivSource
 from digest_sources.base import DigestSource, FetchContext
 from digest_sources.github_repository_search import GithubRepositorySearchSource
 from digest_sources.github_trending import GithubTrendingSource
+from digest_sources.openalex import OpenAlexSource
 from digest_sources.rss import RssSource
+from digest_sources.semantic_scholar import SemanticScholarSource
 
 # 抓取顺序；新增信息源时在此注册即可
 DEFAULT_SOURCES: tuple[DigestSource, ...] = (
     ArxivSource(),
+    SemanticScholarSource(),
+    OpenAlexSource(),
     RssSource(),
     GithubTrendingSource(),
     GithubRepositorySearchSource(),
@@ -21,5 +25,7 @@ __all__ = [
     "FetchContext",
     "GithubRepositorySearchSource",
     "GithubTrendingSource",
+    "OpenAlexSource",
     "RssSource",
+    "SemanticScholarSource",
 ]

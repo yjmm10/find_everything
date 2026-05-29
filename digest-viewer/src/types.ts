@@ -1,5 +1,7 @@
 export type DigestSource =
   | "arxiv"
+  | "semantic_scholar"
+  | "openalex"
   | "rss"
   | "github"
   | "github_weekly"
@@ -35,8 +37,21 @@ export interface DigestMeta {
   entryCount: number;
 }
 
+export interface DigestUpdate {
+  id: string;
+  slug: string;
+  file: string;
+  dateStart: string;
+  dateEnd: string;
+  entryCount: number;
+  sourceCounts: Partial<Record<DigestSource, number>>;
+  topKeywords: string;
+  updatedAt: string;
+}
+
 export interface DigestsPayload {
   generatedAt: string;
   digests: DigestMeta[];
+  updates: DigestUpdate[];
   entries: DigestEntry[];
 }

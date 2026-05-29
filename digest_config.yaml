@@ -4,7 +4,7 @@
 #   富语法（出现括号或英文 and/or/andnot 单词）：与 arXiv 官方 AND/OR/ANDNOT 一致；逗号同 OR
 #   例 (uav|aerial) & (vlm|llm|mllm) & (rl) 与 (uav OR aerial) AND (vlm OR llm OR mllm) AND (rl) 等价
 #   全角 ｜ ＆ 等同 | &
-keywords: "llm&uav"
+keywords: "(uav|aerial) & (vlm|llm|mllm) & (rl)"
 
 # 根 date_range：默认窗口；各信息源可再写自己的 date_range 覆盖（不读 DIGEST_* 环境变量）
 # preset：相对「执行当日」— day=前一自然日，week=前 7 天（截止昨日），month=前一自然月
@@ -37,6 +37,21 @@ arxiv:
   # library_delay_seconds: 3.0
   # library_page_size: 100
   # library_num_retries: 3
+
+# Semantic Scholar：关键词布尔式同文件头；date_range 映射为 publicationDateOrYear
+# API Key：环境变量 SEMANTIC_SCHOLAR_API_KEY（勿写入仓库）
+semantic_scholar:
+  enabled: true
+  # keywords 不填则用全局 keywords；列表时每组单独检索
+  max_results: 30
+  # max_results_total: 24
+
+# OpenAlex：关键词布尔式同文件头；date_range 映射为 from/to_publication_date
+# API Key：环境变量 OPENALEX_API_KEY；可选 OPENALEX_MAILTO 或块内 mailto
+openalex:
+  enabled: true
+  max_results: 30
+  # max_results_total: 24
 
 # RSS：keywords 布尔式用于标题匹配（同文件头）；rss.date_range 与每条 feed 的 date_range 过滤发布日
 rss:
