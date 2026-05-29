@@ -43,7 +43,9 @@ function slugFromFilename(name) {
 }
 
 function parseMeta(block) {
-  const kwM = block.match(/关键词组为[「『]([^」』]+)[」』]/);
+  const kwM =
+    block.match(/关键词组为[「『]([^」』]+)[」』]/) ||
+    block.match(/检索关键词为[「『]([^」』]+)[」』]/);
   const kwDefault = block.match(/全局默认[「『]([^」』]+)[」』]/);
   const keywords = (kwM || kwDefault)?.[1]?.trim() ?? "";
   const win = block.match(
@@ -54,6 +56,78 @@ function parseMeta(block) {
     dateStart: win?.[1] ?? "",
     dateEnd: win?.[2] ?? "",
   };
+}
+
+function parseFileMeta(text) {
+  const win = text.match(
+    /时间窗口\s*(\d{4}-\d{2}-\d{2})\s*[~～]\s*(\d{4}-\d{2}-\d{2})/,
+  );
+  const kwM =
+    text.match(/关键词组为[「『]([^」』]+)[」』]/) ||
+    text.match(/检索关键词为[「『]([^」』]+)[」』]/);
+  return {
+    keywords: kwM?.[1]?.trim() ?? "",
+    dateStart: win?.[1] ?? "",
+    dateEnd: win?.[2] ?? "",
+  };
+}
+
+function isPlaceholderValue(v) {
+  const t = String(v ?? "").trim();
+  if (!t) return true;
+  if (/^[-—–_\s.]+$/.test(t)) return true;
+  return t === "无" || /^n\/?a$/i.test(t);
+}
+
+function isValidHttpLink(link) {
+  const t = String(link ?? "").trim();
+  if (isPlaceholderValue(t)) return false;
+  return /^https?:\/\//i.test(t);
+}
+
+function crawlDateFromSlug(slug) {
+  const m = slug.match(/_(\d{4})(\d{2})(\d{2})T\d{6}Z$/);
+  if (m) return `${m[1]}-${m[2]}-${m[3]}`;
+  const win = slug.match(/^(\d{4}-\d{2}-\d{2})_(\d{4}-\d{2}-\d{2})$/);
+  if (win) return win[2];
+  return "";
+}
+
+function extractSectionSummary(body) {
+  const lines = body.split("\n");
+  const parts = [];
+  for (const line of lines) {
+    const t = line.trim();
+    if (!t) continue;
+    if (t.startsWith("|")) break;
+    if (t.startsWith(">")) continue;
+    parts.push(t.replace(/^本表/, "本表"));
+  }
+  return parts.join(" ").trim();
+}
+
+function parseSections(text) {
+  const parts = text.split(/^##\s+/m);
+  const sections = [];
+  for (const part of parts) {
+    const lineEnd = part.indexOf("\n");
+    const heading = (lineEnd === -1 ? part : part.slice(0, lineEnd)).trim();
+    const body = lineEnd === -1 ? "" : part.slice(lineEnd + 1);
+    const source = SOURCE_BY_HEADING[heading];
+    if (!source) continue;
+    const meta = parseMeta(body);
+    const summary = extractSectionSummary(body);
+    sections.push({
+      source,
+      heading,
+      summary,
+      dateStart: meta.dateStart,
+      dateEnd: meta.dateEnd,
+      keywords: meta.keywords,
+      entryCount: 0,
+    });
+  }
+  return sections;
 }
 
 function splitCells(line) {
@@ -96,15 +170,22 @@ function rowToEntry(headers, cells, source, meta, digestSlug, rowIndex) {
   headers.forEach((key, j) => {
     if (key) h[key] = cells[j] ?? "";
   });
-  const title = h["标题"] ?? "";
-  const link = h["链接"] ?? "";
-  if (!title && !link) return null;
+  const title = (h["标题"] ?? "").trim();
+  const link = (h["链接"] ?? "").trim();
+  const summary = (h["说明"] ?? "").trim();
+  if (isPlaceholderValue(title) && !isValidHttpLink(link)) return null;
+  if (isPlaceholderValue(title) && isPlaceholderValue(summary) && !isValidHttpLink(link)) {
+    return null;
+  }
   const scoreRaw = h["评分"] ?? "";
   const score = parseInt(String(scoreRaw).trim(), 10);
   const id = `${digestSlug}-${source}-${rowIndex}`;
   const tags = (h["标签"] ?? "").trim() || null;
   const publishedAt = (h["发表时间"] ?? "").trim() || null;
   const subject = (h["学科类别"] ?? "").trim() || null;
+  const starRaw = h["Star"]?.trim() ?? "";
+  const forkRaw = h["Fork"]?.trim() ?? "";
+  const langRaw = h["主语言"]?.trim() ?? "";
   return {
     id,
     digestSlug,
@@ -113,19 +194,19 @@ function rowToEntry(headers, cells, source, meta, digestSlug, rowIndex) {
     keywords: meta.keywords,
     source,
     score: Number.isFinite(score) ? score : null,
-    title: title || "(无标题)",
-    summary: h["说明"] ?? "",
-    link: link || null,
-    star: h["Star"]?.trim() || null,
-    fork: h["Fork"]?.trim() || null,
-    language: h["主语言"]?.trim() || null,
+    title: isPlaceholderValue(title) ? "(无标题)" : title,
+    summary: isPlaceholderValue(summary) ? "" : summary,
+    link: isValidHttpLink(link) ? link : null,
+    star: isPlaceholderValue(starRaw) ? null : starRaw,
+    fork: isPlaceholderValue(forkRaw) ? null : forkRaw,
+    language: isPlaceholderValue(langRaw) ? null : langRaw,
     tags,
     publishedAt,
     subject,
   };
 }
 
-function parseMarkdownFile(filePath, digestSlug) {
+function parseMarkdownFile(filePath, digestSlug, crawlDate) {
   const text = fs.readFileSync(filePath, "utf-8");
   const parts = text.split(/^##\s+/m);
   const entries = [];
@@ -140,7 +221,7 @@ function parseMarkdownFile(filePath, digestSlug) {
     if (headers.length === 0) continue;
     rows.forEach((cells, idx) => {
       const e = rowToEntry(headers, cells, source, meta, digestSlug, idx);
-      if (e) entries.push(e);
+      if (e) entries.push({ ...e, crawlDate });
     });
   }
   return entries;
@@ -154,20 +235,36 @@ function main() {
   for (const name of files) {
     const slug = slugFromFilename(name);
     const full = path.join(DOCS, name);
-    const entries = parseMarkdownFile(full, slug);
+    const fileText = fs.readFileSync(full, "utf-8");
+    const fileMeta = parseFileMeta(fileText);
+    const crawlDate = crawlDateFromSlug(slug);
+    const sections = parseSections(fileText);
+    const entries = parseMarkdownFile(full, slug, crawlDate);
     const meta =
       entries.length > 0
         ? {
-          dateStart: entries[0].dateStart,
-          dateEnd: entries[0].dateEnd,
+          dateStart: entries[0].dateStart || fileMeta.dateStart,
+          dateEnd: entries[0].dateEnd || fileMeta.dateEnd,
         }
-        : { dateStart: "", dateEnd: "" };
+        : { dateStart: fileMeta.dateStart, dateEnd: fileMeta.dateEnd };
+
+    const entryCountBySource = {};
+    for (const e of entries) {
+      entryCountBySource[e.source] = (entryCountBySource[e.source] ?? 0) + 1;
+    }
+    for (const sec of sections) {
+      sec.entryCount = entryCountBySource[sec.source] ?? 0;
+    }
+
     digests.push({
       slug,
       file: name,
+      markdownUrl: `docs/${name}`,
+      crawlDate,
       dateStart: meta.dateStart,
       dateEnd: meta.dateEnd,
       entryCount: entries.length,
+      sections,
     });
     allEntries.push(...entries);
   }
@@ -216,11 +313,14 @@ function main() {
       id: d.slug,
       slug: d.slug,
       file: d.file,
+      markdownUrl: d.markdownUrl,
+      crawlDate: d.crawlDate,
       dateStart: d.dateStart,
       dateEnd: d.dateEnd,
       entryCount: digestEntries.length,
       sourceCounts,
       topKeywords: firstKeywords ?? "",
+      sections: d.sections,
       updatedAt: generatedAt,
     };
   });
@@ -234,8 +334,15 @@ function main() {
 
   fs.mkdirSync(path.dirname(OUT), { recursive: true });
   fs.writeFileSync(OUT, JSON.stringify(payload, null, 2), "utf-8");
+
+  const docsPublic = path.resolve(__dirname, "../public/docs");
+  fs.mkdirSync(docsPublic, { recursive: true });
+  for (const name of files) {
+    fs.copyFileSync(path.join(DOCS, name), path.join(docsPublic, name));
+  }
+
   console.log(
-    `parse-digests: ${files.length} 个周报文件 → ${allEntries.length} 条条目 → ${OUT}`,
+    `parse-digests: ${files.length} 个周报文件 → ${entries.length} 条条目 → ${OUT}（docs 已复制到 public/docs/）`,
   );
 }
 

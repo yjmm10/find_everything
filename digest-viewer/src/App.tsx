@@ -1,8 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
 import DigestCalendar from "./DigestCalendar";
-import type { DigestEntry, DigestSource, DigestsPayload } from "./types";
+import DigestDocViewer from "./DigestDocViewer";
+import type { DigestEntry, DigestSection, DigestSource, DigestsPayload } from "./types";
 import { parseDay } from "./dateUtils";
+import {
+  type DateFilterMode,
+  dateFilterModeLabel,
+  entryMatchesDateRange,
+  overlapsRange,
+} from "./filterUtils";
 import "./App.css";
+
+function digestMetaForSlug(data: DigestsPayload, slug: string) {
+  return data.digests.find((d) => d.slug === slug) ?? null;
+}
 
 const SOURCE_LABEL: Record<DigestSource, string> = {
   arxiv: "Arxiv 论文",
@@ -16,19 +27,6 @@ const SOURCE_LABEL: Record<DigestSource, string> = {
 
 function sourceBadgeClass(s: DigestSource): string {
   return `source-badge source-badge--${s}`;
-}
-
-function overlapsRange(
-  start: string,
-  end: string,
-  filterFrom: string,
-  filterTo: string,
-): boolean {
-  if (!filterFrom && !filterTo) return true;
-  if (!start || !end) return true;
-  const fs = filterFrom || "0000-01-01";
-  const fe = filterTo || "9999-12-31";
-  return start <= fe && end >= fs;
 }
 
 function matchesKeyword(entry: DigestEntry, q: string): boolean {
@@ -59,6 +57,8 @@ export default function App() {
   const [calendarDay, setCalendarDay] = useState<string | null>(null);
   const [viewYear, setViewYear] = useState(() => new Date().getFullYear());
   const [viewMonth, setViewMonth] = useState(() => new Date().getMonth() + 1);
+  const [docView, setDocView] = useState<{ slug: string; markdownUrl: string } | null>(null);
+  const [dateFilterMode, setDateFilterMode] = useState<DateFilterMode>("published");
   const [sources, setSources] = useState<Record<DigestSource, boolean>>({
     arxiv: true,
     semantic_scholar: true,
@@ -85,10 +85,12 @@ export default function App() {
       if (selectedDigestSlug && e.digestSlug !== selectedDigestSlug) return false;
       if (!sources[e.source]) return false;
       if (!matchesKeyword(e, keyword)) return false;
-      if (!overlapsRange(e.dateStart, e.dateEnd, dateFrom, dateTo)) return false;
+      if (dateFrom || dateTo) {
+        if (!entryMatchesDateRange(e, dateFrom, dateTo, dateFilterMode)) return false;
+      }
       return true;
     });
-  }, [data, keyword, selectedDigestSlug, dateFrom, dateTo, sources]);
+  }, [data, keyword, selectedDigestSlug, dateFrom, dateTo, sources, dateFilterMode]);
 
   const allUpdates = useMemo(() => {
     if (!data?.updates) return [];
@@ -119,6 +121,51 @@ export default function App() {
       setCalendarDay(null);
     }
   };
+
+  const openDigestDoc = (slug: string) => {
+    const d = digestMetaForSlug(data!, slug);
+    if (d) {
+      setDocView({
+        slug,
+        markdownUrl: d.markdownUrl || `docs/${d.file}`,
+      });
+    }
+  };
+
+  const selectedDigestMeta = useMemo(() => {
+    if (!selectedDigestSlug || !data) return null;
+    return digestMetaForSlug(data, selectedDigestSlug);
+  }, [data, selectedDigestSlug]);
+
+  const visibleSections = useMemo(() => {
+    if (!data) return [];
+    type Row = DigestSection & { digestSlug: string };
+    const rows: Row[] = [];
+    for (const d of data.digests) {
+      if (selectedDigestSlug && d.slug !== selectedDigestSlug) continue;
+      if (calendarDay && !selectedDigestSlug) {
+        if (dateFilterMode === "crawl" && d.crawlDate !== calendarDay) continue;
+        if (
+          dateFilterMode === "window" &&
+          !overlapsRange(d.dateStart, d.dateEnd, calendarDay, calendarDay)
+        ) {
+          continue;
+        }
+        if (dateFilterMode === "published") {
+          const hasPub = data.entries.some(
+            (e) =>
+              e.digestSlug === d.slug &&
+              e.publishedAt?.slice(0, 10) === calendarDay,
+          );
+          if (!hasPub) continue;
+        }
+      }
+      for (const s of d.sections ?? []) {
+        rows.push({ ...s, digestSlug: d.slug });
+      }
+    }
+    return rows;
+  }, [data, selectedDigestSlug, calendarDay, dateFilterMode]);
 
   useEffect(() => {
     if (!data?.updates?.length) return;
@@ -171,6 +218,8 @@ export default function App() {
             selectedDay={calendarDay}
             viewYear={viewYear}
             viewMonth={viewMonth}
+            dateFilterMode={dateFilterMode}
+            onDateFilterModeChange={setDateFilterMode}
             onSelectDay={handleCalendarDay}
             onViewMonthChange={(y, m) => {
               setViewYear(y);
@@ -187,7 +236,7 @@ export default function App() {
         </div>
         <ul className="updates__list">
           {allUpdates.map((u) => (
-            <li key={u.id}>
+            <li key={u.id} className="update-item-wrap">
               <button
                 type="button"
                 className={`update-item ${selectedDigestSlug === u.slug ? "update-item--active" : ""}`}
@@ -210,10 +259,27 @@ export default function App() {
                 </span>
                 <span className="update-item__meta">更新时间 {u.updatedAt.slice(0, 19)}Z</span>
               </button>
+              <button
+                type="button"
+                className="update-item__doc-btn"
+                onClick={() => openDigestDoc(u.slug)}
+              >
+                查看完整周报 →
+              </button>
             </li>
           ))}
         </ul>
       </section>
+
+      {selectedDigestMeta && (
+        <p className="digest-doc-bar">
+          当前期次：<strong>{selectedDigestMeta.slug}</strong>
+          {selectedDigestMeta.entryCount === 0 ? "（无有效表格条目）" : ` · ${selectedDigestMeta.entryCount} 条`}
+          <button type="button" className="digest-doc-bar__btn" onClick={() => openDigestDoc(selectedDigestMeta.slug)}>
+            查看完整 Markdown 周报
+          </button>
+        </p>
+      )}
 
       <section className="filters" aria-label="筛选">
         <div className="filters__row">
@@ -253,7 +319,9 @@ export default function App() {
         </div>
         <div className="filters__row filters__row--split">
           <label className="field">
-            <span className="field__label">时间（与条目数据窗重叠即显示）</span>
+            <span className="field__label">
+              时间 · {dateFilterModeLabel(dateFilterMode)}
+            </span>
             <div className="field__inline">
               <input
                 type="date"
@@ -291,7 +359,44 @@ export default function App() {
 
       <p className="result-count">
         当前显示 <strong>{filtered.length}</strong> 条
+        {(dateFrom || calendarDay) && (
+          <span className="result-count__mode"> · 按{dateFilterModeLabel(dateFilterMode)}</span>
+        )}
       </p>
+
+      {visibleSections.length > 0 && (
+        <section className="section-summaries" aria-label="板块说明">
+          <h2 className="section-summaries__title">板块说明（来自 Markdown 摘要）</h2>
+          <ul className="section-summaries__list">
+            {visibleSections.map((s) => (
+              <li key={`${s.digestSlug}-${s.source}`} className="section-summary">
+                <div className="section-summary__top">
+                  <span className={sourceBadgeClass(s.source)}>{SOURCE_LABEL[s.source]}</span>
+                  <span className="section-summary__count">{s.entryCount} 条</span>
+                </div>
+                {s.summary ? <p className="section-summary__text">{s.summary}</p> : null}
+                <p className="section-summary__meta">
+                  {s.dateStart && s.dateEnd ? `${s.dateStart} ~ ${s.dateEnd}` : "—"}
+                  {s.keywords ? ` · ${s.keywords}` : ""}
+                  {!selectedDigestSlug && (
+                    <>
+                      {" "}
+                      ·{" "}
+                      <button
+                        type="button"
+                        className="section-summary__link"
+                        onClick={() => openDigestDoc(s.digestSlug)}
+                      >
+                        完整周报
+                      </button>
+                    </>
+                  )}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <ul className="card-list">
         {filtered.map((e) => (
@@ -300,7 +405,7 @@ export default function App() {
               <span className={sourceBadgeClass(e.source)}>{SOURCE_LABEL[e.source]}</span>
               {e.score != null && <span className="score">评分 {e.score}</span>}
             </div>
-            <h2 className="card__title">{e.title}</h2>
+            <h2 className="card__title">{e.title === "(无标题)" ? "（无标题）" : e.title}</h2>
             {e.summary ? <p className="card__summary">{e.summary}</p> : null}
             <dl className="card__meta">
               <div>
@@ -327,6 +432,12 @@ export default function App() {
                 <div>
                   <dt>发表时间</dt>
                   <dd>{e.publishedAt}</dd>
+                </div>
+              ) : null}
+              {e.crawlDate ? (
+                <div>
+                  <dt>抓取日</dt>
+                  <dd>{e.crawlDate}</dd>
                 </div>
               ) : null}
               {e.subject ? (
@@ -356,7 +467,27 @@ export default function App() {
       </ul>
 
       {filtered.length === 0 && (
-        <p className="empty muted">没有符合筛选条件的条目，请放宽关键字、日历日期或时间范围。</p>
+        <p className="empty muted">
+          没有符合筛选条件的条目。
+          {selectedDigestSlug && (
+            <>
+              {" "}
+              该期可能仅有「无数据」占位行，请
+              <button type="button" className="empty__link" onClick={() => openDigestDoc(selectedDigestSlug)}>
+                查看完整周报
+              </button>
+              了解说明文字。
+            </>
+          )}
+          {!selectedDigestSlug && " 请放宽关键字、日历日期或时间范围。"}
+        </p>
+      )}
+      {docView && (
+        <DigestDocViewer
+          markdownUrl={docView.markdownUrl}
+          slug={docView.slug}
+          onClose={() => setDocView(null)}
+        />
       )}
         </div>
       </div>
