@@ -22,6 +22,10 @@ _SCRIPT_DIR = Path(__file__).resolve().parent
 
 DEFAULT_DIGEST_CONFIG = {
     "keywords": "AI, LLM",
+    "ai": {
+        "model": "gpt-4o-mini",
+        "max_tokens": 4000,
+    },
     # 数据窗口：preset 为执行日前一完整 day/week/month；也可用 start+end 指定绝对区间
     "date_range": {
         "preset": "week",
@@ -120,14 +124,43 @@ def load_digest_config() -> dict:
     return cfg
 
 
+def _cfg_or_env(cfg: dict, cfg_key: str, env_name: str, default=None):
+    """优先 digest_config.yaml；环境变量仅在配置项未设置时作后备。"""
+    if isinstance(cfg, dict):
+        cfg_val = cfg.get(cfg_key)
+        if cfg_val is not None and str(cfg_val).strip() != "":
+            return cfg_val
+    env_val = os.getenv(env_name, "").strip()
+    if env_val:
+        return env_val
+    return default
+
+
+def _ai_settings(cfg: dict) -> dict:
+    ai = cfg.get("ai")
+    if not isinstance(ai, dict):
+        ai = {}
+    default_ai = DEFAULT_DIGEST_CONFIG.get("ai") or {}
+    model = _cfg_or_env(ai, "model", "AI_MODEL", default_ai.get("model", "gpt-4o-mini"))
+    if ai.get("max_tokens") is not None:
+        max_tokens = int(ai.get("max_tokens"))
+    elif os.getenv("AI_MAX_TOKENS", "").strip():
+        max_tokens = int(os.getenv("AI_MAX_TOKENS", "").strip())
+    else:
+        max_tokens = int(default_ai.get("max_tokens") or 4000)
+    return {"model": str(model).strip(), "max_tokens": max_tokens}
+
+
 def _openai_base_url() -> str:
     """与官方 SDK 一致：base_url 应指向 …/v1（无末尾空格），否则会拼出错误路径导致 404。"""
     raw = (os.getenv("OPENAI_API_BASE") or "https://api.openai.com/v1").strip()
     return raw.rstrip("/")
 
 
-def summarize_with_ai(raw_sections: str, keyword_context: str, date_str: str):
-    model = (os.getenv("AI_MODEL", "gpt-4o-mini") or "gpt-4o-mini").strip()
+def summarize_with_ai(raw_sections: str, keyword_context: str, date_str: str, *, cfg: dict):
+    ai = _ai_settings(cfg)
+    model = ai["model"]
+    max_tokens = ai["max_tokens"]
     api_key = (os.getenv("OPENAI_API_KEY") or "").strip()
     base_url = _openai_base_url()
     log(f"🤖 [AI] 调用模型 {model} 生成周报（可能需数十秒）…")
@@ -162,7 +195,7 @@ def summarize_with_ai(raw_sections: str, keyword_context: str, date_str: str):
             model=model,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.2,
-            max_tokens=int(os.getenv("AI_MAX_TOKENS", "4000")),
+            max_tokens=max_tokens,
         )
     except Exception as e:
         log(f"❌ [AI] chat.completions 调用失败: {type(e).__name__}: {e}")
@@ -453,7 +486,7 @@ if __name__ == "__main__":
     load_dotenv()
     try:
         cfg = load_digest_config()
-        keywords = os.getenv("KEYWORDS", "").strip() or cfg.get("keywords", "AI, LLM")
+        keywords = str(_cfg_or_env(cfg, "keywords", "KEYWORDS", DEFAULT_DIGEST_CONFIG["keywords"])).strip()
         win = build_digest_date_window(cfg, DEFAULT_DIGEST_CONFIG)
         log(
             f"⏱️ 数据窗口 [{win.mode}]: {win.start_date} ~ {win.end_date} "
@@ -503,7 +536,7 @@ if __name__ == "__main__":
             f"RSS：每条可设 keywords、date_range；未设 keywords 时依次用 rss.keywords、全局（标题匹配）。"
         )
         digest_md = summarize_with_ai(
-            raw_sections, keyword_context, f"{ctx.start_date} ~ {ctx.end_date}"
+            raw_sections, keyword_context, f"{ctx.start_date} ~ {ctx.end_date}", cfg=cfg
         )
         digest_md = _inject_crawl_timestamp(digest_md)
         if _digest_markdown_is_effectively_empty(digest_md):
@@ -525,6 +558,7 @@ if __name__ == "__main__":
         config_snapshot = {
             "keywords": keywords,
             "date_range": cfg.get("date_range"),
+            "ai": _ai_settings(cfg),
         }
         artifact_path = save_and_commit_json(
             digest_md,

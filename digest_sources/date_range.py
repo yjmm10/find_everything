@@ -171,8 +171,22 @@ def github_trending_since_param(mode: str) -> str:
 
 
 def build_digest_date_window(cfg: dict, default_cfg: dict) -> DigestDateWindow:
-    """根据配置与环境变量构造数据窗口。"""
+    """根据配置与环境变量构造数据窗口（默认 digest_config.yaml，环境变量仅作临时覆盖）。"""
     today = datetime.date.today()
+
+    dr = cfg.get("date_range")
+    if dr is None and isinstance(default_cfg, dict):
+        dr = default_cfg.get("date_range")
+    if not isinstance(dr, dict):
+        dr = {}
+
+    ys, ye = dr.get("start"), dr.get("end")
+    has_start = ys is not None and str(ys).strip() != ""
+    has_end = ye is not None and str(ye).strip() != ""
+    if has_start:
+        return digest_window_from_date_range_dict(dr, today)
+    if has_end:
+        raise ValueError("date_range 仅设置了 end，缺少 start")
 
     es = os.getenv("DIGEST_DATE_START", "").strip()
     ee = os.getenv("DIGEST_DATE_END", "").strip()
@@ -193,20 +207,6 @@ def build_digest_date_window(cfg: dict, default_cfg: dict) -> DigestDateWindow:
             arxiv_submitted_inner=_to_arxiv_inner(start_d, end_d),
             mode="custom",
         )
-
-    dr = cfg.get("date_range")
-    if dr is None and isinstance(default_cfg, dict):
-        dr = default_cfg.get("date_range")
-    if not isinstance(dr, dict):
-        dr = {}
-
-    ys, ye = dr.get("start"), dr.get("end")
-    has_start = ys is not None and str(ys).strip() != ""
-    has_end = ye is not None and str(ye).strip() != ""
-    if has_start:
-        return digest_window_from_date_range_dict(dr, today)
-    if has_end:
-        raise ValueError("date_range 仅设置了 end，缺少 start")
 
     dr_eff = dict(dr)
     ep = os.getenv("DIGEST_DATE_PRESET", "").strip()

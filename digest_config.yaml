@@ -1,4 +1,9 @@
 # 周报订阅配置。环境变量 DIGEST_CONFIG 可指向其它 YAML 文件。
+#
+# 配置优先级（默认以本文件为准）：
+#   - 关键词、时间窗、各信息源、AI 模型 → digest_config.yaml
+#   - 环境变量 / GitHub Secrets 仅用于：API 密钥、CI 开关、临时覆盖（见 .env.example）
+#
 # 全局 keywords：各信息源未单独写 keywords 时使用。布尔式（Arxiv / RSS / GitHub 一致）：
 #   扁平：逗号与 | 均为或（OR）；& 为与（AND）；&a,b 行首仍为与分项；a&b,c 为 a AND (b OR c)
 #   富语法（出现括号或英文 and/or/andnot 单词）：与 arXiv 官方 AND/OR/ANDNOT 一致；逗号同 OR
@@ -6,10 +11,15 @@
 #   全角 ｜ ＆ 等同 | &
 keywords: "(uav|aerial) & (vlm|llm|mllm) & (rl)"
 
-# 根 date_range：默认窗口；各信息源可再写自己的 date_range 覆盖（不读 DIGEST_* 环境变量）
+# AI 汇总（model / max_tokens 在此配置；API Key 与 Base URL 仅环境变量或 GitHub Secrets）
+ai:
+  model: MiniMax/MiniMax-M2.5
+  max_tokens: 4000
+
+# 根 date_range：默认窗口；各信息源可再写自己的 date_range 覆盖
 # preset：相对「执行当日」— day=前一自然日，week=前 7 天（截止昨日），month=前一自然月
 # start+end 与 preset 同时存在时以 start/end 为准
-# 环境变量：DIGEST_DATE_START + DIGEST_DATE_END；DIGEST_DATE_PRESET
+# 临时覆盖（可选）：DIGEST_DATE_START + DIGEST_DATE_END；DIGEST_DATE_PRESET
 date_range:
   preset: week
   # start: "2026-03-01"

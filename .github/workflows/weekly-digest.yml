@@ -48,10 +48,9 @@ jobs:
       - name: Run Digest Generator
         env:
           DIGEST_NO_GIT: "1"
+          # 密钥与通知：仅 Secrets / .env，业务配置见 digest_config.yaml
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
-          AI_MODEL: ${{ vars.AI_MODEL || 'gpt-4o-mini' }}
-          KEYWORDS: ${{ vars.KEYWORDS || 'LLM, AI Agent, Computer Vision' }}
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
           OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
           SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
