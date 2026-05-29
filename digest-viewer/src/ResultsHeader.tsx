@@ -1,4 +1,6 @@
 import type { DigestSource } from "./types";
+import type { SortKey } from "./sortEntries";
+import { SORT_LABEL } from "./sortEntries";
 
 const SOURCE_SHORT: Partial<Record<DigestSource, string>> = {
   arxiv: "Arxiv",
@@ -14,19 +16,27 @@ export interface ResultsHeaderProps {
   count: number;
   calendarDay: string | null;
   selectedDigestLabel: string;
+  sortKey: SortKey;
+  favOnly?: boolean;
+  groupView?: boolean;
 }
 
 export default function ResultsHeader({
   count,
   calendarDay,
   selectedDigestLabel,
+  sortKey,
+  favOnly,
+  groupView,
 }: ResultsHeaderProps) {
-  let hint = "全部条目 · 按评分降序";
+  let hint = `全部条目 · 按${SORT_LABEL[sortKey]}排序`;
+  if (favOnly) hint = `仅收藏 · 按${SORT_LABEL[sortKey]}排序`;
   if (calendarDay) {
-    hint = `${calendarDay} 当日内容（含周榜周日）· 按评分降序`;
+    hint = `${calendarDay} 当日 · 按${SORT_LABEL[sortKey]}排序`;
   } else if (selectedDigestLabel) {
-    hint = `期次 ${selectedDigestLabel} · 整周 · 按评分降序`;
+    hint = `期次 ${selectedDigestLabel} · 整周 · 按${SORT_LABEL[sortKey]}排序`;
   }
+  if (groupView) hint += " · 按来源分组";
 
   return (
     <div className="results-header">

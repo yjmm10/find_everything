@@ -1,5 +1,7 @@
 import type { DigestSource } from "./types";
 import { dateFilterModeLabel, type DateFilterMode } from "./filterUtils";
+import type { SortKey } from "./sortEntries";
+import { SORT_LABEL } from "./sortEntries";
 
 const SOURCE_SHORT: Partial<Record<DigestSource, string>> = {
   arxiv: "Arxiv",
@@ -17,6 +19,7 @@ export interface FilterContextBannerProps {
   dateFilterMode: DateFilterMode;
   sourceCounts: Partial<Record<DigestSource, number>>;
   filteredCount: number;
+  sortKey?: SortKey;
   onClearCalendar: () => void;
   onClearKeyword: () => void;
   onClearDigest: () => void;
@@ -29,6 +32,7 @@ export default function FilterContextBanner({
   dateFilterMode,
   sourceCounts,
   filteredCount,
+  sortKey = "score",
   onClearCalendar,
   onClearKeyword,
   onClearDigest,
@@ -75,7 +79,7 @@ export default function FilterContextBanner({
         <strong>{filteredCount}</strong> 条
         {calendarDay ? " · 按发表/周榜日筛选" : ` · ${dateFilterModeLabel(dateFilterMode)}`}
         {sourceBits ? ` · ${sourceBits}` : ""}
-        <span className="filter-context__sort"> · 按评分降序</span>
+        <span className="filter-context__sort"> · 按{SORT_LABEL[sortKey]}排序</span>
       </p>
     </div>
   );

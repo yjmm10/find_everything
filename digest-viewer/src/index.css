@@ -1,4 +1,13 @@
 :root {
+  --radius: 10px;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+}
+
+/* 深色（默认） */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
   --bg: #0f1419;
   --surface: #1a222c;
   --border: #2d3a47;
@@ -9,9 +18,130 @@
   --arxiv: #6c9eff;
   --rss: #e9c46a;
   --github: #f4a261;
-  --radius: 10px;
-  --font-sans: "DM Sans", system-ui, sans-serif;
-  --font-display: "Fraunces", Georgia, serif;
+  --semantic: #c4b5fd;
+  --openalex: #86efac;
+  --github-search: #5eead4;
+  --accent-soft: rgba(61, 214, 195, 0.1);
+  --accent-soft-strong: rgba(61, 214, 195, 0.15);
+  --accent-border: rgba(61, 214, 195, 0.35);
+  --accent-border-soft: rgba(61, 214, 195, 0.2);
+  --filter-bar-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  --tag-bg: rgba(255, 255, 255, 0.04);
+  --code-bg: rgba(255, 255, 255, 0.06);
+  --table-stripe: rgba(255, 255, 255, 0.02);
+  --overlay-backdrop: rgba(0, 0, 0, 0.65);
+  --panel-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  --cal-data-bg: rgba(61, 214, 195, 0.06);
+  --cal-selected-bg: rgba(61, 214, 195, 0.15);
+  --cal-sun-bg: rgba(244, 162, 97, 0.04);
+  --cal-crawl-ring: rgba(233, 196, 106, 0.35);
+  --score-high-bg: rgba(61, 214, 195, 0.2);
+  --score-mid-bg: rgba(233, 196, 106, 0.18);
+  --score-low-bg: rgba(139, 155, 171, 0.15);
+  --active-tab-text: var(--bg);
+  --chip-on-text: var(--bg);
+  --run-pill-active-bg: rgba(61, 214, 195, 0.1);
+  --run-pill-ring: rgba(61, 214, 195, 0.25);
+  --md-active-bg: rgba(61, 214, 195, 0.1);
+  --update-active-bg: rgba(61, 139, 253, 0.08);
+  --doc-bar-bg: rgba(61, 214, 195, 0.08);
+  --filter-context-bg: rgba(61, 214, 195, 0.06);
+  --filter-context-border: rgba(61, 214, 195, 0.2);
+  --results-count-bg: rgba(61, 214, 195, 0.15);
+}
+
+/* 浅色 */
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #eef1f6;
+  --surface: #ffffff;
+  --border: #cfd8e3;
+  --text: #15202b;
+  --muted: #5c6b7a;
+  --accent: #0d9488;
+  --accent-dim: #0f766e;
+  --arxiv: #2563eb;
+  --rss: #b45309;
+  --github: #c2410c;
+  --semantic: #7c3aed;
+  --openalex: #15803d;
+  --github-search: #0f766e;
+  --accent-soft: rgba(13, 148, 136, 0.08);
+  --accent-soft-strong: rgba(13, 148, 136, 0.12);
+  --accent-border: rgba(13, 148, 136, 0.45);
+  --accent-border-soft: rgba(13, 148, 136, 0.25);
+  --filter-bar-shadow: 0 2px 16px rgba(15, 23, 42, 0.08);
+  --card-shadow: 0 4px 18px rgba(15, 23, 42, 0.07);
+  --tag-bg: rgba(15, 23, 42, 0.04);
+  --code-bg: rgba(15, 23, 42, 0.06);
+  --table-stripe: rgba(15, 23, 42, 0.03);
+  --overlay-backdrop: rgba(15, 23, 42, 0.45);
+  --panel-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  --cal-data-bg: rgba(13, 148, 136, 0.08);
+  --cal-selected-bg: rgba(13, 148, 136, 0.16);
+  --cal-sun-bg: rgba(194, 65, 12, 0.06);
+  --cal-crawl-ring: rgba(180, 83, 9, 0.35);
+  --score-high-bg: rgba(13, 148, 136, 0.15);
+  --score-mid-bg: rgba(180, 83, 9, 0.12);
+  --score-low-bg: rgba(92, 107, 122, 0.12);
+  --active-tab-text: #ffffff;
+  --chip-on-text: #ffffff;
+  --run-pill-active-bg: rgba(13, 148, 136, 0.1);
+  --run-pill-ring: rgba(13, 148, 136, 0.3);
+  --md-active-bg: rgba(13, 148, 136, 0.1);
+  --update-active-bg: rgba(37, 99, 235, 0.08);
+  --doc-bar-bg: rgba(13, 148, 136, 0.08);
+  --filter-context-bg: rgba(13, 148, 136, 0.06);
+  --filter-context-border: rgba(13, 148, 136, 0.22);
+  --results-count-bg: rgba(13, 148, 136, 0.12);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]):not([data-theme="light"]) {
+    color-scheme: light;
+    --bg: #eef1f6;
+    --surface: #ffffff;
+    --border: #cfd8e3;
+    --text: #15202b;
+    --muted: #5c6b7a;
+    --accent: #0d9488;
+    --accent-dim: #0f766e;
+    --arxiv: #2563eb;
+    --rss: #b45309;
+    --github: #c2410c;
+    --semantic: #7c3aed;
+    --openalex: #15803d;
+    --github-search: #0f766e;
+    --accent-soft: rgba(13, 148, 136, 0.08);
+    --accent-soft-strong: rgba(13, 148, 136, 0.12);
+    --accent-border: rgba(13, 148, 136, 0.45);
+    --accent-border-soft: rgba(13, 148, 136, 0.25);
+    --filter-bar-shadow: 0 2px 16px rgba(15, 23, 42, 0.08);
+    --card-shadow: 0 4px 18px rgba(15, 23, 42, 0.07);
+    --tag-bg: rgba(15, 23, 42, 0.04);
+    --code-bg: rgba(15, 23, 42, 0.06);
+    --table-stripe: rgba(15, 23, 42, 0.03);
+    --overlay-backdrop: rgba(15, 23, 42, 0.45);
+    --panel-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+    --cal-data-bg: rgba(13, 148, 136, 0.08);
+    --cal-selected-bg: rgba(13, 148, 136, 0.16);
+    --cal-sun-bg: rgba(194, 65, 12, 0.06);
+    --cal-crawl-ring: rgba(180, 83, 9, 0.35);
+    --score-high-bg: rgba(13, 148, 136, 0.15);
+    --score-mid-bg: rgba(180, 83, 9, 0.12);
+    --score-low-bg: rgba(92, 107, 122, 0.12);
+    --active-tab-text: #ffffff;
+    --chip-on-text: #ffffff;
+    --run-pill-active-bg: rgba(13, 148, 136, 0.1);
+    --run-pill-ring: rgba(13, 148, 136, 0.3);
+    --md-active-bg: rgba(13, 148, 136, 0.1);
+    --update-active-bg: rgba(37, 99, 235, 0.08);
+    --doc-bar-bg: rgba(13, 148, 136, 0.08);
+    --filter-context-bg: rgba(13, 148, 136, 0.06);
+    --filter-context-border: rgba(13, 148, 136, 0.22);
+    --results-count-bg: rgba(13, 148, 136, 0.12);
+  }
 }
 
 *,
@@ -28,6 +158,7 @@ body {
   color: var(--text);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #root {

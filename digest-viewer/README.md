@@ -53,6 +53,21 @@ data/
 
 构建产物：`digest-viewer/public/viewer-data.json`（同期次去重、**跨期按链接保留最早一条**、按评分降序；`DIGEST_DEDUPE_LINK=0` 可关闭跨期去重）。
 
+## 主题
+
+右上角 **浅色 / 深色 / 跟随系统** 三态切换，偏好键 `digest-viewer-theme`（`localStorage`）。
+
+## 条目浏览功能
+
+- **排序**：评分 / 发表日 / 标题
+- **收藏**：卡片 ★ 收藏，筛选栏「★ N」仅看收藏（`digest-viewer-favorites`）
+- **日历按日**：点日历 → 按发表/周榜日筛条目；期次条与 Markdown 仍为整周
+- **分组 / 紧凑**：按来源分组展示；紧凑模式隐藏摘要
+- **分享 / 导出**：复制带筛选条件的 URL；复制当前结果为 Markdown 列表
+- **快捷键**：`/` 聚焦搜索，`Esc` 清除筛选
+- **最近搜索**：聚焦搜索框显示历史关键词
+- **侧栏概览**：期次数、条目数、收藏数、来源分布
+
 ## Vercel 部署
 
 见 [DEPLOY_VERCEL.md](./DEPLOY_VERCEL.md)。Vercel 需能访问 `data/` 或预构建的 `viewer-data.json`；推荐直接使用 GitHub Pages。

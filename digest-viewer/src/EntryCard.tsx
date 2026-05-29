@@ -15,9 +15,20 @@ const SOURCE_LABEL: Record<DigestSource, string> = {
 export interface EntryCardProps {
   entry: DigestEntry;
   showDigest?: boolean;
+  compact?: boolean;
+  isFavorite?: boolean;
+  onToggleFavorite?: (id: string) => void;
+  onTagClick?: (tag: string) => void;
 }
 
-export default function EntryCard({ entry: e, showDigest = true }: EntryCardProps) {
+export default function EntryCard({
+  entry: e,
+  showDigest = true,
+  compact = false,
+  isFavorite = false,
+  onToggleFavorite,
+  onTagClick,
+}: EntryCardProps) {
   const tier = scoreTier(e.score);
   const tags = parseTagList(e.tags);
   const pub =
@@ -27,8 +38,17 @@ export default function EntryCard({ entry: e, showDigest = true }: EntryCardProp
   const pubLabel =
     e.source === "github_weekly" ? "周榜（周日）" : e.source === "github_search" ? "推送" : "发表";
 
+  const copyLink = async () => {
+    if (!e.link) return;
+    try {
+      await navigator.clipboard.writeText(e.link);
+    } catch {
+      /* ignore */
+    }
+  };
+
   return (
-    <li className={`card card--${e.source}`}>
+    <li className={`card card--${e.source}${compact ? " card--compact" : ""}`}>
       <div className="card__top">
         <span className={`source-badge source-badge--${e.source}`}>
           {SOURCE_LABEL[e.source]}
@@ -38,6 +58,31 @@ export default function EntryCard({ entry: e, showDigest = true }: EntryCardProp
             {e.score}
           </span>
         )}
+        <div className="card__actions">
+          {onToggleFavorite && (
+            <button
+              type="button"
+              className={`card__action ${isFavorite ? "card__action--on" : ""}`}
+              onClick={() => onToggleFavorite(e.id)}
+              title={isFavorite ? "取消收藏" : "收藏"}
+              aria-label={isFavorite ? "取消收藏" : "收藏"}
+              aria-pressed={isFavorite}
+            >
+              {isFavorite ? "★" : "☆"}
+            </button>
+          )}
+          {e.link && (
+            <button
+              type="button"
+              className="card__action"
+              onClick={copyLink}
+              title="复制链接"
+              aria-label="复制链接"
+            >
+              ⎘
+            </button>
+          )}
+        </div>
       </div>
 
       {e.link ? (
@@ -50,13 +95,19 @@ export default function EntryCard({ entry: e, showDigest = true }: EntryCardProp
         <h2 className="card__title">{e.title === "(无标题)" ? "（无标题）" : e.title}</h2>
       )}
 
-      {e.summary ? <p className="card__summary">{e.summary}</p> : null}
+      {!compact && e.summary ? <p className="card__summary">{e.summary}</p> : null}
 
       {tags.length > 0 && (
         <ul className="tag-list" aria-label="标签">
           {tags.map((t) => (
-            <li key={t} className="tag-list__item">
-              {t}
+            <li key={t}>
+              {onTagClick ? (
+                <button type="button" className="tag-list__item tag-list__btn" onClick={() => onTagClick(t)}>
+                  {t}
+                </button>
+              ) : (
+                <span className="tag-list__item">{t}</span>
+              )}
             </li>
           ))}
         </ul>
@@ -75,13 +126,13 @@ export default function EntryCard({ entry: e, showDigest = true }: EntryCardProp
             <dd>{pub}</dd>
           </div>
         )}
-        {e.subject ? (
+        {!compact && e.subject ? (
           <div>
             <dt>学科</dt>
             <dd>{e.subject}</dd>
           </div>
         ) : null}
-        {(e.star || e.fork || e.language) && (
+        {!compact && (e.star || e.fork || e.language) && (
           <div>
             <dt>仓库</dt>
             <dd>
