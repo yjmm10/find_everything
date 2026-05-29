@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
+import DigestCalendar from "./DigestCalendar";
 import type { DigestEntry, DigestSource, DigestsPayload } from "./types";
+import { parseDay } from "./dateUtils";
 import "./App.css";
 
 const SOURCE_LABEL: Record<DigestSource, string> = {
@@ -54,6 +56,9 @@ export default function App() {
   const [selectedDigestSlug, setSelectedDigestSlug] = useState("");
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
+  const [calendarDay, setCalendarDay] = useState<string | null>(null);
+  const [viewYear, setViewYear] = useState(() => new Date().getFullYear());
+  const [viewMonth, setViewMonth] = useState(() => new Date().getMonth() + 1);
   const [sources, setSources] = useState<Record<DigestSource, boolean>>({
     arxiv: true,
     semantic_scholar: true,
@@ -90,6 +95,41 @@ export default function App() {
     return data.updates;
   }, [data]);
 
+  const handleCalendarDay = (day: string | null) => {
+    setCalendarDay(day);
+    if (day) {
+      setDateFrom(day);
+      setDateTo(day);
+      setSelectedDigestSlug("");
+    } else {
+      setDateFrom("");
+      setDateTo("");
+    }
+  };
+
+  const handleDateRangeChange = (from: string, to: string) => {
+    setDateFrom(from);
+    setDateTo(to);
+    if (from && to && from === to) {
+      setCalendarDay(from);
+      const d = parseDay(from);
+      setViewYear(d.getFullYear());
+      setViewMonth(d.getMonth() + 1);
+    } else {
+      setCalendarDay(null);
+    }
+  };
+
+  useEffect(() => {
+    if (!data?.updates?.length) return;
+    const latest = data.updates[0].updatedAt.slice(0, 10);
+    if (/^\d{4}-\d{2}-\d{2}$/.test(latest)) {
+      const d = parseDay(latest);
+      setViewYear(d.getFullYear());
+      setViewMonth(d.getMonth() + 1);
+    }
+  }, [data]);
+
   const toggleSource = (s: DigestSource) => {
     setSources((prev) => ({ ...prev, [s]: !prev[s] }));
   };
@@ -118,11 +158,28 @@ export default function App() {
       <header className="hero">
         <h1 className="hero__title">技术周报归档</h1>
         <p className="hero__sub">
-          共 {data.digests.length} 期周报、{data.entries.length} 条条目
-          {data.generatedAt ? ` · 索引生成于 ${data.generatedAt.slice(0, 19)}Z` : ""}
+          共 {data.digests.length} 次抓取、{data.entries.length} 条条目
+          {data.generatedAt ? ` · 索引 ${data.generatedAt.slice(0, 10)}` : ""}
         </p>
       </header>
 
+      <div className="layout">
+        <aside className="sidebar">
+          <DigestCalendar
+            updates={allUpdates}
+            entries={data.entries}
+            selectedDay={calendarDay}
+            viewYear={viewYear}
+            viewMonth={viewMonth}
+            onSelectDay={handleCalendarDay}
+            onViewMonthChange={(y, m) => {
+              setViewYear(y);
+              setViewMonth(m);
+            }}
+          />
+        </aside>
+
+        <div className="main">
       <section className="updates" aria-label="更新记录">
         <div className="updates__head">
           <h2 className="updates__title">更新记录（共 {allUpdates.length} 次抓取）</h2>
@@ -134,7 +191,12 @@ export default function App() {
               <button
                 type="button"
                 className={`update-item ${selectedDigestSlug === u.slug ? "update-item--active" : ""}`}
-                onClick={() => setSelectedDigestSlug(u.slug)}
+                onClick={() => {
+                  setSelectedDigestSlug(u.slug);
+                  setCalendarDay(null);
+                  setDateFrom("");
+                  setDateTo("");
+                }}
               >
                 <span className="update-item__title">{u.slug}</span>
                 <span className="update-item__meta">
@@ -161,7 +223,12 @@ export default function App() {
               <select
                 className="field__input"
                 value={selectedDigestSlug}
-                onChange={(e) => setSelectedDigestSlug(e.target.value)}
+                onChange={(e) => {
+                  setSelectedDigestSlug(e.target.value);
+                  setCalendarDay(null);
+                  setDateFrom("");
+                  setDateTo("");
+                }}
               >
                 <option value="">全部期次</option>
                 {data.digests.map((d) => (
@@ -192,14 +259,14 @@ export default function App() {
                 type="date"
                 className="field__input field__input--narrow"
                 value={dateFrom}
-                onChange={(e) => setDateFrom(e.target.value)}
+                onChange={(e) => handleDateRangeChange(e.target.value, dateTo)}
               />
               <span className="field__sep">至</span>
               <input
                 type="date"
                 className="field__input field__input--narrow"
                 value={dateTo}
-                onChange={(e) => setDateTo(e.target.value)}
+                onChange={(e) => handleDateRangeChange(dateFrom, e.target.value)}
               />
             </div>
           </label>
@@ -289,8 +356,10 @@ export default function App() {
       </ul>
 
       {filtered.length === 0 && (
-        <p className="empty muted">没有符合筛选条件的条目，请放宽关键字或时间范围。</p>
+        <p className="empty muted">没有符合筛选条件的条目，请放宽关键字、日历日期或时间范围。</p>
       )}
+        </div>
+      </div>
     </div>
   );
 }

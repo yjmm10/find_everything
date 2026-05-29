@@ -1,5 +1,5 @@
 .page {
-  max-width: 920px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 2.5rem 1.25rem 4rem;
 }
@@ -29,8 +29,237 @@
   color: var(--muted);
 }
 
-.updates {
+.layout {
+  display: grid;
+  gap: 1.25rem;
   margin-top: 1.5rem;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(260px, 300px) 1fr;
+    gap: 1.5rem;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 1rem;
+  }
+}
+
+.main {
+  min-width: 0;
+}
+
+/* --- Calendar --- */
+.calendar {
+  padding: 1rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.calendar__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.calendar__title {
+  margin: 0;
+  font-size: 1rem;
+  font-family: var(--font-display);
+}
+
+.calendar__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.calendar__nav-btn {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1;
+  font-size: 1.1rem;
+}
+
+.calendar__nav-btn:hover {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+.calendar__month {
+  font-size: 0.82rem;
+  color: var(--muted);
+  min-width: 5.5rem;
+  text-align: center;
+}
+
+.calendar__today {
+  width: 100%;
+  margin-bottom: 0.75rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.calendar__today:hover {
+  color: var(--accent);
+  border-color: var(--accent-dim);
+}
+
+.calendar__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.calendar__weekday {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--muted);
+  padding: 0.2rem 0;
+}
+
+.calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.calendar__cell {
+  aspect-ratio: 1;
+  min-height: 2.35rem;
+}
+
+.calendar__cell--empty {
+  visibility: hidden;
+}
+
+.calendar__day {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0.15rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.82rem;
+}
+
+.calendar__day:hover {
+  border-color: var(--border);
+}
+
+.calendar__day--data {
+  background: rgba(61, 214, 195, 0.06);
+}
+
+.calendar__day--crawl {
+  box-shadow: inset 0 0 0 1px rgba(233, 196, 106, 0.35);
+}
+
+.calendar__day--today {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.calendar__day--selected {
+  border-color: var(--accent);
+  background: rgba(61, 214, 195, 0.15);
+}
+
+.calendar__day-num {
+  line-height: 1.1;
+}
+
+.calendar__dots {
+  display: flex;
+  gap: 2px;
+  margin-top: 1px;
+}
+
+.calendar__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+
+.calendar__dot--data {
+  background: var(--accent);
+}
+
+.calendar__dot--crawl {
+  background: var(--rss);
+}
+
+.calendar__count {
+  position: absolute;
+  top: 2px;
+  right: 3px;
+  font-size: 0.58rem;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.calendar__legend {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.calendar__legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.calendar__selection {
+  margin: 0.65rem 0 0;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.calendar__selection strong {
+  color: var(--accent);
+}
+
+.calendar__clear {
+  margin-left: 0.5rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--accent);
+  font-size: 0.82rem;
+  text-decoration: underline;
+}
+
+.updates {
+  margin-top: 0;
   padding: 1rem 1.15rem;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -59,6 +288,9 @@
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
+  max-height: min(320px, 40vh);
+  overflow-y: auto;
+  padding-right: 0.25rem;
 }
 
 .update-item {
@@ -90,7 +322,7 @@
 }
 
 .filters {
-  margin-top: 2rem;
+  margin-top: 1.25rem;
   padding: 1.25rem 1.35rem;
   background: var(--surface);
   border: 1px solid var(--border);
