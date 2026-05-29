@@ -30,7 +30,7 @@ date_range:
 # 可选 keywords，不填则用全局 keywords（语法同文件头「布尔式」）
 # - 字符串：如 "uav, llm"（同 uav|llm，逗号为 OR）、"uav&llm"（与）、"&uav,llm"（行首与分项）
 # - 富布尔：如 "(uav|aerial) & (vlm|llm|mllm) & (rl)" → arXiv 段 (uav OR aerial) AND (vlm OR llm OR mllm) AND (rl)
-# - 列表：每组单独检索，结果按组保留（跨组不去重）；如 [ "uav, llm", "dla, ocr" ]
+# - 列表：每组单独检索，结果按组保留（跨组不去重）；如 [ "uav, llm", "ocr" ]
 # max_results：每组最多条数（-1 表示单次请求按 arXiv 上限尽量多取）
 # max_results_total（可选）：所有组加起来总条数上限，按组顺序截断（-1 表示不限制总数）
 # backend: 仅决定「先试哪一路」；另一路（api↔library）自动备用，网络/解析失败会切换并打日志
@@ -39,7 +39,7 @@ arxiv:
   backend: library
   # date_range:
   #   preset: month
-  keywords: ["(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)","dla|ocr"]
+  keywords: "(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)"
   max_results: -1
   # max_results_total: 12
   sort_by: submittedDate
