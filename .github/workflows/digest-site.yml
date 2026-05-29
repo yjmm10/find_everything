@@ -8,6 +8,7 @@ on:
       - master
     paths:
       - "digest-viewer/**"
+      - "data/**"
       - ".github/workflows/digest-site.yml"
       - ".github/scripts/**"
   workflow_dispatch:
@@ -32,12 +33,12 @@ jobs:
       - name: Restore digest archive from gh-pages
         run: bash .github/scripts/restore-data-from-gh-pages.sh
 
-      - name: Set up Python (migrate legacy docs → data if needed)
+      - name: Set up Python (rebuild index after merge)
         uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
-      - name: Migrate docs to JSON
+      - name: Rebuild data index
         run: pip install -q -r requirements.txt && python -m digest_export.migrate
 
       - name: Set up Node
