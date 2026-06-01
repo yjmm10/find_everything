@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { DigestMeta, DigestUpdate } from "./types";
 import { digestWindowLabel } from "./entryDisplay";
 import { simpleMarkdownToHtml } from "./markdownRender";
@@ -28,6 +28,12 @@ function stripKeywordHints(markdown: string): string {
     .join("\n");
 }
 
+function markdownBodyFor(update: DigestUpdate, digests: DigestMeta[]): string {
+  const embedded = update.markdownBody?.trim();
+  if (embedded) return embedded;
+  return digests.find((d) => d.slug === update.slug)?.markdownBody?.trim() ?? "";
+}
+
 export default function MarkdownDigestView({
   digests,
   updates,
@@ -35,39 +41,98 @@ export default function MarkdownDigestView({
   onSelectSlug,
   onBackToEntries,
 }: MarkdownDigestViewProps) {
-  const [content, setContent] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const ignoreSpyRef = useRef(false);
+  const spyTimerRef = useRef<number | null>(null);
+  const initialScrollDone = useRef(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  const meta = digests.find((d) => d.slug === selectedSlug) ?? digests[0];
-  const embeddedBody = meta?.markdownBody?.trim() ?? "";
-  const markdownUrl = meta?.markdownUrl || (meta ? `docs/${meta.file}` : "");
+  const sections = useMemo(() => {
+    return updates
+      .map((u) => {
+        const raw = markdownBodyFor(u, digests);
+        if (!raw) return null;
+        return {
+          update: u,
+          html: simpleMarkdownToHtml(stripKeywordHints(raw)),
+          label: digestWindowLabel(u.dateStart, u.dateEnd, u.slug),
+        };
+      })
+      .filter((s): s is NonNullable<typeof s> => s != null);
+  }, [updates, digests]);
+
+  const scrollToSlug = useCallback((slug: string, smooth = true) => {
+    const el = document.getElementById(`md-section-${slug}`);
+    if (!el) return;
+    ignoreSpyRef.current = true;
+    el.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+    if (spyTimerRef.current) window.clearTimeout(spyTimerRef.current);
+    spyTimerRef.current = window.setTimeout(() => {
+      ignoreSpyRef.current = false;
+    }, smooth ? 700 : 100);
+  }, []);
+
+  const handleSidebarSelect = useCallback(
+    (slug: string) => {
+      onSelectSlug(slug);
+      scrollToSlug(slug);
+    },
+    [onSelectSlug, scrollToSlug],
+  );
 
   useEffect(() => {
-    if (embeddedBody) {
-      setContent(embeddedBody);
-      setError(null);
-      setLoading(false);
-      return;
+    if (initialScrollDone.current || sections.length === 0) return;
+    const exists = sections.some((s) => s.update.slug === selectedSlug);
+    const slug = exists ? selectedSlug : sections[0].update.slug;
+    if (!exists && slug !== selectedSlug) {
+      onSelectSlug(slug);
     }
-    if (!markdownUrl) return;
-    const url = `${import.meta.env.BASE_URL}${markdownUrl.replace(/^\//, "")}`;
-    setLoading(true);
-    setError(null);
-    fetch(url)
-      .then((r) => {
-        if (!r.ok) throw new Error(`无法加载 Markdown (${r.status})`);
-        return r.text();
-      })
-      .then((text) => setContent(text))
-      .catch((e) => setError(String(e)))
-      .finally(() => setLoading(false));
-  }, [embeddedBody, markdownUrl, selectedSlug]);
+    requestAnimationFrame(() => {
+      scrollToSlug(slug, false);
+      initialScrollDone.current = true;
+    });
+  }, [sections, selectedSlug, scrollToSlug, onSelectSlug]);
 
-  const contentForRender = useMemo(
-    () => (content ? stripKeywordHints(content) : ""),
-    [content],
+  useEffect(() => {
+    const root = contentRef.current;
+    if (!root || sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (ignoreSpyRef.current) return;
+        let best: IntersectionObserverEntry | undefined;
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          if (!best || entry.intersectionRatio > best.intersectionRatio) {
+            best = entry;
+          }
+        }
+        if (!best) return;
+        const slug = best.target.getAttribute("data-md-slug");
+        if (slug && slug !== selectedSlug) {
+          onSelectSlug(slug);
+        }
+      },
+      {
+        root,
+        rootMargin: "-12% 0px -55% 0px",
+        threshold: [0, 0.15, 0.35, 0.55, 0.75],
+      },
+    );
+
+    for (const { update } of sections) {
+      const node = root.querySelector(`[data-md-slug="${update.slug}"]`);
+      if (node) observer.observe(node);
+    }
+
+    return () => observer.disconnect();
+  }, [sections, selectedSlug, onSelectSlug]);
+
+  useEffect(
+    () => () => {
+      if (spyTimerRef.current) window.clearTimeout(spyTimerRef.current);
+    },
+    [],
   );
 
   return (
@@ -87,25 +152,28 @@ export default function MarkdownDigestView({
         >
           {sidebarOpen ? "收起期次" : "期次列表"}
         </button>
+        <span className="md-view__flow-hint">连续阅读 · 滚动到底进入下一期</span>
       </nav>
 
       <div className={`md-view__body ${sidebarOpen ? "" : "md-view__body--wide"}`}>
         {sidebarOpen && (
           <aside id="md-view-sidebar" className="md-view__sidebar">
             <ul className="md-view__list">
-              {updates.map((u) => (
-                <li key={u.id}>
+              {sections.map(({ update }) => (
+                <li key={update.id}>
                   <button
                     type="button"
-                    className={`md-view__item ${selectedSlug === u.slug ? "md-view__item--active" : ""}`}
-                    onClick={() => onSelectSlug(u.slug)}
+                    className={`md-view__item ${selectedSlug === update.slug ? "md-view__item--active" : ""}`}
+                    onClick={() => handleSidebarSelect(update.slug)}
                   >
                     <span className="md-view__item-slug">
-                      {digestWindowLabel(u.dateStart, u.dateEnd, u.slug, { compact: true })}
+                      {digestWindowLabel(update.dateStart, update.dateEnd, update.slug, {
+                        compact: true,
+                      })}
                     </span>
                     <span className="md-view__item-meta">
-                      {u.entryCount} 条
-                      {u.crawlDate ? ` · ${u.crawlDate}` : ""}
+                      {update.entryCount} 条
+                      {update.crawlDate ? ` · ${update.crawlDate}` : ""}
                     </span>
                   </button>
                 </li>
@@ -115,32 +183,31 @@ export default function MarkdownDigestView({
         )}
 
         <article className="md-view__article" aria-label="Markdown 周报原文">
-          <header className="md-view__article-head">
-            <h2 className="md-view__article-title">
-              {meta ? digestWindowLabel(meta.dateStart, meta.dateEnd, meta.slug) : "—"}
-            </h2>
-            {meta && (
-              <p className="md-view__article-meta">
-                {meta.entryCount} 条
-                {meta.crawlDate ? ` · 抓取 ${meta.crawlDate}` : ""}
-              </p>
-            )}
-          </header>
-
-          <div className="md-view__content">
-            {loading && <p className="muted">正在加载 Markdown…</p>}
-            {error && (
-              <p className="doc-panel__error">
-                {error}
-                <span className="muted"> · 请确认 gh-pages 已发布 data/ 或 viewer-data.json</span>
-              </p>
-            )}
-            {contentForRender && (
-              <div
-                className="md-render"
-                dangerouslySetInnerHTML={{ __html: simpleMarkdownToHtml(contentForRender) }}
-              />
-            )}
+          <div ref={contentRef} className="md-view__content md-view__content--waterfall">
+            {sections.length === 0 && <p className="muted">暂无 Markdown 原文。</p>}
+            {sections.map(({ update, html, label }, index) => (
+              <section
+                key={update.slug}
+                id={`md-section-${update.slug}`}
+                className="md-waterfall__section"
+                data-md-slug={update.slug}
+                aria-label={label}
+              >
+                <header className="md-waterfall__head">
+                  <h2 className="md-waterfall__title">{label}</h2>
+                  <p className="md-waterfall__meta">
+                    {update.entryCount} 条
+                    {update.crawlDate ? ` · 抓取 ${update.crawlDate}` : ""}
+                  </p>
+                </header>
+                <div className="md-render" dangerouslySetInnerHTML={{ __html: html }} />
+                {index < sections.length - 1 && (
+                  <p className="md-waterfall__next-hint" aria-hidden="true">
+                    ↓ 继续向下 · 下一期
+                  </p>
+                )}
+              </section>
+            ))}
           </div>
         </article>
       </div>
