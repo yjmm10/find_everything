@@ -4,6 +4,7 @@
   --radius-lg: 8px;
   --radius-pill: 999px;
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-serif: "LXGW WenKai", "霞鹜文楷", "STKaiti", "KaiTi", serif;
   --font-display: var(--font-sans);
   --ease-out: ease;
   --transition-fast: 0.12s var(--ease-out);
@@ -63,6 +64,10 @@
   --hero-glow: rgba(61, 214, 195, 0.1);
   --scrollbar-thumb: rgba(255, 255, 255, 0.15);
   --scrollbar-thumb-hover: rgba(255, 255, 255, 0.25);
+  --md-read-bg: #1c1b19;
+  --md-read-text: #ebe8e3;
+  --md-quote-bg: rgba(61, 214, 195, 0.06);
+  --md-table-head-bg: rgba(255, 255, 255, 0.05);
 }
 
 /* 浅色 */
@@ -117,6 +122,10 @@
   --hero-glow: rgba(13, 148, 136, 0.08);
   --scrollbar-thumb: rgba(0, 0, 0, 0.15);
   --scrollbar-thumb-hover: rgba(0, 0, 0, 0.28);
+  --md-read-bg: #faf8f4;
+  --md-read-text: #2a2825;
+  --md-quote-bg: rgba(13, 148, 136, 0.06);
+  --md-table-head-bg: rgba(13, 148, 136, 0.08);
 }
 
 @media (prefers-color-scheme: light) {
@@ -171,6 +180,10 @@
     --hero-glow: rgba(13, 148, 136, 0.08);
     --scrollbar-thumb: rgba(0, 0, 0, 0.15);
     --scrollbar-thumb-hover: rgba(0, 0, 0, 0.28);
+    --md-read-bg: #faf8f4;
+    --md-read-text: #2a2825;
+    --md-quote-bg: rgba(13, 148, 136, 0.06);
+    --md-table-head-bg: rgba(13, 148, 136, 0.08);
   }
 }
 
