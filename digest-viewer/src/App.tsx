@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { trackPageView } from "./analytics";
 import DigestCalendar from "./DigestCalendar";
 import DigestFilterBar from "./DigestFilterBar";
 import EntryCard from "./EntryCard";
@@ -348,6 +349,10 @@ export default function App() {
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
+
+  useEffect(() => {
+    trackPageView();
+  }, [pageView, markdownSlug]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {

@@ -65,6 +65,19 @@ data/
 
 右上角 **浅色 / 深色 / 跟随系统** 三态切换，偏好键 `digest-viewer-theme`（`localStorage`）。
 
+## 访客统计（可选）
+
+构建时通过环境变量注入，**未配置时不加载任何统计脚本**。本地可复制 `.env.example` 为 `.env` 后填写。
+
+| 变量 | 说明 |
+|------|------|
+| `VITE_GA_MEASUREMENT_ID` | Google Analytics 4 衡量 ID（`G-…`） |
+| `VITE_UMAMI_WEBSITE_ID` | [Umami](https://umami.is/) 网站 ID |
+| `VITE_UMAMI_SCRIPT_URL` | Umami 脚本地址（默认 `https://cloud.umami.is/script.js`） |
+| `VITE_GOATCOUNTER_ENDPOINT` | [GoatCounter](https://www.goatcounter.com/) 计数端点（如 `https://xxx.goatcounter.com/count`） |
+
+GitHub Actions 部署：在仓库 **Settings → Secrets and variables → Actions → Variables** 中添加上述变量（可只配一种）。切换 Tab 或 Markdown 期次（hash 变化）时会自动上报 SPA 页面浏览。
+
 ## 条目浏览功能
 
 - **排序**：评分 / 发表日 / 标题
