@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "migrate": "node scripts/migrate-docs-to-json.mjs",
-    "build-data": "node scripts/build-viewer-data.mjs",
-    "prebuild": "node scripts/migrate-docs-to-json.mjs && node scripts/build-viewer-data.mjs",
+    "build-data": "node scripts/build-viewer-data.mjs && node scripts/build-rss-feed.mjs",
+    "build-rss": "node scripts/build-rss-feed.mjs",
+    "prebuild": "node scripts/migrate-docs-to-json.mjs && node scripts/build-viewer-data.mjs && node scripts/build-rss-feed.mjs",
     "build": "vite build",
-    "dev": "node scripts/migrate-docs-to-json.mjs && node scripts/build-viewer-data.mjs && vite",
+    "dev": "node scripts/migrate-docs-to-json.mjs && node scripts/build-viewer-data.mjs && node scripts/build-rss-feed.mjs && vite",
     "preview": "vite preview"
   },
   "dependencies": {

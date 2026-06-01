@@ -79,6 +79,28 @@
   color: var(--accent);
 }
 
+.rss-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--accent-border-soft);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+}
+
+.rss-link:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft-strong);
+  color: var(--accent-dim);
+  text-decoration: none;
+}
+
 .theme-toggle__icon {
   font-size: 0.95rem;
   line-height: 1;

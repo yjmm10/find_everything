@@ -126,6 +126,20 @@ export default function App() {
     window.setTimeout(() => setToast(null), 2200);
   }, []);
 
+  const feedUrl = `${import.meta.env.BASE_URL}feed.xml`;
+
+  useEffect(() => {
+    let link = document.querySelector('link[rel="alternate"][type="application/rss+xml"]');
+    if (!link) {
+      link = document.createElement("link");
+      link.rel = "alternate";
+      link.type = "application/rss+xml";
+      link.title = "技术周报 RSS";
+      document.head.appendChild(link);
+    }
+    link.href = new URL("feed.xml", window.location.href).href;
+  }, []);
+
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}viewer-data.json`)
       .then((r) => {
@@ -428,6 +442,14 @@ export default function App() {
             </p>
           </div>
           <div className="hero__actions">
+            <a
+              className="rss-link"
+              href={feedUrl}
+              type="application/rss+xml"
+              title="订阅每周 Markdown 周报（RSS）"
+            >
+              RSS
+            </a>
             <ThemeToggle />
             <nav className="view-tabs" aria-label="视图切换">
               <button

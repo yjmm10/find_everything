@@ -51,7 +51,15 @@ data/
   runs/{runId}.json    # 单次抓取完整记录（含 content.markdownBody）
 ```
 
-构建产物：`digest-viewer/public/viewer-data.json`（同期次去重、**跨期按链接保留最早一条**、按评分降序；`DIGEST_DEDUPE_LINK=0` 可关闭跨期去重）。
+构建产物：`digest-viewer/public/viewer-data.json`（同期次去重、**跨期按链接保留最早一条**、按评分降序；`DIGEST_DEDUPE_LINK=0` 可关闭跨期去重）、`public/feed.xml`（RSS 2.0，每期完整 Markdown 正文）。
+
+## RSS 订阅
+
+构建时由 `scripts/build-rss-feed.mjs` 生成 **`feed.xml`**，每条 item 对应一期周报的 Markdown 全文（HTML 正文在 `content:encoded`）。
+
+- 订阅地址（GitHub Pages）：**https://yjmm10.github.io/find_everything/feed.xml**
+- 页面右上角 **RSS** 链接触发订阅；阅读器也可手动添加上述 URL
+- 自定义站点根 URL：`SITE_URL=https://your.domain/path/`（构建前设置，末尾 `/` 可选）
 
 ## 主题
 
