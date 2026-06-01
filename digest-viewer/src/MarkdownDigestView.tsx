@@ -21,6 +21,7 @@ export default function MarkdownDigestView({
   const [content, setContent] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const meta = digests.find((d) => d.slug === selectedSlug) ?? digests[0];
   const embeddedBody = meta?.markdownBody?.trim() ?? "";
@@ -45,77 +46,81 @@ export default function MarkdownDigestView({
       .then((text) => setContent(text))
       .catch((e) => setError(String(e)))
       .finally(() => setLoading(false));
-  }, [embeddedBody, markdownUrl]);
+  }, [embeddedBody, markdownUrl, selectedSlug]);
 
   return (
     <div className="md-view">
-      {onBackToEntries && (
-        <nav className="md-view__toolbar">
+      <nav className="md-view__toolbar">
+        {onBackToEntries && (
           <button type="button" className="md-view__back" onClick={onBackToEntries}>
             ← 返回条目浏览
           </button>
-        </nav>
-      )}
-      <div className="md-view__body">
-      <aside className="md-view__sidebar">
-        <h2 className="md-view__sidebar-title">抓取归档</h2>
-        <p className="md-view__sidebar-sub">每次抓取一份完整 Markdown，不按来源拆分</p>
-        <ul className="md-view__list">
-          {updates.map((u) => (
-            <li key={u.id}>
-              <button
-                type="button"
-                className={`md-view__item ${selectedSlug === u.slug ? "md-view__item--active" : ""}`}
-                onClick={() => onSelectSlug(u.slug)}
-              >
-                <span className="md-view__item-slug">
-                  {digestWindowLabel(u.dateStart, u.dateEnd, u.slug, { compact: true })}
-                </span>
-                <span className="md-view__item-meta">
-                  {u.entryCount} 条
-                  {u.crawlDate ? ` · 抓取 ${u.crawlDate}` : ""}
-                </span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </aside>
-
-      <article className="md-view__article" aria-label="Markdown 周报原文">
-        <header className="md-view__article-head">
-          <h2 className="md-view__article-title">
-            {meta
-              ? digestWindowLabel(meta.dateStart, meta.dateEnd, meta.slug)
-              : "—"}
-          </h2>
-          {meta && (
-            <p className="md-view__article-meta">
-              {embeddedBody ? (
-                <>内嵌 JSON 原文 · <code>{meta.file}</code></>
-              ) : (
-                <>文件 <code>{meta.file}</code></>
-              )}
-              {meta
-                ? ` · 数据窗 ${digestWindowLabel(meta.dateStart, meta.dateEnd, meta.slug)}`
-                : ""}
-            </p>
-          )}
-        </header>
-
-        {loading && <p className="muted">正在加载 Markdown…</p>}
-        {error && (
-          <p className="doc-panel__error">
-            {error}
-            <span className="muted"> · 请确认 gh-pages 已发布 data/ 或 viewer-data.json</span>
-          </p>
         )}
-        {content && (
-          <div
-            className="md-render"
-            dangerouslySetInnerHTML={{ __html: simpleMarkdownToHtml(content) }}
-          />
+        <button
+          type="button"
+          className="md-view__sidebar-toggle"
+          onClick={() => setSidebarOpen((v) => !v)}
+          aria-expanded={sidebarOpen}
+          aria-controls="md-view-sidebar"
+        >
+          {sidebarOpen ? "收起期次" : "期次列表"}
+        </button>
+      </nav>
+
+      <div className={`md-view__body ${sidebarOpen ? "" : "md-view__body--wide"}`}>
+        {sidebarOpen && (
+          <aside id="md-view-sidebar" className="md-view__sidebar">
+            <ul className="md-view__list">
+              {updates.map((u) => (
+                <li key={u.id}>
+                  <button
+                    type="button"
+                    className={`md-view__item ${selectedSlug === u.slug ? "md-view__item--active" : ""}`}
+                    onClick={() => onSelectSlug(u.slug)}
+                  >
+                    <span className="md-view__item-slug">
+                      {digestWindowLabel(u.dateStart, u.dateEnd, u.slug, { compact: true })}
+                    </span>
+                    <span className="md-view__item-meta">
+                      {u.entryCount} 条
+                      {u.crawlDate ? ` · ${u.crawlDate}` : ""}
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </aside>
         )}
-      </article>
+
+        <article className="md-view__article" aria-label="Markdown 周报原文">
+          <header className="md-view__article-head">
+            <h2 className="md-view__article-title">
+              {meta ? digestWindowLabel(meta.dateStart, meta.dateEnd, meta.slug) : "—"}
+            </h2>
+            {meta && (
+              <p className="md-view__article-meta">
+                {meta.entryCount} 条
+                {meta.crawlDate ? ` · 抓取 ${meta.crawlDate}` : ""}
+              </p>
+            )}
+          </header>
+
+          <div className="md-view__content">
+            {loading && <p className="muted">正在加载 Markdown…</p>}
+            {error && (
+              <p className="doc-panel__error">
+                {error}
+                <span className="muted"> · 请确认 gh-pages 已发布 data/ 或 viewer-data.json</span>
+              </p>
+            )}
+            {content && (
+              <div
+                className="md-render"
+                dangerouslySetInnerHTML={{ __html: simpleMarkdownToHtml(content) }}
+              />
+            )}
+          </div>
+        </article>
       </div>
     </div>
   );

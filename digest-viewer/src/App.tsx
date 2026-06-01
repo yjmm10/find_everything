@@ -424,7 +424,7 @@ export default function App() {
   }
 
   return (
-    <div className="page">
+    <div className={`page ${pageView === "markdown" ? "page--markdown" : ""}`}>
       {toast && (
         <div className="toast" role="status">
           {toast}
