@@ -53,6 +53,48 @@ export function weekdayLabel(day: string): string {
   return WEEKDAY_ZH[parseDay(day).getDay()];
 }
 
+/** 单日：2026年5月8日 */
+export function formatChineseDate(day: string): string {
+  const d = parseDay(day);
+  return `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}日`;
+}
+
+/**
+ * 数据窗 / 期次区间（中文自然读法）
+ * - 同日：2026年4月30日
+ * - 同月：2026年5月8–14日
+ * - 同年跨月：2026年3月26日 – 4月1日
+ */
+export function formatDateRange(
+  dateStart: string,
+  dateEnd: string,
+  options?: { compact?: boolean },
+): string {
+  if (!dateStart && !dateEnd) return "";
+  if (!dateStart) return formatChineseDate(dateEnd);
+  if (!dateEnd) return formatChineseDate(dateStart);
+  if (dateStart === dateEnd) return formatChineseDate(dateStart);
+
+  const s = parseDay(dateStart);
+  const e = parseDay(dateEnd);
+  const sy = s.getFullYear();
+  const sm = s.getMonth() + 1;
+  const sd = s.getDate();
+  const ey = e.getFullYear();
+  const em = e.getMonth() + 1;
+  const ed = e.getDate();
+
+  if (options?.compact) {
+    if (sy === ey && sm === em) return `${sm}月${sd}–${ed}日`;
+    if (sy === ey) return `${sm}月${sd}日 – ${em}月${ed}日`;
+    return `${sy}年${sm}月${sd}日 – ${ey}年${em}月${ed}日`;
+  }
+
+  if (sy === ey && sm === em) return `${sy}年${sm}月${sd}–${ed}日`;
+  if (sy === ey) return `${sy}年${sm}月${sd}日 – ${em}月${ed}日`;
+  return `${sy}年${sm}月${sd}日 – ${ey}年${em}月${ed}日`;
+}
+
 export function monthTitle(year: number, month: number): string {
   return `${year} 年 ${month} 月`;
 }

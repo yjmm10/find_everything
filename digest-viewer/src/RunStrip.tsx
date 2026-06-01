@@ -1,4 +1,5 @@
 import type { DigestUpdate } from "./types";
+import { digestWindowLabel } from "./entryDisplay";
 
 export interface RunStripProps {
   updates: DigestUpdate[];
@@ -8,8 +9,7 @@ export interface RunStripProps {
 }
 
 function runLabel(u: DigestUpdate): string {
-  if (u.dateStart && u.dateEnd) return `${u.dateStart} ~ ${u.dateEnd}`;
-  return u.slug.replace(/_\d{8}T\d{6}Z$/, "").replace(/_/g, " ");
+  return digestWindowLabel(u.dateStart, u.dateEnd, u.slug, { compact: true });
 }
 
 export default function RunStrip({

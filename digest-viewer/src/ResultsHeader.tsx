@@ -1,5 +1,6 @@
 import type { SortKey } from "./sortEntries";
 import { SORT_LABEL } from "./sortEntries";
+import { formatChineseDate } from "./dateUtils";
 
 export type EntryLayout = "list" | "grid";
 
@@ -29,7 +30,7 @@ export default function ResultsHeader({
   let hint = `按${SORT_LABEL[sortKey]}排序`;
   if (favOnly) hint = `仅收藏 · ${hint}`;
   if (calendarDay) {
-    hint = `${calendarDay} 当日 · ${hint}`;
+    hint = `${formatChineseDate(calendarDay)} · ${hint}`;
   } else if (selectedDigestLabel) {
     hint = `期次 ${selectedDigestLabel} · ${hint}`;
   }

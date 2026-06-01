@@ -1607,38 +1607,80 @@
 }
 
 .chip:hover:not(.chip--on) {
-  border-color: var(--border-strong);
   color: var(--text);
 }
 
+.chip--arxiv:not(.chip--on) {
+  border-color: color-mix(in srgb, var(--arxiv) 55%, var(--border));
+  color: var(--arxiv);
+}
+
+.chip--rss:not(.chip--on) {
+  border-color: color-mix(in srgb, var(--rss) 55%, var(--border));
+  color: var(--rss);
+}
+
+.chip--github:not(.chip--on),
+.chip--github_weekly:not(.chip--on) {
+  border-color: color-mix(in srgb, var(--github) 55%, var(--border));
+  color: var(--github);
+}
+
+.chip--github_search:not(.chip--on) {
+  border-color: color-mix(in srgb, var(--github-search) 55%, var(--border));
+  color: var(--github-search);
+}
+
+.chip--semantic_scholar:not(.chip--on) {
+  border-color: color-mix(in srgb, var(--semantic) 55%, var(--border));
+  color: var(--semantic);
+}
+
+.chip--openalex:not(.chip--on) {
+  border-color: color-mix(in srgb, var(--openalex) 55%, var(--border));
+  color: var(--openalex);
+}
+
 .chip--on {
-  color: var(--chip-on-text);
-  border-color: transparent;
+  border-width: 1px;
+  border-style: solid;
 }
 
 .chip--on.chip--arxiv {
   background: var(--arxiv);
+  border-color: var(--arxiv);
   color: #ffffff;
 }
 
 .chip--on.chip--rss {
   background: var(--rss);
+  border-color: var(--rss);
   color: #1a1510;
 }
 
-.chip--on.chip--github {
+.chip--on.chip--github,
+.chip--on.chip--github_weekly {
   background: var(--github);
+  border-color: var(--github);
   color: #1a1510;
+}
+
+.chip--on.chip--github_search {
+  background: var(--github-search);
+  border-color: var(--github-search);
+  color: #0c1015;
 }
 
 .chip--on.chip--semantic_scholar {
   background: var(--semantic);
+  border-color: var(--semantic);
   color: #ffffff;
 }
 
 .chip--on.chip--openalex {
   background: var(--openalex);
-  color: #ffffff;
+  border-color: var(--openalex);
+  color: #0c1015;
 }
 
 .result-count {

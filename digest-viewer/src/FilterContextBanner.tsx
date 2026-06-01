@@ -1,4 +1,5 @@
 import type { DigestSource } from "./types";
+import { formatChineseDate } from "./dateUtils";
 import { dateFilterModeLabel, type DateFilterMode } from "./filterUtils";
 import type { SortKey } from "./sortEntries";
 import { SORT_LABEL } from "./sortEntries";
@@ -52,7 +53,7 @@ export default function FilterContextBanner({
       <div className="filter-context__main">
         {calendarDay && (
           <span className="filter-context__chip filter-context__chip--accent">
-            日历 {calendarDay}
+            日历 {formatChineseDate(calendarDay)}
             <button type="button" className="filter-context__x" onClick={onClearCalendar} aria-label="清除日历">
               ×
             </button>

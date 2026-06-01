@@ -1,4 +1,6 @@
 import type { DigestEntry, DigestSource } from "./types";
+import { formatDateRange } from "./dateUtils";
+import { formatDateRange } from "./dateUtils";
 
 export type ScoreTier = "high" | "mid" | "low" | "none";
 
@@ -27,8 +29,13 @@ export function parseEntryKeywords(keywords: string | null | undefined): string[
   return parseTagList(raw);
 }
 
-export function digestWindowLabel(dateStart?: string, dateEnd?: string, slug?: string): string {
-  if (dateStart && dateEnd) return `${dateStart} ~ ${dateEnd}`;
+export function digestWindowLabel(
+  dateStart?: string,
+  dateEnd?: string,
+  slug?: string,
+  options?: { compact?: boolean },
+): string {
+  if (dateStart && dateEnd) return formatDateRange(dateStart, dateEnd, options);
   if (slug) return slug.replace(/_\d{8}T\d{6}Z$/, "");
   return "—";
 }

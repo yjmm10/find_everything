@@ -1,5 +1,7 @@
 import type { DigestEntry, DigestUpdate } from "./types";
 import { countBySource } from "./entryDisplay";
+import { formatDateRange } from "./dateUtils";
+import { formatDateRange } from "./dateUtils";
 
 export interface SidebarStatsProps {
   updates: DigestUpdate[];
@@ -18,7 +20,7 @@ export default function SidebarStats({ updates, entries, favoriteCount }: Sideba
     .filter((d): d is string => Boolean(d && /^\d{4}-\d{2}-\d{2}$/.test(d)))
     .sort();
   const range =
-    dates.length > 0 ? `${dates[0]} ~ ${dates[dates.length - 1]}` : "—";
+    dates.length > 0 ? formatDateRange(dates[0], dates[dates.length - 1], { compact: true }) : "—";
 
   return (
     <section className="sidebar-stats" aria-label="数据概览">

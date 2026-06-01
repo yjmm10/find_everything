@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { DigestMeta, DigestUpdate } from "./types";
+import { digestWindowLabel } from "./entryDisplay";
 import { simpleMarkdownToHtml } from "./markdownRender";
 
 export interface MarkdownDigestViewProps {
@@ -68,7 +69,7 @@ export default function MarkdownDigestView({
                 onClick={() => onSelectSlug(u.slug)}
               >
                 <span className="md-view__item-slug">
-                  {u.dateStart && u.dateEnd ? `${u.dateStart} ~ ${u.dateEnd}` : u.slug}
+                  {digestWindowLabel(u.dateStart, u.dateEnd, u.slug, { compact: true })}
                 </span>
                 <span className="md-view__item-meta">
                   {u.entryCount} 条
@@ -83,9 +84,9 @@ export default function MarkdownDigestView({
       <article className="md-view__article" aria-label="Markdown 周报原文">
         <header className="md-view__article-head">
           <h2 className="md-view__article-title">
-            {meta?.dateStart && meta?.dateEnd
-              ? `${meta.dateStart} ~ ${meta.dateEnd}`
-              : meta?.slug ?? "—"}
+            {meta
+              ? digestWindowLabel(meta.dateStart, meta.dateEnd, meta.slug)
+              : "—"}
           </h2>
           {meta && (
             <p className="md-view__article-meta">
@@ -94,7 +95,9 @@ export default function MarkdownDigestView({
               ) : (
                 <>文件 <code>{meta.file}</code></>
               )}
-              {meta.dateStart && meta.dateEnd ? ` · 数据窗 ${meta.dateStart} ~ ${meta.dateEnd}` : ""}
+              {meta
+                ? ` · 数据窗 ${digestWindowLabel(meta.dateStart, meta.dateEnd, meta.slug)}`
+                : ""}
             </p>
           )}
         </header>
