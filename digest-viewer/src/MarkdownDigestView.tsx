@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { DigestMeta, DigestUpdate } from "./types";
 import { digestWindowLabel } from "./entryDisplay";
 import { simpleMarkdownToHtml } from "./markdownRender";
@@ -9,6 +9,23 @@ export interface MarkdownDigestViewProps {
   selectedSlug: string;
   onSelectSlug: (slug: string) => void;
   onBackToEntries?: () => void;
+}
+
+function stripKeywordHints(markdown: string): string {
+  return markdown
+    .split("\n")
+    .map((line) => {
+      if (!line.includes("关键词")) return line;
+      let next = line;
+      next = next.replace(
+        /(?:，|,)?\s*关键词(?:组|为|是)?(?:为)?\s*[「“"'`(（]?[^\n，。]*?[」”"'`)）]?(?=(?:，|,)\s*时间窗口|[。.]|$)/g,
+        "",
+      );
+      next = next.replace(/，\s*，/g, "，").replace(/\s{2,}/g, " ");
+      next = next.replace(/^[，,\s]+/, "");
+      return next;
+    })
+    .join("\n");
 }
 
 export default function MarkdownDigestView({
@@ -47,6 +64,11 @@ export default function MarkdownDigestView({
       .catch((e) => setError(String(e)))
       .finally(() => setLoading(false));
   }, [embeddedBody, markdownUrl, selectedSlug]);
+
+  const contentForRender = useMemo(
+    () => (content ? stripKeywordHints(content) : ""),
+    [content],
+  );
 
   return (
     <div className="md-view">
@@ -113,10 +135,10 @@ export default function MarkdownDigestView({
                 <span className="muted"> · 请确认 gh-pages 已发布 data/ 或 viewer-data.json</span>
               </p>
             )}
-            {content && (
+            {contentForRender && (
               <div
                 className="md-render"
-                dangerouslySetInnerHTML={{ __html: simpleMarkdownToHtml(content) }}
+                dangerouslySetInnerHTML={{ __html: simpleMarkdownToHtml(contentForRender) }}
               />
             )}
           </div>

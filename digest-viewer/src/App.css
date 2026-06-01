@@ -2294,14 +2294,14 @@
 
 /* --- Markdown 正文排版（霞鹜文楷） --- */
 .md-render {
-  font-family: var(--font-serif);
-  font-size: 1.02rem;
-  line-height: 1.9;
+  font-family: "LXGW WenKai Screen", "LXGW WenKai", "霞鹜文楷", "Noto Serif SC", serif;
+  font-size: 1rem;
+  line-height: 1.82;
   color: var(--md-read-text);
-  letter-spacing: 0.02em;
-  text-align: justify;
-  text-justify: inter-ideograph;
-  hanging-punctuation: allow-end;
+  letter-spacing: 0.005em;
+  text-align: left;
+  max-width: 86ch;
+  margin: 0 auto;
 }
 
 .md-render__link {
@@ -2320,9 +2320,9 @@
 .md-render h1,
 .md-render h2,
 .md-render h3 {
-  font-family: var(--font-serif);
+  font-family: "LXGW WenKai Screen", "LXGW WenKai", "霞鹜文楷", "Noto Serif SC", serif;
   font-weight: 700;
-  line-height: 1.45;
+  line-height: 1.5;
   letter-spacing: 0.01em;
   text-align: left;
 }
@@ -2352,7 +2352,7 @@
 }
 
 .md-render p {
-  margin: 0.65rem 0;
+  margin: 0.72rem 0;
   font-size: inherit;
   line-height: inherit;
   color: inherit;
