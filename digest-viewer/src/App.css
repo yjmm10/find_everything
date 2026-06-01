@@ -5,8 +5,11 @@
 }
 
 .page--markdown {
-  max-width: min(1360px, 98vw);
-  padding-bottom: 1rem;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0.85rem clamp(0.65rem, 1.5vw, 1rem) 1rem;
+  box-sizing: border-box;
 }
 
 .page--markdown .hero--compact {
@@ -2131,6 +2134,16 @@
   gap: 0.5rem;
   margin-top: 0.5rem;
   min-height: calc(100vh - 7.5rem);
+  width: 100%;
+}
+
+.md-view__body {
+  display: grid;
+  gap: 0.65rem;
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
 }
 
 .md-view__toolbar {
@@ -2172,14 +2185,6 @@
   border-color: var(--accent-border-soft);
   color: var(--accent);
   background: var(--accent-soft);
-}
-
-.md-view__body {
-  display: grid;
-  gap: 0.65rem;
-  align-items: stretch;
-  flex: 1;
-  min-height: 0;
 }
 
 @media (min-width: 900px) {
@@ -2254,6 +2259,7 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   min-width: 0;
+  width: 100%;
   min-height: 0;
   max-height: calc(100vh - 8.5rem);
   overflow: hidden;
@@ -2283,8 +2289,11 @@
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  padding: 1.15rem 1.35rem 1.5rem;
+  overflow-x: auto;
+  padding: 1rem clamp(0.75rem, 1.2vw, 1.15rem) 1.25rem;
   background: var(--md-read-bg);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .md-view__article-meta code {
@@ -2300,8 +2309,10 @@
   color: var(--md-read-text);
   letter-spacing: 0.005em;
   text-align: left;
-  max-width: 86ch;
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .md-render__link {
@@ -2413,7 +2424,7 @@
 
 .md-render__table {
   width: 100%;
-  min-width: 520px;
+  min-width: 0;
   border-collapse: collapse;
   font-family: var(--font-sans);
   font-size: 0.8rem;
