@@ -3,6 +3,7 @@ import { formatChineseDate } from "./dateUtils";
 import { dateFilterModeLabel, type DateFilterMode } from "./filterUtils";
 import type { SortKey } from "./sortEntries";
 import { SORT_LABEL } from "./sortEntries";
+import { formatKeywordFilterLabel, parseSearchTokens } from "./searchQuery";
 
 const SOURCE_SHORT: Partial<Record<DigestSource, string>> = {
   arxiv: "Arxiv",
@@ -59,9 +60,9 @@ export default function FilterContextBanner({
             </button>
           </span>
         )}
-        {keyword.trim() && (
+        {parseSearchTokens(keyword).length > 0 && (
           <span className="filter-context__chip">
-            关键词「{keyword.trim()}」
+            关键词 {formatKeywordFilterLabel(keyword)}
             <button type="button" className="filter-context__x" onClick={onClearKeyword} aria-label="清除关键词">
               ×
             </button>

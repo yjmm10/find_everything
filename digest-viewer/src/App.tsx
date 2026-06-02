@@ -18,6 +18,7 @@ import { parseDay } from "./dateUtils";
 import { loadRecentQueries, pushRecentQuery } from "./recentSearch";
 import { parseRouteHash, setRouteHash } from "./routeHash";
 import { copyShareUrl, parseFilterFromUrl, syncFilterToUrl } from "./searchUrlState";
+import { digestEntryMatchesSearchQuery } from "./searchQuery";
 import { type SortKey, sortEntries } from "./sortEntries";
 import { entryListClass } from "./entryListLayout";
 import type { EntryLayout } from "./ResultsHeader";
@@ -46,36 +47,6 @@ const SOURCE_LABEL: Record<DigestSource, string> = {
 
 function sourceBadgeClass(s: DigestSource): string {
   return `source-badge source-badge--${s}`;
-}
-
-function matchesKeyword(
-  entry: {
-    title: string;
-    summary: string;
-    keywords: string;
-    tags: string | null;
-    publishedAt: string | null;
-    subject: string | null;
-    digestSlug: string;
-    source: DigestSource;
-  },
-  q: string,
-): boolean {
-  const t = q.trim().toLowerCase();
-  if (!t) return true;
-  const hay = [
-    entry.title,
-    entry.summary,
-    entry.keywords,
-    entry.tags ?? "",
-    entry.publishedAt ?? "",
-    entry.subject ?? "",
-    entry.digestSlug.replace(/_/g, " "),
-    SOURCE_LABEL[entry.source],
-  ]
-    .join(" ")
-    .toLowerCase();
-  return hay.includes(t);
 }
 
 function entriesToMarkdownList(entries: DigestEntry[]): string {
@@ -168,7 +139,7 @@ export default function App() {
       if (favOnly && !favoriteIds.has(e.id)) return false;
       if (selectedDigestSlug && e.digestSlug !== selectedDigestSlug) return false;
       if (!sources[e.source]) return false;
-      if (!matchesKeyword(e, keyword)) return false;
+      if (!digestEntryMatchesSearchQuery(e, keyword, SOURCE_LABEL[e.source])) return false;
       if (calendarDay) {
         if (!entryMatchesDay(e, calendarDay, "published")) return false;
       } else if (dateFrom || dateTo) {

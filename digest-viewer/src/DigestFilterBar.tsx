@@ -88,7 +88,7 @@ export default function DigestFilterBar({
             ref={inputRef}
             type="search"
             className="filter-bar__input"
-            placeholder="搜索标题、说明、标签…（按 / 聚焦）"
+            placeholder="多个关键词用空格分隔，均需匹配；短语可用引号（按 / 聚焦）"
             value={keyword}
             onChange={(e) => onKeywordChange(e.target.value)}
             onFocus={() => setShowRecent(true)}
