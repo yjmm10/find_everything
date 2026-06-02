@@ -3,7 +3,7 @@ import { formatChineseDate } from "./dateUtils";
 import { dateFilterModeLabel, type DateFilterMode } from "./filterUtils";
 import type { SortKey } from "./sortEntries";
 import { SORT_LABEL } from "./sortEntries";
-import { formatKeywordFilterLabel, parseSearchTokens } from "./searchQuery";
+import { formatKeywordFilterLabel, hasSearchQuery } from "./searchQuery";
 
 const SOURCE_SHORT: Partial<Record<DigestSource, string>> = {
   arxiv: "Arxiv",
@@ -39,7 +39,8 @@ export default function FilterContextBanner({
   onClearKeyword,
   onClearDigest,
 }: FilterContextBannerProps) {
-  const hasContext = calendarDay || keyword.trim() || selectedDigestLabel;
+  const hasKeyword = hasSearchQuery(keyword);
+  const hasContext = calendarDay || hasKeyword || selectedDigestLabel;
   if (!hasContext) return null;
 
   const sourceBits = (Object.entries(sourceCounts) as [DigestSource, number][])
@@ -60,7 +61,7 @@ export default function FilterContextBanner({
             </button>
           </span>
         )}
-        {parseSearchTokens(keyword).length > 0 && (
+        {hasKeyword && (
           <span className="filter-context__chip">
             关键词 {formatKeywordFilterLabel(keyword)}
             <button type="button" className="filter-context__x" onClick={onClearKeyword} aria-label="清除关键词">

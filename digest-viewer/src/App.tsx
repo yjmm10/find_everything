@@ -18,7 +18,7 @@ import { parseDay } from "./dateUtils";
 import { loadRecentQueries, pushRecentQuery } from "./recentSearch";
 import { parseRouteHash, setRouteHash } from "./routeHash";
 import { copyShareUrl, parseFilterFromUrl, syncFilterToUrl } from "./searchUrlState";
-import { digestEntryMatchesSearchQuery } from "./searchQuery";
+import { digestEntryMatchesSearchTokens, hasSearchQuery, parseSearchTokens } from "./searchQuery";
 import { type SortKey, sortEntries } from "./sortEntries";
 import { entryListClass } from "./entryListLayout";
 import type { EntryLayout } from "./ResultsHeader";
@@ -134,12 +134,13 @@ export default function App() {
 
   const filtered = useMemo(() => {
     if (!data) return [];
+    const searchTokens = parseSearchTokens(keyword);
     const list = data.entries.filter((e) => {
       if (isPlaceholderEntry(e)) return false;
       if (favOnly && !favoriteIds.has(e.id)) return false;
       if (selectedDigestSlug && e.digestSlug !== selectedDigestSlug) return false;
       if (!sources[e.source]) return false;
-      if (!digestEntryMatchesSearchQuery(e, keyword, SOURCE_LABEL[e.source])) return false;
+      if (!digestEntryMatchesSearchTokens(e, searchTokens, SOURCE_LABEL[e.source])) return false;
       if (calendarDay) {
         if (!entryMatchesDay(e, calendarDay, "published")) return false;
       } else if (dateFrom || dateTo) {
@@ -179,7 +180,7 @@ export default function App() {
   }, [data]);
 
   const hasActiveFilters = Boolean(
-    keyword.trim() ||
+    hasSearchQuery(keyword) ||
       selectedDigestSlug ||
       dateFrom ||
       dateTo ||

@@ -14,6 +14,10 @@ export function parseSearchTokens(query: string): string[] {
   return tokens;
 }
 
+export function hasSearchQuery(query: string): boolean {
+  return parseSearchTokens(query).length > 0;
+}
+
 export function formatKeywordFilterLabel(query: string): string {
   const tokens = parseSearchTokens(query);
   if (tokens.length === 0) return "";
@@ -48,19 +52,25 @@ export function buildEntrySearchHaystack(entry: EntrySearchFields): string {
 }
 
 /** 多个关键字 AND：每条均需在标题、摘要、标签等字段中出现 */
-export function entryMatchesSearchQuery(entry: EntrySearchFields, query: string): boolean {
-  const tokens = parseSearchTokens(query);
+export function entryMatchesSearchTokens(
+  entry: EntrySearchFields,
+  tokens: readonly string[],
+): boolean {
   if (tokens.length === 0) return true;
   const hay = buildEntrySearchHaystack(entry);
   return tokens.every((t) => hay.includes(t));
 }
 
-export function digestEntryMatchesSearchQuery(
+export function entryMatchesSearchQuery(entry: EntrySearchFields, query: string): boolean {
+  return entryMatchesSearchTokens(entry, parseSearchTokens(query));
+}
+
+export function digestEntryMatchesSearchTokens(
   entry: DigestEntry,
-  query: string,
+  tokens: readonly string[],
   sourceLabel: string,
 ): boolean {
-  return entryMatchesSearchQuery(
+  return entryMatchesSearchTokens(
     {
       title: entry.title,
       summary: entry.summary,
@@ -71,6 +81,14 @@ export function digestEntryMatchesSearchQuery(
       digestSlug: entry.digestSlug,
       sourceLabel,
     },
-    query,
+    tokens,
   );
+}
+
+export function digestEntryMatchesSearchQuery(
+  entry: DigestEntry,
+  query: string,
+  sourceLabel: string,
+): boolean {
+  return digestEntryMatchesSearchTokens(entry, parseSearchTokens(query), sourceLabel);
 }
