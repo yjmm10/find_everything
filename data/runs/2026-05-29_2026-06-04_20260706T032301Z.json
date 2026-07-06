@@ -1,0 +1,717 @@
+{
+  "schemaVersion": "1",
+  "id": "2026-05-29_2026-06-04_20260706T032301Z",
+  "crawl": {
+    "executedAt": "2026-07-06T03:23:01.501586Z",
+    "crawlDate": "2026-07-06",
+    "status": "success",
+    "trigger": "ci"
+  },
+  "window": {
+    "dateStart": "2026-05-29",
+    "dateEnd": "2026-06-04",
+    "preset": "week",
+    "mode": "custom"
+  },
+  "config": {
+    "keywords": "(uav|aerial) & (vlm|llm|mllm) & (rl)",
+    "date_range": {
+      "preset": "week"
+    },
+    "ai": {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "max_tokens": 4000,
+      "thinking": null
+    }
+  },
+  "content": {
+    "markdownBody": "## 📄 Arxiv 前沿论文\n\n> **爬取时间**：2026-07-06 03:23:01 UTC\n\n本表数据来自 Arxiv，根据关键词 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)` 检索，时间窗口为 2026-05-29 ~ 2026-06-04。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 学科类别 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n|  |  |  |  |  |  |  |\n\n*（检索结果为 0 条）*\n\n## 🎓 Semantic Scholar\n本表数据来自 Semantic Scholar，根据关键词 `(uav|aerial) & (vlm|llm|mllm) & (rl)` 检索，时间窗口为 2026-05-29 ~ 2026-06-04。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n|  |  |  |  |  |  |  |  |\n\n*（检索结果为 0 条）*\n\n## 📚 OpenAlex\n本表数据来自 OpenAlex，根据关键词 `(uav|aerial) & (vlm|llm|mllm) & (rl)` 检索，时间窗口为 2026-05-29 ~ 2026-06-04。评分侧重与主题贴合度、新颖度。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| 9 | Self-Refining Agentic Reinforcement Learning for Vision-Conditioned UAV Navigation | 提出自精炼的智能体强化学习框架，用于提升视觉条件无人机导航的性能与泛化能力。 | https://openalex.org/W7163594941 | 无人机导航, 强化学习, 视觉语言模型, 智能体 | 2026-06-02 | arXiv (Cornell University) | 0 |\n| - | Multi$^2$: Hierarchical Multi-Agent Decision-Making with LLM-Based Agents in Interactive Environments | 研究基于LLM的智能体在交互环境中的分层多智能体决策机制。 | https://openalex.org/W7163595588 | 多智能体系统, 大语言模型, 决策, 交互环境 | 2026-06-02 | arXiv (Cornell University) | 0 |\n| - | Stateful Visual Encoders for Vision-Language Models | 为视觉语言模型设计状态感知的视觉编码器，以处理多图像、多轮交互的智能体任务。 | https://openalex.org/W7163720772 | 视觉语言模型, 状态感知, 多模态, 智能体 | 2026-06-03 | arXiv (Cornell University) | 0 |\n| - | MEPT-LLM: a multimodal generative AI model for identifying and understanding cultural-emotional barriers in the language classroom | 利用多模态生成式AI模型识别和理解语言课堂中的文化情感障碍。 | https://doi.org/10.3389/fpsyg.2026.1759927 | 多模态模型, 教育AI, 文化情感, 大语言模型 | 2026-06-03 | Frontiers in Psychology | 0 |\n| - | Aerolang: A Dimensionally-Aware Domain-Specific Language for Real-Time Flight Control with Integrated Morphing Wing Physics | 提出一种维度感知的领域特定语言，用于集成变形翼物理的实时飞行控制。 | https://doi.org/10.2478/tar-2026-0011 | 无人机, 领域特定语言, 飞行控制, 实时系统 | 2026-06-01 | Transactions of the Institute of Aviation | 0 |\n| - | Task-Focused Memorization for Multimodal Agents | 为多模态智能体设计任务聚焦的记忆机制，以支持长期连贯的经验构建和持续学习。 | https://openalex.org/W7163287516 | 多模态智能体, 记忆机制, 持续学习, 任务聚焦 | 2026-05-29 | arXiv (Cornell University) | 0 |\n| - | Harnessing artificial intelligence in genomic selection: A new era in plant breeding | 综述人工智能在基因组选择中的应用，开启植物育种的新时代。 | https://doi.org/10.33545/2618060x.2026.v9.i6sc.5764 | 人工智能, 基因组选择, 植物育种, 机器学习 | 2026-06-01 | International Journal of Research in Agronomy | 0 |\n| - | RescueBench: Can Embodied Agents Save Lives in the Wild ? | 提出一个评估具身智能体在野外搜救任务中能力的基准测试。 | https://openalex.org/W7163598259 | 具身智能体, 搜救, 基准测试, 多模态不确定性 | 2026-06-01 | arXiv (Cornell University) | 0 |\n| - | A survey of large-model-based AI agents | 综述基于大模型的AI智能体的最新进展、范式转变和应用前景。 | https://doi.org/10.26599/tst.2026.9010072 | 大模型, AI智能体, 综述, 自主系统 | 2026-06-01 | Tsinghua Science & Technology | 0 |\n| - | Integrated terrestrial and non-terrestrial networks via artificial intelligence: concept, opportunities, and challenges | 探讨人工智能在整合地面与非地面网络中的概念、机遇与挑战。 | https://doi.org/10.1038/s44459-026-00037-y | 人工智能, 网络整合, 非地面网络, 通信 | 2026-06-03 | npj Wireless Technology | 0 |\n| - | Towards Interactive Video World Modeling: Frontiers, Challenges, Benchmarks, and Future Trends | 探讨交互式视频世界建模的前沿、挑战、基准和未来趋势。 | https://openalex.org/W7163597715 | 视频世界建模, 交互式AI, 基准测试, 大语言模型 | 2026-05-31 | arXiv (Cornell University) | 0 |\n| - | Crayotter: Traceable Multi-Agent Workflows for Long-Form Video Editing | 提出一个可追溯的多智能体工作流框架，用于长视频编辑任务。 | https://openalex.org/W7164235335 | 多智能体, 视频编辑, 工作流, 可追溯性 | 2026-05-31 | arXiv (Cornell University) | 0 |\n| - | Adaptive artificial intelligence agents for dynamic conservation planning under climate uncertainty: A multi-agent reinforcement learning approach | 提出基于多智能体强化学习的自适应AI智能体，用于应对气候不确定性的动态保护规划。 | https://doi.org/10.70593/deepsci.0203010 | 多智能体强化学习, 自适应AI, 保护规划, 气候不确定性 | 2026-06-01 | International Journal of Applied Resilience and Sustainability | 0 |\n| - | Multi-source perception early disease monitoring system based on IoT and large language models: research status, layered architecture and future trends | 综述基于物联网和大语言模型的多源感知早期疾病监测系统的研究现状、分层架构和未来趋势。 | https://doi.org/10.1007/s10586-026-06141-6 | 物联网, 大语言模型, 疾病监测, 多源感知 | 2026-06-01 | Cluster Computing | 0 |\n| - | AI-Based KPI Prediction Methods in Future 6G Networks: A Survey | 综述未来6G网络中基于AI的关键性能指标预测方法。 | https://openalex.org/W7163598472 | 人工智能, 6G网络, KPI预测, 网络性能 | 2026-06-01 | arXiv (Cornell University) | 0 |\n| - | Harnessing Artificial Intelligence (AI) for a greener future: a review of AI advancements in green chemistry, chemical processes and sustainable materials | 综述人工智能在绿色化学、化学过程和可持续材料领域的进展。 | https://doi.org/10.1007/s10489-026-07326-7 | 人工智能, 绿色化学, 可持续材料, 机器学习 | 2026-06-01 | Applied Intelligence | 0 |\n\n## 📰 优质资讯/论坛\n本表数据来自配置的RSS资讯源，根据全局关键词匹配标题，时间窗口为 2026-05-29 ~ 2026-06-04。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 |\n| :--- | :--- | :--- | :--- | :--- |\n|  |  |  |  |  |\n\n*（本周期无相关资讯数据）*\n\n## 🔥 GitHub 周榜\n**板块说明**：本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，**未按任何关键词进行过滤或删减**，反映了该时间段内 GitHub 上热度较高的仓库。评分侧重仓库的热度与代表性。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| 10 | usestrix/strix | 开源AI渗透测试工具，可自动发现并修复应用漏洞，集成CI/CD。 | https://github.com/usestrix/strix | AI安全, 渗透测试, 自动化, CI/CD | 37259 | 3781 | Python |\n| 9 | alibaba/page-agent | JavaScript页面内GUI智能体，用自然语言控制Web界面。 | https://github.com/alibaba/page-agent | GUI智能体, 自然语言交互, Web自动化, 前端 | 24028 | 2066 | TypeScript |\n| 9 | calesthio/OpenMontage | 首个开源、智能体驱动的视频制作系统，集成12条流水线和500+技能。 | https://github.com/calesthio/OpenMontage | 视频制作, 多智能体系统, 开源, AI创作 | 33745 | 3866 | Python |\n|我们发现，本周榜单中与“AI智能体”、“多模态”、“自动化”相关的项目热度很高，这与我们的主题关键词有一定相关性。 |  |  |  |  |  |  |  |\n| 8 | diegosouzapw/OmniRoute | 免费AI网关，统一接入230+模型提供商，支持智能降本和多模态API。 | https://github.com/diegosouzapw/OmniRoute | AI网关, 模型聚合, 成本优化, API | 11956 | 1737 | TypeScript |\n| 8 | browser-use/video-use | 使用编码智能体编辑视频，自动剪辑填充词并处理原始素材。 | https://github.com/browser-use/video-use | 视频编辑, AI智能体, 自动化, 内容创作 | 15074 | 1781 | Python |\n| 8 | msitarzewski/agency-agents | 完整的AI智能体集合，涵盖前端、社区管理等多种专家角色。 | https://github.com/msitarzewski/agency-agents | 多智能体, 专家系统, 工作流自动化, Shell脚本 | 127573 | 20717 | Shell |\n| 8 | DeusData/codebase-memory-mcp | 高性能代码智能MCP服务器，毫秒级索引代码库为知识图谱。 | https://github.com/DeusData/codebase-memory-mcp | 代码智能, 知识图谱, MCP, 高性能 | 26824 | 1990 | C |\n| 7 | xbtlin/ai-berkshire | 基于Claude Code的价值投资研究框架，集成多智能体并行分析。 | https://github.com/xbtlin/ai-berkshire | 价值投资, 多智能体分析, 金融AI, 研究框架 | 10417 | 1325 | Python |\n| 7 | ogulcancelik/herdr | 终端内的智能体多路复用器，集中管理多个编码智能体的状态。 | https://github.com/ogulcancelik/herdr | 终端工具, 智能体管理, 开发效率, Rust | 12168 | 714 | Rust |\n| 7 | stablyai/orca | AI编排器，用于并行运行多个编码智能体并管理工作树。 | https://github.com/stablyai/orca | AI编排, 并行计算, 工作流管理, TypeScript | 12433 | 842 | TypeScript |\n| 7 | topoteretes/cognee | 开源AI记忆平台，为智能体提供跨会话的持久长期记忆。 | https://github.com/topoteretes/cognee | AI记忆, 知识图谱, 长期记忆, 智能体平台 | 27141 | 2525 | Python |\n| 6 | Robbyant/lingbot-map | 用于从流数据重建场景的前馈3D基础模型。 | https://github.com/Robbyant/lingbot-map | 3D重建, 基础模型, 流数据处理, 几何感知 | 9924 | 984 | Python |\n| 6 | JCodesMore/ai-website-cloner-template | 使用AI编码智能体一键克隆任何网站为干净的Next.js代码库。 | https://github.com/JCodesMore/ai-website-cloner-template | 网站克隆, AI代码生成, Next.js, 自动化 | 25892 | 3639 | TypeScript |\n| 5 | ZhuLinsen/daily_stock_analysis | LLM驱动的多市场股票智能分析系统，支持实时新闻和自动推送。 | https://github.com/ZhuLinsen/daily_stock_analysis | 股票分析, 大语言模型, 多市场, 自动化推送 | 54762 | 47394 | Python |\n| - | simplex-chat/simplex-chat | 首个无需任何用户标识的100%私密消息网络。 | https://github.com/simplex-chat/simplex-chat | 隐私通信, 消息应用, 去中心化, Haskell | 17937 | 1055 | Haskell |\n| - | logto-io/logto | 为SaaS和AI应用构建的身份验证和授权基础设施。 | https://github.com/logto-io/logto | 身份认证, 授权, SaaS, OIDC | 13840 | 947 | TypeScript |\n| - | Zackriya-Solutions/meetily | 隐私优先的AI会议助手，支持4倍速实时转录和本地总结。 | https://github.com/Zackriya-Solutions/meetily | 会议助手, 语音转录, 隐私计算, Rust | 17333 | 1821 | Rust |\n| - | Starmel/OpenSuperWhisper | macOS听写应用，使用Whisper模型进行实时音频转录。 | https://github.com/Starmel/OpenSuperWhisper | 语音转录, macOS应用, Whisper模型, Swift | 1815 | 150 | Swift |\n| - | openai/codex-plugin-cc | Claude Code插件，用于从内部调用Codex进行代码审查或任务委派。 | https://github.com/openai/codex-plugin-cc | 代码审查, Claude插件, 任务委派, JavaScript | 25600 | 1546 | JavaScript |\n| - | allenai/olmocr | 将PDF等图像文档转换为干净Markdown文本的工具包。 | https://github.com/allenai/olmocr | 文档转换, OCR, Markdown, 数据集处理 | 18802 | 1541 | Python |\n| - | apache/maven | Apache Maven核心，软件项目管理和构建工具。 | https://github.com/apache/maven | 构建工具, 项目管理, Java, Apache | 5287 | 2905 | Java |\n\n## 🔎 GitHub 指定日期检索\n**板块说明**：本表数据来自 GitHub 官方 `search/repositories` 接口，是在**全站公开仓库**范围内，按关键词 `uav & (rl|llm)` 并结合 `pushed:2026-05-29..2026-06-04` 时间条件检索的结果。**这不是周榜/日榜榜单**，而是符合关键词和时间推送条件的仓库集合。评分侧重与检索关键词及时间条件的匹配度。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| 9 | Zihao-Felix-Zhou/UavNetSim | 基于Python的无人机蜂群通信协议与控制算法仿真平台。 | https://github.com/Zihao-Felix-Zhou/UavNetSim | 无人机仿真, 蜂群通信, 控制算法, Python | 344 | 57 | Python |\n| 8 | maris205/airsim_agent | 基于AirSim的无人机基础模型学习项目，涵盖智能体、视觉语言导航和世界模型等。 | https://github.com/maris205/airsim_agent | AirSim, 无人机基础模型, 视觉语言导航, 智能体 | 99 | 11 | Jupyter Notebook |\n| 8 | swarm-subnet/sotapilot | 开源SOTA AI无人机导航栈，在6个程序化环境中成功率95.34%。 | https://github.com/swarm-subnet/sotapilot | 无人机导航, AI避障, 自主控制, 开源栈 | 17 | 4 | - |\n| 7 | earth-insights/awesome-uav-vln | 无人机视觉语言导航领域的精选资源列表。 | https://github.com/earth-insights/awesome-uav-vln | 无人机, 视觉语言导航, 资源列表, 精选 | 12 | 1 | - |\n| 7 | ControlNet/NEUSIS | 用于复杂无人机搜索任务中自主感知、推理和规划的神经符号框架。 | https://github.com/ControlNet/NEUSIS | 神经符号AI, 无人机搜索, 自主系统, 规划\n",
+    "markdownGeneratedAt": "2026-07-06T03:23:01.501586Z"
+  },
+  "sections": [
+    {
+      "source": "arxiv",
+      "heading": "📄 Arxiv 前沿论文",
+      "summary": "本表数据来自 Arxiv，根据关键词 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)` 检索，时间窗口为 2026-05-29 ~ 2026-06-04。 *（检索结果为 0 条）*",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "semantic_scholar",
+      "heading": "🎓 Semantic Scholar",
+      "summary": "本表数据来自 Semantic Scholar，根据关键词 `(uav|aerial) & (vlm|llm|mllm) & (rl)` 检索，时间窗口为 2026-05-29 ~ 2026-06-04。 *（检索结果为 0 条）*",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "openalex",
+      "heading": "📚 OpenAlex",
+      "summary": "本表数据来自 OpenAlex，根据关键词 `(uav|aerial) & (vlm|llm|mllm) & (rl)` 检索，时间窗口为 2026-05-29 ~ 2026-06-04。评分侧重与主题贴合度、新颖度。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 16,
+      "entries": [
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-openalex-0",
+          "score": 9,
+          "title": "Self-Refining Agentic Reinforcement Learning for Vision-Conditioned UAV Navigation",
+          "summary": "提出自精炼的智能体强化学习框架，用于提升视觉条件无人机导航的性能与泛化能力。",
+          "link": "https://openalex.org/W7163594941",
+          "tags": "无人机导航, 强化学习, 视觉语言模型, 智能体",
+          "publishedAt": "2026-06-02",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-openalex-1",
+          "score": null,
+          "title": "Multi$^2$: Hierarchical Multi-Agent Decision-Making with LLM-Based Agents in Interactive Environments",
+          "summary": "研究基于LLM的智能体在交互环境中的分层多智能体决策机制。",
+          "link": "https://openalex.org/W7163595588",
+          "tags": "多智能体系统, 大语言模型, 决策, 交互环境",
+          "publishedAt": "2026-06-02",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-openalex-2",
+          "score": null,
+          "title": "Stateful Visual Encoders for Vision-Language Models",
+          "summary": "为视觉语言模型设计状态感知的视觉编码器，以处理多图像、多轮交互的智能体任务。",
+          "link": "https://openalex.org/W7163720772",
+          "tags": "视觉语言模型, 状态感知, 多模态, 智能体",
+          "publishedAt": "2026-06-03",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-openalex-3",
+          "score": null,
+          "title": "MEPT-LLM: a multimodal generative AI model for identifying and understanding cultural-emotional barriers in the language classroom",
+          "summary": "利用多模态生成式AI模型识别和理解语言课堂中的文化情感障碍。",
+          "link": "https://doi.org/10.3389/fpsyg.2026.1759927",
+          "tags": "多模态模型, 教育AI, 文化情感, 大语言模型",
+          "publishedAt": "2026-06-03",
+          "keywords": "",
+          "extra": {
+            "venue": "Frontiers in Psychology",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-openalex-4",
+          "score": null,
+          "title": "Aerolang: A Dimensionally-Aware Domain-Specific Language for Real-Time Flight Control with Integrated Morphing Wing Physics",
+          "summary": "提出一种维度感知的领域特定语言，用于集成变形翼物理的实时飞行控制。",
+          "link": "https://doi.org/10.2478/tar-2026-0011",
+          "tags": "无人机, 领域特定语言, 飞行控制, 实时系统",
+          "publishedAt": "2026-06-01",
+          "keywords": "",
+          "extra": {
+            "venue": "Transactions of the Institute of Aviation",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-openalex-5",
+          "score": null,
+          "title": "Task-Focused Memorization for Multimodal Agents",
+          "summary": "为多模态智能体设计任务聚焦的记忆机制，以支持长期连贯的经验构建和持续学习。",
+          "link": "https://openalex.org/W7163287516",
+          "tags": "多模态智能体, 记忆机制, 持续学习, 任务聚焦",
+          "publishedAt": "2026-05-29",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-openalex-6",
+          "score": null,
+          "title": "Harnessing artificial intelligence in genomic selection: A new era in plant breeding",
+          "summary": "综述人工智能在基因组选择中的应用，开启植物育种的新时代。",
+          "link": "https://doi.org/10.33545/2618060x.2026.v9.i6sc.5764",
+          "tags": "人工智能, 基因组选择, 植物育种, 机器学习",
+          "publishedAt": "2026-06-01",
+          "keywords": "",
+          "extra": {
+            "venue": "International Journal of Research in Agronomy",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-openalex-7",
+          "score": null,
+          "title": "RescueBench: Can Embodied Agents Save Lives in the Wild ?",
+          "summary": "提出一个评估具身智能体在野外搜救任务中能力的基准测试。",
+          "link": "https://openalex.org/W7163598259",
+          "tags": "具身智能体, 搜救, 基准测试, 多模态不确定性",
+          "publishedAt": "2026-06-01",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-openalex-8",
+          "score": null,
+          "title": "A survey of large-model-based AI agents",
+          "summary": "综述基于大模型的AI智能体的最新进展、范式转变和应用前景。",
+          "link": "https://doi.org/10.26599/tst.2026.9010072",
+          "tags": "大模型, AI智能体, 综述, 自主系统",
+          "publishedAt": "2026-06-01",
+          "keywords": "",
+          "extra": {
+            "venue": "Tsinghua Science & Technology",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-openalex-9",
+          "score": null,
+          "title": "Integrated terrestrial and non-terrestrial networks via artificial intelligence: concept, opportunities, and challenges",
+          "summary": "探讨人工智能在整合地面与非地面网络中的概念、机遇与挑战。",
+          "link": "https://doi.org/10.1038/s44459-026-00037-y",
+          "tags": "人工智能, 网络整合, 非地面网络, 通信",
+          "publishedAt": "2026-06-03",
+          "keywords": "",
+          "extra": {
+            "venue": "npj Wireless Technology",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-openalex-10",
+          "score": null,
+          "title": "Towards Interactive Video World Modeling: Frontiers, Challenges, Benchmarks, and Future Trends",
+          "summary": "探讨交互式视频世界建模的前沿、挑战、基准和未来趋势。",
+          "link": "https://openalex.org/W7163597715",
+          "tags": "视频世界建模, 交互式AI, 基准测试, 大语言模型",
+          "publishedAt": "2026-05-31",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-openalex-11",
+          "score": null,
+          "title": "Crayotter: Traceable Multi-Agent Workflows for Long-Form Video Editing",
+          "summary": "提出一个可追溯的多智能体工作流框架，用于长视频编辑任务。",
+          "link": "https://openalex.org/W7164235335",
+          "tags": "多智能体, 视频编辑, 工作流, 可追溯性",
+          "publishedAt": "2026-05-31",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-openalex-12",
+          "score": null,
+          "title": "Adaptive artificial intelligence agents for dynamic conservation planning under climate uncertainty: A multi-agent reinforcement learning approach",
+          "summary": "提出基于多智能体强化学习的自适应AI智能体，用于应对气候不确定性的动态保护规划。",
+          "link": "https://doi.org/10.70593/deepsci.0203010",
+          "tags": "多智能体强化学习, 自适应AI, 保护规划, 气候不确定性",
+          "publishedAt": "2026-06-01",
+          "keywords": "",
+          "extra": {
+            "venue": "International Journal of Applied Resilience and Sustainability",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-openalex-13",
+          "score": null,
+          "title": "Multi-source perception early disease monitoring system based on IoT and large language models: research status, layered architecture and future trends",
+          "summary": "综述基于物联网和大语言模型的多源感知早期疾病监测系统的研究现状、分层架构和未来趋势。",
+          "link": "https://doi.org/10.1007/s10586-026-06141-6",
+          "tags": "物联网, 大语言模型, 疾病监测, 多源感知",
+          "publishedAt": "2026-06-01",
+          "keywords": "",
+          "extra": {
+            "venue": "Cluster Computing",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-openalex-14",
+          "score": null,
+          "title": "AI-Based KPI Prediction Methods in Future 6G Networks: A Survey",
+          "summary": "综述未来6G网络中基于AI的关键性能指标预测方法。",
+          "link": "https://openalex.org/W7163598472",
+          "tags": "人工智能, 6G网络, KPI预测, 网络性能",
+          "publishedAt": "2026-06-01",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-openalex-15",
+          "score": null,
+          "title": "Harnessing Artificial Intelligence (AI) for a greener future: a review of AI advancements in green chemistry, chemical processes and sustainable materials",
+          "summary": "综述人工智能在绿色化学、化学过程和可持续材料领域的进展。",
+          "link": "https://doi.org/10.1007/s10489-026-07326-7",
+          "tags": "人工智能, 绿色化学, 可持续材料, 机器学习",
+          "publishedAt": "2026-06-01",
+          "keywords": "",
+          "extra": {
+            "venue": "Applied Intelligence",
+            "citationCount": "0"
+          }
+        }
+      ]
+    },
+    {
+      "source": "rss",
+      "heading": "📰 优质资讯/论坛",
+      "summary": "本表数据来自配置的RSS资讯源，根据全局关键词匹配标题，时间窗口为 2026-05-29 ~ 2026-06-04。 *（本周期无相关资讯数据）*",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "github_weekly",
+      "heading": "🔥 GitHub 周榜",
+      "summary": "**板块说明**：本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，**未按任何关键词进行过滤或删减**，反映了该时间段内 GitHub 上热度较高的仓库。评分侧重仓库的热度与代表性。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 21,
+      "entries": [
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-0",
+          "score": 10,
+          "title": "usestrix/strix",
+          "summary": "开源AI渗透测试工具，可自动发现并修复应用漏洞，集成CI/CD。",
+          "link": "https://github.com/usestrix/strix",
+          "tags": "AI安全, 渗透测试, 自动化, CI/CD",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "37259",
+            "fork": "3781",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-1",
+          "score": 9,
+          "title": "alibaba/page-agent",
+          "summary": "JavaScript页面内GUI智能体，用自然语言控制Web界面。",
+          "link": "https://github.com/alibaba/page-agent",
+          "tags": "GUI智能体, 自然语言交互, Web自动化, 前端",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "24028",
+            "fork": "2066",
+            "language": "TypeScript"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-2",
+          "score": 9,
+          "title": "calesthio/OpenMontage",
+          "summary": "首个开源、智能体驱动的视频制作系统，集成12条流水线和500+技能。",
+          "link": "https://github.com/calesthio/OpenMontage",
+          "tags": "视频制作, 多智能体系统, 开源, AI创作",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "33745",
+            "fork": "3866",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-4",
+          "score": 8,
+          "title": "diegosouzapw/OmniRoute",
+          "summary": "免费AI网关，统一接入230+模型提供商，支持智能降本和多模态API。",
+          "link": "https://github.com/diegosouzapw/OmniRoute",
+          "tags": "AI网关, 模型聚合, 成本优化, API",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "11956",
+            "fork": "1737",
+            "language": "TypeScript"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-5",
+          "score": 8,
+          "title": "browser-use/video-use",
+          "summary": "使用编码智能体编辑视频，自动剪辑填充词并处理原始素材。",
+          "link": "https://github.com/browser-use/video-use",
+          "tags": "视频编辑, AI智能体, 自动化, 内容创作",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "15074",
+            "fork": "1781",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-6",
+          "score": 8,
+          "title": "msitarzewski/agency-agents",
+          "summary": "完整的AI智能体集合，涵盖前端、社区管理等多种专家角色。",
+          "link": "https://github.com/msitarzewski/agency-agents",
+          "tags": "多智能体, 专家系统, 工作流自动化, Shell脚本",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "127573",
+            "fork": "20717",
+            "language": "Shell"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-7",
+          "score": 8,
+          "title": "DeusData/codebase-memory-mcp",
+          "summary": "高性能代码智能MCP服务器，毫秒级索引代码库为知识图谱。",
+          "link": "https://github.com/DeusData/codebase-memory-mcp",
+          "tags": "代码智能, 知识图谱, MCP, 高性能",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "26824",
+            "fork": "1990",
+            "language": "C"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-8",
+          "score": 7,
+          "title": "xbtlin/ai-berkshire",
+          "summary": "基于Claude Code的价值投资研究框架，集成多智能体并行分析。",
+          "link": "https://github.com/xbtlin/ai-berkshire",
+          "tags": "价值投资, 多智能体分析, 金融AI, 研究框架",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "10417",
+            "fork": "1325",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-9",
+          "score": 7,
+          "title": "ogulcancelik/herdr",
+          "summary": "终端内的智能体多路复用器，集中管理多个编码智能体的状态。",
+          "link": "https://github.com/ogulcancelik/herdr",
+          "tags": "终端工具, 智能体管理, 开发效率, Rust",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "12168",
+            "fork": "714",
+            "language": "Rust"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-10",
+          "score": 7,
+          "title": "stablyai/orca",
+          "summary": "AI编排器，用于并行运行多个编码智能体并管理工作树。",
+          "link": "https://github.com/stablyai/orca",
+          "tags": "AI编排, 并行计算, 工作流管理, TypeScript",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "12433",
+            "fork": "842",
+            "language": "TypeScript"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-11",
+          "score": 7,
+          "title": "topoteretes/cognee",
+          "summary": "开源AI记忆平台，为智能体提供跨会话的持久长期记忆。",
+          "link": "https://github.com/topoteretes/cognee",
+          "tags": "AI记忆, 知识图谱, 长期记忆, 智能体平台",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "27141",
+            "fork": "2525",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-12",
+          "score": 6,
+          "title": "Robbyant/lingbot-map",
+          "summary": "用于从流数据重建场景的前馈3D基础模型。",
+          "link": "https://github.com/Robbyant/lingbot-map",
+          "tags": "3D重建, 基础模型, 流数据处理, 几何感知",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "9924",
+            "fork": "984",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-13",
+          "score": 6,
+          "title": "JCodesMore/ai-website-cloner-template",
+          "summary": "使用AI编码智能体一键克隆任何网站为干净的Next.js代码库。",
+          "link": "https://github.com/JCodesMore/ai-website-cloner-template",
+          "tags": "网站克隆, AI代码生成, Next.js, 自动化",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "25892",
+            "fork": "3639",
+            "language": "TypeScript"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-14",
+          "score": 5,
+          "title": "ZhuLinsen/daily_stock_analysis",
+          "summary": "LLM驱动的多市场股票智能分析系统，支持实时新闻和自动推送。",
+          "link": "https://github.com/ZhuLinsen/daily_stock_analysis",
+          "tags": "股票分析, 大语言模型, 多市场, 自动化推送",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "54762",
+            "fork": "47394",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-15",
+          "score": null,
+          "title": "simplex-chat/simplex-chat",
+          "summary": "首个无需任何用户标识的100%私密消息网络。",
+          "link": "https://github.com/simplex-chat/simplex-chat",
+          "tags": "隐私通信, 消息应用, 去中心化, Haskell",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "17937",
+            "fork": "1055",
+            "language": "Haskell"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-16",
+          "score": null,
+          "title": "logto-io/logto",
+          "summary": "为SaaS和AI应用构建的身份验证和授权基础设施。",
+          "link": "https://github.com/logto-io/logto",
+          "tags": "身份认证, 授权, SaaS, OIDC",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "13840",
+            "fork": "947",
+            "language": "TypeScript"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-17",
+          "score": null,
+          "title": "Zackriya-Solutions/meetily",
+          "summary": "隐私优先的AI会议助手，支持4倍速实时转录和本地总结。",
+          "link": "https://github.com/Zackriya-Solutions/meetily",
+          "tags": "会议助手, 语音转录, 隐私计算, Rust",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "17333",
+            "fork": "1821",
+            "language": "Rust"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-18",
+          "score": null,
+          "title": "Starmel/OpenSuperWhisper",
+          "summary": "macOS听写应用，使用Whisper模型进行实时音频转录。",
+          "link": "https://github.com/Starmel/OpenSuperWhisper",
+          "tags": "语音转录, macOS应用, Whisper模型, Swift",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1815",
+            "fork": "150",
+            "language": "Swift"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-19",
+          "score": null,
+          "title": "openai/codex-plugin-cc",
+          "summary": "Claude Code插件，用于从内部调用Codex进行代码审查或任务委派。",
+          "link": "https://github.com/openai/codex-plugin-cc",
+          "tags": "代码审查, Claude插件, 任务委派, JavaScript",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "25600",
+            "fork": "1546",
+            "language": "JavaScript"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-20",
+          "score": null,
+          "title": "allenai/olmocr",
+          "summary": "将PDF等图像文档转换为干净Markdown文本的工具包。",
+          "link": "https://github.com/allenai/olmocr",
+          "tags": "文档转换, OCR, Markdown, 数据集处理",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "18802",
+            "fork": "1541",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_weekly-21",
+          "score": null,
+          "title": "apache/maven",
+          "summary": "Apache Maven核心，软件项目管理和构建工具。",
+          "link": "https://github.com/apache/maven",
+          "tags": "构建工具, 项目管理, Java, Apache",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "5287",
+            "fork": "2905",
+            "language": "Java"
+          }
+        }
+      ]
+    },
+    {
+      "source": "github_search",
+      "heading": "🔎 GitHub 指定日期检索",
+      "summary": "**板块说明**：本表数据来自 GitHub 官方 `search/repositories` 接口，是在**全站公开仓库**范围内，按关键词 `uav & (rl|llm)` 并结合 `pushed:2026-05-29..2026-06-04` 时间条件检索的结果。**这不是周榜/日榜榜单**，而是符合关键词和时间推送条件的仓库集合。评分侧重与检索关键词及时间条件的匹配度。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 5,
+      "entries": [
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_search-0",
+          "score": 9,
+          "title": "Zihao-Felix-Zhou/UavNetSim",
+          "summary": "基于Python的无人机蜂群通信协议与控制算法仿真平台。",
+          "link": "https://github.com/Zihao-Felix-Zhou/UavNetSim",
+          "tags": "无人机仿真, 蜂群通信, 控制算法, Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "344",
+            "fork": "57",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_search-1",
+          "score": 8,
+          "title": "maris205/airsim_agent",
+          "summary": "基于AirSim的无人机基础模型学习项目，涵盖智能体、视觉语言导航和世界模型等。",
+          "link": "https://github.com/maris205/airsim_agent",
+          "tags": "AirSim, 无人机基础模型, 视觉语言导航, 智能体",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "99",
+            "fork": "11",
+            "language": "Jupyter Notebook"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_search-2",
+          "score": 8,
+          "title": "swarm-subnet/sotapilot",
+          "summary": "开源SOTA AI无人机导航栈，在6个程序化环境中成功率95.34%。",
+          "link": "https://github.com/swarm-subnet/sotapilot",
+          "tags": "无人机导航, AI避障, 自主控制, 开源栈",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "17",
+            "fork": "4"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_search-3",
+          "score": 7,
+          "title": "earth-insights/awesome-uav-vln",
+          "summary": "无人机视觉语言导航领域的精选资源列表。",
+          "link": "https://github.com/earth-insights/awesome-uav-vln",
+          "tags": "无人机, 视觉语言导航, 资源列表, 精选",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "12",
+            "fork": "1"
+          }
+        },
+        {
+          "id": "2026-05-29_2026-06-04_20260706T032301Z-github_search-4",
+          "score": 7,
+          "title": "ControlNet/NEUSIS",
+          "summary": "用于复杂无人机搜索任务中自主感知、推理和规划的神经符号框架。",
+          "link": "https://github.com/ControlNet/NEUSIS",
+          "tags": "神经符号AI, 无人机搜索, 自主系统, 规划",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "entryCount": 42,
+    "sourceCounts": {
+      "openalex": 16,
+      "github_weekly": 21,
+      "github_search": 5
+    },
+    "emptySections": [
+      "arxiv",
+      "semantic_scholar",
+      "rss"
+    ]
+  }
+}

@@ -148,7 +148,14 @@ def _ai_settings(cfg: dict) -> dict:
         max_tokens = int(os.getenv("AI_MAX_TOKENS", "").strip())
     else:
         max_tokens = int(default_ai.get("max_tokens") or 4000)
-    return {"model": str(model).strip(), "max_tokens": max_tokens}
+    thinking = ai.get("thinking")
+    if thinking is None and os.getenv("AI_THINKING", "").strip():
+        thinking = os.getenv("AI_THINKING", "").strip()
+    return {
+        "model": str(model).strip(),
+        "max_tokens": max_tokens,
+        "thinking": str(thinking).strip().lower() if thinking is not None and str(thinking).strip() else None,
+    }
 
 
 def _openai_base_url() -> str:
@@ -161,11 +168,15 @@ def summarize_with_ai(raw_sections: str, keyword_context: str, date_str: str, *,
     ai = _ai_settings(cfg)
     model = ai["model"]
     max_tokens = ai["max_tokens"]
+    thinking = ai.get("thinking")
     api_key = (os.getenv("OPENAI_API_KEY") or "").strip()
     base_url = _openai_base_url()
     log(f"🤖 [AI] 调用模型 {model} 生成周报（可能需数十秒）…")
     log(f"🤖 [AI] 实际请求约: {base_url}/chat/completions")
     client = OpenAI(api_key=api_key or None, base_url=base_url)
+    extra_body = None
+    if thinking in ("disabled", "off", "false", "0", "no"):
+        extra_body = {"thinking": {"type": "disabled"}}
 
     prompt = f"""你是一个资深技术研究员。请根据以下原始数据，整理一份【{date_str}】技术周报。
 关键词与抓取说明：{keyword_context}
@@ -191,12 +202,15 @@ def summarize_with_ai(raw_sections: str, keyword_context: str, date_str: str, *,
 {raw_sections}"""
 
     try:
-        response = client.chat.completions.create(
-            model=model,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.2,
-            max_tokens=max_tokens,
-        )
+        kwargs = {
+            "model": model,
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.2,
+            "max_tokens": max_tokens,
+        }
+        if extra_body:
+            kwargs["extra_body"] = extra_body
+        response = client.chat.completions.create(**kwargs)
     except Exception as e:
         log(f"❌ [AI] chat.completions 调用失败: {type(e).__name__}: {e}")
         log(

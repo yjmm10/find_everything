@@ -8,6 +8,14 @@ name: 📅 Weekly Tech Digest
 #
 # 定时：每周五 UTC 12:00（北京时间周五 20:00），preset=week（前 7 天至昨日）。
 # 历史周次回填：scripts/backfill_weekly_runs.py（仅写 data/，构建由 digest-site 负责）。
+#
+# AI 汇总（业务模型见 digest_config.yaml，当前 deepseek-ai/DeepSeek-V3.2）：
+#   Repository secrets（必填）：
+#     OPENAI_API_KEY  — 魔搭 ModelScope SDK Token（ms- 开头）
+#   可选 secrets / 未设则使用下列默认：
+#     OPENAI_API_BASE — 默认 https://api-inference.modelscope.cn/v1
+#   学术检索（可选）：SEMANTIC_SCHOLAR_API_KEY、OPENALEX_API_KEY
+#   GitHub 检索 enrich：使用 workflow 内置 GITHUB_TOKEN（无需额外 Secret）
 
 on:
   schedule:
@@ -48,12 +56,20 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Validate AI secrets
+        run: |
+          if [ -z "${{ secrets.OPENAI_API_KEY }}" ]; then
+            echo "::error::缺少 Repository secret OPENAI_API_KEY（魔搭 ModelScope SDK Token，ms- 开头）"
+            exit 1
+          fi
+
       - name: Run Digest Generator
         env:
           DIGEST_NO_GIT: "1"
-          # 密钥与通知：仅 Secrets / .env，业务配置见 digest_config.yaml
+          # 密钥与通知：仅 Secrets / .env，业务配置（含 ai.model）见 digest_config.yaml
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
+          OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE != '' && secrets.OPENAI_API_BASE || 'https://api-inference.modelscope.cn/v1' }}
+          GITHUB_TOKEN: ${{ github.token }}
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
           OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
           SMTP_SERVER: ${{ secrets.SMTP_SERVER }}

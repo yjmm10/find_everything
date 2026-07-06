@@ -1,0 +1,722 @@
+{
+  "schemaVersion": "1",
+  "id": "2026-06-12_2026-06-18_20260706T032805Z",
+  "crawl": {
+    "executedAt": "2026-07-06T03:28:05.197037Z",
+    "crawlDate": "2026-07-06",
+    "status": "success",
+    "trigger": "ci"
+  },
+  "window": {
+    "dateStart": "2026-06-12",
+    "dateEnd": "2026-06-18",
+    "preset": "week",
+    "mode": "custom"
+  },
+  "config": {
+    "keywords": "(uav|aerial) & (vlm|llm|mllm) & (rl)",
+    "date_range": {
+      "preset": "week"
+    },
+    "ai": {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "max_tokens": 4000,
+      "thinking": null
+    }
+  },
+  "content": {
+    "markdownBody": "## 📄 Arxiv 前沿论文\n\n> **爬取时间**：2026-07-06 03:28:05 UTC\n\n本表数据来自 Arxiv 论文库，检索关键词为 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)`，时间窗口为 2026-06-12 ~ 2026-06-18。本周未检索到符合关键词组合的论文。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 学科类别 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| (无符合条目) | | | | | | |\n\n## 🎓 Semantic Scholar\n本表数据来自 Semantic Scholar 学术搜索引擎，检索关键词为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口为 2026-06-12 ~ 2026-06-18。本周未检索到符合关键词组合的论文。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| (无符合条目) | | | | | | | |\n\n## 📚 OpenAlex\n本表数据来自 OpenAlex 学术数据库，检索关键词为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口为 2026-06-12 ~ 2026-06-18。以下为符合关键词组合的论文，已按评分排序。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| 8 | Reinforcement Learning with Inner-loop Dynamics Estimator for Aerial Manipulation under Uncertainty | 提出一种结合内环动力学估计的强化学习方法，用于解决不确定条件下的无人机机械臂全身操控问题。 | https://openalex.org/W7165064054 | 无人机操控，强化学习，动力学估计，不确定性，空中机械臂 | 2026-06-15 | arXiv (Cornell University) | 0 |\n| - | Generation Quality-Latency Tradeoff-Aware Inference Offloading for Multimodal LLMs in Cloud-Edge Continuum | 研究多模态大语言模型在云边连续体中的推理卸载问题，关注生成质量与延迟的权衡。 | https://openalex.org/W7165064836 | 多模态LLM，云边计算，推理卸载，延迟优化 | 2026-06-13 | arXiv (Cornell University) | 0 |\n| - | Reinforcement Learning for LLM-based Event Forecasting | 使用样本和内存高效的强化学习方法（GRPO）对预训练大语言模型进行微调，用于事件预测。 | https://openalex.org/W7165064336 | 大语言模型，强化学习，事件预测，模型微调 | 2026-06-14 | arXiv (Cornell University) | 0 |\n| - | Beyond Entropy: Learning from Token-Level Distributional Deviations for LLM Reasoning | 针对强化学习与可验证奖励在LLM推理中的局限性，提出从词元级分布偏差中学习的新方法。 | https://openalex.org/W7165424330 | 大语言模型，推理，强化学习，分布偏差 | 2026-06-18 | arXiv (Cornell University) | 0 |\n| - | Agentic Retrieval and Reinforcement Learned Equation Chains: A Controlled Generation Framework for Complex and Novel Physics Word Problems | 提出一个结合智能检索和强化学习方程链的受控生成框架，用于创建新颖、复杂且可解的物理文字问题。 | https://openalex.org/W7165063741 | 物理问题生成，强化学习，智能体，检索增强生成 | 2026-06-14 | arXiv (Cornell University) | 0 |\n| - | Empirical Analysis On Multi-Agent Reinforcement Learning Frameworks | 对多智能体强化学习框架进行实证分析，评估其在物理世界执行新任务的能力。 | https://openalex.org/W7165079706 | 多智能体强化学习，实证分析，自主智能体 | 2026-06-16 | Rowan Digitals Works (Rowan University) | 0 |\n| - | A RAG-Enhanced Bi-Level Cognitive Orchestration Framework for LEO Satellite Networks | 针对低轨卫星网络下行容量受限问题，提出一个RAG增强的双层认知编排框架。 | https://openalex.org/W7165065054 | 遥感，RAG，卫星网络，认知编排 | 2026-06-13 | arXiv (Cornell University) | 0 |\n| - | Remote Sensing Agent: Reshaping the Paradigm of Remote Sensing Information Processing | 提出“遥感智能体”概念，旨在重塑传统遥感信息处理范式，迈向智能认知。 | https://doi.org/10.3390/rs18121980 | 遥感，智能体，人工智能，信息处理 | 2026-06-14 | Remote Sensing | 0 |\n| - | World Action Models: A Survey | 对世界行动模型进行综述，这类模型是具身的预测-行动模型，利用大规模视觉语言模型进行预测。 | https://openalex.org/W7165818135 | 世界模型，具身智能，视觉语言模型，综述 | 2026-06-18 | arXiv (Cornell University) | 0 |\n| - | An adaptive convolutional analytics architecture for closed-loop optimization in smart cities | 提出一种用于智慧城市闭环优化的自适应卷积分析架构，处理城市交通走廊的非线性、非平稳流特征。 | https://doi.org/10.1007/s10791-026-10270-2 | 智慧城市，闭环优化，卷积分析，交通流 | 2026-06-18 | Discover Computing | 0 |\n| - | The first systematic map of evidence syntheses on the use of artificial intelligence in ecology | 绘制了首张关于人工智能在生态学中应用的证据综合系统图谱，涵盖物种识别、环境监测等任务。 | https://doi.org/10.32942/x2vt11 | 人工智能，生态学，系统综述，环境监测 | 2026-06-17 | - | 0 |\n| - | Artificial Intelligence in Modern VLSI Chip Design Opportunities and Challenges | 探讨人工智能在现代超大规模集成电路芯片设计中的机遇与挑战，应对“超越摩尔”时代的范式转变。 | https://doi.org/10.48175/ijarsct-36723 | 人工智能，VLSI设计，半导体，EDA | 2026-06-15 | International Journal of Advanced Research in Science Communication and Technology | 0 |\n\n## 📰 优质资讯/论坛\n本周无相关资讯或论坛讨论数据。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 |\n| :--- | :--- | :--- | :--- | :--- |\n| (无数据) | | | | |\n\n## 🔥 GitHub 周榜\n本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，反映了本周（2026-06-12 ~ 2026-06-18）的热门仓库。**榜单未按任何关键词进行过滤或删减**，旨在呈现社区整体关注趋势。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| - | usestrix/strix | 开源AI渗透测试工具，可自动查找并修复应用漏洞，支持集成到GitHub Actions和CI/CD流水线。 | https://github.com/usestrix/strix | AI安全，渗透测试，自动化，CI/CD | 37265 | 3781 | Python |\n| - | xbtlin/ai-berkshire | AI时代的价值投资研究框架，融合巴菲特等多位大师方法论，支持多智能体并行分析。 | https://github.com/xbtlin/ai-berkshire | 价值投资，AI金融，多智能体，研究框架 | 10422 | 1326 | Python |\n| - | diegosouzapw/OmniRoute | 免费AI网关，单一端点连接230+个模型提供商（50+免费），支持Claude Code、GPT、Gemini等，具备智能回退和多模态API。 | https://github.com/diegosouzapw/OmniRoute | AI网关，API聚合，多模型，令牌压缩 | 11963 | 1738 | TypeScript |\n| - | simplex-chat/simplex-chat | 首个无需任何用户标识的100%隐私设计消息网络，提供iOS、Android和桌面应用。 | https://github.com/simplex-chat/simplex-chat | 隐私通讯，去中心化，即时通讯，开源 | 17937 | 1055 | Haskell |\n| - | Robbyant/lingbot-map | 用于流式3D重建的前馈3D基础模型，专注于几何上下文理解。 | https://github.com/Robbyant/lingbot-map | 3D重建，计算机视觉，基础模型，几何学习 | 9925 | 984 | Python |\n| - | ogulcancelik/herdr | 终端内的智能体多路复用器，可集中管理多个编码智能体，查看其状态。 | https://github.com/ogulcancelik/herdr | AI编程，终端工具，智能体管理，开发者工具 | 12170 | 716 | Rust |\n| - | logto-io/logto | 基于OIDC和OAuth 2.1为SaaS和AI应用构建的现代开源身份认证与授权基础设施，支持多租户和SSO。 | https://github.com/logto-io/logto | 身份认证，授权，OAuth，SaaS | 13840 | 947 | TypeScript |\n| - | Zackriya-Solutions/meetily | 隐私优先的AI会议助手，提供4倍速的实时转录、说话人分离和本地摘要功能，无需云端处理。 | https://github.com/Zackriya-Solutions/meetily | 会议转录，语音识别，隐私，本地处理 | 17340 | 1821 | Rust |\n| - | browser-use/video-use | 使用编码智能体编辑视频，可自动删除填充词、静默片段并重新排列剪辑，适用于多种视频内容。 | https://github.com/browser-use/video-use | 视频编辑，AI代理，自动化，内容创作 | (无) | (无) | (无) |\n| - | alibaba/page-agent | 浏览器页面内的GUI智能体，允许用户用自然语言控制Web界面，无需浏览器扩展或Python环境。 | https://github.com/alibaba/page-agent | 网页自动化，自然语言交互，GUI智能体，前端 | (无) | (无) | (无) |\n| - | Starmel/OpenSuperWhisper | macOS听写应用，使用Whisper模型提供实时音频转录，支持自定义设置和键盘快捷键。 | https://github.com/Starmel/OpenSuperWhisper | 语音转录，macOS应用，Whisper模型，听写 | (无) | (无) | (无) |\n| - | msitarzewski/agency-agents | 一套完整的AI专家智能体集合，涵盖前端开发、社区管理、创意激发等多个专业领域。 | https://github.com/msitarzewski/agency-agents | AI智能体，多专家系统，工作流自动化 | (无) | (无) | (无) |\n| - | apache/maven | Apache Maven核心，软件项目管理和构建工具。 | https://github.com/apache/maven | 构建工具，Java，项目管理，Apache | (无) | (无) | (无) |\n| - | openai/codex-plugin-cc | 为Claude Code设计的Codex插件，用于代码审查或任务委派。 | https://github.com/openai/codex-plugin-cc | 代码审查，AI编程，Claude Code，插件 | (无) | (无) | (无) |\n| - | DeusData/codebase-memory-mcp | 高性能代码智能MCP服务器，可将代码库索引为持久知识图，支持158种语言，查询速度快。 | https://github.com/DeusData/codebase-memory-mcp | 代码智能，知识图谱，MCP，AI编程辅助 | (无) | (无) | (无) |\n| - | stablyai/orca | 用于并行智能体舰队工作的AI编排器，可在桌面和移动设备上运行任何编码智能体。 | https://github.com/stablyai/orca | AI编排，多智能体，并行计算，开发者工具 | (无) | (无) | (无) |\n| - | calesthio/OpenMontage | 首个开源、智能体驱动的视频制作系统，包含12个流水线和500+智能体技能，可将AI助手变为视频制作工作室。 | https://github.com/calesthio/OpenMontage | 视频制作，AI代理，自动化，开源 | (无) | (无) | (无) |\n| - | JCodesMore/ai-website-cloner-template | 使用AI编码智能体一键克隆任何网站为干净的Next.js代码库的可复用模板。 | https://github.com/JCodesMore/ai-website-cloner-template | 网站克隆，AI编程，Next.js，逆向工程 | (无) | (无) | (无) |\n| - | ZhuLinsen/daily_stock_analysis | LLM驱动的多市场股票智能分析系统，支持多源行情、实时新闻、决策看板与自动推送。 | https://github.com/ZhuLinsen/daily_stock_analysis | 股票分析，量化投资，LLM，自动化 | (无) | (无) | (无) |\n| - | allenai/olmocr | 将PDF等图像文档转换为干净、可读的纯文本格式的工具包，支持公式、表格和手写体。 | https://github.com/allenai/olmocr | OCR，文档处理，PDF解析，文本提取 | (无) | (无) | (无) |\n| - | topoteretes/cognee | 为AI智能体提供持久长期记忆的开源AI记忆平台，基于自托管知识图引擎。 | https://github.com/topoteretes/cognee | AI记忆，知识图谱，智能体，长期记忆 | (无) | (无) | (无) |\n\n## 🔎 GitHub 指定日期检索\n本表数据来自 GitHub 官方 `search/repositories` 接口，是在**全站公开仓库**范围内，使用关键词 `uav & (rl|llm)` 并结合 `pushed:2026-06-12..2026-06-18` 时间条件检索出的结果。**这不是 Trending 周榜**，而是基于关键词和时间戳的主动搜索。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| 9 | fangvv/UAV-DDPG | 实现论文《无人机辅助移动边缘计算中的计算卸载优化：一种深度确定性策略梯度方法》的代码。 | https://github.com/fangvv/UAV-DDPG | 无人机，移动边缘计算，强化学习，DDPG，计算卸载 | 715 | 95 | Python |\n| 8 | ruvnet/ruv-drone | 基于Rust的工业级协作无人机编队协调系统，包含编队保持、Raft共识、任务分配、避障与导航算法。 | https://github.com/ruvnet/ruv-drone | 无人机编队，多智能体，Rust，协同控制，路径规划 | 8 | 1 | Rust |\n| 7 | nansdcuidnee/uav-agv-green-logistics-optimizer | 基于空地协同调度与移动充电策略的无人机配送能耗优化系统。 | https://github.com/nansdcuidnee/uav-agv-green-logistics-optimizer | 无人机物流，协同调度，能耗优化，绿色物流，路径规划 | 3 | 1 | Python |\n| 7 | bajarangGun/com-swarm_uav-swarm-coverage-ros2 | 基于质心的多无人机在线并发覆盖路径规划，具备智能网络恢复和死锁避免功能，运行于ROS 2。 | https://github.com/bajarangGun/com-swarm_uav-swarm-coverage-ros2 | 无人机集群，覆盖路径规划，ROS2，多智能体，质心控制 | 3 | 0 | C++ |\n| 6 | HKUST-Aerial-Robotics/FC-Planner | [ICRA'24最佳无人机论文入围] 一种高效的无人机全局覆盖路径规划器。 | https://github.com/HKUST-Aerial-Robotics/FC-Planner | 无人机，路径规划，覆盖，计算机视觉，C++ | 365 | 30 | C++ |\n| 6 | Robotics-STAR-Lab/SOAR | [IROS'24口头报告] 用于快速自主重建的异构多无人机规划器。 | https://github.com/Robotics-STAR-Lab/SOAR | 多无人机，3D重建，路径规划，自主系统，C++ | 231 | 14 | C++ |\n| 6 | satilmiskabasakal0/UAV-Path-Simulation | 多算法无人机路径规划仿真项目。 | https://github.com/satilmiskabasakal0/UAV-Path-Simulation | 无人机，路径规划，仿真，多算法，Python | 6 | 0 | Python |\n| 5 | Sautenich/UAV-VLA | 论文“UAV-VLA HRI 2025”的官方代码仓库。 | https://github.com/Sautenich/UAV-VLA | 无人机，视觉语言模型，人机交互，研究代码 | 146 | 10 | Python |\n| 5 | machmind-dev/drone-swarm-challenge-2026 | 2026年无人机集群挑战赛 Mach Mind 团队的源代码。 | https://github.com/machmind-dev/drone-swarm-challenge-2026 | 无人机集群，竞赛，C++，自主控制 | \n",
+    "markdownGeneratedAt": "2026-07-06T03:28:05.197037Z"
+  },
+  "sections": [
+    {
+      "source": "arxiv",
+      "heading": "📄 Arxiv 前沿论文",
+      "summary": "本表数据来自 Arxiv 论文库，检索关键词为 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)`，时间窗口为 2026-06-12 ~ 2026-06-18。本周未检索到符合关键词组合的论文。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "semantic_scholar",
+      "heading": "🎓 Semantic Scholar",
+      "summary": "本表数据来自 Semantic Scholar 学术搜索引擎，检索关键词为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口为 2026-06-12 ~ 2026-06-18。本周未检索到符合关键词组合的论文。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "openalex",
+      "heading": "📚 OpenAlex",
+      "summary": "本表数据来自 OpenAlex 学术数据库，检索关键词为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口为 2026-06-12 ~ 2026-06-18。以下为符合关键词组合的论文，已按评分排序。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 12,
+      "entries": [
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-openalex-0",
+          "score": 8,
+          "title": "Reinforcement Learning with Inner-loop Dynamics Estimator for Aerial Manipulation under Uncertainty",
+          "summary": "提出一种结合内环动力学估计的强化学习方法，用于解决不确定条件下的无人机机械臂全身操控问题。",
+          "link": "https://openalex.org/W7165064054",
+          "tags": "无人机操控，强化学习，动力学估计，不确定性，空中机械臂",
+          "publishedAt": "2026-06-15",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-openalex-1",
+          "score": null,
+          "title": "Generation Quality-Latency Tradeoff-Aware Inference Offloading for Multimodal LLMs in Cloud-Edge Continuum",
+          "summary": "研究多模态大语言模型在云边连续体中的推理卸载问题，关注生成质量与延迟的权衡。",
+          "link": "https://openalex.org/W7165064836",
+          "tags": "多模态LLM，云边计算，推理卸载，延迟优化",
+          "publishedAt": "2026-06-13",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-openalex-2",
+          "score": null,
+          "title": "Reinforcement Learning for LLM-based Event Forecasting",
+          "summary": "使用样本和内存高效的强化学习方法（GRPO）对预训练大语言模型进行微调，用于事件预测。",
+          "link": "https://openalex.org/W7165064336",
+          "tags": "大语言模型，强化学习，事件预测，模型微调",
+          "publishedAt": "2026-06-14",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-openalex-3",
+          "score": null,
+          "title": "Beyond Entropy: Learning from Token-Level Distributional Deviations for LLM Reasoning",
+          "summary": "针对强化学习与可验证奖励在LLM推理中的局限性，提出从词元级分布偏差中学习的新方法。",
+          "link": "https://openalex.org/W7165424330",
+          "tags": "大语言模型，推理，强化学习，分布偏差",
+          "publishedAt": "2026-06-18",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-openalex-4",
+          "score": null,
+          "title": "Agentic Retrieval and Reinforcement Learned Equation Chains: A Controlled Generation Framework for Complex and Novel Physics Word Problems",
+          "summary": "提出一个结合智能检索和强化学习方程链的受控生成框架，用于创建新颖、复杂且可解的物理文字问题。",
+          "link": "https://openalex.org/W7165063741",
+          "tags": "物理问题生成，强化学习，智能体，检索增强生成",
+          "publishedAt": "2026-06-14",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-openalex-5",
+          "score": null,
+          "title": "Empirical Analysis On Multi-Agent Reinforcement Learning Frameworks",
+          "summary": "对多智能体强化学习框架进行实证分析，评估其在物理世界执行新任务的能力。",
+          "link": "https://openalex.org/W7165079706",
+          "tags": "多智能体强化学习，实证分析，自主智能体",
+          "publishedAt": "2026-06-16",
+          "keywords": "",
+          "extra": {
+            "venue": "Rowan Digitals Works (Rowan University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-openalex-6",
+          "score": null,
+          "title": "A RAG-Enhanced Bi-Level Cognitive Orchestration Framework for LEO Satellite Networks",
+          "summary": "针对低轨卫星网络下行容量受限问题，提出一个RAG增强的双层认知编排框架。",
+          "link": "https://openalex.org/W7165065054",
+          "tags": "遥感，RAG，卫星网络，认知编排",
+          "publishedAt": "2026-06-13",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-openalex-7",
+          "score": null,
+          "title": "Remote Sensing Agent: Reshaping the Paradigm of Remote Sensing Information Processing",
+          "summary": "提出“遥感智能体”概念，旨在重塑传统遥感信息处理范式，迈向智能认知。",
+          "link": "https://doi.org/10.3390/rs18121980",
+          "tags": "遥感，智能体，人工智能，信息处理",
+          "publishedAt": "2026-06-14",
+          "keywords": "",
+          "extra": {
+            "venue": "Remote Sensing",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-openalex-8",
+          "score": null,
+          "title": "World Action Models: A Survey",
+          "summary": "对世界行动模型进行综述，这类模型是具身的预测-行动模型，利用大规模视觉语言模型进行预测。",
+          "link": "https://openalex.org/W7165818135",
+          "tags": "世界模型，具身智能，视觉语言模型，综述",
+          "publishedAt": "2026-06-18",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-openalex-9",
+          "score": null,
+          "title": "An adaptive convolutional analytics architecture for closed-loop optimization in smart cities",
+          "summary": "提出一种用于智慧城市闭环优化的自适应卷积分析架构，处理城市交通走廊的非线性、非平稳流特征。",
+          "link": "https://doi.org/10.1007/s10791-026-10270-2",
+          "tags": "智慧城市，闭环优化，卷积分析，交通流",
+          "publishedAt": "2026-06-18",
+          "keywords": "",
+          "extra": {
+            "venue": "Discover Computing",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-openalex-10",
+          "score": null,
+          "title": "The first systematic map of evidence syntheses on the use of artificial intelligence in ecology",
+          "summary": "绘制了首张关于人工智能在生态学中应用的证据综合系统图谱，涵盖物种识别、环境监测等任务。",
+          "link": "https://doi.org/10.32942/x2vt11",
+          "tags": "人工智能，生态学，系统综述，环境监测",
+          "publishedAt": "2026-06-17",
+          "keywords": "",
+          "extra": {
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-openalex-11",
+          "score": null,
+          "title": "Artificial Intelligence in Modern VLSI Chip Design Opportunities and Challenges",
+          "summary": "探讨人工智能在现代超大规模集成电路芯片设计中的机遇与挑战，应对“超越摩尔”时代的范式转变。",
+          "link": "https://doi.org/10.48175/ijarsct-36723",
+          "tags": "人工智能，VLSI设计，半导体，EDA",
+          "publishedAt": "2026-06-15",
+          "keywords": "",
+          "extra": {
+            "venue": "International Journal of Advanced Research in Science Communication and Technology",
+            "citationCount": "0"
+          }
+        }
+      ]
+    },
+    {
+      "source": "rss",
+      "heading": "📰 优质资讯/论坛",
+      "summary": "本周无相关资讯或论坛讨论数据。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "github_weekly",
+      "heading": "🔥 GitHub 周榜",
+      "summary": "本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，反映了本周（2026-06-12 ~ 2026-06-18）的热门仓库。**榜单未按任何关键词进行过滤或删减**，旨在呈现社区整体关注趋势。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 21,
+      "entries": [
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-0",
+          "score": null,
+          "title": "usestrix/strix",
+          "summary": "开源AI渗透测试工具，可自动查找并修复应用漏洞，支持集成到GitHub Actions和CI/CD流水线。",
+          "link": "https://github.com/usestrix/strix",
+          "tags": "AI安全，渗透测试，自动化，CI/CD",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "37265",
+            "fork": "3781",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-1",
+          "score": null,
+          "title": "xbtlin/ai-berkshire",
+          "summary": "AI时代的价值投资研究框架，融合巴菲特等多位大师方法论，支持多智能体并行分析。",
+          "link": "https://github.com/xbtlin/ai-berkshire",
+          "tags": "价值投资，AI金融，多智能体，研究框架",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "10422",
+            "fork": "1326",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-2",
+          "score": null,
+          "title": "diegosouzapw/OmniRoute",
+          "summary": "免费AI网关，单一端点连接230+个模型提供商（50+免费），支持Claude Code、GPT、Gemini等，具备智能回退和多模态API。",
+          "link": "https://github.com/diegosouzapw/OmniRoute",
+          "tags": "AI网关，API聚合，多模型，令牌压缩",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "11963",
+            "fork": "1738",
+            "language": "TypeScript"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-3",
+          "score": null,
+          "title": "simplex-chat/simplex-chat",
+          "summary": "首个无需任何用户标识的100%隐私设计消息网络，提供iOS、Android和桌面应用。",
+          "link": "https://github.com/simplex-chat/simplex-chat",
+          "tags": "隐私通讯，去中心化，即时通讯，开源",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "17937",
+            "fork": "1055",
+            "language": "Haskell"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-4",
+          "score": null,
+          "title": "Robbyant/lingbot-map",
+          "summary": "用于流式3D重建的前馈3D基础模型，专注于几何上下文理解。",
+          "link": "https://github.com/Robbyant/lingbot-map",
+          "tags": "3D重建，计算机视觉，基础模型，几何学习",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "9925",
+            "fork": "984",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-5",
+          "score": null,
+          "title": "ogulcancelik/herdr",
+          "summary": "终端内的智能体多路复用器，可集中管理多个编码智能体，查看其状态。",
+          "link": "https://github.com/ogulcancelik/herdr",
+          "tags": "AI编程，终端工具，智能体管理，开发者工具",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "12170",
+            "fork": "716",
+            "language": "Rust"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-6",
+          "score": null,
+          "title": "logto-io/logto",
+          "summary": "基于OIDC和OAuth 2.1为SaaS和AI应用构建的现代开源身份认证与授权基础设施，支持多租户和SSO。",
+          "link": "https://github.com/logto-io/logto",
+          "tags": "身份认证，授权，OAuth，SaaS",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "13840",
+            "fork": "947",
+            "language": "TypeScript"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-7",
+          "score": null,
+          "title": "Zackriya-Solutions/meetily",
+          "summary": "隐私优先的AI会议助手，提供4倍速的实时转录、说话人分离和本地摘要功能，无需云端处理。",
+          "link": "https://github.com/Zackriya-Solutions/meetily",
+          "tags": "会议转录，语音识别，隐私，本地处理",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "17340",
+            "fork": "1821",
+            "language": "Rust"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-8",
+          "score": null,
+          "title": "browser-use/video-use",
+          "summary": "使用编码智能体编辑视频，可自动删除填充词、静默片段并重新排列剪辑，适用于多种视频内容。",
+          "link": "https://github.com/browser-use/video-use",
+          "tags": "视频编辑，AI代理，自动化，内容创作",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(无)",
+            "fork": "(无)",
+            "language": "(无)"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-9",
+          "score": null,
+          "title": "alibaba/page-agent",
+          "summary": "浏览器页面内的GUI智能体，允许用户用自然语言控制Web界面，无需浏览器扩展或Python环境。",
+          "link": "https://github.com/alibaba/page-agent",
+          "tags": "网页自动化，自然语言交互，GUI智能体，前端",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(无)",
+            "fork": "(无)",
+            "language": "(无)"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-10",
+          "score": null,
+          "title": "Starmel/OpenSuperWhisper",
+          "summary": "macOS听写应用，使用Whisper模型提供实时音频转录，支持自定义设置和键盘快捷键。",
+          "link": "https://github.com/Starmel/OpenSuperWhisper",
+          "tags": "语音转录，macOS应用，Whisper模型，听写",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(无)",
+            "fork": "(无)",
+            "language": "(无)"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-11",
+          "score": null,
+          "title": "msitarzewski/agency-agents",
+          "summary": "一套完整的AI专家智能体集合，涵盖前端开发、社区管理、创意激发等多个专业领域。",
+          "link": "https://github.com/msitarzewski/agency-agents",
+          "tags": "AI智能体，多专家系统，工作流自动化",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(无)",
+            "fork": "(无)",
+            "language": "(无)"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-12",
+          "score": null,
+          "title": "apache/maven",
+          "summary": "Apache Maven核心，软件项目管理和构建工具。",
+          "link": "https://github.com/apache/maven",
+          "tags": "构建工具，Java，项目管理，Apache",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(无)",
+            "fork": "(无)",
+            "language": "(无)"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-13",
+          "score": null,
+          "title": "openai/codex-plugin-cc",
+          "summary": "为Claude Code设计的Codex插件，用于代码审查或任务委派。",
+          "link": "https://github.com/openai/codex-plugin-cc",
+          "tags": "代码审查，AI编程，Claude Code，插件",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(无)",
+            "fork": "(无)",
+            "language": "(无)"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-14",
+          "score": null,
+          "title": "DeusData/codebase-memory-mcp",
+          "summary": "高性能代码智能MCP服务器，可将代码库索引为持久知识图，支持158种语言，查询速度快。",
+          "link": "https://github.com/DeusData/codebase-memory-mcp",
+          "tags": "代码智能，知识图谱，MCP，AI编程辅助",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(无)",
+            "fork": "(无)",
+            "language": "(无)"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-15",
+          "score": null,
+          "title": "stablyai/orca",
+          "summary": "用于并行智能体舰队工作的AI编排器，可在桌面和移动设备上运行任何编码智能体。",
+          "link": "https://github.com/stablyai/orca",
+          "tags": "AI编排，多智能体，并行计算，开发者工具",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(无)",
+            "fork": "(无)",
+            "language": "(无)"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-16",
+          "score": null,
+          "title": "calesthio/OpenMontage",
+          "summary": "首个开源、智能体驱动的视频制作系统，包含12个流水线和500+智能体技能，可将AI助手变为视频制作工作室。",
+          "link": "https://github.com/calesthio/OpenMontage",
+          "tags": "视频制作，AI代理，自动化，开源",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(无)",
+            "fork": "(无)",
+            "language": "(无)"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-17",
+          "score": null,
+          "title": "JCodesMore/ai-website-cloner-template",
+          "summary": "使用AI编码智能体一键克隆任何网站为干净的Next.js代码库的可复用模板。",
+          "link": "https://github.com/JCodesMore/ai-website-cloner-template",
+          "tags": "网站克隆，AI编程，Next.js，逆向工程",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(无)",
+            "fork": "(无)",
+            "language": "(无)"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-18",
+          "score": null,
+          "title": "ZhuLinsen/daily_stock_analysis",
+          "summary": "LLM驱动的多市场股票智能分析系统，支持多源行情、实时新闻、决策看板与自动推送。",
+          "link": "https://github.com/ZhuLinsen/daily_stock_analysis",
+          "tags": "股票分析，量化投资，LLM，自动化",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(无)",
+            "fork": "(无)",
+            "language": "(无)"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-19",
+          "score": null,
+          "title": "allenai/olmocr",
+          "summary": "将PDF等图像文档转换为干净、可读的纯文本格式的工具包，支持公式、表格和手写体。",
+          "link": "https://github.com/allenai/olmocr",
+          "tags": "OCR，文档处理，PDF解析，文本提取",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(无)",
+            "fork": "(无)",
+            "language": "(无)"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_weekly-20",
+          "score": null,
+          "title": "topoteretes/cognee",
+          "summary": "为AI智能体提供持久长期记忆的开源AI记忆平台，基于自托管知识图引擎。",
+          "link": "https://github.com/topoteretes/cognee",
+          "tags": "AI记忆，知识图谱，智能体，长期记忆",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(无)",
+            "fork": "(无)",
+            "language": "(无)"
+          }
+        }
+      ]
+    },
+    {
+      "source": "github_search",
+      "heading": "🔎 GitHub 指定日期检索",
+      "summary": "本表数据来自 GitHub 官方 `search/repositories` 接口，是在**全站公开仓库**范围内，使用关键词 `uav & (rl|llm)` 并结合 `pushed:2026-06-12..2026-06-18` 时间条件检索出的结果。**这不是 Trending 周榜**，而是基于关键词和时间戳的主动搜索。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 9,
+      "entries": [
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_search-0",
+          "score": 9,
+          "title": "fangvv/UAV-DDPG",
+          "summary": "实现论文《无人机辅助移动边缘计算中的计算卸载优化：一种深度确定性策略梯度方法》的代码。",
+          "link": "https://github.com/fangvv/UAV-DDPG",
+          "tags": "无人机，移动边缘计算，强化学习，DDPG，计算卸载",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "715",
+            "fork": "95",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_search-1",
+          "score": 8,
+          "title": "ruvnet/ruv-drone",
+          "summary": "基于Rust的工业级协作无人机编队协调系统，包含编队保持、Raft共识、任务分配、避障与导航算法。",
+          "link": "https://github.com/ruvnet/ruv-drone",
+          "tags": "无人机编队，多智能体，Rust，协同控制，路径规划",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "8",
+            "fork": "1",
+            "language": "Rust"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_search-2",
+          "score": 7,
+          "title": "nansdcuidnee/uav-agv-green-logistics-optimizer",
+          "summary": "基于空地协同调度与移动充电策略的无人机配送能耗优化系统。",
+          "link": "https://github.com/nansdcuidnee/uav-agv-green-logistics-optimizer",
+          "tags": "无人机物流，协同调度，能耗优化，绿色物流，路径规划",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "3",
+            "fork": "1",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_search-3",
+          "score": 7,
+          "title": "bajarangGun/com-swarm_uav-swarm-coverage-ros2",
+          "summary": "基于质心的多无人机在线并发覆盖路径规划，具备智能网络恢复和死锁避免功能，运行于ROS 2。",
+          "link": "https://github.com/bajarangGun/com-swarm_uav-swarm-coverage-ros2",
+          "tags": "无人机集群，覆盖路径规划，ROS2，多智能体，质心控制",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "3",
+            "fork": "0",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_search-4",
+          "score": 6,
+          "title": "HKUST-Aerial-Robotics/FC-Planner",
+          "summary": "[ICRA'24最佳无人机论文入围] 一种高效的无人机全局覆盖路径规划器。",
+          "link": "https://github.com/HKUST-Aerial-Robotics/FC-Planner",
+          "tags": "无人机，路径规划，覆盖，计算机视觉，C++",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "365",
+            "fork": "30",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_search-5",
+          "score": 6,
+          "title": "Robotics-STAR-Lab/SOAR",
+          "summary": "[IROS'24口头报告] 用于快速自主重建的异构多无人机规划器。",
+          "link": "https://github.com/Robotics-STAR-Lab/SOAR",
+          "tags": "多无人机，3D重建，路径规划，自主系统，C++",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "231",
+            "fork": "14",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_search-6",
+          "score": 6,
+          "title": "satilmiskabasakal0/UAV-Path-Simulation",
+          "summary": "多算法无人机路径规划仿真项目。",
+          "link": "https://github.com/satilmiskabasakal0/UAV-Path-Simulation",
+          "tags": "无人机，路径规划，仿真，多算法，Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "6",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_search-7",
+          "score": 5,
+          "title": "Sautenich/UAV-VLA",
+          "summary": "论文“UAV-VLA HRI 2025”的官方代码仓库。",
+          "link": "https://github.com/Sautenich/UAV-VLA",
+          "tags": "无人机，视觉语言模型，人机交互，研究代码",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "146",
+            "fork": "10",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-12_2026-06-18_20260706T032805Z-github_search-8",
+          "score": 5,
+          "title": "machmind-dev/drone-swarm-challenge-2026",
+          "summary": "2026年无人机集群挑战赛 Mach Mind 团队的源代码。",
+          "link": "https://github.com/machmind-dev/drone-swarm-challenge-2026",
+          "tags": "无人机集群，竞赛，C++，自主控制",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "entryCount": 42,
+    "sourceCounts": {
+      "openalex": 12,
+      "github_weekly": 21,
+      "github_search": 9
+    },
+    "emptySections": [
+      "arxiv",
+      "semantic_scholar",
+      "rss"
+    ]
+  }
+}

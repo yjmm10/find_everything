@@ -1,0 +1,607 @@
+{
+  "schemaVersion": "1",
+  "id": "2026-06-05_2026-06-11_20260706T033446Z",
+  "crawl": {
+    "executedAt": "2026-07-06T03:34:46.931416Z",
+    "crawlDate": "2026-07-06",
+    "status": "success",
+    "trigger": "ci"
+  },
+  "window": {
+    "dateStart": "2026-06-05",
+    "dateEnd": "2026-06-11",
+    "preset": "week",
+    "mode": "custom"
+  },
+  "config": {
+    "keywords": "(uav|aerial) & (vlm|llm|mllm) & (rl)",
+    "date_range": {
+      "preset": "week"
+    },
+    "ai": {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "max_tokens": 4000,
+      "thinking": null
+    }
+  },
+  "content": {
+    "markdownBody": "## 📄 Arxiv 前沿论文\n\n> **爬取时间**：2026-07-06 03:34:46 UTC\n\n本表数据来自 Arxiv 论文库，检索关键词为 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)`，时间窗口为 2026-06-05 ~ 2026-06-11。根据检索条件，本周无相关论文。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 学科类别 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| (本周期无符合关键词的论文) | | | | | | |\n\n## 🎓 Semantic Scholar\n本表数据来自 Semantic Scholar 学术搜索引擎，检索关键词为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口为 2026-06-05 ~ 2026-06-11。根据检索条件，本周无相关论文。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| (本周期无符合关键词的论文) | | | | | | | |\n\n## 📚 OpenAlex\n本表数据来自 OpenAlex 学术数据库，检索关键词为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口为 2026-06-05 ~ 2026-06-11。以下为检索到的相关论文，已按与主题贴合度、新颖度等评分排序。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| 9 | Think Like a Pilot: Fine-Grained Long-Horizon UAV Navigation | 研究语言引导的无人机如何执行长时程语义指令，并生成平滑、物理可行的连续飞行命令。 | https://openalex.org/W7164090007 | 无人机导航，语言引导，强化学习，连续控制 | 2026-06-05 | arXiv (Cornell University) | 0 |\n| - | Large language models for multi-robot systems: a survey | 综述了大型语言模型在多机器人系统中的应用，以增强通信、协调和决策能力。 | https://doi.org/10.1007/s10514-026-10257-4 | 多机器人系统，大语言模型，综述，人机交互 | 2026-06-10 | Autonomous Robots | 4 |\n| - | TetraRL: A Self-Adaptive Runtime for On-Device Deep Reinforcement Learning Systems | 为自动驾驶车辆、无人机等设备的深度强化学习系统设计了一个自适应运行时环境。 | https://openalex.org/W7164974086 | 深度强化学习，边缘计算，自适应系统，机器人 | 2026-06-11 | arXiv (Cornell University) | 0 |\n| - | Multi-Agent Embodied Autonomous Driving: From V2X Information Exchange to Shared World Models | 探讨从单车智能转向多智能体具身系统，共享感知、推断意图并协调驾驶。 | https://openalex.org/W7164973282 | 自动驾驶，多智能体，世界模型，V2X通信 | 2026-06-11 | arXiv (Cornell University) | 0 |\n| - | Deep Reinforcement Learning-Based AUV Trajectory Planning in 3D Time-Varying Current Environments | 使用深度强化学习为自主水下航行器在三维时变流场环境中规划轨迹。 | https://doi.org/10.21203/rs.3.rs-9924700/v1 | 强化学习，轨迹规划，AUV，水下机器人 | 2026-06-05 | Research Square | 0 |\n| - | DARRMS -- An Efficient Algorithm for Dynamic Attention Radius in Resource-Constrained Multi-Agent Systems | 为机器人、网络安全等领域的资源受限多智能体系统提出动态注意力半径算法。 | https://openalex.org/W7164701519 | 多智能体系统，注意力机制，资源优化，算法 | 2026-06-10 | arXiv (Cornell University) | 0 |\n| - | DogFight-UAV-RL | (注：此条目来自GitHub检索，非OpenAlex论文，已忽略) | | | | | |\n| - | 其余论文（如音频视觉、组合优化、隐私增强技术等）与核心主题（无人机+VLM/LLM+RL）直接关联较弱，未列入本表。 | | | | | | |\n\n## 📰 优质资讯/论坛\n本周无相关资讯或论坛数据。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 |\n| :--- | :--- | :--- | :--- | :--- |\n| (本周无相关资讯) | | | | |\n\n## 🔥 GitHub 周榜\n**板块说明**：本表数据来自 GitHub Trending 类 RSS 榜单的原始条目（如每日/每周 trending），反映了该时间窗口内 GitHub 上热度较高的仓库。**榜单未按任何关键词进行过滤**，条目完全遵循原始榜单顺序。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| 8 | strix | 开源AI渗透测试工具，可自动查找并修复应用漏洞，集成CI/CD。 | https://github.com/usestrix/strix | AI安全，渗透测试，自动化，DevSecOps | - | - | - |\n| 7 | ai-berkshire | 基于Claude Code的价值投资研究框架，融合多位投资大师方法论与多智能体分析。 | https://github.com/xbtlin/ai-berkshire | AI金融，价值投资，多智能体，研究框架 | - | - | - |\n| 7 | OmniRoute | 免费AI网关，聚合230+个模型提供商，支持RTK压缩、智能回退和多模态API。 | https://github.com/diegosouzapw/OmniRoute | AI网关，模型聚合，API管理，效率工具 | - | - | - |\n| 6 | lingbot-map | 用于流式3D重建的前馈3D基础模型，专注于几何上下文理解。 | https://github.com/Robbyant/lingbot-map | 3D重建，计算机视觉，基础模型，几何学习 | - | - | - |\n| 6 | page-agent | JavaScript页面GUI智能体，允许用自然语言控制Web界面，无需浏览器扩展。 | https://github.com/alibaba/page-agent | 智能体，Web自动化，自然语言交互，前端 | - | - | - |\n| 6 | OpenMontage | 首个开源、智能体驱动的视频制作系统，包含多条流水线和大量工具。 | https://github.com/calesthio/OpenMontage | 视频制作，AI智能体，自动化，多媒体 | - | - | - |\n| 5 | herdr | 终端内的智能体多路复用器，可集中管理多个编码智能体的运行状态。 | https://github.com/ogulcancelik/herdr | 终端工具，智能体管理，开发效率 | - | - | - |\n| 5 | meetily | 隐私优先的AI会议助手，具备4倍速实时转录、说话人分离和本地总结功能。 | https://github.com/Zackriya-Solutions/meetily | 语音识别，隐私保护，会议助手，本地处理 | - | - | - |\n| 5 | video-use | 通过编码智能体（如Claude Code）编辑视频，可自动剪辑填充词和静默片段。 | https://github.com/browser-use/video-use | 视频编辑，AI智能体，自动化，内容创作 | - | - | - |\n| 5 | codebase-memory-mcp | 高性能代码智能MCP服务器，可将代码库快速索引为持久知识图谱。 | https://github.com/DeusData/codebase-memory-mcp | 代码智能，知识图谱，MCP，AI编程助手 | - | - | - |\n| 4 | simplex-chat | 首个无需任何用户标识的消息网络，100%隐私设计。 | https://github.com/simplex-chat/simplex-chat | 隐私通讯，去中心化，安全消息 | - | - | - |\n| 4 | logto | 为SaaS和AI应用构建的身份认证与授权基础设施，基于OIDC和OAuth 2.1。 | https://github.com/logto-io/logto | 身份认证，授权，SaaS，开源 | - | - | - |\n| 4 | OpenSuperWhisper | macOS听写应用，使用Whisper模型提供实时音频转录。 | https://github.com/Starmel/OpenSuperWhisper | 语音转录，macOS应用，Whisper模型 | - | - | - |\n| 4 | agency-agents | 一套完整的AI智能体集合，每个智能体都是具有个性和流程的专家。 | https://github.com/msitarzewski/agency-agents | AI智能体，多角色，工作流自动化 | - | - | - |\n| 3 | orca | 用于并行智能体舰队工作的AI编排器，可在桌面和移动设备上运行。 | https://github.com/stablyai/orca | AI编排，并行智能体，开发工具 | - | - | - |\n| 3 | ai-website-cloner-template | 使用AI编码智能体一键将任何网站克隆为干净的Next.js代码库的模板。 | https://github.com/JCodesMore/ai-website-cloner-template | 网站克隆，AI代码生成，Next.js，自动化 | - | - | - |\n| 3 | daily_stock_analysis | LLM驱动的多市场股票智能分析系统，支持多源数据、实时新闻和自动推送。 | https://github.com/ZhuLinsen/daily_stock_analysis | 量化分析，股票，LLM应用，自动化 | - | - | - |\n| 2 | codex-plugin-cc | Claude Code插件，用于代码审查或将任务委托给Codex。 | https://github.com/openai/codex-plugin-cc | 代码审查，Claude插件，AI编程助手 | - | - | - |\n| 1 | olmocr | 将PDF等图像文档转换为干净Markdown文本的工具包，适用于LLM数据集。 | https://github.com/allenai/olmocr | 文档转换，OCR，Markdown，数据集处理 | - | - | - |\n| 1 | cognee | 开源AI记忆平台，为智能体提供跨会话的持久长期记忆和自托管知识图谱。 | https://github.com/topoteretes/cognee | AI记忆，知识图谱，智能体，长期记忆 | - | - | - |\n| 0 | maven | Apache Maven核心项目（构建工具）。 | https://github.com/apache/maven | 构建工具，Java，项目管理 | - | - | - |\n\n## 🔎 GitHub 指定日期检索\n**板块说明**：本表数据来自 GitHub 官方 `search/repositories` 接口，是在**全站公开仓库**范围内，使用关键词 `uav & (rl|llm)` 并结合时间条件（通常为 `pushed:` 日期）检索出的结果。**这不是 Trending 周榜**，而是基于关键词和推送时间的主动搜索。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| 9 | multi-uav-ugv-cooperative-routing-drl | 使用深度强化学习解决多无人机与多地面车辆协同路由问题的仓库。 | https://github.com/imsafwan/multi-uav-ugv-cooperative-routing-drl | 多智能体协同，深度强化学习，路径规划，无人机，UGV | 24 | 3 | Python |\n| 8 | pybullet-swarm-sim | 基于PyBullet构建的多智能体无人机群仿真框架，用于机器人和强化学习研究。 | https://github.com/SimarcLabs/pybullet-swarm-sim | 无人机集群，仿真，强化学习，PyBullet，多智能体 | 22 | 8 | Python |\n| 7 | DogFight-UAV-RL | 涉及无人机空战与强化学习的项目（从标题推断）。 | https://github.com/KutayEter/DogFight-UAV-RL | 无人机空战，强化学习，游戏AI | 3 | 0 | Python |\n| 6 | uav_rl_teaching | 基于强化学习的无人机群体智能导论代码仓库，用于教学目的。 | https://github.com/wangliang-cs/uav_rl_teaching | 强化学习教学，无人机集群，群体智能，教育 | 2 | 0 | Python |\n| 5 | multi_uav_simulator | 基于ROS的无人机集群仿真器。 | https://github.com/malintha/multi_uav_simulator | 无人机仿真，ROS，集群，机器人 | 199 | 23 | C++ |\n| 5 | FUEL-PX4-gazebo | 在PX4和Gazebo中实现的FUEL无人机探索算法。 | https://github.com/WinstonJQ/FUEL-PX4-gazebo | 无人机探索，PX4，Gazebo，路径规划 | 96 | 8 | C++ |\n| 4 | UAV-Controller | 四旋翼无人机控制系统，支持手动和自主控制。 | https://github.com/RawFish69/UAV-Controller | 无人机控制，飞控，自主导航，Python | 4 | 0 | Python |\n| 3 | flying-blind | 开源GPS拒止环境下无人机导航方案，包含浏览器仿真、IMU航迹推算和机器学习。 | https://github.com/k0202122/flying-blind | GPS拒止导航，状态估计，机器学习，仿真 | 4 | 1 | Python |\n| 2 | UAV_UGV_Collaboration | 无人机与地面车辆协作项目。 | https://github.com/yassineB91/UAV_UGV_Collaboration | 人机协作，无人机，UGV | 2 | 0 | Python |\n| 1 | UAV-ranging | 无人机测距相关项目。 | https://github.com/sgy21/UAV-ranging | 无人机，测距，传感器 | 2 | 0 | Python |\n| - | 其余仓库（如特定会议代码、硬件驱动、数据处理管道等）与“强化学习”或“大语言模型”核心主题关联较弱，未全部列出。 | | | | | | |\n",
+    "markdownGeneratedAt": "2026-07-06T03:34:46.931416Z"
+  },
+  "sections": [
+    {
+      "source": "arxiv",
+      "heading": "📄 Arxiv 前沿论文",
+      "summary": "本表数据来自 Arxiv 论文库，检索关键词为 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)`，时间窗口为 2026-06-05 ~ 2026-06-11。根据检索条件，本周无相关论文。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "semantic_scholar",
+      "heading": "🎓 Semantic Scholar",
+      "summary": "本表数据来自 Semantic Scholar 学术搜索引擎，检索关键词为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口为 2026-06-05 ~ 2026-06-11。根据检索条件，本周无相关论文。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "openalex",
+      "heading": "📚 OpenAlex",
+      "summary": "本表数据来自 OpenAlex 学术数据库，检索关键词为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口为 2026-06-05 ~ 2026-06-11。以下为检索到的相关论文，已按与主题贴合度、新颖度等评分排序。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 8,
+      "entries": [
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-openalex-0",
+          "score": 9,
+          "title": "Think Like a Pilot: Fine-Grained Long-Horizon UAV Navigation",
+          "summary": "研究语言引导的无人机如何执行长时程语义指令，并生成平滑、物理可行的连续飞行命令。",
+          "link": "https://openalex.org/W7164090007",
+          "tags": "无人机导航，语言引导，强化学习，连续控制",
+          "publishedAt": "2026-06-05",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-openalex-1",
+          "score": null,
+          "title": "Large language models for multi-robot systems: a survey",
+          "summary": "综述了大型语言模型在多机器人系统中的应用，以增强通信、协调和决策能力。",
+          "link": "https://doi.org/10.1007/s10514-026-10257-4",
+          "tags": "多机器人系统，大语言模型，综述，人机交互",
+          "publishedAt": "2026-06-10",
+          "keywords": "",
+          "extra": {
+            "venue": "Autonomous Robots",
+            "citationCount": "4"
+          }
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-openalex-2",
+          "score": null,
+          "title": "TetraRL: A Self-Adaptive Runtime for On-Device Deep Reinforcement Learning Systems",
+          "summary": "为自动驾驶车辆、无人机等设备的深度强化学习系统设计了一个自适应运行时环境。",
+          "link": "https://openalex.org/W7164974086",
+          "tags": "深度强化学习，边缘计算，自适应系统，机器人",
+          "publishedAt": "2026-06-11",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-openalex-3",
+          "score": null,
+          "title": "Multi-Agent Embodied Autonomous Driving: From V2X Information Exchange to Shared World Models",
+          "summary": "探讨从单车智能转向多智能体具身系统，共享感知、推断意图并协调驾驶。",
+          "link": "https://openalex.org/W7164973282",
+          "tags": "自动驾驶，多智能体，世界模型，V2X通信",
+          "publishedAt": "2026-06-11",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-openalex-4",
+          "score": null,
+          "title": "Deep Reinforcement Learning-Based AUV Trajectory Planning in 3D Time-Varying Current Environments",
+          "summary": "使用深度强化学习为自主水下航行器在三维时变流场环境中规划轨迹。",
+          "link": "https://doi.org/10.21203/rs.3.rs-9924700/v1",
+          "tags": "强化学习，轨迹规划，AUV，水下机器人",
+          "publishedAt": "2026-06-05",
+          "keywords": "",
+          "extra": {
+            "venue": "Research Square",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-openalex-5",
+          "score": null,
+          "title": "DARRMS -- An Efficient Algorithm for Dynamic Attention Radius in Resource-Constrained Multi-Agent Systems",
+          "summary": "为机器人、网络安全等领域的资源受限多智能体系统提出动态注意力半径算法。",
+          "link": "https://openalex.org/W7164701519",
+          "tags": "多智能体系统，注意力机制，资源优化，算法",
+          "publishedAt": "2026-06-10",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-openalex-6",
+          "score": null,
+          "title": "DogFight-UAV-RL",
+          "summary": "(注：此条目来自GitHub检索，非OpenAlex论文，已忽略)",
+          "link": null,
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-openalex-7",
+          "score": null,
+          "title": "其余论文（如音频视觉、组合优化、隐私增强技术等）与核心主题（无人机+VLM/LLM+RL）直接关联较弱，未列入本表。",
+          "summary": "",
+          "link": null,
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "rss",
+      "heading": "📰 优质资讯/论坛",
+      "summary": "本周无相关资讯或论坛数据。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "github_weekly",
+      "heading": "🔥 GitHub 周榜",
+      "summary": "**板块说明**：本表数据来自 GitHub Trending 类 RSS 榜单的原始条目（如每日/每周 trending），反映了该时间窗口内 GitHub 上热度较高的仓库。**榜单未按任何关键词进行过滤**，条目完全遵循原始榜单顺序。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 21,
+      "entries": [
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-0",
+          "score": 8,
+          "title": "strix",
+          "summary": "开源AI渗透测试工具，可自动查找并修复应用漏洞，集成CI/CD。",
+          "link": "https://github.com/usestrix/strix",
+          "tags": "AI安全，渗透测试，自动化，DevSecOps",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-1",
+          "score": 7,
+          "title": "ai-berkshire",
+          "summary": "基于Claude Code的价值投资研究框架，融合多位投资大师方法论与多智能体分析。",
+          "link": "https://github.com/xbtlin/ai-berkshire",
+          "tags": "AI金融，价值投资，多智能体，研究框架",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-2",
+          "score": 7,
+          "title": "OmniRoute",
+          "summary": "免费AI网关，聚合230+个模型提供商，支持RTK压缩、智能回退和多模态API。",
+          "link": "https://github.com/diegosouzapw/OmniRoute",
+          "tags": "AI网关，模型聚合，API管理，效率工具",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-3",
+          "score": 6,
+          "title": "lingbot-map",
+          "summary": "用于流式3D重建的前馈3D基础模型，专注于几何上下文理解。",
+          "link": "https://github.com/Robbyant/lingbot-map",
+          "tags": "3D重建，计算机视觉，基础模型，几何学习",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-4",
+          "score": 6,
+          "title": "page-agent",
+          "summary": "JavaScript页面GUI智能体，允许用自然语言控制Web界面，无需浏览器扩展。",
+          "link": "https://github.com/alibaba/page-agent",
+          "tags": "智能体，Web自动化，自然语言交互，前端",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-5",
+          "score": 6,
+          "title": "OpenMontage",
+          "summary": "首个开源、智能体驱动的视频制作系统，包含多条流水线和大量工具。",
+          "link": "https://github.com/calesthio/OpenMontage",
+          "tags": "视频制作，AI智能体，自动化，多媒体",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-6",
+          "score": 5,
+          "title": "herdr",
+          "summary": "终端内的智能体多路复用器，可集中管理多个编码智能体的运行状态。",
+          "link": "https://github.com/ogulcancelik/herdr",
+          "tags": "终端工具，智能体管理，开发效率",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-7",
+          "score": 5,
+          "title": "meetily",
+          "summary": "隐私优先的AI会议助手，具备4倍速实时转录、说话人分离和本地总结功能。",
+          "link": "https://github.com/Zackriya-Solutions/meetily",
+          "tags": "语音识别，隐私保护，会议助手，本地处理",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-8",
+          "score": 5,
+          "title": "video-use",
+          "summary": "通过编码智能体（如Claude Code）编辑视频，可自动剪辑填充词和静默片段。",
+          "link": "https://github.com/browser-use/video-use",
+          "tags": "视频编辑，AI智能体，自动化，内容创作",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-9",
+          "score": 5,
+          "title": "codebase-memory-mcp",
+          "summary": "高性能代码智能MCP服务器，可将代码库快速索引为持久知识图谱。",
+          "link": "https://github.com/DeusData/codebase-memory-mcp",
+          "tags": "代码智能，知识图谱，MCP，AI编程助手",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-10",
+          "score": 4,
+          "title": "simplex-chat",
+          "summary": "首个无需任何用户标识的消息网络，100%隐私设计。",
+          "link": "https://github.com/simplex-chat/simplex-chat",
+          "tags": "隐私通讯，去中心化，安全消息",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-11",
+          "score": 4,
+          "title": "logto",
+          "summary": "为SaaS和AI应用构建的身份认证与授权基础设施，基于OIDC和OAuth 2.1。",
+          "link": "https://github.com/logto-io/logto",
+          "tags": "身份认证，授权，SaaS，开源",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-12",
+          "score": 4,
+          "title": "OpenSuperWhisper",
+          "summary": "macOS听写应用，使用Whisper模型提供实时音频转录。",
+          "link": "https://github.com/Starmel/OpenSuperWhisper",
+          "tags": "语音转录，macOS应用，Whisper模型",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-13",
+          "score": 4,
+          "title": "agency-agents",
+          "summary": "一套完整的AI智能体集合，每个智能体都是具有个性和流程的专家。",
+          "link": "https://github.com/msitarzewski/agency-agents",
+          "tags": "AI智能体，多角色，工作流自动化",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-14",
+          "score": 3,
+          "title": "orca",
+          "summary": "用于并行智能体舰队工作的AI编排器，可在桌面和移动设备上运行。",
+          "link": "https://github.com/stablyai/orca",
+          "tags": "AI编排，并行智能体，开发工具",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-15",
+          "score": 3,
+          "title": "ai-website-cloner-template",
+          "summary": "使用AI编码智能体一键将任何网站克隆为干净的Next.js代码库的模板。",
+          "link": "https://github.com/JCodesMore/ai-website-cloner-template",
+          "tags": "网站克隆，AI代码生成，Next.js，自动化",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-16",
+          "score": 3,
+          "title": "daily_stock_analysis",
+          "summary": "LLM驱动的多市场股票智能分析系统，支持多源数据、实时新闻和自动推送。",
+          "link": "https://github.com/ZhuLinsen/daily_stock_analysis",
+          "tags": "量化分析，股票，LLM应用，自动化",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-17",
+          "score": 2,
+          "title": "codex-plugin-cc",
+          "summary": "Claude Code插件，用于代码审查或将任务委托给Codex。",
+          "link": "https://github.com/openai/codex-plugin-cc",
+          "tags": "代码审查，Claude插件，AI编程助手",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-18",
+          "score": 1,
+          "title": "olmocr",
+          "summary": "将PDF等图像文档转换为干净Markdown文本的工具包，适用于LLM数据集。",
+          "link": "https://github.com/allenai/olmocr",
+          "tags": "文档转换，OCR，Markdown，数据集处理",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-19",
+          "score": 1,
+          "title": "cognee",
+          "summary": "开源AI记忆平台，为智能体提供跨会话的持久长期记忆和自托管知识图谱。",
+          "link": "https://github.com/topoteretes/cognee",
+          "tags": "AI记忆，知识图谱，智能体，长期记忆",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_weekly-20",
+          "score": 0,
+          "title": "maven",
+          "summary": "Apache Maven核心项目（构建工具）。",
+          "link": "https://github.com/apache/maven",
+          "tags": "构建工具，Java，项目管理",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "github_search",
+      "heading": "🔎 GitHub 指定日期检索",
+      "summary": "**板块说明**：本表数据来自 GitHub 官方 `search/repositories` 接口，是在**全站公开仓库**范围内，使用关键词 `uav & (rl|llm)` 并结合时间条件（通常为 `pushed:` 日期）检索出的结果。**这不是 Trending 周榜**，而是基于关键词和推送时间的主动搜索。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 11,
+      "entries": [
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_search-0",
+          "score": 9,
+          "title": "multi-uav-ugv-cooperative-routing-drl",
+          "summary": "使用深度强化学习解决多无人机与多地面车辆协同路由问题的仓库。",
+          "link": "https://github.com/imsafwan/multi-uav-ugv-cooperative-routing-drl",
+          "tags": "多智能体协同，深度强化学习，路径规划，无人机，UGV",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "24",
+            "fork": "3",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_search-1",
+          "score": 8,
+          "title": "pybullet-swarm-sim",
+          "summary": "基于PyBullet构建的多智能体无人机群仿真框架，用于机器人和强化学习研究。",
+          "link": "https://github.com/SimarcLabs/pybullet-swarm-sim",
+          "tags": "无人机集群，仿真，强化学习，PyBullet，多智能体",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "22",
+            "fork": "8",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_search-2",
+          "score": 7,
+          "title": "DogFight-UAV-RL",
+          "summary": "涉及无人机空战与强化学习的项目（从标题推断）。",
+          "link": "https://github.com/KutayEter/DogFight-UAV-RL",
+          "tags": "无人机空战，强化学习，游戏AI",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "3",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_search-3",
+          "score": 6,
+          "title": "uav_rl_teaching",
+          "summary": "基于强化学习的无人机群体智能导论代码仓库，用于教学目的。",
+          "link": "https://github.com/wangliang-cs/uav_rl_teaching",
+          "tags": "强化学习教学，无人机集群，群体智能，教育",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_search-4",
+          "score": 5,
+          "title": "multi_uav_simulator",
+          "summary": "基于ROS的无人机集群仿真器。",
+          "link": "https://github.com/malintha/multi_uav_simulator",
+          "tags": "无人机仿真，ROS，集群，机器人",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "199",
+            "fork": "23",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_search-5",
+          "score": 5,
+          "title": "FUEL-PX4-gazebo",
+          "summary": "在PX4和Gazebo中实现的FUEL无人机探索算法。",
+          "link": "https://github.com/WinstonJQ/FUEL-PX4-gazebo",
+          "tags": "无人机探索，PX4，Gazebo，路径规划",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "96",
+            "fork": "8",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_search-6",
+          "score": 4,
+          "title": "UAV-Controller",
+          "summary": "四旋翼无人机控制系统，支持手动和自主控制。",
+          "link": "https://github.com/RawFish69/UAV-Controller",
+          "tags": "无人机控制，飞控，自主导航，Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "4",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_search-7",
+          "score": 3,
+          "title": "flying-blind",
+          "summary": "开源GPS拒止环境下无人机导航方案，包含浏览器仿真、IMU航迹推算和机器学习。",
+          "link": "https://github.com/k0202122/flying-blind",
+          "tags": "GPS拒止导航，状态估计，机器学习，仿真",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "4",
+            "fork": "1",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_search-8",
+          "score": 2,
+          "title": "UAV_UGV_Collaboration",
+          "summary": "无人机与地面车辆协作项目。",
+          "link": "https://github.com/yassineB91/UAV_UGV_Collaboration",
+          "tags": "人机协作，无人机，UGV",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_search-9",
+          "score": 1,
+          "title": "UAV-ranging",
+          "summary": "无人机测距相关项目。",
+          "link": "https://github.com/sgy21/UAV-ranging",
+          "tags": "无人机，测距，传感器",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-05_2026-06-11_20260706T033446Z-github_search-10",
+          "score": null,
+          "title": "其余仓库（如特定会议代码、硬件驱动、数据处理管道等）与“强化学习”或“大语言模型”核心主题关联较弱，未全部列出。",
+          "summary": "",
+          "link": null,
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "entryCount": 40,
+    "sourceCounts": {
+      "openalex": 8,
+      "github_weekly": 21,
+      "github_search": 11
+    },
+    "emptySections": [
+      "arxiv",
+      "semantic_scholar",
+      "rss"
+    ]
+  }
+}

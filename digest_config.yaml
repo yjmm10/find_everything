@@ -13,7 +13,7 @@ keywords: "(uav|aerial) & (vlm|llm|mllm) & (rl)"
 
 # AI 汇总（model / max_tokens 在此配置；API Key 与 Base URL 仅环境变量或 GitHub Secrets）
 ai:
-  model: MiniMax/MiniMax-M2.7:MiniMax
+  model: deepseek-ai/DeepSeek-V3.2
   max_tokens: 4000
 
 # 根 date_range：默认窗口；各信息源可再写自己的 date_range 覆盖
