@@ -14,6 +14,8 @@ name: 📅 Weekly Tech Digest
 #     OPENAI_API_KEY  — 魔搭 ModelScope SDK Token（ms- 开头）
 #   可选 secrets / 未设则使用下列默认：
 #     OPENAI_API_BASE — 默认 https://api-inference.modelscope.cn/v1
+#     MINIMAX_API_KEY — 主模型失败时的 MiniMax 备用（模型见 digest_config.yaml ai.fallback_models）
+#     MINIMAX_API_BASE — 默认 https://api.minimaxi.com/v1
 #   学术检索（可选）：SEMANTIC_SCHOLAR_API_KEY、OPENALEX_API_KEY
 #   GitHub 检索 enrich：使用 workflow 内置 GITHUB_TOKEN（无需额外 Secret）
 
@@ -69,6 +71,8 @@ jobs:
           # 密钥与通知：仅 Secrets / .env，业务配置（含 ai.model）见 digest_config.yaml
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE != '' && secrets.OPENAI_API_BASE || 'https://api-inference.modelscope.cn/v1' }}
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          MINIMAX_API_BASE: ${{ secrets.MINIMAX_API_BASE != '' && secrets.MINIMAX_API_BASE || 'https://api.minimaxi.com/v1' }}
           GITHUB_TOKEN: ${{ github.token }}
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
           OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}

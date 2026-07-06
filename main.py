@@ -164,16 +164,114 @@ def _openai_base_url() -> str:
     return raw.rstrip("/")
 
 
+def _minimax_base_url() -> str:
+    raw = (os.getenv("MINIMAX_API_BASE") or "https://api.minimaxi.com/v1").strip()
+    return raw.rstrip("/")
+
+
+_DEFAULT_AI_FALLBACK_MODELS = ("MiniMax-M2.7", "MiniMax-M2.5")
+
+
+def _ai_fallback_models(cfg: dict) -> list[str]:
+    ai = cfg.get("ai")
+    if isinstance(ai, dict):
+        raw = ai.get("fallback_models")
+        if isinstance(raw, list):
+            models = [str(m).strip() for m in raw if str(m).strip()]
+            if models:
+                return models
+    env_models = (os.getenv("AI_FALLBACK_MODELS") or "").strip()
+    if env_models:
+        models = [m.strip() for m in env_models.split(",") if m.strip()]
+        if models:
+            return models
+    return list(_DEFAULT_AI_FALLBACK_MODELS)
+
+
+def _ai_provider_chain(cfg: dict) -> list[dict]:
+    """主网关 + MiniMax 备用模型链（主模型失败时依次尝试）。"""
+    ai = _ai_settings(cfg)
+    chain: list[dict] = [
+        {
+            "label": "主网关",
+            "api_key": (os.getenv("OPENAI_API_KEY") or "").strip(),
+            "base_url": _openai_base_url(),
+            "model": ai["model"],
+        }
+    ]
+    minimax_key = (os.getenv("MINIMAX_API_KEY") or "").strip()
+    fallback_models = _ai_fallback_models(cfg)
+    if not minimax_key:
+        if fallback_models:
+            log("⚠️ [AI] 已配置 fallback_models 但未设置 MINIMAX_API_KEY，跳过 MiniMax 回退")
+        return chain
+    minimax_base = _minimax_base_url()
+    for model in fallback_models:
+        chain.append(
+            {
+                "label": f"MiniMax 备用",
+                "api_key": minimax_key,
+                "base_url": minimax_base,
+                "model": model,
+            }
+        )
+    return chain
+
+
+def _chat_completion_text(
+    *,
+    api_key: str,
+    base_url: str,
+    model: str,
+    prompt: str,
+    max_tokens: int,
+    extra_body: dict | None,
+) -> tuple[str, str | None]:
+    """单次 chat.completions；成功返回 (正文, None)，失败返回 ('', 原因)。"""
+    client = OpenAI(api_key=api_key or None, base_url=base_url)
+    try:
+        kwargs = {
+            "model": model,
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.2,
+            "max_tokens": max_tokens,
+        }
+        if extra_body:
+            kwargs["extra_body"] = extra_body
+        response = client.chat.completions.create(**kwargs)
+    except Exception as e:
+        return "", f"{type(e).__name__}: {e}"
+
+    if response is None:
+        return "", "响应对象为 None"
+
+    choices = getattr(response, "choices", None)
+    if choices is None:
+        return "", f"response.choices 为 None（类型 {type(response).__name__}）"
+    if not isinstance(choices, (list, tuple)) or len(choices) == 0:
+        return "", f"response.choices 非列表或为空（类型 {type(choices).__name__}）"
+
+    ch0 = choices[0]
+    if ch0 is None:
+        return "", "choices[0] 为 None"
+
+    msg = getattr(ch0, "message", None)
+    text = None
+    if msg is not None:
+        text = getattr(msg, "content", None)
+    if text is None and hasattr(ch0, "text"):
+        text = getattr(ch0, "text", None)
+
+    if text is None or not str(text).strip():
+        fr = getattr(ch0, "finish_reason", None)
+        return "", f"空内容或无 message.content（finish_reason={fr!r}）"
+    return str(text), None
+
+
 def summarize_with_ai(raw_sections: str, keyword_context: str, date_str: str, *, cfg: dict):
     ai = _ai_settings(cfg)
-    model = ai["model"]
     max_tokens = ai["max_tokens"]
     thinking = ai.get("thinking")
-    api_key = (os.getenv("OPENAI_API_KEY") or "").strip()
-    base_url = _openai_base_url()
-    log(f"🤖 [AI] 调用模型 {model} 生成周报（可能需数十秒）…")
-    log(f"🤖 [AI] 实际请求约: {base_url}/chat/completions")
-    client = OpenAI(api_key=api_key or None, base_url=base_url)
     extra_body = None
     if thinking in ("disabled", "off", "false", "0", "no"):
         extra_body = {"thinking": {"type": "disabled"}}
@@ -201,65 +299,40 @@ def summarize_with_ai(raw_sections: str, keyword_context: str, date_str: str, *,
 原始数据：
 {raw_sections}"""
 
-    try:
-        kwargs = {
-            "model": model,
-            "messages": [{"role": "user", "content": prompt}],
-            "temperature": 0.2,
-            "max_tokens": max_tokens,
-        }
-        if extra_body:
-            kwargs["extra_body"] = extra_body
-        response = client.chat.completions.create(**kwargs)
-    except Exception as e:
-        log(f"❌ [AI] chat.completions 调用失败: {type(e).__name__}: {e}")
+    providers = _ai_provider_chain(cfg)
+    last_reason = ""
+    for i, provider in enumerate(providers):
+        role = "首选" if i == 0 else "备用"
+        model = provider["model"]
+        base_url = provider["base_url"]
+        label = provider["label"]
         log(
-            "💡 [AI] 若为 404：① 核对网关文档里的 OpenAI 兼容 base 是否以 /v1 结尾、"
-            "且 .env 中无行尾空格；② 模型名 AI_MODEL 须为该网关上实际可用的 id（"
-            "错误 id 时部分网关会返回 404）；③ 官方 OpenAI 请使用 https://api.openai.com/v1 。"
+            f"🤖 [AI/{role}] 调用 {label} 模型 {model} 生成周报（可能需数十秒）…"
         )
-        return ""
-
-    log("✅ [AI] 生成完成")
-
-    if response is None:
-        log("⚠️ [AI] 响应对象为 None")
-        return ""
-
-    choices = getattr(response, "choices", None)
-    if choices is None:
-        log(
-            "⚠️ [AI] response.choices 为 None（网关/兼容层未返回标准 ChatCompletion），"
-            f"response 类型: {type(response).__name__}"
+        log(f"🤖 [AI/{role}] 实际请求约: {base_url}/chat/completions")
+        text, err = _chat_completion_text(
+            api_key=provider["api_key"],
+            base_url=base_url,
+            model=model,
+            prompt=prompt,
+            max_tokens=max_tokens,
+            extra_body=extra_body if i == 0 else None,
         )
-        return ""
-    if not isinstance(choices, (list, tuple)) or len(choices) == 0:
-        log(
-            "⚠️ [AI] response.choices 非列表或为空，"
-            f"实际类型: {type(choices).__name__}"
-        )
-        return ""
+        if text:
+            log(f"✅ [AI] 由 {label}（{role}）模型 {model} 生成完成")
+            return text
+        last_reason = err or "未知错误"
+        log(f"⚠️ [AI/{role}] {label} 模型 {model} 不可用: {last_reason}")
+        if i == 0 and len(providers) > 1:
+            log("🔄 [AI] 主模型失败，尝试 MiniMax 备用模型…")
+        elif i == 0:
+            log(
+                "💡 [AI] 若为 404：① 核对网关 OpenAI 兼容 base 是否以 /v1 结尾；"
+                "② 模型名须为网关上实际可用的 id；③ 可配置 MINIMAX_API_KEY 启用备用。"
+            )
 
-    ch0 = choices[0]
-    if ch0 is None:
-        log("⚠️ [AI] choices[0] 为 None")
-        return ""
-
-    msg = getattr(ch0, "message", None)
-    text = None
-    if msg is not None:
-        text = getattr(msg, "content", None)
-    if text is None and hasattr(ch0, "text"):
-        text = getattr(ch0, "text", None)
-
-    if text is None or not str(text).strip():
-        fr = getattr(ch0, "finish_reason", None)
-        log(
-            "⚠️ [AI] 模型返回空内容或无 message.content，将写入空文档"
-            f"（finish_reason={fr!r}；请核对模型名、API 兼容、额度）"
-        )
-        return ""
-    return str(text)
+    log(f"❌ [AI] 全部模型均失败，最后错误: {last_reason}")
+    return ""
 
 
 def _inject_crawl_timestamp(md_body: str) -> str:
@@ -556,7 +629,7 @@ if __name__ == "__main__":
         if _digest_markdown_is_effectively_empty(digest_md):
             log(
                 "⚠️ AI 汇总结果为空或仅含爬取时间（请检查 OPENAI_API_KEY、OPENAI_API_BASE、"
-                "AI_MODEL 及网关是否返回标准 chat.completions）。已跳过写入 docs/，"
+                "AI_MODEL、MINIMAX_API_KEY 及网关是否返回标准 chat.completions）。已跳过写入 docs/，"
                 "避免用空文档覆盖已有周报。"
             )
             sys.exit(1)

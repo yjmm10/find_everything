@@ -11,10 +11,14 @@
 #   全角 ｜ ＆ 等同 | &
 keywords: "(uav|aerial) & (vlm|llm|mllm) & (rl)"
 
-# AI 汇总（model / max_tokens 在此配置；API Key 与 Base URL 仅环境变量或 GitHub Secrets）
+# AI 汇总（model / max_tokens / fallback_models 在此配置；API Key 与 Base URL 仅环境变量或 GitHub Secrets）
+# 主模型失败时依次尝试 fallback_models（需 MINIMAX_API_KEY + MINIMAX_API_BASE）
 ai:
   model: deepseek-ai/DeepSeek-V3.2
   max_tokens: 4000
+  fallback_models:
+    - MiniMax-M2.7
+    - MiniMax-M2.5
 
 # 根 date_range：默认窗口；各信息源可再写自己的 date_range 覆盖
 # preset：相对「执行当日」— day=前一自然日，week=前 7 天（截止昨日），month=前一自然月
