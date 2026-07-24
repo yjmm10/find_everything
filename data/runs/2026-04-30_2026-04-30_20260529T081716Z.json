@@ -1,0 +1,849 @@
+{
+  "schemaVersion": "1",
+  "id": "2026-04-30_2026-04-30_20260529T081716Z",
+  "crawl": {
+    "executedAt": "2026-05-29T08:17:16.458897Z",
+    "crawlDate": "2026-05-29",
+    "status": "success",
+    "trigger": "ci"
+  },
+  "window": {
+    "dateStart": "2026-04-30",
+    "dateEnd": "2026-04-30",
+    "preset": "week",
+    "mode": "custom"
+  },
+  "config": {
+    "keywords": "(uav|aerial) & (vlm|llm|mllm) & (rl)",
+    "date_range": {
+      "preset": "week"
+    },
+    "ai": {
+      "model": "MiniMax/MiniMax-M2.5",
+      "max_tokens": 4000
+    }
+  },
+  "content": {
+    "markdownBody": "## 📄 Arxiv 前沿论文\n\n> **爬取时间**：2026-05-29 08:17:16 UTC\n\n本表数据来自 Arxiv 论文检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)`，时间窗口 2026-04-30。本周无符合关键词条件的论文更新。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 学科类别 |\n|------|------|------|------|------|----------|----------|\n| - | (无) | 本周 Arxiv 无符合关键词的论文 | - | - | - | - |\n\n---\n\n## 🎓 Semantic Scholar\n\n本表数据来自 Semantic Scholar 学术检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-04-30。本周无符合关键词条件的论文。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n|------|------|------|------|------|----------|------------|--------|\n| - | (无) | 本周 Semantic Scholar 无符合关键词的论文 | - | - | - | - | - |\n\n---\n\n## 📚 OpenAlex\n\n本表数据来自 OpenAlex 学术检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-04-30。筛选出2条相关论文。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n|------|------|------|------|------|----------|------------|--------|\n| 7 | Graph World Models: Concepts, Taxonomy, and Future Directions | 综述世界模型在智能体环境表征学习中的应用，涵盖图世界模型的概念、分类与未来方向 | https://openalex.org/W7159891397 | 世界模型,图学习,强化学习,环境表征 | 2026-04-30 | ArXiv.org | 0 |\n| 5 | Artificial intelligence–based dependent task offloading in next-generation edge networks | 探讨基于AI的下一代边缘网络任务卸载方案，涉及IoT与5G/6G延迟需求 | https://openalex.org/W7162230146 | 边缘计算,任务卸载,AI,5G/6G | 2026-04-30 | École de technologie supérieure | 0 |\n\n---\n\n## 📰 优质资讯/论坛\n\n本板块为 RSS 资讯源检索结果，时间窗口 2026-04-30。本周无相关资讯更新。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 |\n|------|------|------|------|------|\n| - | (无) | 本周无相关资讯 | - | - |\n\n---\n\n## 🔥 GitHub 周榜\n\n本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，**不做**关键词过滤或删减，反映当周全站热门开源项目。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n|------|------|------|------|------|------|------|--------|\n| 9 | Lum1104/Understand-Anything | 将任意代码转换为可交互的知识图谱，支持 Claude Code、Cursor 等主流 AI 编程工具 | https://github.com/Lum1104/Understand-Anything | 知识图谱,代码理解,AI编程,开发工具 | - | - | - |\n| 9 | colbymchenry/codegraph | 为 Claude Code 等 AI 助手预索引代码知识图谱，降低 token 消耗与工具调用 | https://github.com/colbymchenry/codegraph | 代码图谱,AI编程,语义索引,开发效率 | - | - | - |\n| 8 | rohitg00/ai-engineering-from-scratch | 全栈 AI 工程课程，84%学生已使用AI工具但仅18%具备专业能力，473节课覆盖Python/TypeScript/Rust/Julia | https://github.com/rohitg00/ai-engineering-from-scratch | AI工程,教程,编程教育,课程 | - | - | - |\n| 8 | anthropics/knowledge-work-plugins | 为知识工作者打造的 Claude 插件集合，适配多种角色与团队场景 | https://github.com/anthropics/knowledge-work-plugins | Claude,插件,知识工作,AI助手 | - | - | - |\n| 8 | harry0703/MoneyPrinterTurbo | AI 一键生成高清短视频工具，支持文案自动生成、视频素材整合、多语言配音 | https://github.com/harry0703/MoneyPrinterTurbo | 视频生成,AI,短视频,内容创作 | - | - | - |\n| 8 | presenton/presenton | 开源 AI 演示文稿生成器与 API，Docker 自托管，支持 Gamma/BEAUTIFUL AI 替代方案 | https://github.com/presenton/presenton | 演示文稿,AI,开源,自托管 | - | - | - |\n| 7 | hardikpandya/stop-slop | 移除 AI 写作特征的技能文件，消除可预测的短语、结构与节奏 | https://github.com/hardikpandya/stop-slop | AI写作,文本优化,技能文件 | - | - | - |\n| 7 | ruvnet/RuView | 将普通 WiFi 信号转化为实时空间智能、的生命体征监测与存在检测 | https://github.com/ruvnet/RuView | WiFi感知,空间智能,生命体征,无摄像头 | - | - | - |\n| 7 | mukul975/Anthropic-Cybersecurity-Skills | 面向 AI 代理的最大开源网络安全技能库，754个技能覆盖26个安全领域 | https://github.com/mukul975/Anthropic-Cybersecurity-Skills | 网络安全,AI代理,技能库,MITRE | - | - | - |\n| 7 | cursor/plugins | Cursor 官方插件规范与插件市场，支持多种开发工具与框架 | https://github.com/cursor/plugins | Cursor,插件,IDE,开发工具 | - | - | - |\n| 7 | HKUDS/ViMax | 代理化视频生成工具，集成导演、编剧、制片与视频生成功能 | https://github.com/HKUDS/ViMax | 视频生成,AI代理,多模态 | - | - | - |\n| 7 | anthropics/claude-plugins-official | Anthropic 官方 Claude Code 插件目录，高质量插件精选 | https://github.com/anthropics/claude-plugins-official | Claude,插件,官方,AI助手 | - | - | - |\n| 6 | can1357/oh-my-pi | 终端 AI 编程代理，集成哈希锚定编辑、优化工具链、LSP、Python、浏览器支持 | https://github.com/can1357/oh-my-pi | AI编程,终端,代理,开发工具 | - | - | - |\n| 6 | dograh-hq/dograh | 开源语音 AI 平台，Vapi/Retell 的自托管替代方案，支持视觉工作流构建器 | https://github.com/dograh-hq/dograh | 语音AI,自托管,工作流,开源 | - | - | - |\n| 6 | Leonxlnx/taste-skill | 赋予 AI 良好审美品味的技能框架，防止生成平淡通用的界面 | https://github.com/Leonxlnx/taste-skill | AI设计,UI/UX,技能,审美 | - | - | - |\n| 6 | Imbad0202/academic-research-skills | 面向 Claude Code 的学术研究技能套件，覆盖研究到发表全流程 | https://github.com/Imbad0202/academic-research-skills | 学术研究,AI,技能,Claude | - | - | - |\n| 6 | microsoft/agent-governance-toolkit | AI 代理治理工具包，策略执行、零信任身份、执行沙箱与可靠性工程 | https://github.com/microsoft/agent-governance-toolkit | AI治理,代理,安全,微软 | - | - | - |\n| 5 | rmyndharis/OpenWA | 开源自托管 WhatsApp API 网关，插件化架构，无供应商锁定 | https://github.com/rmyndharis/OpenWA | WhatsApp,API,开源,自托管 | - | - | - |\n| 5 | p-e-w/heretic | 自动移除语言模型审查对齐的工具，结合方向消融技术 | https://github.com/p-e-w/heretic | AI对齐,审查移除,语言模型 | - | - | - |\n| 5 | Chachamaru127/claude-code-harness | Claude Code 专用开发 Harness，通过自主 Plan→Work→Review 循环实现高质量开发 | https://github.com/Chachamaru127/claude-code-harness | Claude,开发流程,代理,质量 | - | - | - |\n| 5 | BenedictKing/ccx | Claude/OpenAI/Gemini API 代理与协议转换网关，统一入口与多密钥管理 | https://github.com/BenedictKing/ccx | API代理,Claude,OpenAI,网关 | - | - | - |\n\n---\n\n## 🔎 GitHub 指定日期检索\n\n本表数据来自 GitHub 官方 `search/repositories` 在全站公开仓库范围内的检索结果（关键词 `uav & (rl|llm)` + `pushed` 日期条件），**不是** Trending 周榜/日榜榜单。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n|------|------|------|------|------|------|------|--------|\n| 8 | mathorburn/Quadcopter_Lessons | 简单 UAV 四旋翼模型与控制器构建课程 | https://github.com/mathorburn/Quadcopter_Lessons | 四旋翼,UAV,控制器,MATLAB | 14 | 3 | MATLAB |\n| 7 | ctu-mrs/rbl | 基于规则的 Lloyd 算法，多 UAV 无通信协调的分布式算法 | https://github.com/ctu-mrs/rbl | 多UAV,分布式,协调算法,C++ | 10 | 0 | C++ |\n| 6 | leon-seidel/mechsys-uav | 机械系统 UAV 相关项目 | https://github.com/leon-seidel/mechsys-uav | UAV,机械系统,C | 7 | 1 | C |\n| 6 | Jude-robotic/ego_bezier | 用 Bezier 曲线替代 ego-planner 的 B 样条并增加群体变换 | https://github.com/Jude-robotic/ego_bezier | 路径规划,Bezier曲线,ego-planner,C++ | 6 | 0 | C++ |\n| 5 | ahmad-sp/traffic-congestion-uav | 交通拥堵 UAV 相关项目 | https://github.com/ahmad-sp/traffic-congestion-uav | UAV,交通,Python | 1 | 0 | Python |\n| 5 | SaFFireGHOST/multi-uav-distributed-consensus | 多 UAV 分布式共识相关项目 | https://github.com/SaFFireGHOST/multi-uav-distributed-consensus | 多UAV,分布式,共识,Python | 1 | 0 | Python |\n| 5 | furkanonur-ds-space/Distributed-UAV-C2-Simulator | 实时 HITL 无人机模拟器，具备电子战能力 | https://github.com/furkanonur-ds-space/Distributed-UAV-C2-Simulator | 无人机,模拟器,电子战,HTML | 1 | 0 | HTML |\n| 5 | CCGCAM/HYDRA-EO-Geospatial-dataset | HYDRA-EO 项目地球观测数据集，来自 UAV、机载和卫星传感器 | https://github.com/CCGCAM/HYDRA-EO-Geospatial-dataset | 地球观测,UAV,遥感,数据集 | 1 | 0 | HTML |\n| 5 | NASA12345/Udaan-AI | AI 驱动的统一情报平台，集成 GPS、无人机与空中交通数据 | https://github.com/NASA12345/Udaan-AI | 无人机,AI,跟踪,TypeScript | 1 | 0 | TypeScript |\n| 4 | Yanxiang-ZHU/UAV | UAV 相关项目 | https://github.com/Yanxiang-ZHU/UAV | UAV,Python | 0 | 0 | Python |\n| 4 | zhangxuebin69-crypto/UAV | UAV 项目 | https://github.com/zhangxuebin69-crypto/UAV | UAV,Fortran | 0 | 0 | Fortran |\n| 4 | Lyoko-Jeremie/UAV | UAV 相关项目 | https://github.com/Lyoko-Jeremie/UAV | UAV,Python | 0 | 0 | Python |\n| 4 | TangShuiSuDa/UAV | UAV 相关项目 | https://github.com/TangShuiSuDa/UAV | UAV,Python | 0 | 0 | Python |\n| 4 | tabbabb/uavPlan | 无人机任务规划课程作业 | https://github.com/tabbabb/uavPlan | 无人机,任务规划 | 0 | 0 | - |\n| 4 | fzhzard/uavpi | UAV 相关项目 | https://github.com/fzhzard/uavpi | UAV,Python | 0 | 0 | Python |\n| 4 | hectorsvill/VirtualUAVHanger | 虚拟 UAV 机库项目 | https://github.com/hectorsvill/VirtualUAVHanger | UAV,Swift | 0 | 0 | Swift |\n| 4 | mohammed1916/uav_neutralisation | UAV 中和相关项目 | https://github.com/mohammed1916/uav_neutralisation | UAV,Python | 0 | 0 | Python |\n| 4 | andionea/UAV_Project | UAV 项目 | https://github.com/andionea/UAV_Project | UAV,JavaScript | 0 | 0 | JavaScript |\n| 4 | segenovese2/uav_RL | UAV 强化学习相关项目 | https://github.com/segenovese2/uav_RL | UAV,强化学习,Python | 0 | 0 | Python |\n| 4 | MoRanzhi1203/uav_platform | UAV 平台相关项目 | https://github.com/MoRanzhi1203/uav_platform | UAV,JavaScript | 0 | 0 | JavaScript |\n| 4 | Dekelkai/UEMars-UAV | UEMars UAV 项目备份与持续组织 | https://github.com/Dekelkai/UEMars-UAV | UAV,Python | 0 | 0 | Python |\n| 4 | ydwawly/uav_basic_framework | UAV 基础框架项目 | https://github.com/ydwawly/uav_basic_framework | UAV,框架,C | 0 | 0 | C |\n| 4 | KrrishSharma12/uav-disaster-system | 灾害严重性检测与自动警报发送系统 | https://github.com/KrrishSharma12/uav-disaster-system | 无人机,灾害,JavaScript | 0 | 0 | JavaScript |\n| 4 | bergeryanis/path-planning-uav | UAV 路径规划相关项目 | https://github.com/bergeryanis/path-planning-uav | UAV,路径规划,C++ | 0 | 0 | C++ |\n| 4 | daudee215/gisgap-uav-structure | 多模态 UAV 结构检查管道可视化器 | https://github.com/daudee215/gisgap-uav-structure | UAV,可视化,JavaScript | 0 | 0 | JavaScript |\n| 4 | YeehomFang/UAV_proj1 | UAV 项目 | https://github.com/YeehomFang/UAV_proj1 | UAV | 0 | 0 | - |\n| 4 | hollywuzh/uav-semantic-communication | UAV 语义通信相关项目 | https://github.com/hollywuzh/uav-semantic-communication | UAV,语义通信,Python | 0 | 3 | Python |\n| 4 | monasimanis/MyUAV-UTHMPGR01 | DJI Matrice 4E 拍摄的763个无人机标注图像数据集 | https://github.com/monasimanis/MyUAV-UTHMPGR01 | 无人机,数据集,图像 | 0 | 0 | - |\n| 4 | krupma06/uav_sensor_validation_workflow | UAV 传感器验证处理脚本，包含热成像、多光谱、辐射度工作流 | https://github.com/krupma06/uav_sensor_validation_workflow | UAV,传感器,验证,Python | 0 | 1 | Python |\n| 4 | harshkumar1616/Garudaraksha-UAV-Cyber-Defense | 无人机通信网络网络防御仪表板，检测恶意与零日攻击 | https://github.com/harshkumar1616/Garudaraksha-UAV-Cyber-Defense | 无人机,网络防御,Python | 0 | 0 | Python |\n",
+    "markdownGeneratedAt": "2026-05-29T08:17:16.458897Z"
+  },
+  "sections": [
+    {
+      "source": "arxiv",
+      "heading": "📄 Arxiv 前沿论文",
+      "summary": "本表数据来自 Arxiv 论文检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)`，时间窗口 2026-04-30。本周无符合关键词条件的论文更新。 ---",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 1,
+      "entries": [
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-arxiv-0",
+          "score": null,
+          "title": "(无)",
+          "summary": "本周 Arxiv 无符合关键词的论文",
+          "link": null,
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "semantic_scholar",
+      "heading": "🎓 Semantic Scholar",
+      "summary": "本表数据来自 Semantic Scholar 学术检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-04-30。本周无符合关键词条件的论文。 ---",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 1,
+      "entries": [
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-semantic_scholar-0",
+          "score": null,
+          "title": "(无)",
+          "summary": "本周 Semantic Scholar 无符合关键词的论文",
+          "link": null,
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "openalex",
+      "heading": "📚 OpenAlex",
+      "summary": "本表数据来自 OpenAlex 学术检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-04-30。筛选出2条相关论文。 ---",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 2,
+      "entries": [
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-openalex-0",
+          "score": 7,
+          "title": "Graph World Models: Concepts, Taxonomy, and Future Directions",
+          "summary": "综述世界模型在智能体环境表征学习中的应用，涵盖图世界模型的概念、分类与未来方向",
+          "link": "https://openalex.org/W7159891397",
+          "tags": "世界模型,图学习,强化学习,环境表征",
+          "publishedAt": "2026-04-30",
+          "keywords": "",
+          "extra": {
+            "venue": "ArXiv.org",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-openalex-1",
+          "score": 5,
+          "title": "Artificial intelligence–based dependent task offloading in next-generation edge networks",
+          "summary": "探讨基于AI的下一代边缘网络任务卸载方案，涉及IoT与5G/6G延迟需求",
+          "link": "https://openalex.org/W7162230146",
+          "tags": "边缘计算,任务卸载,AI,5G/6G",
+          "publishedAt": "2026-04-30",
+          "keywords": "",
+          "extra": {
+            "venue": "École de technologie supérieure",
+            "citationCount": "0"
+          }
+        }
+      ]
+    },
+    {
+      "source": "rss",
+      "heading": "📰 优质资讯/论坛",
+      "summary": "本板块为 RSS 资讯源检索结果，时间窗口 2026-04-30。本周无相关资讯更新。 ---",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 1,
+      "entries": [
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-rss-0",
+          "score": null,
+          "title": "(无)",
+          "summary": "本周无相关资讯",
+          "link": null,
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "github_weekly",
+      "heading": "🔥 GitHub 周榜",
+      "summary": "本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，**不做**关键词过滤或删减，反映当周全站热门开源项目。 ---",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 21,
+      "entries": [
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-0",
+          "score": 9,
+          "title": "Lum1104/Understand-Anything",
+          "summary": "将任意代码转换为可交互的知识图谱，支持 Claude Code、Cursor 等主流 AI 编程工具",
+          "link": "https://github.com/Lum1104/Understand-Anything",
+          "tags": "知识图谱,代码理解,AI编程,开发工具",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-1",
+          "score": 9,
+          "title": "colbymchenry/codegraph",
+          "summary": "为 Claude Code 等 AI 助手预索引代码知识图谱，降低 token 消耗与工具调用",
+          "link": "https://github.com/colbymchenry/codegraph",
+          "tags": "代码图谱,AI编程,语义索引,开发效率",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-2",
+          "score": 8,
+          "title": "rohitg00/ai-engineering-from-scratch",
+          "summary": "全栈 AI 工程课程，84%学生已使用AI工具但仅18%具备专业能力，473节课覆盖Python/TypeScript/Rust/Julia",
+          "link": "https://github.com/rohitg00/ai-engineering-from-scratch",
+          "tags": "AI工程,教程,编程教育,课程",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-3",
+          "score": 8,
+          "title": "anthropics/knowledge-work-plugins",
+          "summary": "为知识工作者打造的 Claude 插件集合，适配多种角色与团队场景",
+          "link": "https://github.com/anthropics/knowledge-work-plugins",
+          "tags": "Claude,插件,知识工作,AI助手",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-4",
+          "score": 8,
+          "title": "harry0703/MoneyPrinterTurbo",
+          "summary": "AI 一键生成高清短视频工具，支持文案自动生成、视频素材整合、多语言配音",
+          "link": "https://github.com/harry0703/MoneyPrinterTurbo",
+          "tags": "视频生成,AI,短视频,内容创作",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-5",
+          "score": 8,
+          "title": "presenton/presenton",
+          "summary": "开源 AI 演示文稿生成器与 API，Docker 自托管，支持 Gamma/BEAUTIFUL AI 替代方案",
+          "link": "https://github.com/presenton/presenton",
+          "tags": "演示文稿,AI,开源,自托管",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-6",
+          "score": 7,
+          "title": "hardikpandya/stop-slop",
+          "summary": "移除 AI 写作特征的技能文件，消除可预测的短语、结构与节奏",
+          "link": "https://github.com/hardikpandya/stop-slop",
+          "tags": "AI写作,文本优化,技能文件",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-7",
+          "score": 7,
+          "title": "ruvnet/RuView",
+          "summary": "将普通 WiFi 信号转化为实时空间智能、的生命体征监测与存在检测",
+          "link": "https://github.com/ruvnet/RuView",
+          "tags": "WiFi感知,空间智能,生命体征,无摄像头",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-8",
+          "score": 7,
+          "title": "mukul975/Anthropic-Cybersecurity-Skills",
+          "summary": "面向 AI 代理的最大开源网络安全技能库，754个技能覆盖26个安全领域",
+          "link": "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
+          "tags": "网络安全,AI代理,技能库,MITRE",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-9",
+          "score": 7,
+          "title": "cursor/plugins",
+          "summary": "Cursor 官方插件规范与插件市场，支持多种开发工具与框架",
+          "link": "https://github.com/cursor/plugins",
+          "tags": "Cursor,插件,IDE,开发工具",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-10",
+          "score": 7,
+          "title": "HKUDS/ViMax",
+          "summary": "代理化视频生成工具，集成导演、编剧、制片与视频生成功能",
+          "link": "https://github.com/HKUDS/ViMax",
+          "tags": "视频生成,AI代理,多模态",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-11",
+          "score": 7,
+          "title": "anthropics/claude-plugins-official",
+          "summary": "Anthropic 官方 Claude Code 插件目录，高质量插件精选",
+          "link": "https://github.com/anthropics/claude-plugins-official",
+          "tags": "Claude,插件,官方,AI助手",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-12",
+          "score": 6,
+          "title": "can1357/oh-my-pi",
+          "summary": "终端 AI 编程代理，集成哈希锚定编辑、优化工具链、LSP、Python、浏览器支持",
+          "link": "https://github.com/can1357/oh-my-pi",
+          "tags": "AI编程,终端,代理,开发工具",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-13",
+          "score": 6,
+          "title": "dograh-hq/dograh",
+          "summary": "开源语音 AI 平台，Vapi/Retell 的自托管替代方案，支持视觉工作流构建器",
+          "link": "https://github.com/dograh-hq/dograh",
+          "tags": "语音AI,自托管,工作流,开源",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-14",
+          "score": 6,
+          "title": "Leonxlnx/taste-skill",
+          "summary": "赋予 AI 良好审美品味的技能框架，防止生成平淡通用的界面",
+          "link": "https://github.com/Leonxlnx/taste-skill",
+          "tags": "AI设计,UI/UX,技能,审美",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-15",
+          "score": 6,
+          "title": "Imbad0202/academic-research-skills",
+          "summary": "面向 Claude Code 的学术研究技能套件，覆盖研究到发表全流程",
+          "link": "https://github.com/Imbad0202/academic-research-skills",
+          "tags": "学术研究,AI,技能,Claude",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-16",
+          "score": 6,
+          "title": "microsoft/agent-governance-toolkit",
+          "summary": "AI 代理治理工具包，策略执行、零信任身份、执行沙箱与可靠性工程",
+          "link": "https://github.com/microsoft/agent-governance-toolkit",
+          "tags": "AI治理,代理,安全,微软",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-17",
+          "score": 5,
+          "title": "rmyndharis/OpenWA",
+          "summary": "开源自托管 WhatsApp API 网关，插件化架构，无供应商锁定",
+          "link": "https://github.com/rmyndharis/OpenWA",
+          "tags": "WhatsApp,API,开源,自托管",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-18",
+          "score": 5,
+          "title": "p-e-w/heretic",
+          "summary": "自动移除语言模型审查对齐的工具，结合方向消融技术",
+          "link": "https://github.com/p-e-w/heretic",
+          "tags": "AI对齐,审查移除,语言模型",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-19",
+          "score": 5,
+          "title": "Chachamaru127/claude-code-harness",
+          "summary": "Claude Code 专用开发 Harness，通过自主 Plan→Work→Review 循环实现高质量开发",
+          "link": "https://github.com/Chachamaru127/claude-code-harness",
+          "tags": "Claude,开发流程,代理,质量",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_weekly-20",
+          "score": 5,
+          "title": "BenedictKing/ccx",
+          "summary": "Claude/OpenAI/Gemini API 代理与协议转换网关，统一入口与多密钥管理",
+          "link": "https://github.com/BenedictKing/ccx",
+          "tags": "API代理,Claude,OpenAI,网关",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "github_search",
+      "heading": "🔎 GitHub 指定日期检索",
+      "summary": "本表数据来自 GitHub 官方 `search/repositories` 在全站公开仓库范围内的检索结果（关键词 `uav & (rl|llm)` + `pushed` 日期条件），**不是** Trending 周榜/日榜榜单。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 30,
+      "entries": [
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-0",
+          "score": 8,
+          "title": "mathorburn/Quadcopter_Lessons",
+          "summary": "简单 UAV 四旋翼模型与控制器构建课程",
+          "link": "https://github.com/mathorburn/Quadcopter_Lessons",
+          "tags": "四旋翼,UAV,控制器,MATLAB",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "14",
+            "fork": "3",
+            "language": "MATLAB"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-1",
+          "score": 7,
+          "title": "ctu-mrs/rbl",
+          "summary": "基于规则的 Lloyd 算法，多 UAV 无通信协调的分布式算法",
+          "link": "https://github.com/ctu-mrs/rbl",
+          "tags": "多UAV,分布式,协调算法,C++",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "10",
+            "fork": "0",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-2",
+          "score": 6,
+          "title": "leon-seidel/mechsys-uav",
+          "summary": "机械系统 UAV 相关项目",
+          "link": "https://github.com/leon-seidel/mechsys-uav",
+          "tags": "UAV,机械系统,C",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "7",
+            "fork": "1",
+            "language": "C"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-3",
+          "score": 6,
+          "title": "Jude-robotic/ego_bezier",
+          "summary": "用 Bezier 曲线替代 ego-planner 的 B 样条并增加群体变换",
+          "link": "https://github.com/Jude-robotic/ego_bezier",
+          "tags": "路径规划,Bezier曲线,ego-planner,C++",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "6",
+            "fork": "0",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-4",
+          "score": 5,
+          "title": "ahmad-sp/traffic-congestion-uav",
+          "summary": "交通拥堵 UAV 相关项目",
+          "link": "https://github.com/ahmad-sp/traffic-congestion-uav",
+          "tags": "UAV,交通,Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-5",
+          "score": 5,
+          "title": "SaFFireGHOST/multi-uav-distributed-consensus",
+          "summary": "多 UAV 分布式共识相关项目",
+          "link": "https://github.com/SaFFireGHOST/multi-uav-distributed-consensus",
+          "tags": "多UAV,分布式,共识,Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-6",
+          "score": 5,
+          "title": "furkanonur-ds-space/Distributed-UAV-C2-Simulator",
+          "summary": "实时 HITL 无人机模拟器，具备电子战能力",
+          "link": "https://github.com/furkanonur-ds-space/Distributed-UAV-C2-Simulator",
+          "tags": "无人机,模拟器,电子战,HTML",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1",
+            "fork": "0",
+            "language": "HTML"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-7",
+          "score": 5,
+          "title": "CCGCAM/HYDRA-EO-Geospatial-dataset",
+          "summary": "HYDRA-EO 项目地球观测数据集，来自 UAV、机载和卫星传感器",
+          "link": "https://github.com/CCGCAM/HYDRA-EO-Geospatial-dataset",
+          "tags": "地球观测,UAV,遥感,数据集",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1",
+            "fork": "0",
+            "language": "HTML"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-8",
+          "score": 5,
+          "title": "NASA12345/Udaan-AI",
+          "summary": "AI 驱动的统一情报平台，集成 GPS、无人机与空中交通数据",
+          "link": "https://github.com/NASA12345/Udaan-AI",
+          "tags": "无人机,AI,跟踪,TypeScript",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1",
+            "fork": "0",
+            "language": "TypeScript"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-9",
+          "score": 4,
+          "title": "Yanxiang-ZHU/UAV",
+          "summary": "UAV 相关项目",
+          "link": "https://github.com/Yanxiang-ZHU/UAV",
+          "tags": "UAV,Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-10",
+          "score": 4,
+          "title": "zhangxuebin69-crypto/UAV",
+          "summary": "UAV 项目",
+          "link": "https://github.com/zhangxuebin69-crypto/UAV",
+          "tags": "UAV,Fortran",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "Fortran"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-11",
+          "score": 4,
+          "title": "Lyoko-Jeremie/UAV",
+          "summary": "UAV 相关项目",
+          "link": "https://github.com/Lyoko-Jeremie/UAV",
+          "tags": "UAV,Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-12",
+          "score": 4,
+          "title": "TangShuiSuDa/UAV",
+          "summary": "UAV 相关项目",
+          "link": "https://github.com/TangShuiSuDa/UAV",
+          "tags": "UAV,Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-13",
+          "score": 4,
+          "title": "tabbabb/uavPlan",
+          "summary": "无人机任务规划课程作业",
+          "link": "https://github.com/tabbabb/uavPlan",
+          "tags": "无人机,任务规划",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-14",
+          "score": 4,
+          "title": "fzhzard/uavpi",
+          "summary": "UAV 相关项目",
+          "link": "https://github.com/fzhzard/uavpi",
+          "tags": "UAV,Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-15",
+          "score": 4,
+          "title": "hectorsvill/VirtualUAVHanger",
+          "summary": "虚拟 UAV 机库项目",
+          "link": "https://github.com/hectorsvill/VirtualUAVHanger",
+          "tags": "UAV,Swift",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "Swift"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-16",
+          "score": 4,
+          "title": "mohammed1916/uav_neutralisation",
+          "summary": "UAV 中和相关项目",
+          "link": "https://github.com/mohammed1916/uav_neutralisation",
+          "tags": "UAV,Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-17",
+          "score": 4,
+          "title": "andionea/UAV_Project",
+          "summary": "UAV 项目",
+          "link": "https://github.com/andionea/UAV_Project",
+          "tags": "UAV,JavaScript",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "JavaScript"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-18",
+          "score": 4,
+          "title": "segenovese2/uav_RL",
+          "summary": "UAV 强化学习相关项目",
+          "link": "https://github.com/segenovese2/uav_RL",
+          "tags": "UAV,强化学习,Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-19",
+          "score": 4,
+          "title": "MoRanzhi1203/uav_platform",
+          "summary": "UAV 平台相关项目",
+          "link": "https://github.com/MoRanzhi1203/uav_platform",
+          "tags": "UAV,JavaScript",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "JavaScript"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-20",
+          "score": 4,
+          "title": "Dekelkai/UEMars-UAV",
+          "summary": "UEMars UAV 项目备份与持续组织",
+          "link": "https://github.com/Dekelkai/UEMars-UAV",
+          "tags": "UAV,Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-21",
+          "score": 4,
+          "title": "ydwawly/uav_basic_framework",
+          "summary": "UAV 基础框架项目",
+          "link": "https://github.com/ydwawly/uav_basic_framework",
+          "tags": "UAV,框架,C",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "C"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-22",
+          "score": 4,
+          "title": "KrrishSharma12/uav-disaster-system",
+          "summary": "灾害严重性检测与自动警报发送系统",
+          "link": "https://github.com/KrrishSharma12/uav-disaster-system",
+          "tags": "无人机,灾害,JavaScript",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "JavaScript"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-23",
+          "score": 4,
+          "title": "bergeryanis/path-planning-uav",
+          "summary": "UAV 路径规划相关项目",
+          "link": "https://github.com/bergeryanis/path-planning-uav",
+          "tags": "UAV,路径规划,C++",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-24",
+          "score": 4,
+          "title": "daudee215/gisgap-uav-structure",
+          "summary": "多模态 UAV 结构检查管道可视化器",
+          "link": "https://github.com/daudee215/gisgap-uav-structure",
+          "tags": "UAV,可视化,JavaScript",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "JavaScript"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-25",
+          "score": 4,
+          "title": "YeehomFang/UAV_proj1",
+          "summary": "UAV 项目",
+          "link": "https://github.com/YeehomFang/UAV_proj1",
+          "tags": "UAV",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-26",
+          "score": 4,
+          "title": "hollywuzh/uav-semantic-communication",
+          "summary": "UAV 语义通信相关项目",
+          "link": "https://github.com/hollywuzh/uav-semantic-communication",
+          "tags": "UAV,语义通信,Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "3",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-27",
+          "score": 4,
+          "title": "monasimanis/MyUAV-UTHMPGR01",
+          "summary": "DJI Matrice 4E 拍摄的763个无人机标注图像数据集",
+          "link": "https://github.com/monasimanis/MyUAV-UTHMPGR01",
+          "tags": "无人机,数据集,图像",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-28",
+          "score": 4,
+          "title": "krupma06/uav_sensor_validation_workflow",
+          "summary": "UAV 传感器验证处理脚本，包含热成像、多光谱、辐射度工作流",
+          "link": "https://github.com/krupma06/uav_sensor_validation_workflow",
+          "tags": "UAV,传感器,验证,Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "1",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-30_2026-04-30_20260529T081716Z-github_search-29",
+          "score": 4,
+          "title": "harshkumar1616/Garudaraksha-UAV-Cyber-Defense",
+          "summary": "无人机通信网络网络防御仪表板，检测恶意与零日攻击",
+          "link": "https://github.com/harshkumar1616/Garudaraksha-UAV-Cyber-Defense",
+          "tags": "无人机,网络防御,Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "Python"
+          }
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "entryCount": 56,
+    "sourceCounts": {
+      "arxiv": 1,
+      "semantic_scholar": 1,
+      "openalex": 2,
+      "rss": 1,
+      "github_weekly": 21,
+      "github_search": 30
+    },
+    "emptySections": []
+  }
+}

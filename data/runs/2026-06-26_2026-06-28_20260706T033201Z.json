@@ -1,0 +1,437 @@
+{
+  "schemaVersion": "1",
+  "id": "2026-06-26_2026-06-28_20260706T033201Z",
+  "crawl": {
+    "executedAt": "2026-07-06T03:32:01.771864Z",
+    "crawlDate": "2026-07-06",
+    "status": "success",
+    "trigger": "ci"
+  },
+  "window": {
+    "dateStart": "2026-06-26",
+    "dateEnd": "2026-06-28",
+    "preset": "week",
+    "mode": "custom"
+  },
+  "config": {
+    "keywords": "(uav|aerial) & (vlm|llm|mllm) & (rl)",
+    "date_range": {
+      "preset": "week"
+    },
+    "ai": {
+      "model": "deepseek-ai/DeepSeek-V3.2",
+      "max_tokens": 4000,
+      "thinking": null
+    }
+  },
+  "content": {
+    "markdownBody": "## 📄 Arxiv 前沿论文\n\n> **爬取时间**：2026-07-06 03:32:01 UTC\n\n本表数据来自 Arxiv 论文库，使用关键词 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)` 在指定时间窗口（2026-06-26 ~ 2026-06-28）内检索，未匹配到相关论文。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 学科类别 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| *（本时段无符合关键词的论文）* | | | | | | |\n\n## 🎓 Semantic Scholar\n本表数据来自 Semantic Scholar 学术搜索引擎，使用关键词 `(uav|aerial) & (vlm|llm|mllm) & (rl)` 在指定时间窗口（2026-06-26 ~ 2026-06-28）内检索，未匹配到相关论文。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| *（本时段无符合关键词的论文）* | | | | | | | |\n\n## 📚 OpenAlex\n本表数据来自 OpenAlex 学术数据库，使用关键词 `(uav|aerial) & (vlm|llm|mllm) & (rl)` 在指定时间窗口（2026-06-26 ~ 2026-06-28）内检索，共匹配到 2 篇论文。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| 3 | An Intelligent Energy-Aware Framework for 6G-Enabled Non-Terrestrial IoT via Reinforcement Learning | 提出一个基于强化学习的智能能源感知框架，用于优化6G非地面物联网连接。 | https://doi.org/10.3390/s26134057 | 6G, 非地面物联网, 强化学习, 能源管理 | 2026-06-26 | Sensors | 0 |\n| 1 | FinInvest-GTCN: Explainable Graph-Temporal-Causal Modeling for Risk-Aware Investment Decision Optimization | 提出一种用于风险感知投资决策优化的可解释图-时序-因果模型，与无人机/VLM/RL主题无关。 | https://openalex.org/W7166901944 | 图神经网络, 时序因果模型, 投资决策, 可解释AI | 2026-06-27 | arXiv (Cornell University) | 0 |\n\n## 📰 优质资讯/论坛\n本时段无相关资讯或论坛讨论数据。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 |\n| :--- | :--- | :--- | :--- | :--- |\n| *（本时段无相关资讯）* | | | | |\n\n## 🔥 GitHub 周榜\n本表数据来自 GitHub Trending 类 RSS 榜单的原始条目（2026-06-26 ~ 2026-06-28），**未按任何关键词进行过滤或删减**，反映该时段内全球开发者的关注热点。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| 10 | usestrix/strix | 开源AI渗透测试工具，可自动查找并修复应用漏洞，集成CI/CD。 | https://github.com/usestrix/strix | AI安全, 渗透测试, 自动化, CI/CD | (榜单未提供) | (榜单未提供) | (榜单未提供) |\n| III | xbtlin/ai-berkshire | 基于Claude Code的价值投资研究框架，融合多大师方法论与多智能体分析。 | https://github.com/xbtlin/ai-berkshire | AI金融, 价值投资, 多智能体, 研究框架 | (榜单未提供) | (榜单未提供) | (榜单未提供) |\n| 9 | diegosouzapw/OmniRoute | 免费AI网关，统一接入230+家模型提供商（50+免费），支持智能降级与多模态API。 | https://github.com/diegosouzapw/OmniRoute | AI网关, 模型路由, 降级策略, 多模态 | (榜单未提供) | (榜单未提供) | (榜单未提供) |\n| 8 | Robbyant/lingbot-map | 用于从流数据重建场景的前馈3D基础模型，专注于几何上下文理解。 | https://github.com/Robbyant/lingbot-map | 3D重建, 基础模型, 几何学习, 流式处理 | (榜单未提供) | (榜单未提供) | (榜单未提供) |\n| 7 | ogulcancelik/herdr | 终端内的智能体多路复用器，集中管理多个编码智能体的运行状态。 | https://github.com/ogulcancelik/herdr | 终端工具, 智能体管理, 工作流, 开发者工具 | (榜单未提供) | (榜单未提供) | (榜单未提供) |\n| 6 | browser-use/video-use | 使用编码智能体（如Claude Code）编辑视频，自动剪辑填充词并生成最终视频。 | https://github.com/browser-use/video-use | 视频编辑, AI代理, 自动化, 内容创作 | (榜单未提供) | (榜单未提供) | (榜单未提供) |\n| 5 | alibaba/page-agent | 浏览器页面内的GUI智能体，允许用自然语言控制Web界面。 | https://github.com/alibaba/page-agent | 网页自动化, 自然语言交互, GUI智能体, 前端工具 | (榜单未提供) | (榜单未提供) | (榜单未提供) |\n| 4 | DeusData/codebase-memory-mcp | 高性能代码智能MCP服务器，将代码库索引为持久知识图谱，支持快速查询。 | https://github.com/DeusData/codebase-memory-mcp | 代码智能, 知识图谱, MCP, 语义搜索 | (榜单未提供) | (榜单未提供) | (榜单未提供) |\n| 3 | calesthio/OpenMontage | 首个开源、智能体驱动的视频制作系统，包含12条流水线和500+技能。 | https://github.com/calesthio/OpenMontage | 视频制作, 智能体, 自动化, 开源工具 | (榜单未提供) | (榜单未提供) | (榜单未提供) |\n| 2 | topoteretes/cognee | 为AI智能体提供持久长期记忆的开源AI记忆平台，基于自托管知识图谱引擎。 | https://github.com/topoteretes/cognee | AI记忆, 知识图谱, 智能体, 长期记忆 | (榜单未提供) | (榜单未提供) | (榜单未提供) |\n\n## 🔎 GitHub 指定日期检索\n本表数据来自 GitHub 官方 `search/repositories` 接口，**在全站公开仓库范围内**，使用关键词 `uav & (rl|llm)` 并限定仓库推送时间在 `2026-06-26 ~ 2026-06-28` 内进行检索。**这不是周榜榜单**，而是符合关键词和时间条件的仓库列表。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| 10 | learnsyslab/gym-pybullet-drones | 用于四旋翼控制单/多智能体强化学习的PyBullet Gymnasium环境。 | https://github.com/learnsyslab/gym-pybullet-drones | 无人机仿真, 强化学习, 机器人控制, Gymnasium | 2075 | 546 | Python |\n| 9 | ctu-mrs/mrs_uav_system | MRS UAV 系统的入口点，包含完整的无人机系统软件栈。 | https://github.com/ctu-mrs/mrs_uav_system | 无人机系统, ROS, 自主飞行, 软件栈 | 615 | 107 | Shell |\n| 8 | hazrmard/multirotor | 用于控制/强化学习实验的多旋翼无人机仿真。 | https://github.com/hazrmard/multirotor | 无人机仿真, 强化学习, 控制算法, Python | 24 | 4 | Python |\n| 7 | Robotics-STAR-Lab/C2-Explorer | 一个灵活且连续的去中心化多无人机探索框架。 | https://github.com/Robotics-STAR-Lab/C2-Explorer | 多无人机, 协同探索, 路径规划, 去中心化 | 78 | 5 | C++ |\n| 6 | MOm0-000/AKPF-UAV-RL-Avoidance | 基于强化学习的无人机避障项目。 | https://github.com/MOm0-000/AKPF-UAV-RL-Avoidance | 无人机避障, 强化学习, C++ | 4 | 0 | C++ |\n| 5 | hannesgook/pidraqrl | 全栈四旋翼项目，包含实时SAC强化学习智能体在线调整滚转控制器增益。 | https://github.com/hannesgook/pidraqrl | 四旋翼, 强化学习, 实时控制, 数字孪生 | 1 | 0 | ShaderLab |\n| 4 | ywenhai54-dev/uav-access-backhaul-fragmentation-1 | 用于灾后通信恢复中DEM/菲涅耳感知无人机基站部署与容量评估的可复现研究工具包。 | https://github.com/ywenhai54-dev/uav-access-backhaul-fragmentation-1 | 无人机通信, 网络部署, 灾后恢复, 仿真 | 34 | 0 | Python |\n| 3 | 19991006/UAV_path_planning | 无人机路径规划项目。 | https://github.com/19991006/UAV_path_planning | 无人机, 路径规划, Python | 1 | 0 | Python |\n| 2 | SamEberl/graph_explo | 一个纯Python的黑客松挑战，编程无人机在有限传感器视野下探索和重新勘测未知3D路点图。 | https://github.com/SamEberl/graph_explo | 无人机探索, 路径优化, 算法挑战, Python | 1 | 2 | Python |\n| 1 | Anamort/AirCompSim | 空基计算的离散事件仿真器，用于基于不同场景进行复杂的空基计算实验。 | https://github.com/Anamort/AirCompSim | 无人机计算, 离散事件仿真, 空基计算, Python | 4 | 2 | Python |\n",
+    "markdownGeneratedAt": "2026-07-06T03:32:01.771864Z"
+  },
+  "sections": [
+    {
+      "source": "arxiv",
+      "heading": "📄 Arxiv 前沿论文",
+      "summary": "本表数据来自 Arxiv 论文库，使用关键词 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)` 在指定时间窗口（2026-06-26 ~ 2026-06-28）内检索，未匹配到相关论文。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "semantic_scholar",
+      "heading": "🎓 Semantic Scholar",
+      "summary": "本表数据来自 Semantic Scholar 学术搜索引擎，使用关键词 `(uav|aerial) & (vlm|llm|mllm) & (rl)` 在指定时间窗口（2026-06-26 ~ 2026-06-28）内检索，未匹配到相关论文。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "openalex",
+      "heading": "📚 OpenAlex",
+      "summary": "本表数据来自 OpenAlex 学术数据库，使用关键词 `(uav|aerial) & (vlm|llm|mllm) & (rl)` 在指定时间窗口（2026-06-26 ~ 2026-06-28）内检索，共匹配到 2 篇论文。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 2,
+      "entries": [
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-openalex-0",
+          "score": 3,
+          "title": "An Intelligent Energy-Aware Framework for 6G-Enabled Non-Terrestrial IoT via Reinforcement Learning",
+          "summary": "提出一个基于强化学习的智能能源感知框架，用于优化6G非地面物联网连接。",
+          "link": "https://doi.org/10.3390/s26134057",
+          "tags": "6G, 非地面物联网, 强化学习, 能源管理",
+          "publishedAt": "2026-06-26",
+          "keywords": "",
+          "extra": {
+            "venue": "Sensors",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-openalex-1",
+          "score": 1,
+          "title": "FinInvest-GTCN: Explainable Graph-Temporal-Causal Modeling for Risk-Aware Investment Decision Optimization",
+          "summary": "提出一种用于风险感知投资决策优化的可解释图-时序-因果模型，与无人机/VLM/RL主题无关。",
+          "link": "https://openalex.org/W7166901944",
+          "tags": "图神经网络, 时序因果模型, 投资决策, 可解释AI",
+          "publishedAt": "2026-06-27",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        }
+      ]
+    },
+    {
+      "source": "rss",
+      "heading": "📰 优质资讯/论坛",
+      "summary": "本时段无相关资讯或论坛讨论数据。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "github_weekly",
+      "heading": "🔥 GitHub 周榜",
+      "summary": "本表数据来自 GitHub Trending 类 RSS 榜单的原始条目（2026-06-26 ~ 2026-06-28），**未按任何关键词进行过滤或删减**，反映该时段内全球开发者的关注热点。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 10,
+      "entries": [
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_weekly-0",
+          "score": 10,
+          "title": "usestrix/strix",
+          "summary": "开源AI渗透测试工具，可自动查找并修复应用漏洞，集成CI/CD。",
+          "link": "https://github.com/usestrix/strix",
+          "tags": "AI安全, 渗透测试, 自动化, CI/CD",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(榜单未提供)",
+            "fork": "(榜单未提供)",
+            "language": "(榜单未提供)"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_weekly-1",
+          "score": null,
+          "title": "xbtlin/ai-berkshire",
+          "summary": "基于Claude Code的价值投资研究框架，融合多大师方法论与多智能体分析。",
+          "link": "https://github.com/xbtlin/ai-berkshire",
+          "tags": "AI金融, 价值投资, 多智能体, 研究框架",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(榜单未提供)",
+            "fork": "(榜单未提供)",
+            "language": "(榜单未提供)"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_weekly-2",
+          "score": 9,
+          "title": "diegosouzapw/OmniRoute",
+          "summary": "免费AI网关，统一接入230+家模型提供商（50+免费），支持智能降级与多模态API。",
+          "link": "https://github.com/diegosouzapw/OmniRoute",
+          "tags": "AI网关, 模型路由, 降级策略, 多模态",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(榜单未提供)",
+            "fork": "(榜单未提供)",
+            "language": "(榜单未提供)"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_weekly-3",
+          "score": 8,
+          "title": "Robbyant/lingbot-map",
+          "summary": "用于从流数据重建场景的前馈3D基础模型，专注于几何上下文理解。",
+          "link": "https://github.com/Robbyant/lingbot-map",
+          "tags": "3D重建, 基础模型, 几何学习, 流式处理",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(榜单未提供)",
+            "fork": "(榜单未提供)",
+            "language": "(榜单未提供)"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_weekly-4",
+          "score": 7,
+          "title": "ogulcancelik/herdr",
+          "summary": "终端内的智能体多路复用器，集中管理多个编码智能体的运行状态。",
+          "link": "https://github.com/ogulcancelik/herdr",
+          "tags": "终端工具, 智能体管理, 工作流, 开发者工具",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(榜单未提供)",
+            "fork": "(榜单未提供)",
+            "language": "(榜单未提供)"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_weekly-5",
+          "score": 6,
+          "title": "browser-use/video-use",
+          "summary": "使用编码智能体（如Claude Code）编辑视频，自动剪辑填充词并生成最终视频。",
+          "link": "https://github.com/browser-use/video-use",
+          "tags": "视频编辑, AI代理, 自动化, 内容创作",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(榜单未提供)",
+            "fork": "(榜单未提供)",
+            "language": "(榜单未提供)"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_weekly-6",
+          "score": 5,
+          "title": "alibaba/page-agent",
+          "summary": "浏览器页面内的GUI智能体，允许用自然语言控制Web界面。",
+          "link": "https://github.com/alibaba/page-agent",
+          "tags": "网页自动化, 自然语言交互, GUI智能体, 前端工具",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(榜单未提供)",
+            "fork": "(榜单未提供)",
+            "language": "(榜单未提供)"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_weekly-7",
+          "score": 4,
+          "title": "DeusData/codebase-memory-mcp",
+          "summary": "高性能代码智能MCP服务器，将代码库索引为持久知识图谱，支持快速查询。",
+          "link": "https://github.com/DeusData/codebase-memory-mcp",
+          "tags": "代码智能, 知识图谱, MCP, 语义搜索",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(榜单未提供)",
+            "fork": "(榜单未提供)",
+            "language": "(榜单未提供)"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_weekly-8",
+          "score": 3,
+          "title": "calesthio/OpenMontage",
+          "summary": "首个开源、智能体驱动的视频制作系统，包含12条流水线和500+技能。",
+          "link": "https://github.com/calesthio/OpenMontage",
+          "tags": "视频制作, 智能体, 自动化, 开源工具",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(榜单未提供)",
+            "fork": "(榜单未提供)",
+            "language": "(榜单未提供)"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_weekly-9",
+          "score": 2,
+          "title": "topoteretes/cognee",
+          "summary": "为AI智能体提供持久长期记忆的开源AI记忆平台，基于自托管知识图谱引擎。",
+          "link": "https://github.com/topoteretes/cognee",
+          "tags": "AI记忆, 知识图谱, 智能体, 长期记忆",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "(榜单未提供)",
+            "fork": "(榜单未提供)",
+            "language": "(榜单未提供)"
+          }
+        }
+      ]
+    },
+    {
+      "source": "github_search",
+      "heading": "🔎 GitHub 指定日期检索",
+      "summary": "本表数据来自 GitHub 官方 `search/repositories` 接口，**在全站公开仓库范围内**，使用关键词 `uav & (rl|llm)` 并限定仓库推送时间在 `2026-06-26 ~ 2026-06-28` 内进行检索。**这不是周榜榜单**，而是符合关键词和时间条件的仓库列表。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 10,
+      "entries": [
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_search-0",
+          "score": 10,
+          "title": "learnsyslab/gym-pybullet-drones",
+          "summary": "用于四旋翼控制单/多智能体强化学习的PyBullet Gymnasium环境。",
+          "link": "https://github.com/learnsyslab/gym-pybullet-drones",
+          "tags": "无人机仿真, 强化学习, 机器人控制, Gymnasium",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2075",
+            "fork": "546",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_search-1",
+          "score": 9,
+          "title": "ctu-mrs/mrs_uav_system",
+          "summary": "MRS UAV 系统的入口点，包含完整的无人机系统软件栈。",
+          "link": "https://github.com/ctu-mrs/mrs_uav_system",
+          "tags": "无人机系统, ROS, 自主飞行, 软件栈",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "615",
+            "fork": "107",
+            "language": "Shell"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_search-2",
+          "score": 8,
+          "title": "hazrmard/multirotor",
+          "summary": "用于控制/强化学习实验的多旋翼无人机仿真。",
+          "link": "https://github.com/hazrmard/multirotor",
+          "tags": "无人机仿真, 强化学习, 控制算法, Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "24",
+            "fork": "4",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_search-3",
+          "score": 7,
+          "title": "Robotics-STAR-Lab/C2-Explorer",
+          "summary": "一个灵活且连续的去中心化多无人机探索框架。",
+          "link": "https://github.com/Robotics-STAR-Lab/C2-Explorer",
+          "tags": "多无人机, 协同探索, 路径规划, 去中心化",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "78",
+            "fork": "5",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_search-4",
+          "score": 6,
+          "title": "MOm0-000/AKPF-UAV-RL-Avoidance",
+          "summary": "基于强化学习的无人机避障项目。",
+          "link": "https://github.com/MOm0-000/AKPF-UAV-RL-Avoidance",
+          "tags": "无人机避障, 强化学习, C++",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "4",
+            "fork": "0",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_search-5",
+          "score": 5,
+          "title": "hannesgook/pidraqrl",
+          "summary": "全栈四旋翼项目，包含实时SAC强化学习智能体在线调整滚转控制器增益。",
+          "link": "https://github.com/hannesgook/pidraqrl",
+          "tags": "四旋翼, 强化学习, 实时控制, 数字孪生",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1",
+            "fork": "0",
+            "language": "ShaderLab"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_search-6",
+          "score": 4,
+          "title": "ywenhai54-dev/uav-access-backhaul-fragmentation-1",
+          "summary": "用于灾后通信恢复中DEM/菲涅耳感知无人机基站部署与容量评估的可复现研究工具包。",
+          "link": "https://github.com/ywenhai54-dev/uav-access-backhaul-fragmentation-1",
+          "tags": "无人机通信, 网络部署, 灾后恢复, 仿真",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "34",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_search-7",
+          "score": 3,
+          "title": "19991006/UAV_path_planning",
+          "summary": "无人机路径规划项目。",
+          "link": "https://github.com/19991006/UAV_path_planning",
+          "tags": "无人机, 路径规划, Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_search-8",
+          "score": 2,
+          "title": "SamEberl/graph_explo",
+          "summary": "一个纯Python的黑客松挑战，编程无人机在有限传感器视野下探索和重新勘测未知3D路点图。",
+          "link": "https://github.com/SamEberl/graph_explo",
+          "tags": "无人机探索, 路径优化, 算法挑战, Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1",
+            "fork": "2",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-06-26_2026-06-28_20260706T033201Z-github_search-9",
+          "score": 1,
+          "title": "Anamort/AirCompSim",
+          "summary": "空基计算的离散事件仿真器，用于基于不同场景进行复杂的空基计算实验。",
+          "link": "https://github.com/Anamort/AirCompSim",
+          "tags": "无人机计算, 离散事件仿真, 空基计算, Python",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "4",
+            "fork": "2",
+            "language": "Python"
+          }
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "entryCount": 22,
+    "sourceCounts": {
+      "openalex": 2,
+      "github_weekly": 10,
+      "github_search": 10
+    },
+    "emptySections": [
+      "arxiv",
+      "semantic_scholar",
+      "rss"
+    ]
+  }
+}

@@ -1,0 +1,828 @@
+{
+  "schemaVersion": "1",
+  "id": "2026-02-26_2026-03-04_20260529T075058Z",
+  "crawl": {
+    "executedAt": "2026-05-29T07:50:58.177378Z",
+    "crawlDate": "2026-05-29",
+    "status": "success",
+    "trigger": "ci"
+  },
+  "window": {
+    "dateStart": "2026-02-26",
+    "dateEnd": "2026-03-04",
+    "preset": "week",
+    "mode": "custom"
+  },
+  "config": {
+    "keywords": "(uav|aerial) & (vlm|llm|mllm) & (rl)",
+    "date_range": {
+      "preset": "week"
+    },
+    "ai": {
+      "model": "MiniMax/MiniMax-M2.5",
+      "max_tokens": 4000
+    }
+  },
+  "content": {
+    "markdownBody": "## 📄 Arxiv 前沿论文\n\n> **爬取时间**：2026-05-29 07:50:58 UTC\n\n本表数据来自 Arxiv 论文检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)`，时间窗口 2026-02-26 ~ 2026-03-04。本周期内无符合关键词条件的论文更新。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 学科类别 |\n|------|------|------|------|------|----------|----------|\n| - | (无) | 本周期内 Arxiv 无符合关键词条件的论文 | - | - | - | - |\n\n---\n\n## 🎓 Semantic Scholar\n\n本表数据来自 Semantic Scholar 学术检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-02-26 ~ 2026-03-04。本周期内无符合关键词条件的论文。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n|------|------|------|------|------|----------|------------|--------|\n| - | (无) | 本周期内 Semantic Scholar 无符合关键词条件的论文 | - | - | - | - | - |\n\n---\n\n## 📚 OpenAlex\n\n本表数据来自 OpenAlex 学术检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-02-26 ~ 2026-03-04。筛选出与主题直接相关的条目。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n|------|------|------|------|------|----------|------------|--------|\n| 9 | Explainable multi agent reinforcement learning framework for secure and adaptive communication in UAV swarm based fanets | 提出面向 UAV 蜂群 FANET 的可解释多智能体 RL 框架，专注安全自适应通信 | https://doi.org/10.1038/s41598-026-39366-x | UAV, 多智能体强化学习, FANET, 可解释AI, 安全通信 | 2026-03-03 | Scientific Reports | 0 |\n\n---\n\n## 📰 优质资讯/论坛\n\n本表数据来自 RSS 资讯源检索，时间窗口 2026-02-26 ~ 2026-03-04。本周期内无符合关键词条件的资讯更新。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 |\n|------|------|------|------|------|\n| - | (无) | 本周期内无符合关键词条件的资讯 | - | - |\n\n---\n\n## 🔥 GitHub 周榜\n\n本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，**不做**关键词过滤或删减，反映本周全站热门开源项目。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n|------|------|------|------|------|------|------|--------|\n| 10 | Lum1104/Understand-Anything | 将任意代码转换为可交互知识图谱，支持 Claude Code、Cursor 等主流 AI 编码工具 | https://github.com/Lum1104/Understand-Anything | 知识图谱, 代码理解, AI 工具, 开发效率 | - | - | - |\n| 10 | colbymchenry/codegraph | 为 Claude Code 等 AI 助手预索引代码知识图谱，降低 token 消耗与工具调用 | https://github.com/colbymchenry/codegraph | 代码图谱, AI 编程, 语义索引, 效率优化 | - | - | - |\n| 9 | rohitg00/ai-engineering-from-scratch | AI 工程全栈课程，84% 学生使用 AI 工具但仅 18% 感到专业准备充分 | https://github.com/rohitg00/ai-engineering-from-scratch | AI 工程, 课程, 人才培养, 全栈开发 | - | - | - |\n| 9 | anthropics/knowledge-work-plugins | 为知识工作者打造的 Claude 插件集合，适配多种角色与团队场景 | https://github.com/anthropics/knowledge-work-plugins | Claude, 插件, 知识工作, AI 助手 | - | - | - |\n| 9 | harry0703/MoneyPrinterTurbo | AI 一键生成高清短视频工具，支持文案、素材、字幕、配音全自动化 | https://github.com/harry0703/MoneyPrinterTurbo | AI 视频生成, AIGC, 短视频, 自动化 | - | - | - |\n| 8 | presenton/presenton | 开源 AI 演示文稿生成器与 API，Gamma、Beautiful AI 的自托管替代方案 | https://github.com/presenton/presenton | AI 演示, PPT 生成, 自托管, 开源替代 | - | - | - |\n| 8 | hardikpandya/stop-slop | 移除 AI 写作特征的技能文件，消除 AI 生成内容的套路化表达 | https://github.com/hardikpandya/stop-slop | AI 写作, 文本优化, 技能文件, Prompt | - | - | - |\n| 8 | ruvnet/RuView | 将普通 WiFi 信号转化为实时空间感知与生命体征监测，无需摄像头 | https://github.com/ruvnet/RuView | WiFi 感知, 空间智能, 生命体征, 隐私计算 | - | - | - |\n| 8 | mukul975/Anthropic-Cybersecurity-Skills | 最大开源网络安全技能库，涵盖 754 个 AI 代理安全技能 | https://github.com/mukul975/Anthropic-Cybersecurity-Skills | 网络安全, AI 代理, MITRE ATT&CK, 技能库 | - | - | - |\n| 8 | cursor/plugins | Cursor 官方插件规范与插件市场，支持主流开发工具与框架 | https://github.com/cursor/plugins | Cursor, 插件, IDE, 开发工具 | - | - | - |\n| 8 | HKUDS/ViMax | 代理化视频生成工具，集成导演、编剧、制片与视频生成全流程 | https://github.com/HKUDS/ViMax | 视频生成, AI 代理, AIGC, 视频创作 | - | - | - |\n| 8 | anthropics/claude-plugins-official | Anthropic 官方 Claude Code 插件目录，高质量插件精选 | https://github.com/anthropics/claude-plugins-official | Claude, 官方插件, AI 助手, 工具生态 | - | - | - |\n| 7 | can1357/oh-my-pi | 终端 AI 编程代理，集成 IDE 功能、哈希锚定编辑与多提供商支持 | https://github.com/can1357/oh-my-pi | AI 编程, 终端工具, 代理, 开发效率 | - | - | - |\n| 7 | dograh-hq/dograh | 开源语音 AI 平台，Vapi 与 Retell 的自托管替代方案 | https://github.com/dograh-hq/dograh | 语音 AI, 自托管, VAPI 替代, 语音代理 | - | - | - |\n| 7 | Leonxlnx/taste-skill | 为 AI 赋予设计品味，阻止生成平庸通用的界面 | https://github.com/Leonxlnx/taste-skill | AI 设计, UI/UX, 技能文件, 设计品味 | - | - | - |\n| 7 | Imbad0202/academic-research-skills | Claude Code 学术研究全流程技能集，从研究到发表 | https://github.com/Imbad0202/academic-research-skills | 学术研究, Claude, 技能集, AI 辅助 | - | - | - |\n| 7 | microsoft/agent-governance-toolkit | AI 代理治理工具包，策略执行、零信任身份与可靠性工程 | https://github.com/microsoft/agent-governance-toolkit | AI 治理, 代理安全, 零信任, 合规 | - | - | - |\n| 6 | rmyndharis/OpenWA | 开源自托管 WhatsApp API 网关，插件化架构支持数据库替换 | https://github.com/rmyndharis/OpenWA | WhatsApp API, 自托管, 网关, 开源 | - | - | - |\n| 6 | p-e-w/heretic | 自动移除语言模型审查（安全对齐）的工具，无需额外训练 | https://github.com/p-e-w/heretic | 模型对齐, 审查移除, AI 安全, 大模型 | - | - | - |\n| 6 | Chachamaru127/claude-code-harness | Claude Code 专用开发 harness，Plan→Work→Review 交付循环 | https://github.com/Chachamaru127/claude-code-harness | Claude, 开发流程, 代理工程, 交付 | - | - | - |\n| 5 | BenedictKing/ccx | Claude/OpenAI/Gemini API 代理与协议转换网关 | https://github.com/BenedictKing/ccx | API 代理, 协议转换, AI 网关, 多模型 | - | - | - |\n\n---\n\n## 🔎 GitHub 指定日期检索\n\n本表数据来自 GitHub 官方 `search/repositories` 在**全站公开仓库**范围内的检索结果，关键词为 `uav & (rl|llm)`，时间条件为 `pushed:2026-02-26~2026-03-04`。**不是** Trending 周榜/日榜榜单。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n|------|------|------|------|------|------|------|--------|\n| 10 | dRoninFlight/dRonin | 开源无人机飞控软件，成熟稳定的飞行控制器 | https://github.com/dRoninFlight/dRonin | 无人机, 飞控, 开源, 飞行软件 | 1524 | 1 | C |\n| 9 | ShlkOfTheRa/scarab-osd | MWOSD - UAV HUD 视频叠加显示系统 | https://github.com/ShlkOfTheRa/scarab-osd | UAV, OSD, HUD, 视频叠加 | 1485 | 0 | - |\n| 9 | ntu-aris/MMAUD | ICRA-2024 多模态反无人机数据集，涵盖现代微型无人机威胁 | https://github.com/ntu-aris/MMAUD | 反无人机, 数据集, 多模态, 目标检测 | 227 | 21 | SCSS |\n| 8 | Happymic/SkyNetRL-Multi-Agent-Reinforcement-Learning-for-Space-Air-Ground-Networks | 空天地一体化网络多智能体强化学习框架 | https://github.com/Happymic/SkyNetRL-Multi-Agent-Reinforcement-Learning-for-Space-Air-Ground-Networks | 卫星, UAV, 强化学习, 网络优化 | 61 | 5 | Python |\n| 8 | TheBrainLab/Awesome-VLA-UAVs | VLA/VLN 模型在无人机领域的研究论文、模型与数据集资源列表 | https://github.com/TheBrainLab/Awesome-VLA-UAVs | VLA, 无人机, 视觉语言导航, 资源列表 | 53 | 1 | - |\n| 7 | sezer-muhammed/Eflatun-IHA | Teknofest 土耳其无人机竞赛 autonomous flight 与任务逻辑代码库 | https://github.com/sezer-muhammed/Eflatun-IHA | 无人机竞赛, 自主飞行, Teknofest | 42 | 2 | Python |\n| 7 | arplaboratory/UASTHN | ICRA 2025 无人机卫星-热成像地理定位不确定性感知深度单应性估计 | https://github.com/arplaboratory/UASTHN | UAV, 深度学习, 地理定位, 热成像 | 24 | 3 | Jupyter Notebook |\n| 7 | ctu-mrs/uvdar_core | UVDAR 系统：紫外 LED 闪烁器实现无人机相互定位 | https://github.com/ctu-mrs/uvdar_core | UAV, 定位, 紫外 LED, 感知 | 22 | 8 | C++ |\n| 6 | pagraf/Swin-BathyUNet | Swin-BathyUNet 快速入门指南 | https://github.com/pagraf/Swin-BathyUNet | 深度学习, 声呐, U-Net, 图像处理 | 19 | 1 | Jupyter Notebook |\n| 6 | ctu-mrs/mrs_core_examples | mrs_uav_system 示例包整合 | https://github.com/ctu-mrs/mrs_core_examples | UAV, 示例, 机器人, MAV | 17 | 8 | C++ |\n| 6 | SASLabStevens/MASC-Architecture | 多层级自适应无人机导航与路径规划，发动机故障紧急降落 | https://github.com/SASLabStevens/MASC-Architecture | 无人机, 路径规划, 故障处理, 仿真 | 15 | 1 | MATLAB |\n| 5 | AeroLabPUT/UAV_measurement_data | UAV 测量数据 | https://github.com/AeroLabPUT/UAV_measurement_data | UAV, 数据集, 测量 | 10 | 5 | - |\n| 5 | Jungminii-1114/UAV_tracking_with_Frame_Dynamics | CVPR 2025 第四届反无人机挑战赛第一名方案 | https://github.com/Jungminii-1114/UAV_tracking_with_Frame_Dynamics | 目标跟踪, 反无人机, CVPR, 竞赛 | 8 | 1 | Python |\n| 5 | BJTU-Railroad-UAV-Research-Group/DroneRail | 铁路基础设施多模态无人机巡检数据集 | https://github.com/BJTU-Railroad-UAV-Research-Group/DroneRail | 无人机, 铁路巡检, 数据集, 计算机视觉 | 8 | 0 | - |\n| 5 | hariharanragothaman/androquad | 四旋翼无人机带悬挂负载的敏捷摆动自由轨迹跟踪 | https://github.com/hariharanragothaman/androquad | 四旋翼, 轨迹跟踪, 机器人, 控制 | 7 | 1 | C++ |\n| 4 | KumarRobotics/SPAR | 从自然语言自动生成有效多样且语义准确的 PDDL 领域描述 | https://github.com/KumarRobotics/SPAR | PDDL, 规划, 自然语言, 无人机任务 | 5 | 0 | Python |\n| 4 | RBoabeng/infrastructure-defect-detection-yolo | 基于 YOLOv8 的无人机图像结构缺陷检测 | https://github.com/RBoabeng/infrastructure-defect-detection-yolo | YOLO, 缺陷检测, 无人机, 土木基础设施 | 4 | 0 | Jupyter Notebook |\n| 4 | wish44165/ReynoldsFlow | (无描述) | https://github.com/wish44165/ReynoldsFlow | - | 4 | 1 | - |\n| 3 | ai-uavsec/UAViSec | (无描述) | https://github.com/ai-uavsec/UAViSec | UAV, 安全 | 3 | 0 | C++ |\n| 3 | hrflr/uavid-3d-scenes | (无描述) | https://github.com/hrflr/uavid-3d-scenes | - | 3 | 0 | - |\n| 3 | newtonhaven/Webots-city-search-DJI-YOLO | 基于 Webots 与 YOLOv8 的城市搜索多无人机系统仿真 | https://github.com/newtonhaven/Webots-city-search-DJI-YOLO | 无人机, 搜索救援, Webots, YOLO | 3 | 0 | Python |\n| 3 | gioimtg2003/VinaUAV | 快速、小巧且功能完整的无人机管理系统 | https://github.com/gioimtg2003/VinaUAV | 无人机, 管理, TypeScript | 2 | 0 | TypeScript |\n| 3 | Wanhao-Liu/ATTENTION-UAV | (无描述) | https://github.com/Wanhao-Liu/ATTENTION-UAV | - | 2 | 0 | Python |\n| 3 | thuyminh2112/Active-RIS-UAV-backhaul | Active RIS 辅助无人机通信网络带宽分配与部署优化 | https://github.com/thuyminh2112/Active-RIS-UAV-backhaul | RIS, 无人机通信, 优化, 无线回传 | 2 | 0 | MATLAB |\n| 3 | thuyminh2112/Multi-UAV-Task-Assignment-MARL | (无描述) | https://github.com/thuyminh2112/Multi-UAV-Task-Assignment-MARL | 多无人机, 任务分配, 多智能体强化学习 | 2 | 0 | Python |\n| 2 | ak47kavan/Multimodal-Sensor-Fusion-rf-optical-for-Real-time-Micro-uav-Detection-using-YOLOv10 | 基于 YOLOv10 的微无人机多模态传感器融合实时检测 | https://github.com/ak47kavan/Multimodal-Sensor-Fusion-rf-optical-for-Real-time-Micro-uav-Detection-using-YOLOv10 | 微无人机, 传感器融合, YOLO, 目标检测 | 2 | 0 | Python |\n| 2 | Astik-2002/SPOT-Planner | 动态环境下无人机时空规划器，ICRA 2026 | https://github.com/Astik-2002/SPOT-Planner | 路径规划, 时空规划, 无人机, ICRA | 2 | 0 | C++ |\n| 2 | EyalBraun/Drone---Eyal | 自定义飞控系统实现，动态 PID 稳定与卡尔曼滤波传感器融合 | https://github.com/EyalBraun/Drone---Eyal | 飞控, PID, 卡尔曼滤波, 四旋翼 | 2 | 0 | C++ |\n| 2 | arch-yunus/teknofest_uluslararasi_iha | 国际无人机与自主系统架构，YOLOv10 目标检测与 A* 路径规划 | https://github.com/arch-yunus/teknofest_uluslararasi_iha | 无人机, YOLO, 路径规划, MavLink | 2 | 0 | Python |\n| 1 | KaiJun-SIT/Search-and-Rescue-UAV | 深度强化学习自主无人机搜救系统，Gymnasium\n",
+    "markdownGeneratedAt": "2026-05-29T07:50:58.177378Z"
+  },
+  "sections": [
+    {
+      "source": "arxiv",
+      "heading": "📄 Arxiv 前沿论文",
+      "summary": "本表数据来自 Arxiv 论文检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)`，时间窗口 2026-02-26 ~ 2026-03-04。本周期内无符合关键词条件的论文更新。 ---",
+      "keywords": "",
+      "dateStart": "2026-02-26",
+      "dateEnd": "2026-03-04",
+      "entryCount": 1,
+      "entries": [
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-arxiv-0",
+          "score": null,
+          "title": "(无)",
+          "summary": "本周期内 Arxiv 无符合关键词条件的论文",
+          "link": null,
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "semantic_scholar",
+      "heading": "🎓 Semantic Scholar",
+      "summary": "本表数据来自 Semantic Scholar 学术检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-02-26 ~ 2026-03-04。本周期内无符合关键词条件的论文。 ---",
+      "keywords": "",
+      "dateStart": "2026-02-26",
+      "dateEnd": "2026-03-04",
+      "entryCount": 1,
+      "entries": [
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-semantic_scholar-0",
+          "score": null,
+          "title": "(无)",
+          "summary": "本周期内 Semantic Scholar 无符合关键词条件的论文",
+          "link": null,
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "openalex",
+      "heading": "📚 OpenAlex",
+      "summary": "本表数据来自 OpenAlex 学术检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-02-26 ~ 2026-03-04。筛选出与主题直接相关的条目。 ---",
+      "keywords": "",
+      "dateStart": "2026-02-26",
+      "dateEnd": "2026-03-04",
+      "entryCount": 1,
+      "entries": [
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-openalex-0",
+          "score": 9,
+          "title": "Explainable multi agent reinforcement learning framework for secure and adaptive communication in UAV swarm based fanets",
+          "summary": "提出面向 UAV 蜂群 FANET 的可解释多智能体 RL 框架，专注安全自适应通信",
+          "link": "https://doi.org/10.1038/s41598-026-39366-x",
+          "tags": "UAV, 多智能体强化学习, FANET, 可解释AI, 安全通信",
+          "publishedAt": "2026-03-03",
+          "keywords": "",
+          "extra": {
+            "venue": "Scientific Reports",
+            "citationCount": "0"
+          }
+        }
+      ]
+    },
+    {
+      "source": "rss",
+      "heading": "📰 优质资讯/论坛",
+      "summary": "本表数据来自 RSS 资讯源检索，时间窗口 2026-02-26 ~ 2026-03-04。本周期内无符合关键词条件的资讯更新。 ---",
+      "keywords": "",
+      "dateStart": "2026-02-26",
+      "dateEnd": "2026-03-04",
+      "entryCount": 1,
+      "entries": [
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-rss-0",
+          "score": null,
+          "title": "(无)",
+          "summary": "本周期内无符合关键词条件的资讯",
+          "link": null,
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "github_weekly",
+      "heading": "🔥 GitHub 周榜",
+      "summary": "本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，**不做**关键词过滤或删减，反映本周全站热门开源项目。 ---",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 21,
+      "entries": [
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-0",
+          "score": 10,
+          "title": "Lum1104/Understand-Anything",
+          "summary": "将任意代码转换为可交互知识图谱，支持 Claude Code、Cursor 等主流 AI 编码工具",
+          "link": "https://github.com/Lum1104/Understand-Anything",
+          "tags": "知识图谱, 代码理解, AI 工具, 开发效率",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-1",
+          "score": 10,
+          "title": "colbymchenry/codegraph",
+          "summary": "为 Claude Code 等 AI 助手预索引代码知识图谱，降低 token 消耗与工具调用",
+          "link": "https://github.com/colbymchenry/codegraph",
+          "tags": "代码图谱, AI 编程, 语义索引, 效率优化",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-2",
+          "score": 9,
+          "title": "rohitg00/ai-engineering-from-scratch",
+          "summary": "AI 工程全栈课程，84% 学生使用 AI 工具但仅 18% 感到专业准备充分",
+          "link": "https://github.com/rohitg00/ai-engineering-from-scratch",
+          "tags": "AI 工程, 课程, 人才培养, 全栈开发",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-3",
+          "score": 9,
+          "title": "anthropics/knowledge-work-plugins",
+          "summary": "为知识工作者打造的 Claude 插件集合，适配多种角色与团队场景",
+          "link": "https://github.com/anthropics/knowledge-work-plugins",
+          "tags": "Claude, 插件, 知识工作, AI 助手",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-4",
+          "score": 9,
+          "title": "harry0703/MoneyPrinterTurbo",
+          "summary": "AI 一键生成高清短视频工具，支持文案、素材、字幕、配音全自动化",
+          "link": "https://github.com/harry0703/MoneyPrinterTurbo",
+          "tags": "AI 视频生成, AIGC, 短视频, 自动化",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-5",
+          "score": 8,
+          "title": "presenton/presenton",
+          "summary": "开源 AI 演示文稿生成器与 API，Gamma、Beautiful AI 的自托管替代方案",
+          "link": "https://github.com/presenton/presenton",
+          "tags": "AI 演示, PPT 生成, 自托管, 开源替代",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-6",
+          "score": 8,
+          "title": "hardikpandya/stop-slop",
+          "summary": "移除 AI 写作特征的技能文件，消除 AI 生成内容的套路化表达",
+          "link": "https://github.com/hardikpandya/stop-slop",
+          "tags": "AI 写作, 文本优化, 技能文件, Prompt",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-7",
+          "score": 8,
+          "title": "ruvnet/RuView",
+          "summary": "将普通 WiFi 信号转化为实时空间感知与生命体征监测，无需摄像头",
+          "link": "https://github.com/ruvnet/RuView",
+          "tags": "WiFi 感知, 空间智能, 生命体征, 隐私计算",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-8",
+          "score": 8,
+          "title": "mukul975/Anthropic-Cybersecurity-Skills",
+          "summary": "最大开源网络安全技能库，涵盖 754 个 AI 代理安全技能",
+          "link": "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
+          "tags": "网络安全, AI 代理, MITRE ATT&CK, 技能库",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-9",
+          "score": 8,
+          "title": "cursor/plugins",
+          "summary": "Cursor 官方插件规范与插件市场，支持主流开发工具与框架",
+          "link": "https://github.com/cursor/plugins",
+          "tags": "Cursor, 插件, IDE, 开发工具",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-10",
+          "score": 8,
+          "title": "HKUDS/ViMax",
+          "summary": "代理化视频生成工具，集成导演、编剧、制片与视频生成全流程",
+          "link": "https://github.com/HKUDS/ViMax",
+          "tags": "视频生成, AI 代理, AIGC, 视频创作",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-11",
+          "score": 8,
+          "title": "anthropics/claude-plugins-official",
+          "summary": "Anthropic 官方 Claude Code 插件目录，高质量插件精选",
+          "link": "https://github.com/anthropics/claude-plugins-official",
+          "tags": "Claude, 官方插件, AI 助手, 工具生态",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-12",
+          "score": 7,
+          "title": "can1357/oh-my-pi",
+          "summary": "终端 AI 编程代理，集成 IDE 功能、哈希锚定编辑与多提供商支持",
+          "link": "https://github.com/can1357/oh-my-pi",
+          "tags": "AI 编程, 终端工具, 代理, 开发效率",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-13",
+          "score": 7,
+          "title": "dograh-hq/dograh",
+          "summary": "开源语音 AI 平台，Vapi 与 Retell 的自托管替代方案",
+          "link": "https://github.com/dograh-hq/dograh",
+          "tags": "语音 AI, 自托管, VAPI 替代, 语音代理",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-14",
+          "score": 7,
+          "title": "Leonxlnx/taste-skill",
+          "summary": "为 AI 赋予设计品味，阻止生成平庸通用的界面",
+          "link": "https://github.com/Leonxlnx/taste-skill",
+          "tags": "AI 设计, UI/UX, 技能文件, 设计品味",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-15",
+          "score": 7,
+          "title": "Imbad0202/academic-research-skills",
+          "summary": "Claude Code 学术研究全流程技能集，从研究到发表",
+          "link": "https://github.com/Imbad0202/academic-research-skills",
+          "tags": "学术研究, Claude, 技能集, AI 辅助",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-16",
+          "score": 7,
+          "title": "microsoft/agent-governance-toolkit",
+          "summary": "AI 代理治理工具包，策略执行、零信任身份与可靠性工程",
+          "link": "https://github.com/microsoft/agent-governance-toolkit",
+          "tags": "AI 治理, 代理安全, 零信任, 合规",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-17",
+          "score": 6,
+          "title": "rmyndharis/OpenWA",
+          "summary": "开源自托管 WhatsApp API 网关，插件化架构支持数据库替换",
+          "link": "https://github.com/rmyndharis/OpenWA",
+          "tags": "WhatsApp API, 自托管, 网关, 开源",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-18",
+          "score": 6,
+          "title": "p-e-w/heretic",
+          "summary": "自动移除语言模型审查（安全对齐）的工具，无需额外训练",
+          "link": "https://github.com/p-e-w/heretic",
+          "tags": "模型对齐, 审查移除, AI 安全, 大模型",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-19",
+          "score": 6,
+          "title": "Chachamaru127/claude-code-harness",
+          "summary": "Claude Code 专用开发 harness，Plan→Work→Review 交付循环",
+          "link": "https://github.com/Chachamaru127/claude-code-harness",
+          "tags": "Claude, 开发流程, 代理工程, 交付",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_weekly-20",
+          "score": 5,
+          "title": "BenedictKing/ccx",
+          "summary": "Claude/OpenAI/Gemini API 代理与协议转换网关",
+          "link": "https://github.com/BenedictKing/ccx",
+          "tags": "API 代理, 协议转换, AI 网关, 多模型",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "github_search",
+      "heading": "🔎 GitHub 指定日期检索",
+      "summary": "本表数据来自 GitHub 官方 `search/repositories` 在**全站公开仓库**范围内的检索结果，关键词为 `uav & (rl|llm)`，时间条件为 `pushed:2026-02-26~2026-03-04`。**不是** Trending 周榜/日榜榜单。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 30,
+      "entries": [
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-0",
+          "score": 10,
+          "title": "dRoninFlight/dRonin",
+          "summary": "开源无人机飞控软件，成熟稳定的飞行控制器",
+          "link": "https://github.com/dRoninFlight/dRonin",
+          "tags": "无人机, 飞控, 开源, 飞行软件",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1524",
+            "fork": "1",
+            "language": "C"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-1",
+          "score": 9,
+          "title": "ShlkOfTheRa/scarab-osd",
+          "summary": "MWOSD - UAV HUD 视频叠加显示系统",
+          "link": "https://github.com/ShlkOfTheRa/scarab-osd",
+          "tags": "UAV, OSD, HUD, 视频叠加",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1485",
+            "fork": "0"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-2",
+          "score": 9,
+          "title": "ntu-aris/MMAUD",
+          "summary": "ICRA-2024 多模态反无人机数据集，涵盖现代微型无人机威胁",
+          "link": "https://github.com/ntu-aris/MMAUD",
+          "tags": "反无人机, 数据集, 多模态, 目标检测",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "227",
+            "fork": "21",
+            "language": "SCSS"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-3",
+          "score": 8,
+          "title": "Happymic/SkyNetRL-Multi-Agent-Reinforcement-Learning-for-Space-Air-Ground-Networks",
+          "summary": "空天地一体化网络多智能体强化学习框架",
+          "link": "https://github.com/Happymic/SkyNetRL-Multi-Agent-Reinforcement-Learning-for-Space-Air-Ground-Networks",
+          "tags": "卫星, UAV, 强化学习, 网络优化",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "61",
+            "fork": "5",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-4",
+          "score": 8,
+          "title": "TheBrainLab/Awesome-VLA-UAVs",
+          "summary": "VLA/VLN 模型在无人机领域的研究论文、模型与数据集资源列表",
+          "link": "https://github.com/TheBrainLab/Awesome-VLA-UAVs",
+          "tags": "VLA, 无人机, 视觉语言导航, 资源列表",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "53",
+            "fork": "1"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-5",
+          "score": 7,
+          "title": "sezer-muhammed/Eflatun-IHA",
+          "summary": "Teknofest 土耳其无人机竞赛 autonomous flight 与任务逻辑代码库",
+          "link": "https://github.com/sezer-muhammed/Eflatun-IHA",
+          "tags": "无人机竞赛, 自主飞行, Teknofest",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "42",
+            "fork": "2",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-6",
+          "score": 7,
+          "title": "arplaboratory/UASTHN",
+          "summary": "ICRA 2025 无人机卫星-热成像地理定位不确定性感知深度单应性估计",
+          "link": "https://github.com/arplaboratory/UASTHN",
+          "tags": "UAV, 深度学习, 地理定位, 热成像",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "24",
+            "fork": "3",
+            "language": "Jupyter Notebook"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-7",
+          "score": 7,
+          "title": "ctu-mrs/uvdar_core",
+          "summary": "UVDAR 系统：紫外 LED 闪烁器实现无人机相互定位",
+          "link": "https://github.com/ctu-mrs/uvdar_core",
+          "tags": "UAV, 定位, 紫外 LED, 感知",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "22",
+            "fork": "8",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-8",
+          "score": 6,
+          "title": "pagraf/Swin-BathyUNet",
+          "summary": "Swin-BathyUNet 快速入门指南",
+          "link": "https://github.com/pagraf/Swin-BathyUNet",
+          "tags": "深度学习, 声呐, U-Net, 图像处理",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "19",
+            "fork": "1",
+            "language": "Jupyter Notebook"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-9",
+          "score": 6,
+          "title": "ctu-mrs/mrs_core_examples",
+          "summary": "mrs_uav_system 示例包整合",
+          "link": "https://github.com/ctu-mrs/mrs_core_examples",
+          "tags": "UAV, 示例, 机器人, MAV",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "17",
+            "fork": "8",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-10",
+          "score": 6,
+          "title": "SASLabStevens/MASC-Architecture",
+          "summary": "多层级自适应无人机导航与路径规划，发动机故障紧急降落",
+          "link": "https://github.com/SASLabStevens/MASC-Architecture",
+          "tags": "无人机, 路径规划, 故障处理, 仿真",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "15",
+            "fork": "1",
+            "language": "MATLAB"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-11",
+          "score": 5,
+          "title": "AeroLabPUT/UAV_measurement_data",
+          "summary": "UAV 测量数据",
+          "link": "https://github.com/AeroLabPUT/UAV_measurement_data",
+          "tags": "UAV, 数据集, 测量",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "10",
+            "fork": "5"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-12",
+          "score": 5,
+          "title": "Jungminii-1114/UAV_tracking_with_Frame_Dynamics",
+          "summary": "CVPR 2025 第四届反无人机挑战赛第一名方案",
+          "link": "https://github.com/Jungminii-1114/UAV_tracking_with_Frame_Dynamics",
+          "tags": "目标跟踪, 反无人机, CVPR, 竞赛",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "8",
+            "fork": "1",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-13",
+          "score": 5,
+          "title": "BJTU-Railroad-UAV-Research-Group/DroneRail",
+          "summary": "铁路基础设施多模态无人机巡检数据集",
+          "link": "https://github.com/BJTU-Railroad-UAV-Research-Group/DroneRail",
+          "tags": "无人机, 铁路巡检, 数据集, 计算机视觉",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "8",
+            "fork": "0"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-14",
+          "score": 5,
+          "title": "hariharanragothaman/androquad",
+          "summary": "四旋翼无人机带悬挂负载的敏捷摆动自由轨迹跟踪",
+          "link": "https://github.com/hariharanragothaman/androquad",
+          "tags": "四旋翼, 轨迹跟踪, 机器人, 控制",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "7",
+            "fork": "1",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-15",
+          "score": 4,
+          "title": "KumarRobotics/SPAR",
+          "summary": "从自然语言自动生成有效多样且语义准确的 PDDL 领域描述",
+          "link": "https://github.com/KumarRobotics/SPAR",
+          "tags": "PDDL, 规划, 自然语言, 无人机任务",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "5",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-16",
+          "score": 4,
+          "title": "RBoabeng/infrastructure-defect-detection-yolo",
+          "summary": "基于 YOLOv8 的无人机图像结构缺陷检测",
+          "link": "https://github.com/RBoabeng/infrastructure-defect-detection-yolo",
+          "tags": "YOLO, 缺陷检测, 无人机, 土木基础设施",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "4",
+            "fork": "0",
+            "language": "Jupyter Notebook"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-17",
+          "score": 4,
+          "title": "wish44165/ReynoldsFlow",
+          "summary": "(无描述)",
+          "link": "https://github.com/wish44165/ReynoldsFlow",
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "4",
+            "fork": "1"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-18",
+          "score": 3,
+          "title": "ai-uavsec/UAViSec",
+          "summary": "(无描述)",
+          "link": "https://github.com/ai-uavsec/UAViSec",
+          "tags": "UAV, 安全",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "3",
+            "fork": "0",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-19",
+          "score": 3,
+          "title": "hrflr/uavid-3d-scenes",
+          "summary": "(无描述)",
+          "link": "https://github.com/hrflr/uavid-3d-scenes",
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "3",
+            "fork": "0"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-20",
+          "score": 3,
+          "title": "newtonhaven/Webots-city-search-DJI-YOLO",
+          "summary": "基于 Webots 与 YOLOv8 的城市搜索多无人机系统仿真",
+          "link": "https://github.com/newtonhaven/Webots-city-search-DJI-YOLO",
+          "tags": "无人机, 搜索救援, Webots, YOLO",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "3",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-21",
+          "score": 3,
+          "title": "gioimtg2003/VinaUAV",
+          "summary": "快速、小巧且功能完整的无人机管理系统",
+          "link": "https://github.com/gioimtg2003/VinaUAV",
+          "tags": "无人机, 管理, TypeScript",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "TypeScript"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-22",
+          "score": 3,
+          "title": "Wanhao-Liu/ATTENTION-UAV",
+          "summary": "(无描述)",
+          "link": "https://github.com/Wanhao-Liu/ATTENTION-UAV",
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-23",
+          "score": 3,
+          "title": "thuyminh2112/Active-RIS-UAV-backhaul",
+          "summary": "Active RIS 辅助无人机通信网络带宽分配与部署优化",
+          "link": "https://github.com/thuyminh2112/Active-RIS-UAV-backhaul",
+          "tags": "RIS, 无人机通信, 优化, 无线回传",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "MATLAB"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-24",
+          "score": 3,
+          "title": "thuyminh2112/Multi-UAV-Task-Assignment-MARL",
+          "summary": "(无描述)",
+          "link": "https://github.com/thuyminh2112/Multi-UAV-Task-Assignment-MARL",
+          "tags": "多无人机, 任务分配, 多智能体强化学习",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-25",
+          "score": 2,
+          "title": "ak47kavan/Multimodal-Sensor-Fusion-rf-optical-for-Real-time-Micro-uav-Detection-using-YOLOv10",
+          "summary": "基于 YOLOv10 的微无人机多模态传感器融合实时检测",
+          "link": "https://github.com/ak47kavan/Multimodal-Sensor-Fusion-rf-optical-for-Real-time-Micro-uav-Detection-using-YOLOv10",
+          "tags": "微无人机, 传感器融合, YOLO, 目标检测",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-26",
+          "score": 2,
+          "title": "Astik-2002/SPOT-Planner",
+          "summary": "动态环境下无人机时空规划器，ICRA 2026",
+          "link": "https://github.com/Astik-2002/SPOT-Planner",
+          "tags": "路径规划, 时空规划, 无人机, ICRA",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-27",
+          "score": 2,
+          "title": "EyalBraun/Drone---Eyal",
+          "summary": "自定义飞控系统实现，动态 PID 稳定与卡尔曼滤波传感器融合",
+          "link": "https://github.com/EyalBraun/Drone---Eyal",
+          "tags": "飞控, PID, 卡尔曼滤波, 四旋翼",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-28",
+          "score": 2,
+          "title": "arch-yunus/teknofest_uluslararasi_iha",
+          "summary": "国际无人机与自主系统架构，YOLOv10 目标检测与 A* 路径规划",
+          "link": "https://github.com/arch-yunus/teknofest_uluslararasi_iha",
+          "tags": "无人机, YOLO, 路径规划, MavLink",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-02-26_2026-03-04_20260529T075058Z-github_search-29",
+          "score": 1,
+          "title": "KaiJun-SIT/Search-and-Rescue-UAV",
+          "summary": "深度强化学习自主无人机搜救系统，Gymnasium",
+          "link": null,
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "entryCount": 55,
+    "sourceCounts": {
+      "arxiv": 1,
+      "semantic_scholar": 1,
+      "openalex": 1,
+      "rss": 1,
+      "github_weekly": 21,
+      "github_search": 30
+    },
+    "emptySections": []
+  }
+}

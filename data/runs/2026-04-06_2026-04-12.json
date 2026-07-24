@@ -1,0 +1,443 @@
+{
+  "schemaVersion": "1",
+  "id": "2026-04-06_2026-04-12",
+  "crawl": {
+    "executedAt": "2026-04-13T03:38:05Z",
+    "crawlDate": "2026-04-13",
+    "status": "success",
+    "trigger": "migration"
+  },
+  "window": {
+    "dateStart": "2026-04-06",
+    "dateEnd": "2026-04-12",
+    "preset": "",
+    "mode": ""
+  },
+  "config": {},
+  "content": {
+    "markdownBody": "## 📄 Arxiv 前沿论文\n\n> **爬取时间**：2026-04-13 03:38:05 UTC\n\n本表汇总 Arxiv 论文，来源为关键词组 `uav&llm` 与 `dla|ocr` 在 2026-04-06~2026-04-12 的检索结果，按评分降序排列。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 学科类别 |\n|------|------|------|------|------|----------|----------|\n| 10 | Vision-Language Navigation for Aerial Robots: Towards the Era of Large Language Models | 探讨大语言模型赋能无人机视觉语言导航的前沿方向，提出 Aerial VLN 新任务框架 | http://arxiv.org/abs/2604.07705v1 | 无人机,视觉语言导航,大模型,机器人 | 2026-04-09 | cs.RO |\n| 9 | LLM-as-Judge for Semantic Judging of Powerline Segmentation in UAV Inspection | 引入 LLM 作为裁判评估无人机巡检中的电力线分割语义质量，提升可靠性 | http://arxiv.org/abs/2604.05371v1 | 无人机巡检,分割评估,大模型,电力线 | 2026-04-07 | cs.AI |\n| 9 | UIPress: Bringing Optical Token Compression to UI-to-Code Generation | 提出 UI 场景的光学 token 压缩方法，解决 VLM 生成大量 HTML/CSS 的效率瓶颈 | http://arxiv.org/abs/2604.09442v1 | UI生成,视觉语言模型,token压缩,前端 | 2026-04-10 | cs.CL |\n| 8 | Revise: A Framework for Revising OCRed text in Practical Information Systems | 提出基于 LLM 的 OCR 文本修订框架，引入数据污染策略提升实用系统表现 | http://arxiv.org/abs/2604.08115v1 | OCR,文本修订,大模型,文档AI | 2026-04-09 | cs.AI |\n| 8 | AtlasOCR: Building the First Open-Source Darija OCR Model | 首个开源摩洛哥阿拉伯方言 OCR 模型，基于视觉语言模型构建 | http://arxiv.org/abs/2604.08070v1 | OCR,阿拉伯方言,视觉语言模型,开源 | 2026-04-09 | cs.CV |\n| 8 | Q-Zoom: Query-Aware Adaptive Perception for Efficient MLLMs | 提出查询感知的自适应感知方法，提升多模态大模型在文档理解等细粒度任务的效率 | http://arxiv.org/abs/2604.06912v1 | 多模态大模型,自适应感知,高效推理 | 2026-04-08 | cs.CV |\n| 7 | Making MLLMs Blind: Adversarial Smuggling Attacks in MLLM Content Moderation | 揭示多模态大模型在内容审核中的对抗性 smuggling 攻击漏洞 | http://arxiv.org/abs/2604.06950v2 | 多模态大模型,对抗攻击,内容审核,安全 | 2026-04-08 | cs.CV |\n| 7 | LLM-based Schema-Guided Extraction and Validation of失踪人口情报 | 基于 LLM 从异构数据源提取和验证失踪人口情报，支持多分类任务 | http://arxiv.org/abs/2604.06571v1 | 大模型,信息抽取,失踪人口,异构数据 | 2026-04-08 | cs.CL |\n| 6 | The Character Error Vector: Decomposable errors for page-level OCR evaluation | 提出字符错误向量的可分解误差度量，改进行页面 OCR 评估 | http://arxiv.org/abs/2604.06160v1 | OCR,评估指标,字符错误,文档识别 | 2026-04-07 | cs.CV |\n\n---\n\n## 📰 优质资讯/论坛\n\n本表数据来源于 RSS 资讯源，本周窗口期（2026-04-06~2026-04-12）内无符合关键词的条目。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 |\n|------|------|------|------|------|\n| - | (无) | 本周资讯窗口期内无新增符合关键词的条目 | - | - |\n\n---\n\n## 🔥 GitHub 周榜\n\n本表为 Trending 类 RSS 榜单原始条目，未按关键词做任何过滤；数据来源于 GitHub Trending RSS 推送，按 Star 数降序排列。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n|------|------|------|------|------|------|------|--------|\n| 10 | microsoft/markitdown | Python 工具，可将文件和 Office 文档转换为 Markdown，支持 MCP 集成 | https://github.com/microsoft/markitdown | 文档转换,Markdown,Python,LLM集成 | 105225 | 6586 | Python |\n| 9 | NousResearch/hermes-agent | 自改进 AI Agent，内置学习循环，可从经验创建技能并持久化知识 | https://github.com/NousResearch/hermes-agent | AI Agent,自改进,学习循环,LLM | 68958 | 9211 | Python |\n| 8 | google-ai-edge/gallery | Google AI Edge 移动端 ML/GenAI 展示Gallery，可本地运行开源 LLM | https://github.com/google-ai-edge/gallery | 移动端AI,边缘推理,生成式AI,Google | 20708 | 1956 | Kotlin |\n| 8 | forrestchang/andrej-karpathy-skills | 基于 Karpathy 观察的 Claude Code 行为改进指南 CLAUDE.md | https://github.com/forrestchang/andrej-karpathy-skills | Claude,编码规范,LLM,最佳实践 | 17457 | 1312 | - |\n| 8 | HKUDS/DeepTutor | Agent 原生个性化辅导助手，支持多语言和 Mermaid 可视化 | https://github.com/HKUDS/DeepTutor | 辅导Agent,个性化学习,多语言,教育AI | 17329 | 2276 | Python |\n| 7 | coleam00/Archon | 首个开源 AI 编码 harness 构建器，通过 YAML 定义工作流实现确定性编码 | https://github.com/coleam00/Archon | AI编码,工作流引擎,开源,harness | 17156 | 2717 | TypeScript |\n| 7 | multica-ai/multica | 开源托管 Agent 平台，将编码 Agent 转化为团队成员，支持任务分配和技能积累 | https://github.com/multica-ai/multica | Agent平台,团队协作,开源,管理 | 9665 | 1229 | TypeScript |\n| 6 | google-ai-edge/LiteRT-LM | Google 高性能边缘设备 LLM 推理框架，支持 Gemma 4 等模型 | https://github.com/google-ai-edge/LiteRT-LM | 边缘推理,高性能,LLM,Google | 3566 | 338 | C++ |\n\n---\n\n## 🔎 GitHub 指定日期检索\n\n本表为 GitHub 官方 `search/repositories` 在全站公开仓库范围内的检索结果（关键词 `llm&uav`，时间条件 `pushed:2026-04-06~2026-04-12`），**非** Trending 周榜/日榜榜单，按 Star 数降序排列。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n|------|------|------|------|------|------|------|--------|\n| 8 | Mehdiazarafza/UAV-RAG | 探索 LLM 与 RAG 集成用于无人机领域问答与推理 | https://github.com/Mehdiazarafza/UAV-RAG | 无人机,RAG,LLM,问答 | 9 | 2 | - |\n| 7 | justarist/radarone | Telegram 机器人与实时威胁地图，收集 UAV 攻击警报并通过 LLM 处理推送 | https://github.com/justarist/radarone | 无人机,威胁情报,Telegram,LLM | 3 | 1 | Python |\n| 5 | pgrhc/uav-llm-rl | 无人机与 LLM 强化学习相关实验项目 | https://github.com/pgrhc/uav-llm-rl | 无人机,LLM,强化学习 | 1 | 0 | Python |\n| 5 | G1antBot/agent_UAV | 通过 Mavlink、开放词汇检测、SmolAgents 与火山引擎 LLM 实现自然语言控制无人机 | https://github.com/G1antBot/agent_UAV | 无人机,自然语言控制,多模态,仿真 | 1 | 0 | Python |\n| 4 | yasarh18/uav_llm | 无人机与大语言模型结合项目（暂无描述） | https://github.com/yasarh18/uav_llm | 无人机,LLM | 0 | 0 | Python |\n| 4 | Yansanya/UAVbot | 顶层 LLM 驱动的无人机机器人项目 | https://github.com/Yansanya/UAVbot | 无人机,LLM,机器人 | 0 | 0 | Python |\n| 4 | eveyuyi/LLM-UAV-FairRouting | 基于 LLM 的无人机公平路由研究 | https://github.com/eveyuyi/LLM-UAV-FairRouting | 无人机,LLM,路由算法 | 0 | 0 | Python |\n| 4 | Zyk66681/UAV-Accident-Attribution-LLM | 基于 LLM 评估无人机事故地面风险的方法 | https://github.com/Zyk66681/UAV-Accident-Attribution-LLM | 无人机,事故分析,LLM,风险评估 | 0 | 0 | Python |\n",
+    "markdownGeneratedAt": "2026-04-13T03:38:05Z"
+  },
+  "sections": [
+    {
+      "source": "arxiv",
+      "heading": "📄 Arxiv 前沿论文",
+      "summary": "本表汇总 Arxiv 论文，来源为关键词组 `uav&llm` 与 `dla|ocr` 在 2026-04-06~2026-04-12 的检索结果，按评分降序排列。 ---",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 9,
+      "entries": [
+        {
+          "id": "2026-04-06_2026-04-12-arxiv-0",
+          "score": 10,
+          "title": "Vision-Language Navigation for Aerial Robots: Towards the Era of Large Language Models",
+          "summary": "探讨大语言模型赋能无人机视觉语言导航的前沿方向，提出 Aerial VLN 新任务框架",
+          "link": "http://arxiv.org/abs/2604.07705v1",
+          "tags": "无人机,视觉语言导航,大模型,机器人",
+          "publishedAt": "2026-04-09",
+          "keywords": "",
+          "extra": {
+            "subject": "cs.RO"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-arxiv-1",
+          "score": 9,
+          "title": "LLM-as-Judge for Semantic Judging of Powerline Segmentation in UAV Inspection",
+          "summary": "引入 LLM 作为裁判评估无人机巡检中的电力线分割语义质量，提升可靠性",
+          "link": "http://arxiv.org/abs/2604.05371v1",
+          "tags": "无人机巡检,分割评估,大模型,电力线",
+          "publishedAt": "2026-04-07",
+          "keywords": "",
+          "extra": {
+            "subject": "cs.AI"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-arxiv-2",
+          "score": 9,
+          "title": "UIPress: Bringing Optical Token Compression to UI-to-Code Generation",
+          "summary": "提出 UI 场景的光学 token 压缩方法，解决 VLM 生成大量 HTML/CSS 的效率瓶颈",
+          "link": "http://arxiv.org/abs/2604.09442v1",
+          "tags": "UI生成,视觉语言模型,token压缩,前端",
+          "publishedAt": "2026-04-10",
+          "keywords": "",
+          "extra": {
+            "subject": "cs.CL"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-arxiv-3",
+          "score": 8,
+          "title": "Revise: A Framework for Revising OCRed text in Practical Information Systems",
+          "summary": "提出基于 LLM 的 OCR 文本修订框架，引入数据污染策略提升实用系统表现",
+          "link": "http://arxiv.org/abs/2604.08115v1",
+          "tags": "OCR,文本修订,大模型,文档AI",
+          "publishedAt": "2026-04-09",
+          "keywords": "",
+          "extra": {
+            "subject": "cs.AI"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-arxiv-4",
+          "score": 8,
+          "title": "AtlasOCR: Building the First Open-Source Darija OCR Model",
+          "summary": "首个开源摩洛哥阿拉伯方言 OCR 模型，基于视觉语言模型构建",
+          "link": "http://arxiv.org/abs/2604.08070v1",
+          "tags": "OCR,阿拉伯方言,视觉语言模型,开源",
+          "publishedAt": "2026-04-09",
+          "keywords": "",
+          "extra": {
+            "subject": "cs.CV"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-arxiv-5",
+          "score": 8,
+          "title": "Q-Zoom: Query-Aware Adaptive Perception for Efficient MLLMs",
+          "summary": "提出查询感知的自适应感知方法，提升多模态大模型在文档理解等细粒度任务的效率",
+          "link": "http://arxiv.org/abs/2604.06912v1",
+          "tags": "多模态大模型,自适应感知,高效推理",
+          "publishedAt": "2026-04-08",
+          "keywords": "",
+          "extra": {
+            "subject": "cs.CV"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-arxiv-6",
+          "score": 7,
+          "title": "Making MLLMs Blind: Adversarial Smuggling Attacks in MLLM Content Moderation",
+          "summary": "揭示多模态大模型在内容审核中的对抗性 smuggling 攻击漏洞",
+          "link": "http://arxiv.org/abs/2604.06950v2",
+          "tags": "多模态大模型,对抗攻击,内容审核,安全",
+          "publishedAt": "2026-04-08",
+          "keywords": "",
+          "extra": {
+            "subject": "cs.CV"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-arxiv-7",
+          "score": 7,
+          "title": "LLM-based Schema-Guided Extraction and Validation of失踪人口情报",
+          "summary": "基于 LLM 从异构数据源提取和验证失踪人口情报，支持多分类任务",
+          "link": "http://arxiv.org/abs/2604.06571v1",
+          "tags": "大模型,信息抽取,失踪人口,异构数据",
+          "publishedAt": "2026-04-08",
+          "keywords": "",
+          "extra": {
+            "subject": "cs.CL"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-arxiv-8",
+          "score": 6,
+          "title": "The Character Error Vector: Decomposable errors for page-level OCR evaluation",
+          "summary": "提出字符错误向量的可分解误差度量，改进行页面 OCR 评估",
+          "link": "http://arxiv.org/abs/2604.06160v1",
+          "tags": "OCR,评估指标,字符错误,文档识别",
+          "publishedAt": "2026-04-07",
+          "keywords": "",
+          "extra": {
+            "subject": "cs.CV"
+          }
+        }
+      ]
+    },
+    {
+      "source": "rss",
+      "heading": "📰 优质资讯/论坛",
+      "summary": "本表数据来源于 RSS 资讯源，本周窗口期（2026-04-06~2026-04-12）内无符合关键词的条目。 ---",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 1,
+      "entries": [
+        {
+          "id": "2026-04-06_2026-04-12-rss-0",
+          "score": null,
+          "title": "(无)",
+          "summary": "本周资讯窗口期内无新增符合关键词的条目",
+          "link": null,
+          "tags": null,
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "github_weekly",
+      "heading": "🔥 GitHub 周榜",
+      "summary": "本表为 Trending 类 RSS 榜单原始条目，未按关键词做任何过滤；数据来源于 GitHub Trending RSS 推送，按 Star 数降序排列。 ---",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 8,
+      "entries": [
+        {
+          "id": "2026-04-06_2026-04-12-github_weekly-0",
+          "score": 10,
+          "title": "microsoft/markitdown",
+          "summary": "Python 工具，可将文件和 Office 文档转换为 Markdown，支持 MCP 集成",
+          "link": "https://github.com/microsoft/markitdown",
+          "tags": "文档转换,Markdown,Python,LLM集成",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "105225",
+            "fork": "6586",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-github_weekly-1",
+          "score": 9,
+          "title": "NousResearch/hermes-agent",
+          "summary": "自改进 AI Agent，内置学习循环，可从经验创建技能并持久化知识",
+          "link": "https://github.com/NousResearch/hermes-agent",
+          "tags": "AI Agent,自改进,学习循环,LLM",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "68958",
+            "fork": "9211",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-github_weekly-2",
+          "score": 8,
+          "title": "google-ai-edge/gallery",
+          "summary": "Google AI Edge 移动端 ML/GenAI 展示Gallery，可本地运行开源 LLM",
+          "link": "https://github.com/google-ai-edge/gallery",
+          "tags": "移动端AI,边缘推理,生成式AI,Google",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "20708",
+            "fork": "1956",
+            "language": "Kotlin"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-github_weekly-3",
+          "score": 8,
+          "title": "forrestchang/andrej-karpathy-skills",
+          "summary": "基于 Karpathy 观察的 Claude Code 行为改进指南 CLAUDE.md",
+          "link": "https://github.com/forrestchang/andrej-karpathy-skills",
+          "tags": "Claude,编码规范,LLM,最佳实践",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "17457",
+            "fork": "1312"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-github_weekly-4",
+          "score": 8,
+          "title": "HKUDS/DeepTutor",
+          "summary": "Agent 原生个性化辅导助手，支持多语言和 Mermaid 可视化",
+          "link": "https://github.com/HKUDS/DeepTutor",
+          "tags": "辅导Agent,个性化学习,多语言,教育AI",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "17329",
+            "fork": "2276",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-github_weekly-5",
+          "score": 7,
+          "title": "coleam00/Archon",
+          "summary": "首个开源 AI 编码 harness 构建器，通过 YAML 定义工作流实现确定性编码",
+          "link": "https://github.com/coleam00/Archon",
+          "tags": "AI编码,工作流引擎,开源,harness",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "17156",
+            "fork": "2717",
+            "language": "TypeScript"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-github_weekly-6",
+          "score": 7,
+          "title": "multica-ai/multica",
+          "summary": "开源托管 Agent 平台，将编码 Agent 转化为团队成员，支持任务分配和技能积累",
+          "link": "https://github.com/multica-ai/multica",
+          "tags": "Agent平台,团队协作,开源,管理",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "9665",
+            "fork": "1229",
+            "language": "TypeScript"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-github_weekly-7",
+          "score": 6,
+          "title": "google-ai-edge/LiteRT-LM",
+          "summary": "Google 高性能边缘设备 LLM 推理框架，支持 Gemma 4 等模型",
+          "link": "https://github.com/google-ai-edge/LiteRT-LM",
+          "tags": "边缘推理,高性能,LLM,Google",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "3566",
+            "fork": "338",
+            "language": "C++"
+          }
+        }
+      ]
+    },
+    {
+      "source": "github_search",
+      "heading": "🔎 GitHub 指定日期检索",
+      "summary": "本表为 GitHub 官方 `search/repositories` 在全站公开仓库范围内的检索结果（关键词 `llm&uav`，时间条件 `pushed:2026-04-06~2026-04-12`），**非** Trending 周榜/日榜榜单，按 Star 数降序排列。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 8,
+      "entries": [
+        {
+          "id": "2026-04-06_2026-04-12-github_search-0",
+          "score": 8,
+          "title": "Mehdiazarafza/UAV-RAG",
+          "summary": "探索 LLM 与 RAG 集成用于无人机领域问答与推理",
+          "link": "https://github.com/Mehdiazarafza/UAV-RAG",
+          "tags": "无人机,RAG,LLM,问答",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "9",
+            "fork": "2"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-github_search-1",
+          "score": 7,
+          "title": "justarist/radarone",
+          "summary": "Telegram 机器人与实时威胁地图，收集 UAV 攻击警报并通过 LLM 处理推送",
+          "link": "https://github.com/justarist/radarone",
+          "tags": "无人机,威胁情报,Telegram,LLM",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "3",
+            "fork": "1",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-github_search-2",
+          "score": 5,
+          "title": "pgrhc/uav-llm-rl",
+          "summary": "无人机与 LLM 强化学习相关实验项目",
+          "link": "https://github.com/pgrhc/uav-llm-rl",
+          "tags": "无人机,LLM,强化学习",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-github_search-3",
+          "score": 5,
+          "title": "G1antBot/agent_UAV",
+          "summary": "通过 Mavlink、开放词汇检测、SmolAgents 与火山引擎 LLM 实现自然语言控制无人机",
+          "link": "https://github.com/G1antBot/agent_UAV",
+          "tags": "无人机,自然语言控制,多模态,仿真",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-github_search-4",
+          "score": 4,
+          "title": "yasarh18/uav_llm",
+          "summary": "无人机与大语言模型结合项目（暂无描述）",
+          "link": "https://github.com/yasarh18/uav_llm",
+          "tags": "无人机,LLM",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-github_search-5",
+          "score": 4,
+          "title": "Yansanya/UAVbot",
+          "summary": "顶层 LLM 驱动的无人机机器人项目",
+          "link": "https://github.com/Yansanya/UAVbot",
+          "tags": "无人机,LLM,机器人",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-github_search-6",
+          "score": 4,
+          "title": "eveyuyi/LLM-UAV-FairRouting",
+          "summary": "基于 LLM 的无人机公平路由研究",
+          "link": "https://github.com/eveyuyi/LLM-UAV-FairRouting",
+          "tags": "无人机,LLM,路由算法",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-04-06_2026-04-12-github_search-7",
+          "score": 4,
+          "title": "Zyk66681/UAV-Accident-Attribution-LLM",
+          "summary": "基于 LLM 评估无人机事故地面风险的方法",
+          "link": "https://github.com/Zyk66681/UAV-Accident-Attribution-LLM",
+          "tags": "无人机,事故分析,LLM,风险评估",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "0",
+            "fork": "0",
+            "language": "Python"
+          }
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "entryCount": 26,
+    "sourceCounts": {
+      "arxiv": 9,
+      "rss": 1,
+      "github_weekly": 8,
+      "github_search": 8
+    },
+    "emptySections": []
+  }
+}

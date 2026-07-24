@@ -1,0 +1,629 @@
+{
+  "schemaVersion": "1",
+  "id": "2026-01-29_2026-02-04_20260529T072727Z",
+  "crawl": {
+    "executedAt": "2026-05-29T07:27:27.633766Z",
+    "crawlDate": "2026-05-29",
+    "status": "success",
+    "trigger": "ci"
+  },
+  "window": {
+    "dateStart": "2026-01-29",
+    "dateEnd": "2026-02-04",
+    "preset": "week",
+    "mode": "custom"
+  },
+  "config": {
+    "keywords": "(uav|aerial) & (vlm|llm|mllm) & (rl)",
+    "date_range": {
+      "preset": "week"
+    },
+    "ai": {
+      "model": "MiniMax/MiniMax-M2.5",
+      "max_tokens": 4000
+    }
+  },
+  "content": {
+    "markdownBody": "## 📄 Arxiv 前沿论文\n\n> **爬取时间**：2026-05-29 07:27:27 UTC\n\n本表数据来自 Arxiv 检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)`，时间窗口 2026-01-29 ~ 2026-02-04。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 学科类别 |\n|------|------|------|------|------|----------|----------|\n| 9 | APEX: A Decoupled Memory-based Explorer for Asynchronous Aerial Object Goal Navigation | 提出面向无人机目标导航的异步记忆探索器，解决具身AI中空中目标定位难题 | http://arxiv.org/abs/2602.00551v1 | UAV,目标导航,具身AI,强化学习,内存机制 | 2026-01-31 | cs.RO |\n| 8 | RGBX-R1: Visual Modality Chain-of-Thought Guided Reinforcement Learning for Multimodal Grounding | 提出多模态思维链引导的强化学习方法，提升视觉语言模型在非RGB模态下的定位能力 | http://arxiv.org/abs/2602.00504v1 | 多模态大模型,视觉定位,思维链,强化学习,RGBX | 2026-01-31 | cs.CV |\n\n## 🎓 Semantic Scholar\n\n本表数据来自 Semantic Scholar 检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-01-29 ~ 2026-02-04。\n\n本周该关键词组合在 Semantic Scholar 未检索到相关论文。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n|------|------|------|------|------|----------|------------|--------|\n| - | - | - | - | - | - | - | - |\n\n## 📚 OpenAlex\n\n本表数据来自 OpenAlex 检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-01-29 ~ 2026-02-04。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n|------|------|------|------|------|----------|------------|--------|\n| 9 | A Survey on Evaluation of Embodied AI | 综述多模态大模型与视觉语言动作模型的具身AI评测方法 | https://doi.org/10.22541/au.177023340.02874343/v1 | 具身AI,评测,多模态大模型,综述 | 2026-02-04 | - | 1 |\n| 8 | RSGround-Rethinking Remote Sensing Visual Grounding through Spatial Reasoning | 重新思考遥感视觉定位的空间推理方法 | https://openalex.org/W7126282066 | 遥感,视觉定位,空间推理,无人机 | 2026-01-29 | ArXiv.org | 0 |\n| 8 | Toward Cognitive Supersensing in Multimodal Large Language Model | 探索多模态大模型的认知超感知能力 | https://openalex.org/W7127542677 | 多模态大模型,认知感知,超感知 | 2026-02-02 | ArXiv.org | 0 |\n| 8 | AIR-VLA: Vision-Language-Action Systems for Aerial Manipulation | 提出面向空中操作的视觉语言动作系统 | https://openalex.org/W7126281959 | 空中机器人,视觉语言动作,无人机操作 | 2026-01-29 | arXiv (Cornell University) | 0 |\n| 7 | LLM-Powered Obstacle Map Generation for UAV Path Planning in Complex Weather Conditions | 利用大语言模型生成复杂天气下的无人机路径规划障碍图 | https://doi.org/10.1007/s11265-026-01983-0 | 无人机,路径规划,大语言模型,气象 | 2026-01-29 | Journal of Signal Processing Systems | 0 |\n| 7 | Self-evolving Embodied AI | 探讨具身AI的自演进机制 | https://openalex.org/W7128096045 | 具身AI,自演进,强化学习 | 2026-02-04 | ArXiv.org | 0 |\n| 7 | Large Language Model Aided Integrated Sensing and Communication for Low-Altitude Economy | 大模型辅助的低空经济集成感知通信 | https://openalex.org/W7128128129 | 低空经济,集成感知通信,大语言模型 | 2026-02-02 | Open Access at Essex | 0 |\n| 7 | ThreatSense: Neuro-Symbolic Reasoning for Autonomous Threat Assessment in Unmanned Systems | 神经符号推理用于无人系统自主威胁评估 | https://doi.org/10.71465/mrcis215 | 无人系统,威胁评估,神经符号推理 | 2026-01-31 | Multidisciplinary Research in Computing Information Systems | 0 |\n| 6 | Interpretable group gated priority traces for scalarized multi-objective reinforcement learning in autonomous drone operations | 可解释的多目标强化学习优先轨迹用于无人机操作 | https://doi.org/10.3389/fbuil.2026.1747709 | 无人机,多目标强化学习,可解释AI | 2026-02-04 | Frontiers in Built Environment | 0 |\n| 6 | Learning unknown reward function for drone navigation based on inverse deep reinforcement learning | 基于逆深度强化学习的未知奖励函数学习 | https://doi.org/10.1007/s00521-025-11698-1 | 无人机,逆强化学习,导航 | 2026-02-01 | Neural Computing and Applications | 0 |\n| 6 | Heterogeneous Vertiport Selection Optimization for On-Demand Air Taxi Services | 深度强化学习优化异构垂直起降点选择 | https://openalex.org/W7126282159 | 城市空中交通,强化学习,优化 | 2026-01-29 | ArXiv.org | 0 |\n| 5 | Task-free Adaptive Meta Black-box Optimization | 无任务自适应元黑盒优化 | https://openalex.org/W7126281934 | 元学习,黑盒优化,强化学习 | 2026-01-29 | ArXiv.org | 0 |\n| 5 | Agentic AI Security in 6G Networks | 6G网络中代理AI安全综述 | https://doi.org/10.36227/techrxiv.176972133.38919604/v1 | 6G,AI安全,代理系统 | 2026-01-29 | - | 0 |\n| 5 | Is Collaboration Worth It? A Decision-Oriented Survey in Multi-Agent Systems | 多智能体系统协作决策综述 | https://doi.org/10.36227/techrxiv.176978654.41579706/v1 | 多智能体,协作,决策 | 2026-01-30 | - | 0 |\n| 5 | Scaling Down with Small Language Models | 小语言模型的视觉、应用与挑战 | https://doi.org/10.36227/techrxiv.177004226.60393974/v1 | 小语言模型,视觉模型,效率 | 2026-02-02 | - | 0 |\n\n## 📰 优质资讯/论坛\n\n本表数据来自 RSS 资讯源检索，时间窗口 2026-01-29 ~ 2026-02-04。\n\n本周无相关资讯收录。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 |\n|------|------|------|------|------|\n| - | - | - | - | - |\n\n## 🔥 GitHub 周榜\n\n本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，**不做**关键词过滤或删减，反映本周全站热门项目趋势。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n|------|------|------|------|------|------|------|--------|\n| 9 | Lum1104/Understand-Anything | 将任意代码转换为可交互知识图的工具，支持多种AI编码助手 | https://github.com/Lum1104/Understand-Anything | 知识图谱,代码理解,AI辅助开发 | - | - | - |\n| 9 | colbymchenry/codegraph | 为Claude等AI助手预索引代码知识图，降低token消耗与工具调用 | https://github.com/colbymchenry/codegraph | 代码知识图,语义索引,AI编程 | - | - | - |\n| 8 | rohitg00/ai-engineering-from-scratch | AI工程从入门到实战课程，473节课约320小时 | https://github.com/rohitg00/ai-engineering-from-scratch | AI工程,教程,Python,TypeScript | - | - | - |\n| 8 | harry0703/MoneyPrinterTurbo | 一键生成高清短视频的AI工具，支持文案自动生成与素材合成 | https://github.com/harry0703/MoneyPrinterTurbo | 视频生成,AI大模型,短视频 | - | - | - |\n| 8 | presenton/presenton | 开源AI演示文稿生成器与API，Gamma替代方案 | https://github.com/presenton/presenton | 演示文稿,AI生成,Docker | - | - | - |\n| 7 | ruvnet/RuView | 利用WiFi信号实现实时空间智能与生命体征监测 | https://github.com/ruvnet/RuView | WiFi感知,空间智能,生命体征 | - | - | - |\n| 7 | microsoft/agent-governance-toolkit | AI代理治理工具包，涵盖策略执行与零信任身份 | https://github.com/microsoft/agent-governance-toolkit | AI治理,代理安全,OWASP | - | - | - |\n| 6 | anthropics/knowledge-work-plugins | 为知识工作者设计的Claude插件集合 | https://github.com/anthropics/knowledge-work-plugins | Claude,插件,知识工作 | - | - | - |\n| 6 | hardikpandya/stop-slop | 移除AI写作特征的技能文件 | https://github.com/hardikpandya/stop-slop | AI写作,文本优化,技能 | - | - | - |\n| 6 | mukul975/Anthropic-Cybersecurity-Skills | 754个结构化网络安全技能库，映射5大框架 | https://github.com/mukul975/Anthropic-Cybersecurity-Skills | 网络安全,AI代理,MITRE | - | - | - |\n\n## 🔎 GitHub 指定日期检索\n\n本表数据来自 GitHub 官方 `search/repositories` 在全站公开仓库范围内的检索结果，关键词为 `uav & (rl|llm)`，附加 `pushed` 日期条件，**不是** Trending 周榜。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n|------|------|------|------|------|------|------|--------|\n| 9 | GongXudong/awesome-RL-for-UAVs | 无人机强化学习应用精选资源列表 | https://github.com/GongXudong/awesome-RL-for-UAVs | 无人机,强化学习,资源列表 | 56 | 1 | - |\n| 8 | KashifKhaan/UAV-MovingPlatformLanding-DjiTello | 基于计算机视觉的无人机自主降落移动平台 | https://github.com/KashifKhaan/UAV-MovingPlatformLanding-DjiTello | 无人机,自主降落,计算机视觉 | 25 | 3 | Python |\n| 7 | yblei/CloudTrack | 基于自然语言描述的视频目标追踪 | https://github.com/yblei/CloudTrack | 视频追踪,语言描述,目标定位 | 19 | 1 | Python |\n| 7 | ThunderFly-aerospace/TFSLOT01 | 无人机低速空速传感器 | https://github.com/ThunderFly-aerospace/TFSLOT01 | 无人机,空速传感器,硬件 | 17 | 3 | G-code |\n| 6 | bildadnz/UAV-Wireless-Communication | 层级深度强化学习的多无人机无线供能通信 | https://github.com/bildadnz/UAV-Wireless-Communication | 无人机,无线通信,深度强化学习 | 10 | 2 | Python |\n| 6 | JackyLi-HKUST/awesome-uav-usv-landing | 无人机在舰船上的降落研究资源列表 | https://github.com/JackyLi-HKUST/awesome-uav-usv-landing | 无人机,舰船降落,感知控制 | 9 | 1 | - |\n| 6 | HyunLee8/auto-uav | 基于DJI Tellopy的自主人脸追踪无人机 | https://github.com/HyunLee8/auto-uav | 人脸追踪,无人机,LLM通信 | 8 | 1 | Python |\n| 6 | Dhruv15112004/Robust-SEE-UAV-RIS-DRL | 基于DRL的鲁棒保密能效无人机RIS通信 | https://github.com/Dhruv15112004/Robust-SEE-UAV-RIS-DRL | 无人机,RIS,保密通信,DRL | 8 | 1 | Python |\n| 5 | alexv565/px4-rl-project | PX4强化学习与迁移学习无人机管道 | https://github.com/alexv565/px4-rl-project | PX4,强化学习,迁移学习 | 2 | 0 | Python |\n| 5 | 3462994500/Research-on-UAV-base-station-coverage-optimization-based-on-MADRL-2 | 基于多智能体深度强化学习的无人机基站覆盖优化 | https://github.com/3462994500/Research-on-UAV-base-station-coverage-optimization-based-on-MADRL-2 | 无人机基站,多智能体强化学习,覆盖优化 | 2 | 0 | Python |\n| 5 | m-fahad-nasir/VLM_Weed_Framework | 基于视觉语言模型的无人机精准农业杂草检测 | https://github.com/m-fahad-nasir/VLM_Weed_Framework | 视觉语言模型,杂草检测,精准农业 | 1 | 2 | Jupyter Notebook |\n| 5 | Eunsung-kespion/UAV_recovery_RL | 深度强化学习用于无人机轨迹预测与机械臂回收 | https://github.com/Eunsung-kespion/UAV_recovery_RL | 深度强化学习,轨迹预测,ROS | 1 | 0 | CMake |\n",
+    "markdownGeneratedAt": "2026-05-29T07:27:27.633766Z"
+  },
+  "sections": [
+    {
+      "source": "arxiv",
+      "heading": "📄 Arxiv 前沿论文",
+      "summary": "本表数据来自 Arxiv 检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)`，时间窗口 2026-01-29 ~ 2026-02-04。",
+      "keywords": "",
+      "dateStart": "2026-01-29",
+      "dateEnd": "2026-02-04",
+      "entryCount": 2,
+      "entries": [
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-arxiv-0",
+          "score": 9,
+          "title": "APEX: A Decoupled Memory-based Explorer for Asynchronous Aerial Object Goal Navigation",
+          "summary": "提出面向无人机目标导航的异步记忆探索器，解决具身AI中空中目标定位难题",
+          "link": "http://arxiv.org/abs/2602.00551v1",
+          "tags": "UAV,目标导航,具身AI,强化学习,内存机制",
+          "publishedAt": "2026-01-31",
+          "keywords": "",
+          "extra": {
+            "subject": "cs.RO"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-arxiv-1",
+          "score": 8,
+          "title": "RGBX-R1: Visual Modality Chain-of-Thought Guided Reinforcement Learning for Multimodal Grounding",
+          "summary": "提出多模态思维链引导的强化学习方法，提升视觉语言模型在非RGB模态下的定位能力",
+          "link": "http://arxiv.org/abs/2602.00504v1",
+          "tags": "多模态大模型,视觉定位,思维链,强化学习,RGBX",
+          "publishedAt": "2026-01-31",
+          "keywords": "",
+          "extra": {
+            "subject": "cs.CV"
+          }
+        }
+      ]
+    },
+    {
+      "source": "semantic_scholar",
+      "heading": "🎓 Semantic Scholar",
+      "summary": "本表数据来自 Semantic Scholar 检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-01-29 ~ 2026-02-04。 本周该关键词组合在 Semantic Scholar 未检索到相关论文。",
+      "keywords": "",
+      "dateStart": "2026-01-29",
+      "dateEnd": "2026-02-04",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "openalex",
+      "heading": "📚 OpenAlex",
+      "summary": "本表数据来自 OpenAlex 检索，关键词组为 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-01-29 ~ 2026-02-04。",
+      "keywords": "",
+      "dateStart": "2026-01-29",
+      "dateEnd": "2026-02-04",
+      "entryCount": 15,
+      "entries": [
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-openalex-0",
+          "score": 9,
+          "title": "A Survey on Evaluation of Embodied AI",
+          "summary": "综述多模态大模型与视觉语言动作模型的具身AI评测方法",
+          "link": "https://doi.org/10.22541/au.177023340.02874343/v1",
+          "tags": "具身AI,评测,多模态大模型,综述",
+          "publishedAt": "2026-02-04",
+          "keywords": "",
+          "extra": {
+            "citationCount": "1"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-openalex-1",
+          "score": 8,
+          "title": "RSGround-Rethinking Remote Sensing Visual Grounding through Spatial Reasoning",
+          "summary": "重新思考遥感视觉定位的空间推理方法",
+          "link": "https://openalex.org/W7126282066",
+          "tags": "遥感,视觉定位,空间推理,无人机",
+          "publishedAt": "2026-01-29",
+          "keywords": "",
+          "extra": {
+            "venue": "ArXiv.org",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-openalex-2",
+          "score": 8,
+          "title": "Toward Cognitive Supersensing in Multimodal Large Language Model",
+          "summary": "探索多模态大模型的认知超感知能力",
+          "link": "https://openalex.org/W7127542677",
+          "tags": "多模态大模型,认知感知,超感知",
+          "publishedAt": "2026-02-02",
+          "keywords": "",
+          "extra": {
+            "venue": "ArXiv.org",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-openalex-3",
+          "score": 8,
+          "title": "AIR-VLA: Vision-Language-Action Systems for Aerial Manipulation",
+          "summary": "提出面向空中操作的视觉语言动作系统",
+          "link": "https://openalex.org/W7126281959",
+          "tags": "空中机器人,视觉语言动作,无人机操作",
+          "publishedAt": "2026-01-29",
+          "keywords": "",
+          "extra": {
+            "venue": "arXiv (Cornell University)",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-openalex-4",
+          "score": 7,
+          "title": "LLM-Powered Obstacle Map Generation for UAV Path Planning in Complex Weather Conditions",
+          "summary": "利用大语言模型生成复杂天气下的无人机路径规划障碍图",
+          "link": "https://doi.org/10.1007/s11265-026-01983-0",
+          "tags": "无人机,路径规划,大语言模型,气象",
+          "publishedAt": "2026-01-29",
+          "keywords": "",
+          "extra": {
+            "venue": "Journal of Signal Processing Systems",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-openalex-5",
+          "score": 7,
+          "title": "Self-evolving Embodied AI",
+          "summary": "探讨具身AI的自演进机制",
+          "link": "https://openalex.org/W7128096045",
+          "tags": "具身AI,自演进,强化学习",
+          "publishedAt": "2026-02-04",
+          "keywords": "",
+          "extra": {
+            "venue": "ArXiv.org",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-openalex-6",
+          "score": 7,
+          "title": "Large Language Model Aided Integrated Sensing and Communication for Low-Altitude Economy",
+          "summary": "大模型辅助的低空经济集成感知通信",
+          "link": "https://openalex.org/W7128128129",
+          "tags": "低空经济,集成感知通信,大语言模型",
+          "publishedAt": "2026-02-02",
+          "keywords": "",
+          "extra": {
+            "venue": "Open Access at Essex",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-openalex-7",
+          "score": 7,
+          "title": "ThreatSense: Neuro-Symbolic Reasoning for Autonomous Threat Assessment in Unmanned Systems",
+          "summary": "神经符号推理用于无人系统自主威胁评估",
+          "link": "https://doi.org/10.71465/mrcis215",
+          "tags": "无人系统,威胁评估,神经符号推理",
+          "publishedAt": "2026-01-31",
+          "keywords": "",
+          "extra": {
+            "venue": "Multidisciplinary Research in Computing Information Systems",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-openalex-8",
+          "score": 6,
+          "title": "Interpretable group gated priority traces for scalarized multi-objective reinforcement learning in autonomous drone operations",
+          "summary": "可解释的多目标强化学习优先轨迹用于无人机操作",
+          "link": "https://doi.org/10.3389/fbuil.2026.1747709",
+          "tags": "无人机,多目标强化学习,可解释AI",
+          "publishedAt": "2026-02-04",
+          "keywords": "",
+          "extra": {
+            "venue": "Frontiers in Built Environment",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-openalex-9",
+          "score": 6,
+          "title": "Learning unknown reward function for drone navigation based on inverse deep reinforcement learning",
+          "summary": "基于逆深度强化学习的未知奖励函数学习",
+          "link": "https://doi.org/10.1007/s00521-025-11698-1",
+          "tags": "无人机,逆强化学习,导航",
+          "publishedAt": "2026-02-01",
+          "keywords": "",
+          "extra": {
+            "venue": "Neural Computing and Applications",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-openalex-10",
+          "score": 6,
+          "title": "Heterogeneous Vertiport Selection Optimization for On-Demand Air Taxi Services",
+          "summary": "深度强化学习优化异构垂直起降点选择",
+          "link": "https://openalex.org/W7126282159",
+          "tags": "城市空中交通,强化学习,优化",
+          "publishedAt": "2026-01-29",
+          "keywords": "",
+          "extra": {
+            "venue": "ArXiv.org",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-openalex-11",
+          "score": 5,
+          "title": "Task-free Adaptive Meta Black-box Optimization",
+          "summary": "无任务自适应元黑盒优化",
+          "link": "https://openalex.org/W7126281934",
+          "tags": "元学习,黑盒优化,强化学习",
+          "publishedAt": "2026-01-29",
+          "keywords": "",
+          "extra": {
+            "venue": "ArXiv.org",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-openalex-12",
+          "score": 5,
+          "title": "Agentic AI Security in 6G Networks",
+          "summary": "6G网络中代理AI安全综述",
+          "link": "https://doi.org/10.36227/techrxiv.176972133.38919604/v1",
+          "tags": "6G,AI安全,代理系统",
+          "publishedAt": "2026-01-29",
+          "keywords": "",
+          "extra": {
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-openalex-13",
+          "score": 5,
+          "title": "Is Collaboration Worth It? A Decision-Oriented Survey in Multi-Agent Systems",
+          "summary": "多智能体系统协作决策综述",
+          "link": "https://doi.org/10.36227/techrxiv.176978654.41579706/v1",
+          "tags": "多智能体,协作,决策",
+          "publishedAt": "2026-01-30",
+          "keywords": "",
+          "extra": {
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-openalex-14",
+          "score": 5,
+          "title": "Scaling Down with Small Language Models",
+          "summary": "小语言模型的视觉、应用与挑战",
+          "link": "https://doi.org/10.36227/techrxiv.177004226.60393974/v1",
+          "tags": "小语言模型,视觉模型,效率",
+          "publishedAt": "2026-02-02",
+          "keywords": "",
+          "extra": {
+            "citationCount": "0"
+          }
+        }
+      ]
+    },
+    {
+      "source": "rss",
+      "heading": "📰 优质资讯/论坛",
+      "summary": "本表数据来自 RSS 资讯源检索，时间窗口 2026-01-29 ~ 2026-02-04。 本周无相关资讯收录。",
+      "keywords": "",
+      "dateStart": "2026-01-29",
+      "dateEnd": "2026-02-04",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "github_weekly",
+      "heading": "🔥 GitHub 周榜",
+      "summary": "本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，**不做**关键词过滤或删减，反映本周全站热门项目趋势。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 10,
+      "entries": [
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_weekly-0",
+          "score": 9,
+          "title": "Lum1104/Understand-Anything",
+          "summary": "将任意代码转换为可交互知识图的工具，支持多种AI编码助手",
+          "link": "https://github.com/Lum1104/Understand-Anything",
+          "tags": "知识图谱,代码理解,AI辅助开发",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_weekly-1",
+          "score": 9,
+          "title": "colbymchenry/codegraph",
+          "summary": "为Claude等AI助手预索引代码知识图，降低token消耗与工具调用",
+          "link": "https://github.com/colbymchenry/codegraph",
+          "tags": "代码知识图,语义索引,AI编程",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_weekly-2",
+          "score": 8,
+          "title": "rohitg00/ai-engineering-from-scratch",
+          "summary": "AI工程从入门到实战课程，473节课约320小时",
+          "link": "https://github.com/rohitg00/ai-engineering-from-scratch",
+          "tags": "AI工程,教程,Python,TypeScript",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_weekly-3",
+          "score": 8,
+          "title": "harry0703/MoneyPrinterTurbo",
+          "summary": "一键生成高清短视频的AI工具，支持文案自动生成与素材合成",
+          "link": "https://github.com/harry0703/MoneyPrinterTurbo",
+          "tags": "视频生成,AI大模型,短视频",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_weekly-4",
+          "score": 8,
+          "title": "presenton/presenton",
+          "summary": "开源AI演示文稿生成器与API，Gamma替代方案",
+          "link": "https://github.com/presenton/presenton",
+          "tags": "演示文稿,AI生成,Docker",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_weekly-5",
+          "score": 7,
+          "title": "ruvnet/RuView",
+          "summary": "利用WiFi信号实现实时空间智能与生命体征监测",
+          "link": "https://github.com/ruvnet/RuView",
+          "tags": "WiFi感知,空间智能,生命体征",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_weekly-6",
+          "score": 7,
+          "title": "microsoft/agent-governance-toolkit",
+          "summary": "AI代理治理工具包，涵盖策略执行与零信任身份",
+          "link": "https://github.com/microsoft/agent-governance-toolkit",
+          "tags": "AI治理,代理安全,OWASP",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_weekly-7",
+          "score": 6,
+          "title": "anthropics/knowledge-work-plugins",
+          "summary": "为知识工作者设计的Claude插件集合",
+          "link": "https://github.com/anthropics/knowledge-work-plugins",
+          "tags": "Claude,插件,知识工作",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_weekly-8",
+          "score": 6,
+          "title": "hardikpandya/stop-slop",
+          "summary": "移除AI写作特征的技能文件",
+          "link": "https://github.com/hardikpandya/stop-slop",
+          "tags": "AI写作,文本优化,技能",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_weekly-9",
+          "score": 6,
+          "title": "mukul975/Anthropic-Cybersecurity-Skills",
+          "summary": "754个结构化网络安全技能库，映射5大框架",
+          "link": "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
+          "tags": "网络安全,AI代理,MITRE",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "github_search",
+      "heading": "🔎 GitHub 指定日期检索",
+      "summary": "本表数据来自 GitHub 官方 `search/repositories` 在全站公开仓库范围内的检索结果，关键词为 `uav & (rl|llm)`，附加 `pushed` 日期条件，**不是** Trending 周榜。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 12,
+      "entries": [
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_search-0",
+          "score": 9,
+          "title": "GongXudong/awesome-RL-for-UAVs",
+          "summary": "无人机强化学习应用精选资源列表",
+          "link": "https://github.com/GongXudong/awesome-RL-for-UAVs",
+          "tags": "无人机,强化学习,资源列表",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "56",
+            "fork": "1"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_search-1",
+          "score": 8,
+          "title": "KashifKhaan/UAV-MovingPlatformLanding-DjiTello",
+          "summary": "基于计算机视觉的无人机自主降落移动平台",
+          "link": "https://github.com/KashifKhaan/UAV-MovingPlatformLanding-DjiTello",
+          "tags": "无人机,自主降落,计算机视觉",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "25",
+            "fork": "3",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_search-2",
+          "score": 7,
+          "title": "yblei/CloudTrack",
+          "summary": "基于自然语言描述的视频目标追踪",
+          "link": "https://github.com/yblei/CloudTrack",
+          "tags": "视频追踪,语言描述,目标定位",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "19",
+            "fork": "1",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_search-3",
+          "score": 7,
+          "title": "ThunderFly-aerospace/TFSLOT01",
+          "summary": "无人机低速空速传感器",
+          "link": "https://github.com/ThunderFly-aerospace/TFSLOT01",
+          "tags": "无人机,空速传感器,硬件",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "17",
+            "fork": "3",
+            "language": "G-code"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_search-4",
+          "score": 6,
+          "title": "bildadnz/UAV-Wireless-Communication",
+          "summary": "层级深度强化学习的多无人机无线供能通信",
+          "link": "https://github.com/bildadnz/UAV-Wireless-Communication",
+          "tags": "无人机,无线通信,深度强化学习",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "10",
+            "fork": "2",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_search-5",
+          "score": 6,
+          "title": "JackyLi-HKUST/awesome-uav-usv-landing",
+          "summary": "无人机在舰船上的降落研究资源列表",
+          "link": "https://github.com/JackyLi-HKUST/awesome-uav-usv-landing",
+          "tags": "无人机,舰船降落,感知控制",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "9",
+            "fork": "1"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_search-6",
+          "score": 6,
+          "title": "HyunLee8/auto-uav",
+          "summary": "基于DJI Tellopy的自主人脸追踪无人机",
+          "link": "https://github.com/HyunLee8/auto-uav",
+          "tags": "人脸追踪,无人机,LLM通信",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "8",
+            "fork": "1",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_search-7",
+          "score": 6,
+          "title": "Dhruv15112004/Robust-SEE-UAV-RIS-DRL",
+          "summary": "基于DRL的鲁棒保密能效无人机RIS通信",
+          "link": "https://github.com/Dhruv15112004/Robust-SEE-UAV-RIS-DRL",
+          "tags": "无人机,RIS,保密通信,DRL",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "8",
+            "fork": "1",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_search-8",
+          "score": 5,
+          "title": "alexv565/px4-rl-project",
+          "summary": "PX4强化学习与迁移学习无人机管道",
+          "link": "https://github.com/alexv565/px4-rl-project",
+          "tags": "PX4,强化学习,迁移学习",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_search-9",
+          "score": 5,
+          "title": "3462994500/Research-on-UAV-base-station-coverage-optimization-based-on-MADRL-2",
+          "summary": "基于多智能体深度强化学习的无人机基站覆盖优化",
+          "link": "https://github.com/3462994500/Research-on-UAV-base-station-coverage-optimization-based-on-MADRL-2",
+          "tags": "无人机基站,多智能体强化学习,覆盖优化",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_search-10",
+          "score": 5,
+          "title": "m-fahad-nasir/VLM_Weed_Framework",
+          "summary": "基于视觉语言模型的无人机精准农业杂草检测",
+          "link": "https://github.com/m-fahad-nasir/VLM_Weed_Framework",
+          "tags": "视觉语言模型,杂草检测,精准农业",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1",
+            "fork": "2",
+            "language": "Jupyter Notebook"
+          }
+        },
+        {
+          "id": "2026-01-29_2026-02-04_20260529T072727Z-github_search-11",
+          "score": 5,
+          "title": "Eunsung-kespion/UAV_recovery_RL",
+          "summary": "深度强化学习用于无人机轨迹预测与机械臂回收",
+          "link": "https://github.com/Eunsung-kespion/UAV_recovery_RL",
+          "tags": "深度强化学习,轨迹预测,ROS",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1",
+            "fork": "0",
+            "language": "CMake"
+          }
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "entryCount": 39,
+    "sourceCounts": {
+      "arxiv": 2,
+      "openalex": 15,
+      "github_weekly": 10,
+      "github_search": 12
+    },
+    "emptySections": [
+      "semantic_scholar",
+      "rss"
+    ]
+  }
+}

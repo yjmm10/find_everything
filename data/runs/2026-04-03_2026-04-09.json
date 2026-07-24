@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1",
+  "id": "2026-04-03_2026-04-09",
+  "crawl": {
+    "executedAt": "2026-04-10T13:30:08Z",
+    "crawlDate": "2026-04-10",
+    "status": "empty",
+    "trigger": "migration"
+  },
+  "window": {
+    "dateStart": "2026-04-03",
+    "dateEnd": "2026-04-09",
+    "preset": "",
+    "mode": ""
+  },
+  "config": {},
+  "content": {
+    "markdownBody": "## 📄 Arxiv 前沿论文\n\n> **爬取时间**：2026-04-10 13:30:08 UTC\n\n本表数据来自 Arxiv 论文库，检索关键词为「uav&llm」，时间窗口 2026-04-03 ~ 2026-04-09。本周该关键词组合无新增论文。\n\n| 评分 | 标题 | 说明 | 链接 |\n|:---:|:---|:---|:---|\n| - | - | - | - |\n\n---\n\n## 📰 优质资讯/论坛\n\n本表数据来自 RSS 订阅源，时间窗口 2026-04-03 ~ 2026-04-09，关键词覆盖 LLM、AI Agent、Computer Vision。本周无新增资讯。\n\n| 评分 | 标题 | 说明 | 链接 |\n|:---:|:---|:---|:---|\n| - | - | - | - |\n\n---\n\n## 🔥 GitHub 热门仓库\n\n本表数据来自 GitHub Trending 筛选，时间窗口 2026-04-03 ~ 2026-04-09，关键词覆盖 LLM、AI Agent、Computer Vision。本周无新增热门仓库。\n\n| 评分 | 标题 | 说明 | 链接 | Star | Fork | 主语言 |\n|:---:|:---|:---|:---|:---:|:---:|:---:|\n| - | - | - | - | - | - | - |\n",
+    "markdownGeneratedAt": "2026-04-10T13:30:08Z"
+  },
+  "sections": [
+    {
+      "source": "arxiv",
+      "heading": "📄 Arxiv 前沿论文",
+      "summary": "本表数据来自 Arxiv 论文库，检索关键词为「uav&llm」，时间窗口 2026-04-03 ~ 2026-04-09。本周该关键词组合无新增论文。 ---",
+      "keywords": "uav&llm",
+      "dateStart": "2026-04-03",
+      "dateEnd": "2026-04-09",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "rss",
+      "heading": "📰 优质资讯/论坛",
+      "summary": "本表数据来自 RSS 订阅源，时间窗口 2026-04-03 ~ 2026-04-09，关键词覆盖 LLM、AI Agent、Computer Vision。本周无新增资讯。 ---",
+      "keywords": "",
+      "dateStart": "2026-04-03",
+      "dateEnd": "2026-04-09",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "github",
+      "heading": "🔥 GitHub 热门仓库",
+      "summary": "本表数据来自 GitHub Trending 筛选，时间窗口 2026-04-03 ~ 2026-04-09，关键词覆盖 LLM、AI Agent、Computer Vision。本周无新增热门仓库。",
+      "keywords": "",
+      "dateStart": "2026-04-03",
+      "dateEnd": "2026-04-09",
+      "entryCount": 0,
+      "entries": []
+    }
+  ],
+  "stats": {
+    "entryCount": 0,
+    "sourceCounts": {},
+    "emptySections": [
+      "arxiv",
+      "rss",
+      "github"
+    ]
+  }
+}

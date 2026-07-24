@@ -1,0 +1,470 @@
+{
+  "schemaVersion": "1",
+  "id": "2026-01-15_2026-01-21_20260529T071518Z",
+  "crawl": {
+    "executedAt": "2026-05-29T07:15:18.526585Z",
+    "crawlDate": "2026-05-29",
+    "status": "success",
+    "trigger": "ci"
+  },
+  "window": {
+    "dateStart": "2026-01-15",
+    "dateEnd": "2026-01-21",
+    "preset": "week",
+    "mode": "custom"
+  },
+  "config": {
+    "keywords": "(uav|aerial) & (vlm|llm|mllm) & (rl)",
+    "date_range": {
+      "preset": "week"
+    },
+    "ai": {
+      "model": "MiniMax/MiniMax-M2.5",
+      "max_tokens": 4000
+    }
+  },
+  "content": {
+    "markdownBody": "## 📄 Arxiv 前沿论文\n\n> **爬取时间**：2026-05-29 07:15:18 UTC\n\n本表数据来自 Arxiv 官方 API，检索关键词为 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)`，时间窗口 2026-01-15 ~ 2026-01-21。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 学科类别 |\n|------|------|------|------|------|----------|----------|\n| 8 | Large Language Model (LLM)-enabled Reinforcement Learning for Wireless Network Optimization | 首次探索 LLM 辅助强化学习优化 6G 无线网络资源分配 | https://arxiv.org/abs/2602.13210v1 | LLM, 强化学习, 无线网络, 6G | 2026-01-15 | cs.NI |\n\n## 🎓 Semantic Scholar\n\n本表数据来自 Semantic Scholar 学术检索，关键词组 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-01-15 ~ 2026-01-21。\n\n本周该关键词组合在 Semantic Scholar 无新增收录。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n|------|------|------|------|------|----------|------------|--------|\n| - | - | - | - | - | - | - | - |\n\n## 📚 OpenAlex\n\n本表数据来自 OpenAlex 学术知识图谱，检索关键词 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-01-15 ~ 2026-01-21。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | 发表时间 | 来源/venue | 引用数 |\n|------|------|------|------|------|----------|------------|--------|\n| 9 | Defect Detection Method of Power Facilities in Unmanned Aerial Vehicle Inspection Scene Based on Reinforcement Learning and Visual Language Model | 首次将 RL 与 VLM 结合用于无人机巡检场景的电力设施缺陷检测 | https://doi.org/10.1109/pesim67009.2026.11438435 | 无人机, 缺陷检测, 强化学习, VLM | 2026-01-18 | - | 0 |\n| 8 | Large Model in Low-Altitude Economy: Applications and Challenges | 探讨大模型与多模态基础模型在低空经济中的应用与挑战 | https://doi.org/10.3390/bdcc10010033 | 大模型, 低空经济, 多模态 | 2026-01-16 | Big Data and Cognitive Computing | 0 |\n| 8 | Large Language Model (LLM)-enabled Reinforcement Learning for Wireless Network Optimization | ArXiv 论文的 OpenAlex 收录版本，探讨 LLM 辅助 RL 优化无线网络 | https://openalex.org/W7130237271 | LLM, 强化学习, 无线网络 | 2026-01-15 | ArXiv.org | 0 |\n| 7 | Vision-Language Model-Driven Predictive Platform Employing Swarm Robotics and Post-Quantum Signatures for Autonomous Green Vessel Navigation | 提出 VLM 驱动的预测平台，结合群体机器人与后量子签名实现绿色船舶自主导航 | https://doi.org/10.20944/preprints202601.1117.v1 | VLM, 群体机器人, 船舶导航 | 2026-01-15 | Preprints.org | 0 |\n\n## 📰 优质资讯/论坛\n\n本周无新增技术资讯/论坛数据。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 |\n|------|------|------|------|------|\n| - | - | - | - | - |\n\n## 🔥 GitHub 周榜\n\n本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，**不做**关键词过滤或删减，反映本周全站热度较高的开源项目。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n|------|------|------|------|------|------|------|--------|\n| 7 | ruvnet/RuView | 将普通 WiFi 信号转化为实时空间智能、生命体征监测和存在检测，无需摄像头 | https://github.com/ruvnet/RuView | WiFi感知, 空间智能, 目标检测 | - | - | - |\n| 6 | microsoft/agent-governance-toolkit | AI Agent 治理工具包，涵盖策略执行、零信任身份、执行沙箱和可靠性工程 | https://github.com/microsoft/agent-governance-toolkit | AI治理, Agent, 安全 | - | - | - |\n| 5 | anthropics/knowledge-work-plugins | 为知识工作者设计的 Claude 插件集合 | https://github.com/anthropics/knowledge-work-plugins | Claude, 插件, AI助手 | - | - | - |\n| 5 | harry0703/MoneyPrinterTurbo | 利用 AI 大模型一键生成高清短视频 | https://github.com/harry0703/MoneyPrinterTurbo | AI视频生成, LLM | - | - | - |\n| 4 | mukul975/Anthropic-Cybersecurity-Skills | 面向 AI Agent 的网络安全技能库，涵盖 754 个结构化技能 | https://github.com/mukul975/Anthropic-Cybersecurity-Skills | 网络安全, AI Agent, MITRE | - | - | - |\n\n## 🔎 GitHub 指定日期检索\n\n本表数据来自 GitHub 官方 `search/repositories` API，在全站公开仓库范围内按关键词 `uav & (rl|llm)` 与时间条件（`pushed:`）筛出的结果，**不是** Trending 周榜/日榜榜单。\n\n| 评分 | 标题 | 说明 | 链接 | 标签 | Star | Fork | 主语言 |\n|------|------|------|------|------|------|------|--------|\n| 9 | rl-exploration-for-uavs | 基于强化学习的无人机集群未知环境探索算法 | https://github.com/gbattocletti-riccardoUrb/rl-exploration-for-uavs | 强化学习, 无人机, 探索算法 | 92 | 15 | Python |\n| 8 | MM-UAVBench | 多模态大语言模型在低空无人机场景下的视觉、思考与规划能力基准测试 | https://github.com/AI9Stars/MM-UAVBench | MLLM, 无人机, 基准测试 | 19 | 1 | Python |\n| 7 | FlyAwareV2 | 无人机数据集生成与处理代码库 | https://github.com/LTTM/FlyAwareV2 | 无人机, 数据集, 感知 | 17 | 2 | Python |\n| 7 | UAV-mounted-RIS-IOT-RL | 无人机挂载 RIS 辅助 IoT 网络的深度强化学习通信框架 | https://github.com/hyaochen/UAV-mounted-RIS-IOT-RL | 深度强化学习, RIS, 通信 | 4 | 1 | Python |\n| 6 | UAVFL | 无人机联邦学习的分层聚合方法开源代码 | https://github.com/xiangyu-zhong/UAVFL | 联邦学习, 无人机, 分层聚合 | 5 | 0 | Python |\n| 6 | LLM-UAV-Agent | 无人机指令解析 Agent | https://github.com/icekoo/LLM-UAV-Agent | LLM, 无人机, Agent | 2 | 0 | Python |\n| 6 | SAR-SAC | 复杂环境下安全无人机导航的状态感知调节软 Actor-Critic 算法 | https://github.com/Keeeor/SAR-SAC | 强化学习, 安全导航, SAC | 2 | 0 | Python |\n| 5 | Isaac-Sim-ML | 基于渐进强化学习的无人机自主框架，从 PPO 微路点导航到视觉避障 | https://github.com/siddu7g/Isaac-Sim-ML | 强化学习, 无人机, Isaac Sim | 2 | 0 | Python |\n| 5 | uav-ugv-co空地协同系统 | 无人机-无人车协同系统，包含仿真与实机验证 | https://github.com/jiangmingxuan234-alt/uav-ugv-cooperative-system-sim-to-real | 无人机, 协同系统, sim-to-real | 3 | 0 | C++ |\n| 4 | DroneVehicle-Night | 夜间无人机航拍车辆检测数据集 | https://github.com/bsfsf/DroneVehicle-Night | 无人机, 目标检测, 夜间场景 | 5 | 0 | - |\n| 4 | Predictor-based-adaptive-control-for-delivery-UAV | 基于预测器的自适应控制框架，用于物流无人机 | https://github.com/MattiaDiMauro/Predictor-based-adaptive-control-for-delivery-UAV | 自适应控制, 物流无人机, MATLAB | 2 | 0 | MATLAB |\n| 3 | LVPTrack | 域自适应无人机跟踪的高性能视觉提示调优方法 | https://github.com/watcherBR0/LVPTrack | 无人机跟踪, 域自适应, 视觉提示 | 2 | 0 | Python |\n| 3 | UAV_Trajectory_Optimization | 无人机轨迹优化 | https://github.com/Eslam211/UAV_Trajectory_Optimization | 轨迹优化, 无人机 | 2 | 0 | Jupyter Notebook |\n| 2 | particle_filter_ros2 | ROS2 环境下无人机跟踪的粒子滤波器仿真 | https://github.com/AntonioLuisGH/particle_filter_ros2 | 粒子滤波, ROS2, 无人机跟踪 | 3 | 0 | Python |\n| 2 | UAVSim2Real | 无人机视觉感知模型测试的虚拟场景增强 | https://github.com/lylhit/UAVSim2Real | sim-to-real, 无人机, 视觉感知 | 1 | 0 | - |\n| 2 | uav-swarm-sim | 基于 Python 和 NS-3 的无人机蜂群网络模拟器 | https://github.com/pabloramesc/uav-swarm-sim | 无人机, 蜂群, 网络仿真 | 1 | 0 | Python |\n",
+    "markdownGeneratedAt": "2026-05-29T07:15:18.526585Z"
+  },
+  "sections": [
+    {
+      "source": "arxiv",
+      "heading": "📄 Arxiv 前沿论文",
+      "summary": "本表数据来自 Arxiv 官方 API，检索关键词为 `(uav|aerial) & (vlm|llm|mllm) & (rl|reinforcement learning)`，时间窗口 2026-01-15 ~ 2026-01-21。",
+      "keywords": "",
+      "dateStart": "2026-01-15",
+      "dateEnd": "2026-01-21",
+      "entryCount": 1,
+      "entries": [
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-arxiv-0",
+          "score": 8,
+          "title": "Large Language Model (LLM)-enabled Reinforcement Learning for Wireless Network Optimization",
+          "summary": "首次探索 LLM 辅助强化学习优化 6G 无线网络资源分配",
+          "link": "https://arxiv.org/abs/2602.13210v1",
+          "tags": "LLM, 强化学习, 无线网络, 6G",
+          "publishedAt": "2026-01-15",
+          "keywords": "",
+          "extra": {
+            "subject": "cs.NI"
+          }
+        }
+      ]
+    },
+    {
+      "source": "semantic_scholar",
+      "heading": "🎓 Semantic Scholar",
+      "summary": "本表数据来自 Semantic Scholar 学术检索，关键词组 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-01-15 ~ 2026-01-21。 本周该关键词组合在 Semantic Scholar 无新增收录。",
+      "keywords": "",
+      "dateStart": "2026-01-15",
+      "dateEnd": "2026-01-21",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "openalex",
+      "heading": "📚 OpenAlex",
+      "summary": "本表数据来自 OpenAlex 学术知识图谱，检索关键词 `(uav|aerial) & (vlm|llm|mllm) & (rl)`，时间窗口 2026-01-15 ~ 2026-01-21。",
+      "keywords": "",
+      "dateStart": "2026-01-15",
+      "dateEnd": "2026-01-21",
+      "entryCount": 4,
+      "entries": [
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-openalex-0",
+          "score": 9,
+          "title": "Defect Detection Method of Power Facilities in Unmanned Aerial Vehicle Inspection Scene Based on Reinforcement Learning and Visual Language Model",
+          "summary": "首次将 RL 与 VLM 结合用于无人机巡检场景的电力设施缺陷检测",
+          "link": "https://doi.org/10.1109/pesim67009.2026.11438435",
+          "tags": "无人机, 缺陷检测, 强化学习, VLM",
+          "publishedAt": "2026-01-18",
+          "keywords": "",
+          "extra": {
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-openalex-1",
+          "score": 8,
+          "title": "Large Model in Low-Altitude Economy: Applications and Challenges",
+          "summary": "探讨大模型与多模态基础模型在低空经济中的应用与挑战",
+          "link": "https://doi.org/10.3390/bdcc10010033",
+          "tags": "大模型, 低空经济, 多模态",
+          "publishedAt": "2026-01-16",
+          "keywords": "",
+          "extra": {
+            "venue": "Big Data and Cognitive Computing",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-openalex-2",
+          "score": 8,
+          "title": "Large Language Model (LLM)-enabled Reinforcement Learning for Wireless Network Optimization",
+          "summary": "ArXiv 论文的 OpenAlex 收录版本，探讨 LLM 辅助 RL 优化无线网络",
+          "link": "https://openalex.org/W7130237271",
+          "tags": "LLM, 强化学习, 无线网络",
+          "publishedAt": "2026-01-15",
+          "keywords": "",
+          "extra": {
+            "venue": "ArXiv.org",
+            "citationCount": "0"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-openalex-3",
+          "score": 7,
+          "title": "Vision-Language Model-Driven Predictive Platform Employing Swarm Robotics and Post-Quantum Signatures for Autonomous Green Vessel Navigation",
+          "summary": "提出 VLM 驱动的预测平台，结合群体机器人与后量子签名实现绿色船舶自主导航",
+          "link": "https://doi.org/10.20944/preprints202601.1117.v1",
+          "tags": "VLM, 群体机器人, 船舶导航",
+          "publishedAt": "2026-01-15",
+          "keywords": "",
+          "extra": {
+            "venue": "Preprints.org",
+            "citationCount": "0"
+          }
+        }
+      ]
+    },
+    {
+      "source": "rss",
+      "heading": "📰 优质资讯/论坛",
+      "summary": "本周无新增技术资讯/论坛数据。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 0,
+      "entries": []
+    },
+    {
+      "source": "github_weekly",
+      "heading": "🔥 GitHub 周榜",
+      "summary": "本表数据来自 GitHub Trending 类 RSS 榜单的原始条目，**不做**关键词过滤或删减，反映本周全站热度较高的开源项目。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 5,
+      "entries": [
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_weekly-0",
+          "score": 7,
+          "title": "ruvnet/RuView",
+          "summary": "将普通 WiFi 信号转化为实时空间智能、生命体征监测和存在检测，无需摄像头",
+          "link": "https://github.com/ruvnet/RuView",
+          "tags": "WiFi感知, 空间智能, 目标检测",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_weekly-1",
+          "score": 6,
+          "title": "microsoft/agent-governance-toolkit",
+          "summary": "AI Agent 治理工具包，涵盖策略执行、零信任身份、执行沙箱和可靠性工程",
+          "link": "https://github.com/microsoft/agent-governance-toolkit",
+          "tags": "AI治理, Agent, 安全",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_weekly-2",
+          "score": 5,
+          "title": "anthropics/knowledge-work-plugins",
+          "summary": "为知识工作者设计的 Claude 插件集合",
+          "link": "https://github.com/anthropics/knowledge-work-plugins",
+          "tags": "Claude, 插件, AI助手",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_weekly-3",
+          "score": 5,
+          "title": "harry0703/MoneyPrinterTurbo",
+          "summary": "利用 AI 大模型一键生成高清短视频",
+          "link": "https://github.com/harry0703/MoneyPrinterTurbo",
+          "tags": "AI视频生成, LLM",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_weekly-4",
+          "score": 4,
+          "title": "mukul975/Anthropic-Cybersecurity-Skills",
+          "summary": "面向 AI Agent 的网络安全技能库，涵盖 754 个结构化技能",
+          "link": "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
+          "tags": "网络安全, AI Agent, MITRE",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {}
+        }
+      ]
+    },
+    {
+      "source": "github_search",
+      "heading": "🔎 GitHub 指定日期检索",
+      "summary": "本表数据来自 GitHub 官方 `search/repositories` API，在全站公开仓库范围内按关键词 `uav & (rl|llm)` 与时间条件（`pushed:`）筛出的结果，**不是** Trending 周榜/日榜榜单。",
+      "keywords": "",
+      "dateStart": "",
+      "dateEnd": "",
+      "entryCount": 16,
+      "entries": [
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_search-0",
+          "score": 9,
+          "title": "rl-exploration-for-uavs",
+          "summary": "基于强化学习的无人机集群未知环境探索算法",
+          "link": "https://github.com/gbattocletti-riccardoUrb/rl-exploration-for-uavs",
+          "tags": "强化学习, 无人机, 探索算法",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "92",
+            "fork": "15",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_search-1",
+          "score": 8,
+          "title": "MM-UAVBench",
+          "summary": "多模态大语言模型在低空无人机场景下的视觉、思考与规划能力基准测试",
+          "link": "https://github.com/AI9Stars/MM-UAVBench",
+          "tags": "MLLM, 无人机, 基准测试",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "19",
+            "fork": "1",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_search-2",
+          "score": 7,
+          "title": "FlyAwareV2",
+          "summary": "无人机数据集生成与处理代码库",
+          "link": "https://github.com/LTTM/FlyAwareV2",
+          "tags": "无人机, 数据集, 感知",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "17",
+            "fork": "2",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_search-3",
+          "score": 7,
+          "title": "UAV-mounted-RIS-IOT-RL",
+          "summary": "无人机挂载 RIS 辅助 IoT 网络的深度强化学习通信框架",
+          "link": "https://github.com/hyaochen/UAV-mounted-RIS-IOT-RL",
+          "tags": "深度强化学习, RIS, 通信",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "4",
+            "fork": "1",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_search-4",
+          "score": 6,
+          "title": "UAVFL",
+          "summary": "无人机联邦学习的分层聚合方法开源代码",
+          "link": "https://github.com/xiangyu-zhong/UAVFL",
+          "tags": "联邦学习, 无人机, 分层聚合",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "5",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_search-5",
+          "score": 6,
+          "title": "LLM-UAV-Agent",
+          "summary": "无人机指令解析 Agent",
+          "link": "https://github.com/icekoo/LLM-UAV-Agent",
+          "tags": "LLM, 无人机, Agent",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_search-6",
+          "score": 6,
+          "title": "SAR-SAC",
+          "summary": "复杂环境下安全无人机导航的状态感知调节软 Actor-Critic 算法",
+          "link": "https://github.com/Keeeor/SAR-SAC",
+          "tags": "强化学习, 安全导航, SAC",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_search-7",
+          "score": 5,
+          "title": "Isaac-Sim-ML",
+          "summary": "基于渐进强化学习的无人机自主框架，从 PPO 微路点导航到视觉避障",
+          "link": "https://github.com/siddu7g/Isaac-Sim-ML",
+          "tags": "强化学习, 无人机, Isaac Sim",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_search-8",
+          "score": 5,
+          "title": "uav-ugv-co空地协同系统",
+          "summary": "无人机-无人车协同系统，包含仿真与实机验证",
+          "link": "https://github.com/jiangmingxuan234-alt/uav-ugv-cooperative-system-sim-to-real",
+          "tags": "无人机, 协同系统, sim-to-real",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "3",
+            "fork": "0",
+            "language": "C++"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_search-9",
+          "score": 4,
+          "title": "DroneVehicle-Night",
+          "summary": "夜间无人机航拍车辆检测数据集",
+          "link": "https://github.com/bsfsf/DroneVehicle-Night",
+          "tags": "无人机, 目标检测, 夜间场景",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "5",
+            "fork": "0"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_search-10",
+          "score": 4,
+          "title": "Predictor-based-adaptive-control-for-delivery-UAV",
+          "summary": "基于预测器的自适应控制框架，用于物流无人机",
+          "link": "https://github.com/MattiaDiMauro/Predictor-based-adaptive-control-for-delivery-UAV",
+          "tags": "自适应控制, 物流无人机, MATLAB",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "MATLAB"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_search-11",
+          "score": 3,
+          "title": "LVPTrack",
+          "summary": "域自适应无人机跟踪的高性能视觉提示调优方法",
+          "link": "https://github.com/watcherBR0/LVPTrack",
+          "tags": "无人机跟踪, 域自适应, 视觉提示",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_search-12",
+          "score": 3,
+          "title": "UAV_Trajectory_Optimization",
+          "summary": "无人机轨迹优化",
+          "link": "https://github.com/Eslam211/UAV_Trajectory_Optimization",
+          "tags": "轨迹优化, 无人机",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "2",
+            "fork": "0",
+            "language": "Jupyter Notebook"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_search-13",
+          "score": 2,
+          "title": "particle_filter_ros2",
+          "summary": "ROS2 环境下无人机跟踪的粒子滤波器仿真",
+          "link": "https://github.com/AntonioLuisGH/particle_filter_ros2",
+          "tags": "粒子滤波, ROS2, 无人机跟踪",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "3",
+            "fork": "0",
+            "language": "Python"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_search-14",
+          "score": 2,
+          "title": "UAVSim2Real",
+          "summary": "无人机视觉感知模型测试的虚拟场景增强",
+          "link": "https://github.com/lylhit/UAVSim2Real",
+          "tags": "sim-to-real, 无人机, 视觉感知",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1",
+            "fork": "0"
+          }
+        },
+        {
+          "id": "2026-01-15_2026-01-21_20260529T071518Z-github_search-15",
+          "score": 2,
+          "title": "uav-swarm-sim",
+          "summary": "基于 Python 和 NS-3 的无人机蜂群网络模拟器",
+          "link": "https://github.com/pabloramesc/uav-swarm-sim",
+          "tags": "无人机, 蜂群, 网络仿真",
+          "publishedAt": null,
+          "keywords": "",
+          "extra": {
+            "star": "1",
+            "fork": "0",
+            "language": "Python"
+          }
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "entryCount": 26,
+    "sourceCounts": {
+      "arxiv": 1,
+      "openalex": 4,
+      "github_weekly": 5,
+      "github_search": 16
+    },
+    "emptySections": [
+      "semantic_scholar",
+      "rss"
+    ]
+  }
+}
